@@ -4383,6 +4383,120 @@ window.RESEARCH_STORY = {
       "branchIds": [],
       "speakerNotes": "Do not present a computed preference as evidence of novelty. Compare similarly scoped first papers. Keep the long-term research direction distinct from the first experiment. New scores and weights are editable only by the user in the evaluation workspace.",
       "transition": "Record the PI discussion and update a separate evaluation round when new evidence arrives."
+    },
+    {
+      "id": "latest-evaluation",
+      "chapter": "Discussion · Latest evaluation",
+      "kind": "latest-evaluation",
+      "title": "My latest evaluation of the three directions",
+      "lead": "Illumination scores highest in this round; the next test is whether its real-time MR challenge is tractable.",
+      "points": [],
+      "paperIds": [],
+      "branchIds": [],
+      "evaluation": {
+        "date": "2026-10-16",
+        "source": "User-supplied latest evaluation, 16 October 2026",
+        "scale": "Scores supplied on a 0–100 basis; totals are unweighted sums of six criteria.",
+        "criteria": [
+          {
+            "id": "interest",
+            "label": "Interest"
+          },
+          {
+            "id": "talent",
+            "label": "Talent"
+          },
+          {
+            "id": "career",
+            "label": "Career"
+          },
+          {
+            "id": "feasibility",
+            "label": "Feasibility"
+          },
+          {
+            "id": "competitiveness",
+            "label": "Competitiveness"
+          },
+          {
+            "id": "significance",
+            "label": "Significance"
+          }
+        ],
+        "topics": [
+          {
+            "id": "illumination",
+            "label": "Bidirectional illumination",
+            "scores": [
+              85,
+              80,
+              80,
+              80,
+              90,
+              90
+            ],
+            "total": 505,
+            "strength": "A clear, fundamental MR problem with a strong virtual-production position and broader impact.",
+            "uncertainty": "Real-time methods and device restrictions remain the main technical challenge.",
+            "reasons": {
+              "interest": "A clear problem with several possible contribution directions.",
+              "talent": "Good grounding in XR, basic CV and graphics; real-time techniques need further investigation.",
+              "career": "A balanced MR focus can support industry experience and a challenging academic research identity.",
+              "feasibility": "Open datasets and synthetic/hybrid capture are possible; real-time techniques and device restrictions are challenges.",
+              "competitiveness": "Leading labs address the area, but domain-specific virtual-production propositions and subproblems may offer a distinctive position and broader impact.",
+              "significance": "Fundamental problems for better MR/AR, with direct virtual-production value and broader applications."
+            }
+          },
+          {
+            "id": "agents",
+            "label": "Directable virtual agents",
+            "scores": [
+              85,
+              80,
+              80,
+              75,
+              75,
+              80
+            ],
+            "total": 475,
+            "strength": "Strong interest in physically based animation, creative 3D authoring and a future research programme.",
+            "uncertainty": "A distinctive contribution and datasets combining gaze, motion, interaction and direction cues are still unclear.",
+            "reasons": {
+              "interest": "Enjoy animation synthesis, especially physically based methods.",
+              "talent": "Prior experience in some areas; further learning would support the topic.",
+              "career": "A potential foundation for an academic career, while long-term evolution and impact remain uncertain; physical robots and creative 3D input to generative pipelines are possible extensions.",
+              "feasibility": "Open datasets exist, but fewer jointly provide the desired gaze, motion, object interaction and direction-cue fidelity; RL is a possible approach to investigate.",
+              "competitiveness": "No unique proposition yet; combining modalities and real-time XR may offer novelty, but its competitiveness is uncertain.",
+              "significance": "Bring ideas quickly from imagination into 3D for generative-video alignment/control, with possible entertainment-robotics applications."
+            }
+          },
+          {
+            "id": "robotics",
+            "label": "XR human–robot interaction",
+            "scores": [
+              80,
+              70,
+              75,
+              70,
+              70,
+              80
+            ],
+            "total": 445,
+            "strength": "Relevant XR interfaces can reveal robot state and plans, with useful academic and industry connections.",
+            "uncertainty": "Robot access, learning distance and demanding user validation make execution harder.",
+            "reasons": {
+              "interest": "An interesting and timely topic.",
+              "talent": "New to XR 3D UI, proxies, pseudo-haptics and robotics, but interested in learning, particularly simulation such as Isaac Sim.",
+              "career": "Would work on XR 3D UI, pseudo-haptics and robot simulation across academia and industry, potentially extending to robots.",
+              "feasibility": "Creative interface design and good user validation are needed; limited robot access and user-study setup can be challenging and time-consuming.",
+              "competitiveness": "New to robotics and not yet positioned against robotics experts; possible distinctive work lies in camera/light robot 3D UI and pseudo-haptics, but device access is difficult.",
+              "significance": "Help people understand robot behaviour, hidden state and planning during autonomous work, supporting better interaction."
+            }
+          }
+        ]
+      },
+      "speakerNotes": "Latest user-authored self-assessment, 16 October 2026. Six scores per direction are retained without conversion to the separate browser 1–5 scale. Unweighted sums: illumination505, agents475, robotics445. These are subjective judgments, not demonstrated research findings. Full rationale: [{\"id\": \"illumination\", \"label\": \"Bidirectional illumination\", \"scores\": [85, 80, 80, 80, 90, 90], \"total\": 505, \"strength\": \"A clear, fundamental MR problem with a strong virtual-production position and broader impact.\", \"uncertainty\": \"Real-time methods and device restrictions remain the main technical challenge.\", \"reasons\": {\"interest\": \"A clear problem with several possible contribution directions.\", \"talent\": \"Good grounding in XR, basic CV and graphics; real-time techniques need further investigation.\", \"career\": \"A balanced MR focus can support industry experience and a challenging academic research identity.\", \"feasibility\": \"Open datasets and synthetic/hybrid capture are possible; real-time techniques and device restrictions are challenges.\", \"competitiveness\": \"Leading labs address the area, but domain-specific virtual-production propositions and subproblems may offer a distinctive position and broader impact.\", \"significance\": \"Fundamental problems for better MR/AR, with direct virtual-production value and broader applications.\"}}, {\"id\": \"agents\", \"label\": \"Directable virtual agents\", \"scores\": [85, 80, 80, 75, 75, 80], \"total\": 475, \"strength\": \"Strong interest in physically based animation, creative 3D authoring and a future research programme.\", \"uncertainty\": \"A distinctive contribution and datasets combining gaze, motion, interaction and direction cues are still unclear.\", \"reasons\": {\"interest\": \"Enjoy animation synthesis, especially physically based methods.\", \"talent\": \"Prior experience in some areas; further learning would support the topic.\", \"career\": \"A potential foundation for an academic career, while long-term evolution and impact remain uncertain; physical robots and creative 3D input to generative pipelines are possible extensions.\", \"feasibility\": \"Open datasets exist, but fewer jointly provide the desired gaze, motion, object interaction and direction-cue fidelity; RL is a possible approach to investigate.\", \"competitiveness\": \"No unique proposition yet; combining modalities and real-time XR may offer novelty, but its competitiveness is uncertain.\", \"significance\": \"Bring ideas quickly from imagination into 3D for generative-video alignment/control, with possible entertainment-robotics applications.\"}}, {\"id\": \"robotics\", \"label\": \"XR human–robot interaction\", \"scores\": [80, 70, 75, 70, 70, 80], \"total\": 445, \"strength\": \"Relevant XR interfaces can reveal robot state and plans, with useful academic and industry connections.\", \"uncertainty\": \"Robot access, learning distance and demanding user validation make execution harder.\", \"reasons\": {\"interest\": \"An interesting and timely topic.\", \"talent\": \"New to XR 3D UI, proxies, pseudo-haptics and robotics, but interested in learning, particularly simulation such as Isaac Sim.\", \"career\": \"Would work on XR 3D UI, pseudo-haptics and robot simulation across academia and industry, potentially extending to robots.\", \"feasibility\": \"Creative interface design and good user validation are needed; limited robot access and user-study setup can be challenging and time-consuming.\", \"competitiveness\": \"New to robotics and not yet positioned against robotics experts; possible distinctive work lies in camera/light robot 3D UI and pseudo-haptics, but device access is difficult.\", \"significance\": \"Help people understand robot behaviour, hidden state and planning during autonomous work, supporting better interaction.\"}}]",
+      "transition": "Discuss whether the evidence and feasibility checks support this current preference."
     }
   ],
   "arguments": {
