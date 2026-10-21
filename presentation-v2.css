@@ -1,0 +1,46 @@
+/* Version 2 is a presentation argument; the detailed atlas remains in Version 1. */
+#research-talk .talk-slide[data-kind^="v2-"]{max-width:1340px;padding:20px 28px 14px;box-sizing:border-box}
+#research-talk .talk-slide[data-kind^="v2-"] .talk-kicker{margin-bottom:8px}
+#research-talk .talk-slide[data-kind^="v2-"] .talk-title{font-size:30px!important;line-height:1.14!important;margin:0 0 11px!important;max-width:1180px}
+#research-talk .talk-slide[data-kind^="v2-"] .talk-lead{font-size:17px;line-height:1.4;margin:0 0 20px!important;max-width:1180px}
+#research-talk .talk-slide[data-kind^="v2-"] .talk-reference-line{font-size:10px;margin-top:12px;padding-top:8px;line-height:1.35}
+#research-talk .talk-slide[data-kind^="v2-"] .talk-body{min-width:0}
+.v2-chain,.v2-blocks,.v2-tracks{display:grid;gap:20px;min-width:0}
+.v2-chain{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px}
+.v2-blocks,.v2-tracks{grid-template-columns:repeat(3,minmax(0,1fr))}
+.v2-block,.v2-tracks>article{min-width:0;border-top:2px solid #9aaace;padding:14px 16px 16px;background:#f6f8fc;border-radius:0 0 5px 5px}
+.v2-step{display:inline-block;color:#6a7da5;font-size:11px;font-weight:600;letter-spacing:.1em}
+#research-talk .v2-block h3,#research-talk .v2-tracks h3{font-size:18px!important;line-height:1.3;margin:7px 0 11px!important;color:#243a63}
+.v2-block p{font-size:19px;line-height:1.45;margin:0}
+.v2-chain .v2-block:nth-child(3){background:#fff7eb;border-color:#c99954}
+.v2-chain .v2-block:nth-child(4){background:#edf2fc;border-color:#536fb1}
+.v2-blocks .v2-block{padding:18px 18px 22px;min-height:205px}
+.v2-blocks .v2-block p{font-size:21px;line-height:1.5}
+.v2-synthesis{display:grid;gap:11px}
+.v2-synthesis>article{display:grid;grid-template-columns:1.05fr 1fr 1.15fr;gap:22px;padding:12px 15px;border:1px solid #dbe3ef;border-radius:4px;align-items:start;min-width:0}
+#research-talk .v2-group-title h3{font-size:16px!important;line-height:1.25;margin:5px 0 6px!important;color:#243a63}
+.v2-synthesis small,.v2-tracks small{display:block;color:#647493;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.v2-synthesis p{font-size:15px;line-height:1.4;margin:0}
+.v2-group-boundary{border-left:2px solid #cfab72;padding-left:14px}
+.v2-sources{margin-top:8px;display:flex;flex-wrap:wrap;gap:3px 5px;min-width:0}
+#research-talk .v2-sources .talk-source-link{font-size:9px!important;line-height:1.35!important;white-space:normal;text-align:left;margin:0!important;padding:2px 4px!important;background:#edf1fa;border:1px solid #dce4f1;border-radius:3px;color:#3c578f}
+.v2-bridge,.v2-feedback{display:flex;gap:17px;align-items:baseline;background:#edf2fc;border-left:3px solid #617cb8;padding:13px 16px;margin:15px 0 0;font-size:17px;line-height:1.4}
+.v2-bridge strong,.v2-feedback strong{flex:0 0 92px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#526a9c}
+.v2-bridge span,.v2-feedback span{min-width:0}
+.v2-feedback{background:#fff7ec;border-color:#c59b5c;margin-top:22px;font-size:18px}
+.v2-feedback strong{color:#98713c}
+.v2-tracks>article{padding:13px 15px}
+.v2-tracks p{font-size:16px;line-height:1.4;margin:0}
+.v2-tracks article>div:not(.v2-sources){margin-top:15px}
+.v2-track-gap{background:#fff4e4;padding:10px 11px;border-left:2px solid #cba366;margin-left:-2px;margin-right:-2px}
+.v2-track-gap small{color:#926c38}
+.v2-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.v2-actions button{font:inherit;font-size:13px;color:#36528e;background:#edf2fc;border:1px solid #bfcee8;border-radius:4px;padding:10px 15px;cursor:pointer}
+.v2-actions button:hover,.v2-actions button:focus-visible{background:#dce6fb;border-color:#536fb1;outline:2px solid #a9bde8;outline-offset:2px}
+@media(max-height:740px) and (min-width:900px){#research-talk .talk-slide[data-kind^="v2-"]{padding-top:14px}#research-talk .talk-slide[data-kind^="v2-"] .talk-title{font-size:28px!important}#research-talk .talk-slide[data-kind^="v2-"] .talk-lead{margin-bottom:15px!important}.v2-chain{gap:13px 25px}.v2-block p{font-size:18px}.v2-blocks .v2-block p{font-size:19px}.v2-tracks p{font-size:15px}.v2-tracks article>div:not(.v2-sources){margin-top:11px}.v2-synthesis>article{padding:9px 13px}.v2-bridge{margin-top:12px;padding:11px 14px;font-size:16px}}
+@media(max-width:850px){.v2-chain,.v2-blocks,.v2-tracks{grid-template-columns:1fr}.v2-synthesis>article{grid-template-columns:1fr}.v2-blocks .v2-block{min-height:0}.v2-group-boundary{border-left:0;border-top:2px solid #cfab72;padding:10px 0 0}.v2-bridge,.v2-feedback{display:block}.v2-bridge strong,.v2-feedback strong{display:block;margin-bottom:7px}#research-talk .talk-slide[data-kind^="v2-"]{padding:18px}#research-talk .talk-slide[data-kind^="v2-"] .talk-title{font-size:26px!important}.v2-block p,.v2-blocks .v2-block p{font-size:18px}}
+/* Grouped sources are already shown beside each synthesis or track. */
+#research-talk .talk-slide[data-kind="v2-synthesis"] .talk-reference-line,#research-talk .talk-slide[data-kind="v2-tracks"] .talk-reference-line{display:none}
+#research-talk .v2-sources .talk-source-link{min-height:0!important}
+/* Evaluation revision controls use the same restrained presentation palette. */
+.evaluation-revisions>section{margin:32px 0}.evaluation-revisions input,.evaluation-revisions select,.evaluation-revisions textarea{font:inherit;border:1px solid #c4d2e5;border-radius:4px;padding:9px;background:white;color:#203650}.evaluation-revisions textarea{display:block;width:100%;min-width:150px}.evaluation-revisions [data-revision-label]{margin:0 22px 10px 8px}.evaluation-revisions [data-revision-confidence]{margin-left:8px}.evaluation-revisions td .actions{gap:8px;margin:7px 0}.evaluation-revisions td button{border:1px solid #b9c9e0;background:#edf2fb;color:#334f83;border-radius:4px;padding:5px 12px;cursor:pointer}.evaluation-revisions [data-revision-message]:not(:empty){padding:12px;border-left:3px solid #b98b48;background:#fff5e6}.evaluation-revisions td details{margin-top:9px}.evaluation-revisions [data-revision-total]{display:block;line-height:1.5;margin-top:9px}.v2-mapping-evidence article{padding:12px 0;border-top:1px solid #dbe3ed}.v2-mapping-evidence p{font-size:13px}

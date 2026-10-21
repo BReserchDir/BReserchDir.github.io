@@ -12,15 +12,19 @@
   <link rel="stylesheet" href="talk.css">
   <link rel="stylesheet" href="discussion.css">
   <link rel="stylesheet" href="review.css">
+  <link rel="stylesheet" href="presentation-v2.css">
   <script defer src="scripts/data.js"></script>
   <script defer src="scripts/direction-evaluation.js"></script>
+  <script defer src="scripts/evaluation-revisions.js"></script>
   <script defer src="scripts/app.js"></script>
   <script defer src="scripts/story.js"></script>
+  <script defer src="scripts/story-v2.js"></script>
   <script defer src="scripts/talk-sankey.js"></script>
   <script defer src="scripts/illumination-overview.js"></script>
   <script defer src="scripts/review-map.js"></script>
   <script defer src="scripts/review-talk.js"></script>
   <script defer src="scripts/citation-trail.js"></script>
+  <script defer src="scripts/presentation-v2.js"></script>
   <script defer src="scripts/talk.js"></script>
 </head>
 <body data-topic="illumination">
@@ -38,7 +42,7 @@
     <div id="sidebar-tracks"></div>
     <div class="sidebar-bottom"><span class="working-dot" aria-hidden="true"></span> Research in progress<small>Evidence first. Decisions remain open.</small></div>
   </aside>
-  <header class="site-header"><div class="header-inner"><div id="workspace-breadcrumb">Workspace <span>/</span> Overview</div><div class="header-actions"><span class="header-status">Working notes · October 2026</span><button class="button present-trigger" id="present-button" data-action="present" type="button">Present <span aria-hidden="true">↗</span></button></div></div></header>
+  <header class="site-header"><div class="header-inner"><div id="workspace-breadcrumb">Workspace <span>/</span> Overview</div><div class="header-actions"><span class="header-status">Working notes · October 2026</span><button class="button" id="present-v2-button" type="button">Version 2 · Present ↗</button><button class="button present-trigger" id="present-button" data-action="present" type="button">Version 1 <span aria-hidden="true">↗</span></button></div></div></header>
   <main id="app" tabindex="-1"><div class="container empty-state"><h1>Research Atlas</h1><p>Loading research records…</p></div></main>
   <noscript><div class="container evidence-note">This interactive atlas needs JavaScript to display research records and filters.</div></noscript>
   <footer class="site-footer"><span>Research Atlas / Bhasura Gunawardhana</span><span>Provisional literature notes · source status visible throughout</span></footer>
