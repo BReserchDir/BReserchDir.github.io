@@ -1,69 +1,305 @@
 window.RESEARCH_STORY_V2 = {
-  "title": "Version 2 · Problem-led research discussion",
+  "title": "Version 2 · Visual research discussion",
   "subtitle": "Three possibilities in interactive graphics and XR · Bhasura Gunawardhana · PI discussion",
   "slides": [
     {
-      "id": "v2-start",
-      "kind": "v2-opening",
-      "title": "From a shared workspace to dependable production decisions",
-      "lead": "Version 2 · a shorter argument for feedback, with the detailed atlas kept as supporting evidence.",
-      "chapter": "Version 2 · Research argument",
+      "id": "opening",
+      "chapter": "Starting point · SharedVP",
+      "kind": "previous-work",
+      "title": "Shared Workspaces for Virtual Production in Mixed Reality",
+      "lead": "Three research directions grew from the limits of our shared MR workspace.",
       "points": [],
       "paperIds": [],
       "branchIds": [],
-      "speakerNotes": "The previous work motivates these questions but did not validate generated acting, bidirectional illumination or robot control. Meeting notes call for top-down problem/current-state/gap/goal reasoning. Version1 remains intact.",
-      "transition": "Preview three specific production needs before examining methods.",
-      "shared": true,
-      "blocks": [
+      "speakerNotes": "Four video contexts show preview appearance, an actor on set, mixed real/virtual content and foreground props. These are not matched measurements isolating illumination or occlusion. Four pose/action examples from the video show the existing actor repertoire. A still frame does not establish a distinct animation clip or live generated response. Camera 2:56, light fixture 2:58, lights/stands 3:06 and flags/grip 3:22. All equipment images are selected without colored object outlines. Camera detail is limited by source resolution; no scene content or outlines were removed. Three static shots, an exploratory sample and no controlled comparison; this work motivates questions rather than validating the three proposed directions. Each direction is a proposed extension. The static-shot study did not validate generated actors, physically accurate relighting or robotic control.",
+      "transition": "Begin with lighting: what must a preview establish for a production decision?",
+      "previousWork": {
+        "title": "Shared Workspaces for Virtual Production in Mixed Reality",
+        "paperTitle": "Breaking the Time and Space: Shared Mixed Reality Workspaces Across Virtual Film Production Pipeline",
+        "status": "Supplied submission manuscript; publication status unverified",
+        "figure": "assets/sharedvp-workflow.png",
+        "figureAttribution": "Supplied SharedVP manuscript, Figure 1",
+        "system": "A persistent, role-attributed MR shot workspace connecting remote planning, live collaboration, spatial versions and on-set adaptation.",
+        "evidence": "Five practitioner interviews informed the design; an exploratory study involved 12 participants in three four-person teams.",
+        "finding": "Shared spatial plans supported collaboration, while physical inspection exposed mismatches and saved states did not fully communicate rationale or authority.",
+        "boundary": "Three static shots, an exploratory sample and no controlled comparison; this work motivates questions rather than validating the three proposed directions.",
+        "bridges": [
+          {
+            "topicId": "illumination",
+            "label": "Lighting",
+            "text": "Can a lighting preview communicate the consequences of a creative decision across real and virtual surfaces?",
+            "status": "proposed extension; lighting mismatch appears in practitioner accounts, not a controlled relighting result"
+          },
+          {
+            "topicId": "agents",
+            "label": "Actors",
+            "text": "Can static blocking become revisable, responsive character behavior?",
+            "status": "proposed extension beyond the static-shot study; not an observed demand validated by that study"
+          },
+          {
+            "topicId": "robotics",
+            "label": "Physical systems",
+            "text": "Can spatial intent remain understandable and feasible when it drives physical equipment?",
+            "status": "proposed extension; SharedVP did not establish robotic execution"
+          }
+        ],
+        "locators": [
+          {
+            "locator": "§§3.1–3.3, pp.2–3",
+            "claim": "Practitioner interviews and four design requirements"
+          },
+          {
+            "locator": "§§4.1–4.6, pp.4–5; Figure 1, p.1",
+            "claim": "Shared workspace, role tools, replication and spatial versioning"
+          },
+          {
+            "locator": "§§5.1–5.3, pp.5–6",
+            "claim": "Exploratory sample, apparatus and three static-shot tasks"
+          },
+          {
+            "locator": "§§6.1–6.3, pp.6–8",
+            "claim": "Re-synchronization, negotiated authority and virtual–physical adaptation findings"
+          },
+          {
+            "locator": "§§7–8, pp.8–9",
+            "claim": "Discussion and study boundaries; source manuscript is not a comparison of the proposed techniques"
+          }
+        ],
+        "openingLead": "Three research directions grew from the limits of our shared MR workspace.",
+        "openingPanels": [
+          {
+            "topicId": "illumination",
+            "label": "Lighting and occlusion",
+            "image": "assets/sharedvp-mixed-scene.png",
+            "alt": "Virtual actors and props in the preview and on-set MR views under different viewing and lighting contexts",
+            "attribution": "SharedVP demo · 4 selected frames · click to enlarge",
+            "current": "Real light poorly illuminates virtual objects; virtual lights poorly illuminate real surfaces. Occlusion is limited or incorrect.",
+            "question": "How can virtual lights illuminate real surfaces, and real lights illuminate virtual objects—both nearby and in the background?",
+            "basis": "Four video contexts show preview appearance, an actor on set, mixed real/virtual content and foreground props. These are not matched measurements isolating illumination or occlusion.",
+            "demoFrames": [
+              {
+                "image": "assets/demo/lighting-preview.jpg",
+                "seconds": 32,
+                "crop": [
+                  330,
+                  280,
+                  1050,
+                  710
+                ],
+                "label": "Preview lighting · 0:32"
+              },
+              {
+                "image": "assets/demo/lighting-onset-neutral.jpg",
+                "seconds": 144,
+                "crop": [
+                  0,
+                  110,
+                  1100,
+                  720
+                ],
+                "label": "On-set actor · 2:24"
+              },
+              {
+                "image": "assets/demo/lighting-mixed-props.jpg",
+                "seconds": 176,
+                "crop": [
+                  640,
+                  0,
+                  1280,
+                  360
+                ],
+                "label": "Mixed scene · 2:56"
+              },
+              {
+                "image": "assets/demo/lighting-close-props.jpg",
+                "seconds": 192,
+                "crop": [
+                  0,
+                  360,
+                  640,
+                  720
+                ],
+                "label": "Props / foreground · 3:12"
+              }
+            ]
+          },
+          {
+            "topicId": "agents",
+            "label": "Interactive actor direction",
+            "image": "assets/sharedvp-actor-controls.png",
+            "alt": "Virtual actor in a neutral pose and two actors performing an interaction animation",
+            "attribution": "SharedVP demo · 4 selected frames · click to enlarge",
+            "current": "Users can place a few actors, select an animation and choose a pose within it.",
+            "question": "How can we direct actors interactively: “pick up this object,” “look at this person,” “do this pose,” or “reach here”?",
+            "basis": "Four pose/action examples from the video show the existing actor repertoire. A still frame does not establish a distinct animation clip or live generated response.",
+            "demoFrames": [
+              {
+                "image": "assets/demo/actor-neutral.jpg",
+                "seconds": 144,
+                "crop": [
+                  0,
+                  110,
+                  900,
+                  720
+                ],
+                "label": "Neutral pose · 2:24"
+              },
+              {
+                "image": "assets/demo/actor-animation.jpg",
+                "seconds": 26,
+                "crop": [
+                  875,
+                  0,
+                  1280,
+                  405
+                ],
+                "label": "Animation pose · 0:26"
+              },
+              {
+                "image": "assets/demo/actor-contact-pose.jpg",
+                "seconds": 192,
+                "crop": [
+                  0,
+                  360,
+                  640,
+                  720
+                ],
+                "label": "Close interaction · 3:12"
+              },
+              {
+                "image": "assets/demo/actor-interaction.jpg",
+                "seconds": 200,
+                "crop": [
+                  0,
+                  360,
+                  640,
+                  720
+                ],
+                "label": "Paired animation · 3:20"
+              }
+            ]
+          },
+          {
+            "topicId": "robotics",
+            "label": "From twins to physical control",
+            "image": "assets/sharedvp-equipment-twins.png",
+            "alt": "Unoutlined virtual camera detail beside the unoutlined lighting and support equipment overview",
+            "attribution": "SharedVP demo · 4 selected frames · click to enlarge",
+            "current": "Camera and lighting equipment have digital twins, but parameter changes affect only the virtual equipment—not its real counterpart.",
+            "question": "How can MR controls drive real equipment, using robots for motion and haptic or physical affordances in fluid 3D interfaces?",
+            "basis": "Camera 2:56, light fixture 2:58, lights/stands 3:06 and flags/grip 3:22. All equipment images are selected without colored object outlines. Camera detail is limited by source resolution; no scene content or outlines were removed.",
+            "demoFrames": [
+              {
+                "image": "assets/demo/equipment-camera.jpg",
+                "seconds": 176,
+                "crop": [
+                  65,
+                  383,
+                  205,
+                  510
+                ],
+                "label": "Camera · 2:56"
+              },
+              {
+                "image": "assets/demo/equipment-light-detail.jpg",
+                "seconds": 178,
+                "crop": [
+                  865,
+                  80,
+                  1030,
+                  345
+                ],
+                "label": "Light fixture · 2:58"
+              },
+              {
+                "image": "assets/demo/equipment-stands.jpg",
+                "seconds": 186,
+                "crop": [
+                  640,
+                  0,
+                  1100,
+                  350
+                ],
+                "label": "Lights / stands · 3:06"
+              },
+              {
+                "image": "assets/demo/equipment-flags.jpg",
+                "seconds": 202,
+                "crop": [
+                  640,
+                  0,
+                  1280,
+                  360
+                ],
+                "label": "Flags / grip · 3:22"
+              }
+            ]
+          }
+        ],
+        "openingBoundary": "Existing prototype → research directions. The images show current work; live actor direction, richer light transport and physical equipment control are questions to investigate."
+      },
+      "sourceRefs": [
         {
-          "label": "Starting point",
-          "text": "SharedVP lets collaborators place and review people, props and equipment in a mixed scene."
-        },
-        {
-          "label": "Next problem",
-          "text": "A shared plan is useful only if its lighting, performance and equipment consequences can be understood and revised."
-        },
-        {
-          "label": "Today’s discussion",
-          "text": "Which missing capability is important enough—and narrow enough—to investigate first?"
+          "id": "S4",
+          "label": "Supplied SharedVP manuscript · §§3–7; Figure 1"
         }
       ]
     },
     {
-      "id": "v2-overview",
+      "id": "three-directions-preview",
+      "chapter": "Research directions · Overview",
       "kind": "directions-preview",
-      "title": "Three production needs—not three collections of techniques",
-      "lead": "Each direction starts with a decision a filmmaker needs to make.",
-      "chapter": "Version 2 · Research argument",
+      "title": "Three directions from our shared workspace",
+      "lead": "Make mixed-reality production more coherent, directable and connected to physical action.",
       "points": [],
       "paperIds": [],
       "branchIds": [],
-      "speakerNotes": "Working research argument for discussion. Distinguish production requirements from inspected literature findings and our synthesis; invite counterexamples and feedback.",
-      "transition": "Use the next slide to examine the claim and its scope.",
-      "shared": true,
       "directions": [
         {
           "id": "illumination",
-          "title": "Trust the lighting preview",
-          "sentence": "Choose a lighting arrangement in MR that remains meaningful on the physical set."
+          "title": "Bidirectional illumination",
+          "sentence": "Real and virtual actors and props should respond to a shared lighting setup."
         },
         {
           "id": "agents",
-          "title": "Direct a performance",
-          "sentence": "Express and revise an actor’s intention without rebuilding a take from preset clips."
+          "title": "Interactive actor direction",
+          "sentence": "Direct human and non-human virtual performers live, beyond selecting preset animations."
         },
         {
           "id": "robotics",
-          "title": "Make equipment follow intent",
-          "sentence": "Turn a spatial camera or lighting change into understandable physical robot action."
+          "title": "Human–robot interaction in XR",
+          "sentence": "Guide physical cameras, lights and robots through spatial proxies and useful physical affordances."
         }
-      ]
+      ],
+      "speakerNotes": "These are three candidate research directions arising from SharedVP, not an integrated system already implemented or a selected thesis. The illustrations represent research visions. Introduce each in one sentence, then begin illumination.",
+      "transition": "Start with bidirectional illumination: why does shared lighting matter?",
+      "shared": true
+    },
+    {
+      "id": "v2-light-illustration",
+      "chapter": "1 · Illumination",
+      "kind": "direction-illustration",
+      "topicId": "illumination",
+      "title": "Bidirectional Illumination in Mixed Reality",
+      "lead": "Shared lighting across real and virtual content",
+      "points": [],
+      "paperIds": [],
+      "branchIds": [],
+      "illustration": {
+        "image": "assets/directions/illumination-illustration-v4.png",
+        "alt": "Drawn concept of black wraparound VR glasses viewing real and solid virtual humans and props under shared lighting.",
+        "caption": "Shared lighting across real and virtual content",
+        "poster": "assets/directions/illumination-illustration-v4.png",
+        "animation": "assets/directions/illumination-animated.gif"
+      },
+      "speakerNotes": "AI-generated concept illustration of the proposed research direction; not a prototype screenshot or a demonstrated result. Real and virtual content should illuminate, shadow and reflect on one another coherently, under head motion and changing scenes.",
+      "transition": "Explain the motivation and research aim for this direction."
     },
     {
       "id": "v2-illumination-why",
       "kind": "v2-chain",
-      "title": "Can the mixed scene support a trustworthy lighting decision?",
-      "lead": "A director must compare light placements before committing to the physical setup.",
+      "title": "Bidirectional Illumination in Mixed Reality",
+      "lead": "A shared lighting setup must work across the real and virtual parts of a shot.",
       "chapter": "1 · Shared lighting",
       "topicId": "illumination",
       "points": [],
@@ -79,28 +315,29 @@ window.RESEARCH_STORY_V2 = {
       "transition": "Check how several research strands support—and limit—this argument.",
       "chain": [
         {
-          "label": "Problem",
-          "text": "A virtual lamp should change the appearance of real and virtual actors and props; physical lighting should also shape virtual content."
+          "label": "Production problem",
+          "text": "Adjust a physical or virtual light and see coherent effects on real and virtual actors, props and surroundings."
         },
         {
           "label": "Current state",
-          "text": "Relighting, local-light estimation and perceptual studies establish useful parts of this workflow."
+          "text": "Relighting, local illumination estimates and perception studies solve complementary parts under different assumptions."
         },
         {
           "label": "Working gap",
-          "text": "Material, shadow or update errors may reverse a lighting choice; the reviewed studies do not establish the tolerance needed for this production decision."
+          "text": "The reviewed work does not establish the lighting correspondence needed as nearby lights and content change, or which remaining errors disrupt a production task."
         },
         {
-          "label": "Goal / aim",
-          "text": "Identify the lighting correspondence and response needed for a production decision, then develop or adapt the missing capability."
+          "label": "Research aim",
+          "text": "Develop a bounded real-time lighting capability and test the accuracy and response needed for a production task."
         }
-      ]
+      ],
+      "broaderMotivation": "Broader motivation: coherent lighting supports perception and interaction throughout mixed reality."
     },
     {
       "id": "v2-illumination-evidence",
       "kind": "v2-synthesis",
-      "title": "What the research establishes—and the bridge we still need",
-      "lead": "Read the groups together; no single paper’s limitation defines the proposed research gap.",
+      "title": "What existing work enables, and what remains unresolved",
+      "lead": "Compare related results together; select a strand or paper to inspect its original figure.",
       "chapter": "1 · Shared lighting",
       "topicId": "illumination",
       "points": [],
@@ -126,7 +363,7 @@ window.RESEARCH_STORY_V2 = {
             "review-ref-35"
           ],
           "finding": "Depth-based and reconstructed-scene methods support real-scene lighting effects.",
-          "boundary": "Rendering scope, material assumptions and update behaviour differ; a useful production choice is a separate outcome."
+          "boundary": "Real-image relighting varies in geometry, material response and temporal behavior; these limits matter for changing mixed scenes."
         },
         {
           "label": "Estimate the real illumination",
@@ -135,7 +372,7 @@ window.RESEARCH_STORY_V2 = {
             "limo"
           ],
           "finding": "Local or spatial estimates can light virtual content from the observed scene.",
-          "boundary": "An estimate or probe is not evidence that a candidate real/virtual lamp arrangement will transfer to the physical set."
+          "boundary": "A local light estimate must remain valid at the moving virtual object; query speed alone does not establish update latency."
         },
         {
           "label": "Understand what users perceive",
@@ -145,16 +382,16 @@ window.RESEARCH_STORY_V2 = {
             "review-ref-33"
           ],
           "finding": "Shadow, contact and depth studies show that cue effects depend on the task and display.",
-          "boundary": "These outcomes do not establish which lighting cues preserve a virtual-production lighting decision."
+          "boundary": "Depth/contact results do not establish which lighting errors alter a production operation such as face lighting or actor–prop blocking."
         }
       ],
-      "bridge": "Material, shadow or update errors may reverse a lighting choice; the reviewed studies do not establish the tolerance needed for this production decision."
+      "bridge": "The reviewed work does not establish the lighting correspondence needed as nearby lights and content change, or which remaining errors disrupt a production task."
     },
     {
-      "id": "v2-illumination-tracks",
-      "kind": "v2-tracks",
-      "title": "Three possible ways to address that production need",
-      "lead": "Known capability → explicit gap → question to test.",
+      "id": "v2-illumination-coverage",
+      "kind": "v2-coverage",
+      "title": "Where does the reviewed evidence concentrate?",
+      "lead": "Paper counts make the coverage visible; the research gap still comes from reading the results together.",
       "chapter": "1 · Shared lighting",
       "topicId": "illumination",
       "points": [],
@@ -162,125 +399,956 @@ window.RESEARCH_STORY_V2 = {
         "depthlab",
         "review-ref-85",
         "review-ref-35",
+        "handlight",
+        "limo",
         "review-ref-1",
         "review-ref-2",
-        "review-ref-33",
-        "handlight",
-        "limo"
+        "review-ref-33"
       ],
       "branchIds": [],
-      "speakerNotes": "Working research argument for discussion. Distinguish production requirements from inspected literature findings and our synthesis; invite counterexamples and feedback.",
-      "transition": "Choose one concrete production operation to make the argument testable.",
-      "tracks": [
+      "speakerNotes": "Each group contains multiple related sources. The boundary is our cross-paper reasoning about transfer to the stated production task. It must be challenged by closer work and practitioner feedback. Classification counts are not a novelty test.",
+      "transition": "Use the complete interactive map to inspect the papers behind these patterns.",
+      "groups": [
         {
-          "label": "I1 · Make the lighting change",
-          "known": "Depth and reconstruction methods already alter captured real appearance.",
-          "gap": "We need to establish which residual material, shadow or temporal errors disrupt a production lighting choice.",
-          "question": "What correction is worth adding beyond the existing relighting baseline?",
+          "label": "Render a lighting change",
           "ids": [
             "depthlab",
             "review-ref-85",
             "review-ref-35"
-          ]
+          ],
+          "finding": "Depth-based and reconstructed-scene methods support real-scene lighting effects.",
+          "boundary": "Real-image relighting varies in geometry, material response and temporal behavior; these limits matter for changing mixed scenes."
         },
         {
-          "label": "I2 · Trust the production decision",
-          "known": "Perceptual studies test depth, contact and rendering cues under particular displays and tasks.",
-          "gap": "The link between those cues and choosing a physical lighting arrangement has not been established by this reviewed evidence.",
-          "question": "Which cue fidelity preserves the lighting choice and avoids rework on set?",
+          "label": "Estimate the real illumination",
+          "ids": [
+            "handlight",
+            "limo"
+          ],
+          "finding": "Local or spatial estimates can light virtual content from the observed scene.",
+          "boundary": "A local light estimate must remain valid at the moving virtual object; query speed alone does not establish update latency."
+        },
+        {
+          "label": "Understand what users perceive",
           "ids": [
             "review-ref-1",
             "review-ref-2",
             "review-ref-33"
-          ]
-        },
-        {
-          "label": "I3 · Recover the nearby light",
-          "known": "HandLight and spatial estimators provide local lighting estimates.",
-          "gap": "The reviewed estimates do not establish the spatial validity and update tolerance needed at a moving virtual prop when nearby physical lights change.",
-          "question": "How far or how long can a HandLight-style probe be reused before it changes the lighting decision?",
-          "ids": [
-            "handlight",
-            "limo"
-          ]
+          ],
+          "finding": "Shadow, contact and depth studies show that cue effects depend on the task and display.",
+          "boundary": "Depth/contact results do not establish which lighting errors alter a production operation such as face lighting or actor–prop blocking."
         }
+      ],
+      "bridge": "The reviewed work does not establish the lighting correspondence needed as nearby lights and content change, or which remaining errors disrupt a production task.",
+      "axes": [
+        "direction",
+        "locality",
+        "timing"
       ]
     },
     {
-      "id": "v2-lighting-decision",
-      "kind": "v2-chain",
-      "title": "I2: can an MR lighting choice survive the move to the set?",
-      "lead": "The outcome is a production decision—not a preference for a prettier rendering.",
-      "chapter": "1 · Shared lighting",
+      "id": "v2-light-sankey",
+      "chapter": "1 · Illumination",
+      "kind": "problem-space",
       "topicId": "illumination",
+      "title": "What does each lighting approach support?",
+      "lead": "Evidence after the argument: all papers and all dimensions, with multi-selection and source inspection.",
       "points": [],
       "paperIds": [
-        "review-ref-85",
+        "limo",
+        "handlight",
+        "genlit",
+        "gr3en",
+        "lightlab",
+        "survey2020",
+        "delta",
+        "gruber2015",
+        "deeplight",
+        "luxremix",
+        "livelight",
+        "depthlab",
+        "gao2020",
+        "ptrl",
+        "luminet",
+        "li-inverse2020",
+        "miiw2019",
+        "rgbx",
+        "depth-anything-v2",
+        "rgbx-next",
         "review-ref-1",
         "review-ref-2",
-        "review-ref-33"
+        "review-ref-4",
+        "review-ref-5",
+        "review-ref-6",
+        "review-ref-7",
+        "review-ref-8",
+        "review-ref-9",
+        "review-ref-11",
+        "review-ref-12",
+        "review-ref-13",
+        "review-ref-14",
+        "review-ref-15",
+        "review-ref-16",
+        "review-ref-17",
+        "review-ref-18",
+        "review-ref-20",
+        "review-ref-21",
+        "review-ref-22",
+        "review-ref-23",
+        "review-ref-24",
+        "review-ref-25",
+        "review-ref-26",
+        "review-ref-27",
+        "review-ref-28",
+        "review-ref-29",
+        "review-ref-30",
+        "review-ref-31",
+        "review-ref-32",
+        "review-ref-33",
+        "review-ref-34",
+        "review-ref-35",
+        "review-ref-36",
+        "review-ref-37",
+        "review-ref-38",
+        "review-ref-39",
+        "review-ref-40",
+        "review-ref-42",
+        "review-ref-44",
+        "review-ref-45",
+        "review-ref-46",
+        "review-ref-47",
+        "review-ref-48",
+        "review-ref-50",
+        "review-ref-51",
+        "review-ref-52",
+        "review-ref-54",
+        "review-ref-55",
+        "review-ref-56",
+        "review-ref-59",
+        "review-ref-60",
+        "review-ref-61",
+        "review-ref-62",
+        "review-ref-63",
+        "review-ref-64",
+        "review-ref-65",
+        "review-ref-66",
+        "review-ref-67",
+        "review-ref-68",
+        "review-ref-69",
+        "review-ref-70",
+        "review-ref-71",
+        "review-ref-72",
+        "review-ref-73",
+        "review-ref-74",
+        "review-ref-75",
+        "review-ref-76",
+        "review-ref-77",
+        "review-ref-78",
+        "review-ref-79",
+        "review-ref-80",
+        "review-ref-81",
+        "review-ref-82",
+        "review-ref-83",
+        "review-ref-84",
+        "review-ref-85",
+        "review-ref-86",
+        "review-ref-87",
+        "review-ref-88",
+        "review-ref-89",
+        "review-ref-90"
       ],
       "branchIds": [],
-      "speakerNotes": "This is a proposed bridge, not an established claim that virtual-production lighting perception is unique or unexplored. First ask practitioners whether this is a consequential and sufficiently realistic decision. Physical reference captures or a controlled set provide the comparison. Hold task/exposure and view conditions stable; do not assume better image quality implies better decisions. Broader MR insight: which visual correspondences support preview-to-world decisions. The VST preview changes displayed appearance; it does not physically emit the virtual light. The study concerns a controlled visual choice, not complete photometric validation across all human or scene materials.",
-      "transition": "Start with a small decision test before committing to a new rendering model.",
-      "chain": [
+      "groups": [
         {
-          "label": "Production operation",
-          "text": "Preview two key-light arrangements and choose the one that best achieves a stated face-visibility or shadow intention."
+          "id": "physical-to-virtual",
+          "label": "Real light to virtual objects",
+          "paperIds": [
+            "limo",
+            "handlight"
+          ],
+          "rationale": "Left column of slide 3 contains Lighting in Motion and HandLight.",
+          "evidenceStatus": "Original visual grouping confirmed; HandLight full text pending"
         },
         {
-          "label": "Current evidence",
-          "text": "Relighting papers evaluate appearance or timing; perceptual studies evaluate depth, contact or rendering cues."
+          "id": "virtual-light-image-video",
+          "label": "Virtual light — Image, Video",
+          "paperIds": [
+            "genlit",
+            "gr3en",
+            "lightlab"
+          ],
+          "rationale": "Upper right group on slide 3.",
+          "evidenceStatus": "Visual grouping confirmed; GR3EN assessment pending"
         },
         {
-          "label": "Explicit gap",
-          "text": "Together, these results do not establish the preview fidelity needed to preserve that lighting choice when the physical arrangement is realized."
+          "id": "virtual-light-xr",
+          "label": "Virtual light — XR",
+          "paperIds": [
+            "survey2020",
+            "delta",
+            "gruber2015"
+          ],
+          "rationale": "Lower right group on slide 3.",
+          "evidenceStatus": "Visual grouping confirmed; DPT conference abstract checked, others await reading"
         },
         {
-          "label": "Proposed contribution",
-          "text": "A production-task study linking cue accuracy and update delay to choice agreement, confidence and revision effort."
+          "id": "additional",
+          "label": "Additional source seeds",
+          "paperIds": [
+            "deeplight",
+            "luxremix",
+            "livelight",
+            "depthlab",
+            "gao2020",
+            "ptrl",
+            "luminet",
+            "li-inverse2020",
+            "miiw2019",
+            "rgbx",
+            "depth-anything-v2",
+            "rgbx-next",
+            "review-ref-1",
+            "review-ref-2",
+            "review-ref-4",
+            "review-ref-5",
+            "review-ref-6",
+            "review-ref-7",
+            "review-ref-8",
+            "review-ref-9",
+            "review-ref-11",
+            "review-ref-12",
+            "review-ref-13",
+            "review-ref-14",
+            "review-ref-15",
+            "review-ref-16",
+            "review-ref-17",
+            "review-ref-18",
+            "review-ref-20",
+            "review-ref-21",
+            "review-ref-22",
+            "review-ref-23",
+            "review-ref-24",
+            "review-ref-25",
+            "review-ref-26",
+            "review-ref-27",
+            "review-ref-28",
+            "review-ref-29",
+            "review-ref-30",
+            "review-ref-31",
+            "review-ref-32",
+            "review-ref-33",
+            "review-ref-34",
+            "review-ref-35",
+            "review-ref-36",
+            "review-ref-37",
+            "review-ref-38",
+            "review-ref-39",
+            "review-ref-40",
+            "review-ref-42",
+            "review-ref-44",
+            "review-ref-45",
+            "review-ref-46",
+            "review-ref-47",
+            "review-ref-48",
+            "review-ref-50",
+            "review-ref-51",
+            "review-ref-52",
+            "review-ref-54",
+            "review-ref-55",
+            "review-ref-56",
+            "review-ref-59",
+            "review-ref-60",
+            "review-ref-61",
+            "review-ref-62",
+            "review-ref-63",
+            "review-ref-64",
+            "review-ref-65",
+            "review-ref-66",
+            "review-ref-67",
+            "review-ref-68",
+            "review-ref-69",
+            "review-ref-70",
+            "review-ref-71",
+            "review-ref-72",
+            "review-ref-73",
+            "review-ref-74",
+            "review-ref-75",
+            "review-ref-76",
+            "review-ref-77",
+            "review-ref-78",
+            "review-ref-79",
+            "review-ref-80",
+            "review-ref-81",
+            "review-ref-82",
+            "review-ref-83",
+            "review-ref-84",
+            "review-ref-85",
+            "review-ref-86",
+            "review-ref-87",
+            "review-ref-88",
+            "review-ref-89",
+            "review-ref-90"
+          ]
         }
-      ]
+      ],
+      "sourceRefs": [
+        {
+          "id": "S1",
+          "label": "Original slide 3; additional review seeds clearly separated"
+        }
+      ],
+      "speakerNotes": "Read the fixed axes left to right. All 90 supplied bibliography entries plus additional seeds remain included; original-source assessment now covers the imported corpus at explicitly varying reading depths. Access-limited records and unknown capabilities remain visible. Lighting task: Separates physical-light estimation for virtual objects from changing captured real appearance. Captured-image relighting is a candidate technique, not an MR deployment. Light locality: Distant environment illumination, explicit nearby emitters and spatially varying local probes are different assumptions; a local probe is not proof of a controllable near lamp. Light type: Emitter or illumination model, separately from near/distant placement. Membership may concern estimation, a controllable target or training data: the paper note states which. Environment/ambient does not imply recoverable individual lamps. Unspecified fixtures are not assumed point, spot or area emitters. Pipeline techniques: Specific operations used within a pipeline, not mutually exclusive method families. OLAT denotes one-light-at-a-time data or decomposition, not necessarily physical capture. Multiple memberships distinguish the ingredients a paper combines; inspect each paper for their roles. Light effects: Shadows, specular reflection and indirect bounce are separate from direct shading. Membership means addressed or demonstrated, not physically accurate under every condition. Material treatment: Separates explicit recovered reflectance from diffuse approximations and appearance learned implicitly. None alone establishes material accuracy. View & deployment: A 3D asset can offer novel views without a demonstrated stereo MR loop. Headset studies are marked separately; stereo-consistent synthesis requires explicit evidence. Scene preparation: Per-scene capture, fitting or adaptation before use; offline generic model training is not automatically a per-scene requirement. This axis is separate from runtime lighting edits. Lighting runtime: Stage-specific feasibility assessment: distinguish actual lighting changes from cached rendering or baked display. Author claims, measured components and engineering inferences are identified in paper details; none guarantees full headset latency. A paper may belong to multiple categories. Shared ribbons show classification overlap, not citations, chronology, causal relationships or a validated combination of all capabilities. One paper contributes a total mass of one per column, divided among its memberships. Counts report papers, not benchmark scores. Not established means insufficient inspected evidence, never proof that the technique lacks the capability. Virtual → real view changes captured/displayed real appearance. Virtual → physical light is reserved for projector systems that physically illuminate surfaces; subtractive optics changes light reaching the viewer. Material treatment describes representation, not demonstrated accuracy. Input stereo, camera-view AR, custom optical displays and headset studies are distinct evidence. None by itself establishes stereo-consistent bidirectional VST relighting with verified full latency. Scene preparation and lighting runtime are separate axes. Dark/selected categories remain filters. Plausible/unmeasured is an explicit low-confidence engineering inference; measured components and author claims are not full-system guarantees. Light-type memberships distinguish evidence roles in paper notes: training source types do not establish corresponding inference controls. Existing fixture control is not a verified universal emitter model. Techniques are composable pipeline operations, not exclusive families. Numerical anisotropic diffusion, generative diffusion, projector compensation and radiosity are distinct mechanisms.",
+      "transition": "Read the methods and evaluation scope within these groups before arguing for a gap."
     },
     {
-      "id": "v2-illumination-first-piece",
-      "kind": "v2-first-piece",
-      "title": "Start from one production problem",
-      "lead": "A first investigation should resolve the central uncertainty, not build every part of the vision.",
-      "chapter": "1 · Shared lighting",
+      "id": "v2-illumination-moving-prop",
+      "kind": "v2-subtopic",
       "topicId": "illumination",
+      "chapter": "1 · Shared lighting",
+      "title": "I1 · Virtual light on real video see-through imagery",
+      "lead": "Virtual-production need: a virtual lamp must affect real and virtual actors/props coherently.",
       "points": [],
       "paperIds": [
         "depthlab",
         "review-ref-85",
-        "limo",
-        "review-ref-2",
-        "review-ref-33"
+        "review-ref-35",
+        "ptrl",
+        "review-ref-44",
+        "review-ref-83",
+        "gruber2015",
+        "depth-anything-v2"
       ],
       "branchIds": [],
-      "speakerNotes": "This is a discussion proposal. Incomplete choices are visible so feedback can improve them. A successful baseline reproduction may show that the proposed contribution should change; that is useful evidence, not failure.",
-      "transition": "Carry the unresolved production question into the next direction or the decision discussion.",
-      "blocks": [
-        {
-          "label": "First piece",
-          "text": "One actor or prop; two key-light arrangements; one stated lighting intention."
-        },
-        {
-          "label": "Compare",
-          "text": "An existing relighting baseline, a cheaper cue approximation and a matched physical reference."
-        },
-        {
-          "label": "Learn",
-          "text": "Measure choice agreement with the physical reference and face/shadow target error; identify consequential reversals caused by cue error."
+      "track": {
+        "label": "I1 · Virtual light on real video see-through imagery",
+        "known": "Depth and reconstruction methods already alter captured real appearance.",
+        "gap": "Material response, imperfect geometry and changing shadows leave technical failures to isolate beyond current relighting baselines.",
+        "question": "Can a bounded correction improve stable virtual-light effects on real imagery at an interactive update cost?",
+        "ids": [
+          "depthlab",
+          "review-ref-85",
+          "review-ref-35"
+        ]
+      },
+      "focusMap": {
+        "id": "I1",
+        "columns": [
+          "representation",
+          "materials",
+          "preparation",
+          "timing"
+        ],
+        "paperIds": [
+          "depthlab",
+          "review-ref-85",
+          "review-ref-35",
+          "ptrl",
+          "review-ref-44",
+          "review-ref-83",
+          "gruber2015"
+        ],
+        "cards": true,
+        "mainReference": null
+      },
+      "feasibility": {
+        "id": "I1",
+        "slug": "moving-prop",
+        "title": "I1 · Virtual light on real video see-through imagery",
+        "question": "How can virtual lights change the appearance of real actors, props and the surrounding scene in video see-through MR?",
+        "ids": [
+          "depthlab",
+          "review-ref-85",
+          "review-ref-35",
+          "ptrl",
+          "review-ref-44",
+          "review-ref-83",
+          "gruber2015"
+        ],
+        "columns": [
+          "representation",
+          "materials",
+          "preparation",
+          "timing"
+        ],
+        "scope": "Original track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials.",
+        "techniques": "DepthLab-style ray marching; HybRelighter-style geometry filtering; reciprocal differential transport. Test a reflectance/geometry correction only after reproducing the simpler baselines.",
+        "data": "Capture matched physical-lamp references with calibrated exposure, known prop motion and material swatches. OpenRooms / Objects with Lighting can support pretraining or checks, but do not replace dynamic MR ground truth.",
+        "resources": "Begin with RGB-D or available device depth, tracked rigid props and a controllable reference lamp; use a camera-view prototype before committing to device-specific passthrough access.",
+        "experiment": "Compare mesh-only, geometry-filtered and proposed correction at matched compute. Measure material/color drift, shadow-boundary error, flicker and lighting-response latency.",
+        "stop": "If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.",
+        "resourceLinks": [
+          {
+            "label": "DepthLab implementation",
+            "url": "https://github.com/googlesamples/arcore-depth-lab"
+          },
+          {
+            "label": "OpenRooms data & renderer",
+            "url": "https://github.com/ViLab-UCSD/OpenRooms"
+          }
+        ],
+        "motivation": "Virtual-production need: a virtual lamp must affect real and virtual actors/props coherently.",
+        "sourceSubtopic": "Real time virtual light affecting real video see though.",
+        "sourceNumber": 1,
+        "firstInvestigation": "Material preservation and shadow placement during rigid real-prop motion.",
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "depthlab",
+              "role": "Runnable geometric baseline",
+              "bullets": [
+                "Depth-based relighting and shadow samples.",
+                "Start with the released ARCore implementation."
+              ],
+              "url": "https://github.com/googlesamples/arcore-depth-lab",
+              "linkLabel": "Code / samples"
+            },
+            {
+              "id": "review-ref-85",
+              "role": "Closest geometry-correction method",
+              "bullets": [
+                "Guided anisotropic filtering of mesh lighting.",
+                "Paper reports a mobile demo; code/weights not verified."
+              ],
+              "url": "https://arxiv.org/html/2508.14930v1",
+              "linkLabel": "Method and results"
+            },
+            {
+              "id": "depth-anything-v2",
+              "role": "Candidate depth component",
+              "bullets": [
+                "Small pretrained model for a depth ablation.",
+                "Relative depth needs metric anchoring; profile latency."
+              ],
+              "url": "https://github.com/DepthAnything/Depth-Anything-V2",
+              "linkLabel": "Code / checkpoints"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "OpenRooms",
+              "url": "https://github.com/ViLab-UCSD/OpenRooms",
+              "bullets": [
+                "Synthetic geometry, material and lighting ground truth.",
+                "Useful for ablations; not dynamic MR validation."
+              ]
+            },
+            {
+              "label": "Objects with Lighting",
+              "url": "https://github.com/isl-org/objects-with-lighting",
+              "bullets": [
+                "Released real-object relighting data and evaluation tools.",
+                "Static capture; does not replace moving-prop reference data."
+              ]
+            },
+            {
+              "label": "Own controlled sequences",
+              "bullets": [
+                "Physical lamp + rigid props + matched camera exposure.",
+                "Hold out materials, prop trajectories and light positions."
+              ]
+            }
+          ],
+          "setup": [
+            {
+              "label": "Equipment",
+              "bullets": [
+                "RGB-D camera or device with accessible depth.",
+                "Controllable lamp; matte and rough material props.",
+                "Color/gray reference and camera calibration target.",
+                "Pose markers or another repeatable motion reference."
+              ]
+            },
+            {
+              "label": "Required capture setup",
+              "bullets": [
+                "Calibrate camera/depth alignment and scale.",
+                "Lock or log exposure and white balance.",
+                "Capture paired reference and virtual-light conditions.",
+                "Synchronize RGB, depth, pose and light-change events."
+              ]
+            },
+            {
+              "label": "Models, compute and gates",
+              "bullets": [
+                "Run the geometric baseline before training a model.",
+                "Profile the small depth model on target hardware.",
+                "Confirm camera/depth/passthrough access first.",
+                "Log preparation, lighting-update and display costs separately."
+              ]
+            }
+          ],
+          "pilot": [
+            "One spotlight; one rigid prop trajectory; diffuse/rough surfaces.",
+            "Compare mesh-only, filtered and proposed corrections at matched cost."
+          ],
+          "measures": [
+            "Material/color drift; shadow-boundary error; temporal artifacts.",
+            "Stop if accurate geometry or an existing filter removes the proposed benefit."
+          ]
         }
+      },
+      "simpleTest": {
+        "question": "Can a virtual spotlight stay convincing on a moving real prop?",
+        "test": [
+          "Move one matte or rough prop under a virtual spotlight.",
+          "Compare DepthLab-style lighting with HybRelighter-style correction; measure shadow error, flicker and update delay."
+        ],
+        "need": [
+          "Depth-capable camera/device, a prop and a controllable physical lamp for reference captures.",
+          "Use the same motion and camera settings for each comparison."
+        ],
+        "decision": "First reproduce the baselines. Develop a new method only if an important error remains.",
+        "evidence": [
+          {
+            "id": "depthlab",
+            "text": "DepthLab provides public depth-based relighting samples."
+          },
+          {
+            "id": "review-ref-85",
+            "text": "HybRelighter corrects mesh lighting, but reports difficulty separating shadows from reconstruction errors."
+          }
+        ]
+      },
+      "speakerNotes": "Original track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nOriginal track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. How can virtual lights change the appearance of real actors, props and the surrounding scene in video see-through MR? If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-illumination-useful-cues",
+      "kind": "v2-subtopic",
+      "topicId": "illumination",
+      "chapter": "1 · Shared lighting",
+      "title": "I2 · MR perception and task performance",
+      "lead": "Virtual-production need: choose a face-lighting or key-light arrangement in MR that remains useful on set.",
+      "points": [],
+      "paperIds": [
+        "review-ref-1",
+        "review-ref-2",
+        "review-ref-33",
+        "gao2020",
+        "review-ref-32",
+        "review-ref-60"
       ],
-      "feedback": "Would this decision matter in actual production, and what would count as an unacceptable preview error?"
+      "branchIds": [],
+      "track": {
+        "label": "I2 · MR perception and task performance",
+        "known": "Perceptual studies test depth, contact and rendering cues under particular displays and tasks.",
+        "gap": "Depth and contact studies do not establish which preview errors change a filmmaker’s face-lighting or key-light placement decision.",
+        "question": "Which cue fidelity preserves that production decision, and where is a cheaper approximation sufficient?",
+        "ids": [
+          "review-ref-1",
+          "review-ref-2",
+          "review-ref-33"
+        ]
+      },
+      "focusMap": {
+        "id": "I2",
+        "columns": [
+          "direction",
+          "transport",
+          "view",
+          "timing"
+        ],
+        "paperIds": [
+          "review-ref-1",
+          "review-ref-2",
+          "review-ref-33",
+          "gao2020",
+          "review-ref-32",
+          "review-ref-60"
+        ],
+        "cards": true,
+        "mainReference": null
+      },
+      "feasibility": {
+        "id": "I2",
+        "slug": "useful-cues",
+        "title": "I2 · MR perception and task performance",
+        "question": "Which cue fidelity preserves that production decision, and where is a cheaper approximation sufficient?",
+        "ids": [
+          "review-ref-1",
+          "review-ref-2",
+          "review-ref-33",
+          "gao2020",
+          "review-ref-32",
+          "review-ref-60"
+        ],
+        "columns": [
+          "direction",
+          "transport",
+          "view",
+          "timing"
+        ],
+        "scope": "Original independent perception-study track: illumination effects across MR tasks. Begin with one production-relevant task, then test whether effects transfer; do not equate aesthetic preference with interaction benefit.",
+        "techniques": "Compare controlled lighting conditions across real and virtual surfaces: mutual shadows, local shading and reflections. Include a simple approximation and a higher-fidelity reference, keeping geometry and task constant.",
+        "data": "Build paired MR previews and physical references for the same face/key-light arrangements; record choice, target error and revision effort.",
+        "resources": "Needs a reproducible MR display/setup, calibrated scenes, study approval where applicable, pilot tasks and a power analysis before recruitment.",
+        "experiment": "Choose between two key-light arrangements for a stated face-lighting intention; compare with a matched physical reference.",
+        "stop": "If a cue changes preference but not action, report that distinction. If a cheap approximation is practically equivalent, that is a useful result.",
+        "resourceLinks": [
+          {
+            "label": "Adams: task and shadow conditions",
+            "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf"
+          },
+          {
+            "label": "Knecht: perceptual-study framework",
+            "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf"
+          }
+        ],
+        "motivation": "Virtual-production need: choose a face-lighting or key-light arrangement in MR that remains useful on set.",
+        "sourceSubtopic": "MR perception study of how virtual lights, illumination affect different tasks in MR.",
+        "sourceNumber": 2,
+        "firstInvestigation": "Compare two key-light arrangements against a stated face-visibility or shadow target and a matched physical reference.",
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "review-ref-1",
+              "role": "Distance / display task precedent",
+              "bullets": [
+                "Defines display, shadow and target-placement conditions.",
+                "Use as a task-design reference, not a proven lighting benefit."
+              ],
+              "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf",
+              "linkLabel": "Experiment and stimuli"
+            },
+            {
+              "id": "review-ref-2",
+              "role": "Contact / shadow cue precedent",
+              "bullets": [
+                "Tests perceived ground contact under shadow variations.",
+                "Keep appearance ratings separate from action outcomes."
+              ],
+              "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
+              "linkLabel": "Task and shadow conditions"
+            },
+            {
+              "id": "review-ref-33",
+              "role": "Photorealistic AR study framework",
+              "bullets": [
+                "Precedent for comparing rendering modes in tasks.",
+                "Preliminary null effects rule out assuming realism always helps."
+              ],
+              "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf",
+              "linkLabel": "Framework and findings"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "Matched production-lighting stimuli",
+              "bullets": [
+                "Two key-light arrangements with a stated face-visibility or shadow target.",
+                "Pair each MR condition with a matched physical reference and log choice agreement."
+              ]
+            },
+            {
+              "label": "Controlled rendering baseline",
+              "url": "https://github.com/googlesamples/arcore-depth-lab",
+              "bullets": [
+                "Candidate renderer: depth-based relighting samples.",
+                "No new generative model is needed for the first cue study."
+              ]
+            },
+            {
+              "label": "OpenRooms: optional synthetic controls",
+              "url": "https://github.com/ViLab-UCSD/OpenRooms",
+              "bullets": [
+                "Generate matched material/lighting variations.",
+                "Synthetic images alone cannot establish MR task benefit."
+              ]
+            }
+          ],
+          "setup": [
+            {
+              "label": "Equipment",
+              "bullets": [
+                "One reproducible MR display with input/tracking access.",
+                "Real face or prop and its matched MR lighting preview.",
+                "Controlled physical lamp and fixed reference locations.",
+                "Pose/response logging; optional timing camera."
+              ]
+            },
+            {
+              "label": "Experimental setup",
+              "bullets": [
+                "Choose one production task: key-light placement for a stated face-visibility or shadow target.",
+                "Manipulate selected lighting cues independently.",
+                "Hold geometry, exposure, display and task constant.",
+                "Counterbalance conditions; pilot task sensitivity."
+              ]
+            },
+            {
+              "label": "Models and study resources",
+              "bullets": [
+                "Use a controlled renderer; avoid a training dependency.",
+                "Measure key-light placement or face/shadow target error, time and confidence.",
+                "Collect appearance preference as a separate measure.",
+                "Plan recruitment/sample size from the pilot and study process."
+              ]
+            }
+          ],
+          "pilot": [
+            "Compare an MR key-light choice to a matched physical reference.",
+            "Compare accurate, cheap and misleading cue conditions under the same target."
+          ],
+          "measures": [
+            "Choice agreement and face/shadow target error.",
+            "Confidence and revision effort; appearance preference reported separately."
+          ]
+        }
+      },
+      "simpleTest": {
+        "test": [
+          "One face or prop, two key-light arrangements, one stated face-visibility or shadow intention.",
+          "Compare the MR choice to a matched physical reference and a cheap cue approximation."
+        ],
+        "need": [
+          "One accessible MR display, controlled lamp and fixed exposure.",
+          "Log choice, target error, confidence and revision effort."
+        ],
+        "decision": "Establish that this production task matters with practitioners before fixing the full study."
+      },
+      "speakerNotes": "Production question: which lighting cues and approximation errors alter a face-lighting or key-light placement decision in MR? The broader transfer to other MR tasks follows after this domain study. Original independent perception-study track: illumination effects across MR tasks. Begin with one production-relevant task, then test whether effects transfer; do not equate aesthetic preference with interaction benefit. If a cue changes preference but not action, report that distinction. If a cheap approximation is practically equivalent, that is a useful result.\nOriginal independent perception-study track: illumination effects across MR tasks. Begin with one production-relevant task, then test whether effects transfer; do not equate aesthetic preference with interaction benefit. For later broader transfer, which virtual-light and illumination properties matter for different MR tasks—and how much correspondence is needed? If a cue changes preference but not action, report that distinction. If a cheap approximation is practically equivalent, that is a useful result.",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-illumination-local-light",
+      "kind": "v2-subtopic",
+      "topicId": "illumination",
+      "chapter": "1 · Shared lighting",
+      "title": "I3 · Close-scene lighting estimation / probes",
+      "lead": "Virtual-production need: nearby physical lights must shade virtual content consistently with the real scene.",
+      "points": [],
+      "paperIds": [
+        "handlight",
+        "limo",
+        "review-ref-65",
+        "review-ref-75",
+        "review-ref-68",
+        "review-ref-45",
+        "review-ref-87"
+      ],
+      "branchIds": [],
+      "track": {
+        "label": "I3 · Close-scene lighting estimation / probes",
+        "known": "HandLight and spatial estimators provide local lighting estimates.",
+        "gap": "The reviewed estimates do not establish the spatial validity and update tolerance needed at a moving virtual prop when nearby physical lights change.",
+        "question": "How far or how long can a HandLight-style probe be reused before it changes the lighting decision?",
+        "ids": [
+          "handlight",
+          "limo"
+        ]
+      },
+      "focusMap": {
+        "id": "I3",
+        "columns": [
+          "locality",
+          "lightType",
+          "representation",
+          "timing"
+        ],
+        "paperIds": [
+          "handlight",
+          "limo",
+          "review-ref-65",
+          "review-ref-75",
+          "review-ref-68",
+          "review-ref-45",
+          "review-ref-87"
+        ],
+        "cards": true,
+        "mainReference": "handlight"
+      },
+      "feasibility": {
+        "id": "I3",
+        "slug": "local-light",
+        "title": "I3 · Close-scene lighting estimation / probes",
+        "question": "How can hand-based light estimation provide useful local lighting probes for nearby virtual actors and props?",
+        "ids": [
+          "handlight",
+          "limo",
+          "review-ref-65",
+          "review-ref-75",
+          "review-ref-68",
+          "review-ref-45",
+          "review-ref-87"
+        ],
+        "columns": [
+          "locality",
+          "lightType",
+          "representation",
+          "timing"
+        ],
+        "scope": "Main reference: HandLight, which estimates lighting from hand images and builds a spatial probe atlas as the hand moves. Investigate where these local estimates help nearby virtual content agree with the physical scene.",
+        "techniques": "Start from HandLight: estimate environment lighting from hand appearance and accumulate a spatial atlas of probes. Compare with a global environment estimate and other local/spatial methods; do not assume a probe directly recovers individual lamps.",
+        "data": "Check HandLight paper/code and hand-image training data availability first. Capture hand poses at known locations with calibrated light references; test held-out hands, materials, probe positions and nearby light changes.",
+        "resources": "Needs tracked hand images/poses, exposure control and lighting references. Confirm image access, hand-appearance variation, self-shadowing and coverage before choosing a device or model.",
+        "experiment": "Compare global lighting, a single hand probe and an accumulated hand-probe atlas at held-out nearby virtual-object locations. Measure lighting/rendering error, spatial coverage, temporal stability and update delay.",
+        "stop": "If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.",
+        "resourceLinks": [
+          {
+            "label": "HandLight — main reference",
+            "url": "https://schmalstieg.github.io/pubdetail.html?param=Schmalstieg_452"
+          },
+          {
+            "label": "HandLight original paper",
+            "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+          },
+          {
+            "label": "LiMo — supporting comparison",
+            "url": "https://eyeline-labs.github.io/LiMo/"
+          }
+        ],
+        "motivation": "Virtual-production need: nearby physical lights must shade virtual content consistently with the real scene.",
+        "sourceSubtopic": "Estimating close scene lighing for virtuall envs, or probes",
+        "sourceNumber": 5,
+        "firstInvestigation": "Reproduce or approximate HandLight-style hand probes, then test local validity, probe coverage and update delay near real lights.",
+        "mainReference": "handlight",
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "handlight",
+              "role": "Main reference: hand-based probes",
+              "bullets": [
+                "Estimate illumination from hand images; accumulate a spatial atlas.",
+                "Public code, weights and training-data release remain unverified."
+              ],
+              "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf",
+              "linkLabel": "Main paper"
+            },
+            {
+              "id": "limo",
+              "role": "Candidate spatial / temporal comparison",
+              "bullets": [
+                "Use geometry-conditioned HDR estimates as a comparison.",
+                "Check model/data release and preparation cost before selection."
+              ],
+              "url": "https://eyeline-labs.github.io/LiMo/",
+              "linkLabel": "Paper / project resources"
+            },
+            {
+              "id": "review-ref-75",
+              "role": "Candidate spatial-probe baseline",
+              "bullets": [
+                "Predict a lighting volume; query held-out probe positions.",
+                "Fast queries do not include volume inference cost."
+              ],
+              "url": "https://arxiv.org/pdf/2003.08367",
+              "linkLabel": "Lighthouse method"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "HandLight hand-image data",
+              "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf",
+              "bullets": [
+                "Availability of original hand data is an early feasibility gate.",
+                "Do not assume general HDR panoramas replace hand supervision."
+              ]
+            },
+            {
+              "label": "MIT Multi-Illumination",
+              "url": "https://projects.csail.mit.edu/illumination/",
+              "bullets": [
+                "Public scenes under multiple lighting conditions.",
+                "Useful for relighting checks; not tracked hand/probe ground truth."
+              ]
+            },
+            {
+              "label": "Own local-probe capture",
+              "bullets": [
+                "Hands at known positions; calibrated light/probe reference.",
+                "Hold out hand appearance, pose, light position and query location."
+              ]
+            }
+          ],
+          "setup": [
+            {
+              "label": "Equipment",
+              "bullets": [
+                "Camera with usable hand images and hand-pose tracking.",
+                "Depth/scale reference for probe and virtual-object positions.",
+                "Movable physical light; fixed matte/rough test objects.",
+                "Calibrated HDR probe or bracketed mirror-ball reference."
+              ]
+            },
+            {
+              "label": "Required capture setup",
+              "bullets": [
+                "Align hand/probe positions to the same scene coordinates.",
+                "Control or log exposure and white balance.",
+                "Capture hand variation, self-shadowing and occlusion.",
+                "Evaluate illumination at held-out virtual-object locations."
+              ]
+            },
+            {
+              "label": "Models, compute and gates",
+              "bullets": [
+                "HandLight is the starting point; verify reproducibility first.",
+                "STGlight released code is an additional online comparison.",
+                "Do not treat probe queries as complete estimator latency.",
+                "If weights/data are unavailable, bound reproduction cost before training."
+              ]
+            }
+          ],
+          "pilot": [
+            "Compare global lighting, one hand probe and an accumulated hand-probe atlas.",
+            "Use independently measured light references under near/mid-field changes."
+          ],
+          "measures": [
+            "Lighting/rendering error; spatial coverage; flicker; update delay.",
+            "Stop or narrow the setting if hand variation or sparse coverage defeats the task."
+          ]
+        }
+      },
+      "simpleTest": {
+        "question": "Can hand-based probes light a nearby virtual prop reliably?",
+        "test": [
+          "Compare one global estimate, one hand probe and HandLight’s accumulated probe atlas.",
+          "Move the light and sample new object positions; measure lighting error, flicker and update delay."
+        ],
+        "need": [
+          "Hand-image/pose capture, a controllable lamp and an independently measured lighting reference.",
+          "Test positions not used to collect the probes."
+        ],
+        "decision": "Check HandLight code, weights and data access first; availability is unverified. Then test whether local probes improve on global lighting.",
+        "evidence": [
+          {
+            "id": "handlight",
+            "text": "HandLight is the main reference: illumination from hand images and a spatial probe atlas."
+          },
+          {
+            "id": "review-ref-75",
+            "text": "Lighthouse provides a spatial-lighting comparison; fast queries exclude lighting-volume inference."
+          }
+        ]
+      },
+      "speakerNotes": "Main reference: HandLight, which estimates lighting from hand images and builds a spatial probe atlas as the hand moves. Investigate where these local estimates help nearby virtual content agree with the physical scene. If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.\nMain reference: HandLight, which estimates lighting from hand images and builds a spatial probe atlas as the hand moves. Investigate where these local estimates help nearby virtual content agree with the physical scene. How can hand-based light estimation provide useful local lighting probes for nearby virtual actors and props? If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-agents-illustration",
+      "chapter": "2 · Virtual agents",
+      "kind": "direction-illustration",
+      "topicId": "agents",
+      "title": "Directable Virtual Agents for Immersive Collaboration",
+      "lead": "From preset animation to interactive actor direction",
+      "points": [],
+      "paperIds": [],
+      "branchIds": [],
+      "illustration": {
+        "image": "assets/directions/agents-illustration-v4.png",
+        "alt": "Drawn concept of a director wearing black VR glasses, human virtual actors, a cute robot dinosaur, motion skeleton, waypoints and pose timeline.",
+        "caption": "From preset animation to interactive actor direction",
+        "poster": "assets/directions/agents-illustration-v4.png",
+        "animation": "assets/directions/agents-animated.gif"
+      },
+      "speakerNotes": "AI-generated concept illustration of the proposed research direction; not a prototype screenshot or a demonstrated result. A director should be able to steer one or more virtual actors—humanoid or non-humanoid agents interacting with objects—live, as they would direct actors on set.",
+      "transition": "Explain the motivation and research aim for this direction."
     },
     {
       "id": "v2-agents-why",
       "kind": "v2-chain",
-      "title": "Why do we need directable virtual actors?",
-      "lead": "The director is choosing and revising a performance—not merely selecting an animation.",
+      "title": "Directable Virtual Agents",
+      "lead": "Give a note, see the response, and keep the accepted parts of the performance.",
       "chapter": "2 · Directable performance",
       "topicId": "agents",
       "points": [],
@@ -311,13 +1379,14 @@ window.RESEARCH_STORY_V2 = {
           "label": "Goal / aim",
           "text": "Study a bounded directing operation and determine what representation or control is needed beyond the strongest existing method."
         }
-      ]
+      ],
+      "broaderMotivation": "Broader motivation: directable embodied performance supports creative authoring and, where demonstrated, entertainment robotics."
     },
     {
       "id": "v2-agents-evidence",
       "kind": "v2-synthesis",
-      "title": "What the research establishes—and the bridge we still need",
-      "lead": "Read the groups together; no single paper’s limitation defines the proposed research gap.",
+      "title": "What existing work enables, and what remains unresolved",
+      "lead": "Compare related results together; select a strand or paper to inspect its original figure.",
       "chapter": "2 · Directable performance",
       "topicId": "agents",
       "points": [],
@@ -366,15 +1435,16 @@ window.RESEARCH_STORY_V2 = {
       "bridge": "A note that changes gaze or timing may disturb accepted contact or blocking; the reviewed capabilities do not establish how that directing trade-off should be expressed and preserved."
     },
     {
-      "id": "v2-agents-tracks",
-      "kind": "v2-tracks",
-      "title": "Three possible ways to address that production need",
-      "lead": "Known capability → explicit gap → question to test.",
+      "id": "v2-agents-coverage",
+      "kind": "v2-coverage",
+      "title": "Where does the reviewed evidence concentrate?",
+      "lead": "Paper counts make the coverage visible; the research gap still comes from reading the results together.",
       "chapter": "2 · Directable performance",
       "topicId": "agents",
       "points": [],
       "paperIds": [
         "ardy",
+        "kimodo",
         "closd",
         "interprior",
         "ready-to-react",
@@ -382,80 +1452,754 @@ window.RESEARCH_STORY_V2 = {
         "scheduled-inpainting"
       ],
       "branchIds": [],
-      "speakerNotes": "Working research argument for discussion. Distinguish production requirements from inspected literature findings and our synthesis; invite counterexamples and feedback.",
-      "transition": "Choose one concrete production operation to make the argument testable.",
-      "tracks": [
+      "speakerNotes": "Each group contains multiple related sources. The boundary is our cross-paper reasoning about transfer to the stated production task. It must be challenged by closer work and practitioner feedback. Classification counts are not a novelty test.",
+      "transition": "Use the complete interactive map to inspect the papers behind these patterns.",
+      "groups": [
         {
-          "label": "A1 · Compose a director note",
-          "known": "Online methods already accept text and spatial constraints.",
-          "gap": "The priority of conflicting blocking, gaze and beat instructions needs an explicit model and test.",
-          "question": "Which conflicts cannot the native controls resolve as the director intends?",
+          "label": "Control authored motion",
           "ids": [
             "ardy",
-            "closd"
-          ]
+            "kimodo"
+          ],
+          "finding": "ARDY supports online spatial/text control; Kimodo offers offline constrained motion generation.",
+          "boundary": "Constraint satisfaction does not by itself establish how to resolve contradictory director notes."
         },
         {
-          "label": "A2 · Keep contact during revision",
-          "known": "Physical controllers already execute and switch supported interaction goals.",
-          "gap": "A revised note may need to preserve a particular contact or partner relation while changing another aspect.",
-          "question": "When does the desired revision exceed existing goal switching?",
+          "label": "Execute interactions",
           "ids": [
             "closd",
             "interprior",
             "ready-to-react"
-          ]
+          ],
+          "finding": "Physical or reactive methods address contacts, goals and partner response.",
+          "boundary": "Supported tasks, sensing and embodiment differ; they are not an evaluated universal acting system."
         },
         {
-          "label": "A3 · Preserve the accepted take",
-          "known": "Existing motion editors already protect parts of a clip.",
-          "gap": "The director’s protected content must be made explicit when a performance is revised, including when it is still unfolding.",
-          "question": "What authoring representation is useful beyond the existing preservation baseline?",
+          "label": "Revise an existing take",
           "ids": [
             "motionfix",
             "scheduled-inpainting"
-          ]
+          ],
+          "finding": "Text edits and preservation masks support meaningful clip revision.",
+          "boundary": "A local clip edit is a different intervention from revising an ongoing constrained performance."
         }
+      ],
+      "bridge": "A note that changes gaze or timing may disturb accepted contact or blocking; the reviewed capabilities do not establish how that directing trade-off should be expressed and preserved.",
+      "axes": [
+        "intervention",
+        "interaction",
+        "preservation"
       ]
     },
     {
-      "id": "v2-agents-first-piece",
-      "kind": "v2-first-piece",
-      "title": "Start from one production problem",
-      "lead": "A first investigation should resolve the central uncertainty, not build every part of the vision.",
-      "chapter": "2 · Directable performance",
+      "id": "v2-agents-sankey",
+      "chapter": "2 · Virtual agents",
+      "kind": "problem-space",
       "topicId": "agents",
+      "title": "What can a director revise—and when?",
+      "lead": "Evidence after the argument: all papers and all dimensions, with multi-selection and source inspection.",
       "points": [],
       "paperIds": [
         "ardy",
+        "interagent",
+        "lyric",
+        "pami",
+        "gaits",
+        "deepmimic",
+        "chois",
         "closd",
+        "intermimic",
         "interprior",
-        "smartbody-gaze2009"
+        "kimodo",
+        "trumans",
+        "hosig",
+        "interactmove",
+        "infbagel",
+        "maskedmimic",
+        "ready-to-react",
+        "intention-reactive",
+        "dense-inbetween",
+        "multi-person-priors",
+        "imprecise-keyframes",
+        "body-part-phase",
+        "scheduled-inpainting",
+        "motionfix",
+        "simmotionedit",
+        "condmdi",
+        "emage",
+        "motion-x-plusplus",
+        "omnimotion-x",
+        "miburi",
+        "filmagent",
+        "mind-of-director",
+        "dramadirector",
+        "smartbody-gaze2009",
+        "interaction-motion-survey2025"
       ],
       "branchIds": [],
-      "speakerNotes": "This is a discussion proposal. Incomplete choices are visible so feedback can improve them. A successful baseline reproduction may show that the proposed contribution should change; that is useful evidence, not failure.",
-      "transition": "Carry the unresolved production question into the next direction or the decision discussion.",
-      "blocks": [
+      "groups": [
         {
-          "label": "First piece",
-          "text": "One actor: turn the head toward a partner while maintaining a hand contact and a root mark."
+          "id": "online-direction",
+          "label": "Online human-motion direction",
+          "paperIds": [
+            "ardy"
+          ],
+          "rationale": "Use ARDY to anchor changing text and spatial-goal control. Separate its kinematic output from physical execution.",
+          "evidenceStatus": "Partial primary-paper reading; agents.json contains locators."
         },
         {
-          "label": "Compare",
-          "text": "Start with existing gaze control plus a fixed native controller; test the same changed note and protected relation."
+          "id": "actor-coordination",
+          "label": "Physics-based actor coordination",
+          "paperIds": [
+            "interagent"
+          ],
+          "rationale": "Examine coupled execution, not just independent animation of two actors.",
+          "evidenceStatus": "Selected full-text methods, evaluation and discussion read."
         },
         {
-          "label": "Learn",
-          "text": "Measure look-at error, contact loss and unwanted motion; identify the smallest directing representation that helps."
+          "id": "human-object",
+          "label": "Human–object interaction",
+          "paperIds": [
+            "lyric",
+            "pami"
+          ],
+          "rationale": "Compare closed-loop physical action with geometric motion/contact synthesis. Similar task vocabulary does not make the outputs interchangeable.",
+          "evidenceStatus": "Selected full-text methods/evaluation/scope read for both."
+        },
+        {
+          "id": "expressive-creatures",
+          "label": "Expressive physically constrained locomotion",
+          "paperIds": [
+            "gaits"
+          ],
+          "rationale": "Retain the user's creature and animation interest through the corrected Disney placement.",
+          "evidenceStatus": "Partial primary-paper reading; distinguish dinosaur simulation from Groot hardware."
+        },
+        {
+          "id": "additional",
+          "label": "Additional source seeds",
+          "paperIds": [
+            "deepmimic",
+            "chois",
+            "closd",
+            "intermimic",
+            "interprior",
+            "kimodo",
+            "trumans",
+            "hosig",
+            "interactmove",
+            "infbagel",
+            "maskedmimic",
+            "ready-to-react",
+            "intention-reactive",
+            "dense-inbetween",
+            "multi-person-priors",
+            "imprecise-keyframes",
+            "body-part-phase",
+            "scheduled-inpainting",
+            "motionfix",
+            "simmotionedit",
+            "condmdi",
+            "emage",
+            "motion-x-plusplus",
+            "omnimotion-x",
+            "miburi",
+            "filmagent",
+            "mind-of-director",
+            "dramadirector",
+            "smartbody-gaze2009",
+            "interaction-motion-survey2025"
+          ]
         }
       ],
-      "feedback": "Which director note is both common enough to matter and insufficiently handled by the native controls?"
+      "sourceRefs": [
+        {
+          "id": "S1",
+          "label": "Original slides 4 and 18; Disney placement corrected by Bhasura"
+        }
+      ],
+      "speakerNotes": "Read the fixed axes left to right. All 34 existing records plus one abstract-level survey seed. Selected primary-source assessments; not exhaustive coverage, full readings, system reproduction or established novelty. Director input: Conditions accepted by the method, not proof that conflicting directives are resolved. Core technique: Separate generation, physical execution, procedural control and high-level planning. Output representation: Editable skeletal motion differs from motor targets and raster video. Performer scope: Humanoid demonstrations do not establish arbitrary creature transfer. Set interaction: Scene-conditioned kinematics, physical contacts and reactive partners are distinct capabilities. When can it change?: Streaming inputs differ from interactive clip edits and offline film planning. Take preservation: A source-motion input is not a guarantee that unedited regions remain fixed. Preparation burden: Published pretrained inference, policy training and manually designed control imply different first-project risks. Runtime evidence: Measured component time and configured policy rate do not establish the user target of <=50ms note-to-visible MR response. Links mark supported or assessed paper attributes; they do not assert citation ancestry. Not established in the inspected source, not absence. Component time, policy rate and full director-to-display response are separate. Survey and dataset nodes are discovery resources, not runtime controllers.",
+      "transition": "Read the methods and evaluation scope within these groups before arguing for a gap."
+    },
+    {
+      "id": "v2-agents-composed-direction",
+      "kind": "v2-subtopic",
+      "topicId": "agents",
+      "chapter": "2 · Directable performance",
+      "title": "A1 · Compose blocking, gaze and timing",
+      "lead": "A director must adjust attention and blocking together to make a shot work.",
+      "points": [],
+      "paperIds": [
+        "ardy",
+        "smartbody-gaze2009",
+        "imprecise-keyframes",
+        "body-part-phase",
+        "condmdi",
+        "kimodo",
+        "closd"
+      ],
+      "branchIds": [],
+      "track": {
+        "label": "A1 · Compose blocking, gaze and timing",
+        "known": "Online methods already accept text and spatial constraints.",
+        "gap": "The priority of conflicting blocking, gaze and beat instructions needs an explicit model and test.",
+        "question": "Which conflicts cannot the native controls resolve as the director intends?",
+        "ids": [
+          "ardy",
+          "closd"
+        ]
+      },
+      "focusMap": {
+        "id": "A1",
+        "columns": [
+          "intent",
+          "technique",
+          "intervention",
+          "timing"
+        ],
+        "paperIds": [
+          "ardy",
+          "smartbody-gaze2009",
+          "imprecise-keyframes",
+          "body-part-phase",
+          "condmdi",
+          "kimodo"
+        ],
+        "cards": true,
+        "mainReference": "ardy"
+      },
+      "feasibility": {
+        "id": "A1",
+        "slug": "composed-direction",
+        "title": "Compose blocking, gaze and timing",
+        "question": "Can a director change where an actor looks without losing its mark or action timing?",
+        "motivation": "A director must adjust attention and blocking together to make a shot work.",
+        "ids": [
+          "ardy",
+          "smartbody-gaze2009",
+          "imprecise-keyframes",
+          "body-part-phase",
+          "condmdi",
+          "kimodo"
+        ],
+        "columns": [
+          "intent",
+          "technique",
+          "intervention",
+          "timing"
+        ],
+        "scope": "Gaze alone is not novel; keep SP1 as baseline and isolate the added composition problem. Can a director change where an actor looks without losing its mark or action timing?",
+        "mainReference": "ardy",
+        "techniques": "ARDY supplies online spatial constraints; procedural gaze and phase control are established comparison methods.",
+        "data": "See linked released resources; task-specific directive/preservation labels require creation.",
+        "resources": "Begin with released desktop models and known simulated scenes; MR integration follows the reproducible baseline.",
+        "experiment": "Ask one humanoid to keep its mark while looking at a target that conflicts with its pose or timing. Compare ARDY + procedural gaze with an explicit priority rule; measure gaze, mark and beat errors.",
+        "stop": "Proceed only if the added control resolves a repeatable directing failure beyond the matched procedural baseline.",
+        "resourceLinks": [
+          {
+            "label": "Primary baseline / resources",
+            "url": "https://github.com/nv-tlabs/ardy"
+          }
+        ],
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "ardy",
+              "role": "Spatial-control baseline",
+              "bullets": [
+                "Online text, waypoints and sparse/full pose constraints.",
+                "Official code and checkpoint links; measure the complete loop."
+              ],
+              "url": "https://github.com/nv-tlabs/ardy",
+              "linkLabel": "Primary source / resources"
+            },
+            {
+              "id": "smartbody-gaze2009",
+              "role": "Established gaze counterexample",
+              "bullets": [
+                "Procedural head/torso coordination toward a target.",
+                "Use as an existing control, not an empty research area."
+              ],
+              "url": "https://smartbody.ict.usc.edu/video",
+              "linkLabel": "Primary source / resources"
+            },
+            {
+              "id": "body-part-phase",
+              "role": "Timing comparison",
+              "bullets": [
+                "Body-part phase-conditioned regeneration.",
+                "Fast sequence inference does not prove streaming contact preservation."
+              ],
+              "url": "https://arxiv.org/abs/2603.19795",
+              "linkLabel": "Primary source / resources"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "ARDY / HumanML3D",
+              "url": "https://github.com/nv-tlabs/ardy",
+              "bullets": [
+                "Use released inference before considering new training.",
+                "Check rig, model and motion-data terms separately."
+              ]
+            },
+            {
+              "label": "Timed directive cases",
+              "bullets": [
+                "Create held-out look/mark/beat combinations and contradictions.",
+                "Record intended priorities and tolerances before testing."
+              ]
+            },
+            {
+              "label": "Optional whole-body data",
+              "url": "https://github.com/IDEA-Research/Motion-X",
+              "bullets": [
+                "Motion-X++ supports richer anatomy as a later resource.",
+                "It does not supply director-conflict labels."
+              ]
+            }
+          ]
+        }
+      },
+      "simpleTest": {
+        "question": "Can a director change where an actor looks without losing its mark or action timing?",
+        "test": [
+          "Ask one humanoid to keep its mark while looking at a target that conflicts with its pose or timing.",
+          "Compare ARDY + procedural gaze with an explicit priority rule; measure gaze, mark and beat errors."
+        ],
+        "need": [
+          "A GPU workstation, reproducible 3D set and timestamped directive log.",
+          "Start on desktop; add registered MR only after the baseline works."
+        ],
+        "decision": "Proceed only if the added control resolves a repeatable directing failure beyond the matched procedural baseline.",
+        "evidence": [
+          {
+            "id": "ardy",
+            "text": "ARDY already covers much of the spatial-control baseline."
+          },
+          {
+            "id": "smartbody-gaze2009",
+            "text": "Whole-body gaze has a procedural precedent; composition needs its own test."
+          }
+        ]
+      },
+      "speakerNotes": "Research synthesis from bounded primary-source checks; questions are hypotheses, not verified novelty. Gaze alone is not novel; keep SP1 as baseline and isolate the added composition problem. Can a director change where an actor looks without losing its mark or action timing?\nResearch synthesis from bounded primary-source checks; questions are hypotheses, not verified novelty. Gaze alone is not novel; keep SP1 as baseline and isolate the added composition problem. Can a director change where an actor looks without losing its mark or action timing?",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-agents-grounded-response",
+      "kind": "v2-subtopic",
+      "topicId": "agents",
+      "chapter": "2 · Directable performance",
+      "title": "A2 · Direct interaction with props and partners",
+      "lead": "Virtual actors must act with the set and each other, rather than play isolated clips.",
+      "points": [],
+      "paperIds": [
+        "closd",
+        "lyric",
+        "interprior",
+        "intermimic",
+        "chois",
+        "trumans",
+        "hosig",
+        "interactmove",
+        "infbagel",
+        "interagent",
+        "ready-to-react",
+        "intention-reactive",
+        "dense-inbetween",
+        "multi-person-priors",
+        "maskedmimic",
+        "pami",
+        "interaction-motion-survey2025"
+      ],
+      "branchIds": [],
+      "track": {
+        "label": "A2 · Direct interaction with props and partners",
+        "known": "Physical controllers already execute and switch supported interaction goals.",
+        "gap": "A revised note may need to preserve a particular contact or partner relation while changing another aspect.",
+        "question": "When does the desired revision exceed existing goal switching?",
+        "ids": [
+          "closd",
+          "interprior",
+          "ready-to-react"
+        ]
+      },
+      "focusMap": {
+        "id": "A2",
+        "columns": [
+          "intent",
+          "interaction",
+          "intervention",
+          "timing"
+        ],
+        "paperIds": [
+          "closd",
+          "lyric",
+          "interprior",
+          "intermimic",
+          "chois",
+          "trumans",
+          "hosig",
+          "interactmove",
+          "infbagel",
+          "interagent",
+          "ready-to-react",
+          "intention-reactive",
+          "dense-inbetween",
+          "multi-person-priors",
+          "maskedmimic",
+          "pami",
+          "interaction-motion-survey2025"
+        ],
+        "cards": true,
+        "mainReference": "closd"
+      },
+      "feasibility": {
+        "id": "A2",
+        "slug": "grounded-response",
+        "title": "Direct interaction with props and partners",
+        "question": "Can a live change of intent preserve contact and produce a plausible response?",
+        "motivation": "Virtual actors must act with the set and each other, rather than play isolated clips.",
+        "ids": [
+          "closd",
+          "lyric",
+          "interprior",
+          "intermimic",
+          "chois",
+          "trumans",
+          "hosig",
+          "interactmove",
+          "infbagel",
+          "interagent",
+          "ready-to-react",
+          "intention-reactive",
+          "dense-inbetween",
+          "multi-person-priors",
+          "maskedmimic",
+          "pami",
+          "interaction-motion-survey2025"
+        ],
+        "columns": [
+          "intent",
+          "interaction",
+          "intervention",
+          "timing"
+        ],
+        "scope": "Begin with a prop OR a partner, not all interactions at once; no claim that interactive contact is absent. Can a live change of intent preserve contact and produce a plausible response?",
+        "mainReference": "closd",
+        "techniques": "Physical controllers handle online object interactions; streaming two-character reactions also exist.",
+        "data": "See linked released resources; task-specific directive/preservation labels require creation.",
+        "resources": "Begin with released desktop models and known simulated scenes; MR integration follows the reproducible baseline.",
+        "experiment": "First reproduce native sit/stand and goal switching with an existing physical controller. Add a changed mark plus a protected contact or timing cue; measure what the same controller preserves or violates.",
+        "stop": "This is a baseline diagnostic. Proceed only if a task-important failure remains beyond existing goal switching and contact control.",
+        "resourceLinks": [
+          {
+            "label": "Primary baseline / resources",
+            "url": "https://github.com/GuyTevet/CLoSD"
+          }
+        ],
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "closd",
+              "role": "Runnable physical baseline",
+              "bullets": [
+                "Text/target-driven planning with closed-loop tracking.",
+                "Authors’ README: ~4 GB GPU memory to run; ~50 GB GPU RAM for training/evaluation."
+              ],
+              "url": "https://github.com/GuyTevet/CLoSD",
+              "linkLabel": "Primary source / resources"
+            },
+            {
+              "id": "lyric",
+              "role": "Recent contact-rich comparison",
+              "bullets": [
+                "Language-conditioned object interaction under physics.",
+                "Release, fine-hand coverage and reproduction cost still need checking."
+              ],
+              "url": "https://arxiv.org/html/2609.19688v2",
+              "linkLabel": "Primary source / resources"
+            },
+            {
+              "id": "ready-to-react",
+              "role": "Partner-response comparison",
+              "bullets": [
+                "Online two-character reaction policy.",
+                "Boxing scope; transfer to acting actions is not established."
+              ],
+              "url": "https://zju3dv.github.io/ready_to_react/",
+              "linkLabel": "Primary source / resources"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "CLoSD checkpoints / data",
+              "url": "https://github.com/GuyTevet/CLoSD",
+              "bullets": [
+                "Released inference assets support the first reproduction.",
+                "Respect SMPL, AMASS and HumanML3D terms."
+              ]
+            },
+            {
+              "label": "CHOIS interaction resource",
+              "url": "https://lijiaman.github.io/projects/chois/",
+              "bullets": [
+                "Human–object motion offers an object-control comparison.",
+                "Check dataset release, object types and rights before selection."
+              ]
+            },
+            {
+              "label": "Task-specific contacts",
+              "bullets": [
+                "Build one controlled sit/stand or reach-target scene.",
+                "Log contact, slip, collisions and directive timing."
+              ]
+            }
+          ]
+        }
+      },
+      "simpleTest": {
+        "question": "Can a live change of intent preserve contact and produce a plausible response?",
+        "test": [
+          "First reproduce native sit/stand and goal switching with an existing physical controller.",
+          "Add a changed mark plus a protected contact or timing cue; measure what the same controller preserves or violates."
+        ],
+        "need": [
+          "CLoSD-compatible GPU/OS and physics simulation; no robot is required.",
+          "A known chair mesh and fixed targets; compare native switching before proposing a revision policy."
+        ],
+        "decision": "This is a baseline diagnostic. Proceed only if a task-important failure remains beyond existing goal switching and contact control.",
+        "evidence": [
+          {
+            "id": "closd",
+            "text": "CLoSD already demonstrates sitting and standing; these are reproduction cases."
+          },
+          {
+            "id": "interprior",
+            "text": "InterPrior already changes goals mid-trajectory; test the additional preservation requirement."
+          }
+        ]
+      },
+      "speakerNotes": "Research synthesis from bounded primary-source checks; questions are hypotheses, not verified novelty. Begin with a prop OR a partner, not all interactions at once; no claim that interactive contact is absent. Can a live change of intent preserve contact and produce a plausible response?\nResearch synthesis from bounded primary-source checks; questions are hypotheses, not verified novelty. Begin with a prop OR a partner, not all interactions at once; no claim that interactive contact is absent. Can a live change of intent preserve contact and produce a plausible response?",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-agents-editable-performance",
+      "kind": "v2-subtopic",
+      "topicId": "agents",
+      "chapter": "2 · Directable performance",
+      "title": "A3 · Revise expressive takes without losing intent",
+      "lead": "Production needs take → note → revised take, with control over what changes.",
+      "points": [],
+      "paperIds": [
+        "motionfix",
+        "simmotionedit",
+        "scheduled-inpainting",
+        "condmdi",
+        "body-part-phase",
+        "imprecise-keyframes",
+        "emage",
+        "omnimotion-x",
+        "miburi",
+        "gaits",
+        "deepmimic",
+        "filmagent",
+        "mind-of-director",
+        "dramadirector",
+        "motion-x-plusplus"
+      ],
+      "branchIds": [],
+      "track": {
+        "label": "A3 · Revise expressive takes without losing intent",
+        "known": "Existing motion editors already protect parts of a clip.",
+        "gap": "The director’s protected content must be made explicit when a performance is revised, including when it is still unfolding.",
+        "question": "What authoring representation is useful beyond the existing preservation baseline?",
+        "ids": [
+          "motionfix",
+          "scheduled-inpainting"
+        ]
+      },
+      "focusMap": {
+        "id": "A3",
+        "columns": [
+          "output",
+          "technique",
+          "preservation",
+          "timing"
+        ],
+        "paperIds": [
+          "motionfix",
+          "simmotionedit",
+          "scheduled-inpainting",
+          "condmdi",
+          "body-part-phase",
+          "imprecise-keyframes",
+          "emage",
+          "omnimotion-x",
+          "miburi",
+          "gaits",
+          "deepmimic",
+          "filmagent",
+          "mind-of-director",
+          "dramadirector",
+          "motion-x-plusplus"
+        ],
+        "cards": true,
+        "mainReference": "motionfix"
+      },
+      "feasibility": {
+        "id": "A3",
+        "slug": "editable-performance",
+        "title": "Revise expressive takes without losing intent",
+        "question": "Can a local performance note preserve the parts of a take the director wants to keep?",
+        "motivation": "Production needs take → note → revised take, with control over what changes.",
+        "ids": [
+          "motionfix",
+          "simmotionedit",
+          "scheduled-inpainting",
+          "condmdi",
+          "body-part-phase",
+          "imprecise-keyframes",
+          "emage",
+          "omnimotion-x",
+          "miburi",
+          "gaits",
+          "deepmimic",
+          "filmagent",
+          "mind-of-director",
+          "dramadirector",
+          "motion-x-plusplus"
+        ],
+        "columns": [
+          "output",
+          "technique",
+          "preservation",
+          "timing"
+        ],
+        "scope": "Use humanoids first; the cute robotic dinosaur is a later embodiment test, not an assumed direct transfer. Can a local performance note preserve the parts of a take the director wants to keep?",
+        "mainReference": "motionfix",
+        "techniques": "Text edits, protected-region inpainting and expressive speech generation provide separate capabilities.",
+        "data": "See linked released resources; task-specific directive/preservation labels require creation.",
+        "resources": "Begin with released desktop models and known simulated scenes; MR integration follows the reproducible baseline.",
+        "experiment": "Use one walk-and-look take; request “turn the head earlier, keep the path.” Reproduce text editing and existing mask-based preservation; test local-note success and protected-region drift.",
+        "stop": "This first test establishes the baseline boundary. A new contribution needs a useful failure beyond existing preservation methods.",
+        "resourceLinks": [
+          {
+            "label": "Primary baseline / resources",
+            "url": "https://github.com/atnikos/motionfix"
+          }
+        ],
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "motionfix",
+              "role": "Released editing baseline",
+              "bullets": [
+                "Source motion + edit note → modified motion.",
+                "Official code, dataset annotations and checkpoint links."
+              ],
+              "url": "https://github.com/atnikos/motionfix",
+              "linkLabel": "Primary source / resources"
+            },
+            {
+              "id": "scheduled-inpainting",
+              "role": "Preservation comparison",
+              "bullets": [
+                "Spatiotemporal masks protect selected motion regions.",
+                "Reported ~0.192 s clip operation; not a full live-MR response."
+              ],
+              "url": "https://arxiv.org/abs/2607.29133",
+              "linkLabel": "Primary source / resources"
+            },
+            {
+              "id": "gaits",
+              "role": "Creature performance precedent",
+              "bullets": [
+                "Interactive procedural style control for robotic characters.",
+                "A morphology-specific locomotion example, not arbitrary acting."
+              ],
+              "url": "https://la.disneyresearch.com/publication/interactive-design-of-stylized-walking-gaits-for-robotic-characters/",
+              "linkLabel": "Primary source / resources"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "MotionFix edit triplets",
+              "url": "https://github.com/atnikos/motionfix",
+              "bullets": [
+                "Released source/target/edit-text data and model checkpoint.",
+                "Check processed-data and underlying motion-model licenses."
+              ]
+            },
+            {
+              "label": "Expression / speech resource",
+              "url": "https://github.com/IDEA-Research/Motion-X",
+              "bullets": [
+                "Motion-X++ is a possible whole-body data source.",
+                "Do not equate speech coverage with acting-note supervision."
+              ]
+            },
+            {
+              "label": "Protected-take benchmark",
+              "bullets": [
+                "Annotate edit windows, protected joints and required timing.",
+                "Keep a held-out set of director notes and source takes."
+              ]
+            }
+          ]
+        }
+      },
+      "simpleTest": {
+        "question": "Can a local performance note preserve the parts of a take the director wants to keep?",
+        "test": [
+          "Use one walk-and-look take; request “turn the head earlier, keep the path.”",
+          "Reproduce text editing and existing mask-based preservation; test local-note success and protected-region drift."
+        ],
+        "need": [
+          "A GPU workstation, the released edit model and a timeline viewer.",
+          "A small licensed motion set; confirm the preservation baseline can be reproduced before proposing an extension."
+        ],
+        "decision": "This first test establishes the baseline boundary. A new contribution needs a useful failure beyond existing preservation methods.",
+        "evidence": [
+          {
+            "id": "motionfix",
+            "text": "MotionFix provides a directly relevant edit task and released resources."
+          },
+          {
+            "id": "scheduled-inpainting",
+            "text": "Existing preservation masks belong in the baseline; adding masks alone is not a new contribution."
+          }
+        ]
+      },
+      "speakerNotes": "Research synthesis from bounded primary-source checks; questions are hypotheses, not verified novelty. Use humanoids first; the cute robotic dinosaur is a later embodiment test, not an assumed direct transfer. Can a local performance note preserve the parts of a take the director wants to keep?\nResearch synthesis from bounded primary-source checks; questions are hypotheses, not verified novelty. Use humanoids first; the cute robotic dinosaur is a later embodiment test, not an assumed direct transfer. Can a local performance note preserve the parts of a take the director wants to keep?",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-robotics-illustration",
+      "chapter": "3 · XR robotics",
+      "kind": "direction-illustration",
+      "topicId": "robotics",
+      "title": "Human Robot Interaction and Visualization in XR",
+      "lead": "Spatial intent translated into physical equipment motion",
+      "points": [],
+      "paperIds": [],
+      "branchIds": [],
+      "illustration": {
+        "image": "assets/directions/robotics-illustration-v4.png",
+        "alt": "Drawn concept of XR control of robotic cameras, crane, motorized lights and drones around a performer, with cube proxies and camera controls.",
+        "caption": "Spatial intent translated into physical equipment motion",
+        "poster": "assets/directions/robotics-illustration-v4.png",
+        "animation": "assets/directions/robotics-animated.gif"
+      },
+      "speakerNotes": "AI-generated concept illustration of the proposed research direction; not a prototype screenshot or a demonstrated result. XR interfaces should help people understand and control robot behavior while making constraints and control ownership explicit.",
+      "transition": "Explain the motivation and research aim for this direction."
     },
     {
       "id": "v2-robotics-why",
       "kind": "v2-chain",
-      "title": "When does a virtual equipment twin become a useful control?",
-      "lead": "The desired shot or lighting change must become a feasible physical action the operator understands.",
+      "title": "Human Robot Interaction and Visualization in XR",
+      "lead": "A spatial camera or lighting intention must become understandable physical action.",
       "chapter": "3 · Physical equipment",
       "topicId": "robotics",
       "points": [],
@@ -486,13 +2230,14 @@ window.RESEARCH_STORY_V2 = {
           "label": "Goal / aim",
           "text": "Evaluate a specific spatial interaction against existing controls, with physical feasibility and operator understanding measured separately."
         }
-      ]
+      ],
+      "broaderMotivation": "Broader motivation: understandable spatial interfaces help people supervise robot intent, constraints and state."
     },
     {
       "id": "v2-robotics-evidence",
       "kind": "v2-synthesis",
-      "title": "What the research establishes—and the bridge we still need",
-      "lead": "Read the groups together; no single paper’s limitation defines the proposed research gap.",
+      "title": "What existing work enables, and what remains unresolved",
+      "lead": "Compare related results together; select a strand or paper to inspect its original figure.",
       "chapter": "3 · Physical equipment",
       "topicId": "robotics",
       "points": [],
@@ -541,10 +2286,10 @@ window.RESEARCH_STORY_V2 = {
       "bridge": "A locally feasible equipment change may break framing or a linked lighting intention; the reviewed studies do not establish how operators should recognize and repair that conflict."
     },
     {
-      "id": "v2-robotics-tracks",
-      "kind": "v2-tracks",
-      "title": "Three possible ways to address that production need",
-      "lead": "Known capability → explicit gap → question to test.",
+      "id": "v2-robotics-coverage",
+      "kind": "v2-coverage",
+      "title": "Where does the reviewed evidence concentrate?",
+      "lead": "Paper counts make the coverage visible; the research gap still comes from reading the results together.",
       "chapter": "3 · Physical equipment",
       "topicId": "robotics",
       "points": [],
@@ -553,110 +2298,906 @@ window.RESEARCH_STORY_V2 = {
         "mr-3d-teaming",
         "cinempc",
         "hosl",
-        "xavier",
         "praveena",
         "spot-on",
         "mrpilot"
       ],
       "branchIds": [],
-      "speakerNotes": "Working research argument for discussion. Distinguish production requirements from inspected literature findings and our synthesis; invite counterexamples and feedback.",
-      "transition": "Choose one concrete production operation to make the argument testable.",
-      "tracks": [
+      "speakerNotes": "Each group contains multiple related sources. The boundary is our cross-paper reasoning about transfer to the stated production task. It must be challenged by closer work and practitioner feedback. Classification counts are not a novelty test.",
+      "transition": "Use the complete interactive map to inspect the papers behind these patterns.",
+      "groups": [
         {
-          "label": "R1 · Explain feasible changes",
-          "known": "Proxy goals and planners can correct or reject robot commands.",
-          "gap": "The operator still needs to understand what correction means for the shot, not just the robot pose.",
-          "question": "Which explanation helps repair an infeasible shot without losing the intention?",
+          "label": "Represent physical intent in XR",
           "ids": [
             "reality-proxy",
-            "mr-3d-teaming",
-            "cinempc"
-          ]
+            "mr-3d-teaming"
+          ],
+          "finding": "Proxies and miniature goals make distant equipment or robot goals accessible.",
+          "boundary": "Selecting or correcting a goal is not the same as explaining its effect on the intended shot."
         },
         {
-          "label": "R2 · Author motion with useful affordances",
-          "known": "Camera authoring controls and perceptual feedback are established design resources.",
-          "gap": "Their value for a particular shot-control task must be distinguished from an appealing interface effect.",
-          "question": "Can a spatial or pseudo-haptic control help while actual motion remains understandable?",
+          "label": "Control a cinematic motion",
           "ids": [
+            "cinempc",
             "hosl",
-            "xavier",
             "praveena"
-          ]
+          ],
+          "finding": "Camera controllers and authoring studies address shot parameters and creative workflow.",
+          "boundary": "Controller feasibility, expressive authoring and operator comprehension have different evidence."
         },
         {
-          "label": "R3 · Revise linked equipment intent",
-          "known": "Interfaces expose tasks, plans and robot state.",
-          "gap": "A change to one item may violate an explicitly linked camera/light requirement that must be noticed and repaired.",
-          "question": "What feedback supports this dependency without creating more supervision effort?",
+          "label": "Supervise autonomous action",
           "ids": [
             "spot-on",
-            "mrpilot",
-            "cinempc"
-          ]
+            "mrpilot"
+          ],
+          "finding": "Situated commands and plan inspection support human intervention.",
+          "boundary": "The evaluated tasks do not establish repair of linked camera/light intentions on a physical film set."
         }
+      ],
+      "bridge": "A locally feasible equipment change may break framing or a linked lighting intention; the reviewed studies do not establish how operators should recognize and repair that conflict.",
+      "axes": [
+        "constraints",
+        "authority",
+        "validation"
       ]
     },
     {
-      "id": "v2-robotics-first-piece",
-      "kind": "v2-first-piece",
-      "title": "Start from one production problem",
-      "lead": "A first investigation should resolve the central uncertainty, not build every part of the vision.",
-      "chapter": "3 · Physical equipment",
+      "id": "v2-robotics-sankey",
+      "chapter": "3 · XR robotics",
+      "kind": "problem-space",
       "topicId": "robotics",
+      "title": "How does spatial intent become physical action?",
+      "lead": "Evidence after the argument: all papers and all dimensions, with multi-selection and source inspection.",
       "points": [],
       "paperIds": [
+        "walker",
+        "reality-proxy",
+        "xavier",
+        "wang-audio",
+        "hosl",
+        "praveena",
         "cinempc",
-        "mrpilot",
+        "aerial-jib",
+        "kennel",
         "spot-on",
-        "praveena"
+        "mrpilot",
+        "vrgit",
+        "poros",
+        "wyfiwyg",
+        "mr-3d-teaming",
+        "heterogeneous-mr",
+        "realitygit"
       ],
       "branchIds": [],
-      "speakerNotes": "This is a discussion proposal. Incomplete choices are visible so feedback can improve them. A successful baseline reproduction may show that the proposed contribution should change; that is useful evidence, not failure.",
-      "transition": "Carry the unresolved production question into the next direction or the decision discussion.",
-      "blocks": [
+      "groups": [
         {
-          "label": "First piece",
-          "text": "One camera move with an explicit camera-relative key-light requirement."
+          "id": "taxonomy",
+          "label": "XR–HRI taxonomy and interaction vocabulary",
+          "paperIds": [
+            "walker"
+          ],
+          "rationale": "Deck slide 1 provides shared vocabulary for commands, feedback, intent and representations.",
+          "evidenceStatus": "Deck-derived survey summary; original paper not inspected in this pass. Publication date must not imply survey coverage through that year."
         },
         {
-          "label": "Compare",
-          "text": "Hold the simulated plant/controller fixed; compare ordinary dependency/state previews with explicit repair feedback."
+          "id": "proxy",
+          "label": "Proxy abstraction and object interaction",
+          "paperIds": [
+            "reality-proxy"
+          ],
+          "rationale": "Deck slide 2 develops original slide 5 proxy interfaces and selection/grouping.",
+          "evidenceStatus": "Selected primary methods/evaluation/discussion sections read previously; no comparative camera-control result."
         },
         {
-          "label": "Learn",
-          "text": "Measure missed violations, repair time and the remaining light-direction error; validate physical transfer when access is available."
+          "id": "cues",
+          "label": "Pseudo-haptic visual and audio cues",
+          "paperIds": [
+            "xavier",
+            "wang-audio"
+          ],
+          "rationale": "Deck slide 3 separates perception of resistance from physical actuation.",
+          "evidenceStatus": "Survey summaries from deck; primary full-text reading pending. Camera-inertia mapping is a hypothesis."
+        },
+        {
+          "id": "camera-platforms",
+          "label": "Camera motion, autonomy and platform constraints",
+          "paperIds": [
+            "hosl",
+            "praveena",
+            "cinempc",
+            "aerial-jib"
+          ],
+          "rationale": "Deck slides 1 and 4 distinguish slider interaction, camera arms, drone control and a UAV virtual crane; a physical crane or gimbal is not interchangeable with them.",
+          "evidenceStatus": "Hösl, Praveena and CineMPC selected primary sections inspected; aerial-jib full text pending. Distinguish perception studies, simulated controllers and physical experiments."
+        },
+        {
+          "id": "supervision",
+          "label": "Multi-robot supervision and intervention",
+          "paperIds": [
+            "kennel",
+            "spot-on",
+            "mrpilot"
+          ],
+          "rationale": "Deck slide 5 concerns situated/overview views, coordination, plans and intervention; camera continuity is a proposed transfer question.",
+          "evidenceStatus": "Deck summaries and mr-multi-robot author abstract only. Full methods/results of these three remain pending; simulated home evidence is not a film-set result."
+        },
+        {
+          "id": "version-control",
+          "label": "Collaborative history and information visualization",
+          "paperIds": [
+            "vrgit"
+          ],
+          "rationale": "Retains original slide 5 information/version-control branch, not replaced by the newer camera deck.",
+          "evidenceStatus": "Primary author-PDF indexed sections inspected selectively; no physical-robot validation implied."
+        },
+        {
+          "id": "additional",
+          "label": "Additional source seeds",
+          "paperIds": [
+            "poros",
+            "wyfiwyg",
+            "mr-3d-teaming",
+            "heterogeneous-mr",
+            "realitygit"
+          ]
         }
       ],
-      "feedback": "Is the dependency consequential, and which equipment can we reliably access for a later physical study?"
+      "sourceRefs": [
+        {
+          "id": "S3",
+          "label": "Original slide 5 and XR Robotics Related Work slides 1–5"
+        }
+      ],
+      "speakerNotes": "Read the fixed axes left to right. All existing17 records retained; primary reading depth varies. Membership does not establish comparative superiority or a production-ready controller. User task: Selection, authoring and supervision make different demands. Controlled system: Virtual scenes and physical rigs are separate evidence. Specific technique: Interface technique is separate from downstream robot control. Feedback to user: Feedback can communicate intent without enforcing it. Scene grounding: Known scene, captured map and online tracking have different costs. Constraint role: Visualization, goal correction and enforcement must not be conflated. Control authority: Who specifies, plans and executes? Evidence setting: Evidence setting limits which production claims transfer. Timing evidence: Display rate, state polling, planning and physical response are distinct. Paper membership describes inspected evidence, not absence elsewhere in the field. Component times and state polling do not establish end-to-end physical response. Equal editorial memberships; not citation impact or quantitative performance.",
+      "transition": "Read the methods and evaluation scope within these groups before arguing for a gap."
     },
     {
-      "id": "v2-evidence-ladders",
-      "kind": "v2-opening",
-      "title": "Use the atlas after the argument",
-      "lead": "The Sankey supports exploration; it does not replace a statement of what is missing.",
-      "chapter": "Version 2 · Research argument",
+      "id": "v2-robotics-equipment-proxies",
+      "kind": "v2-subtopic",
+      "topicId": "robotics",
+      "chapter": "3 · Physical equipment",
+      "title": "R1 · Constraint-aware equipment proxies",
+      "lead": "Shape a physical camera move or light placement through a reachable XR proxy.",
       "points": [],
-      "paperIds": [],
-      "branchIds": [],
-      "speakerNotes": "Version2 supporting maps use selected cited studies and ordered evidence stages. These are ordinal descriptions, not continuous performance measurements or a maturity score. Corpus membership and mapping reasons are inspectable. Do not infer a research gap from counts or missing categories.",
-      "transition": "Return to the decision using the previous evaluation rather than reset it.",
-      "shared": true,
-      "blocks": [
-        {
-          "label": "A coherent axis",
-          "text": "Compare stages of the same property: when intervention happens, what is executed, and how close the evaluation is to the production task."
-        },
-        {
-          "label": "An explicit boundary",
-          "text": "Unknown evidence stays visible; a blank category does not mean that the field lacks a solution."
-        },
-        {
-          "label": "A supporting view",
-          "text": "Open a requirement-led evidence map to inspect the selected papers behind each argument."
-        }
+      "paperIds": [
+        "reality-proxy",
+        "poros",
+        "mr-3d-teaming",
+        "cinempc",
+        "wyfiwyg",
+        "heterogeneous-mr"
       ],
-      "mapButtons": true
+      "branchIds": [],
+      "track": {
+        "label": "R1 · Constraint-aware equipment proxies",
+        "known": "Proxy goals and planners can correct or reject robot commands.",
+        "gap": "The operator still needs to understand what correction means for the shot, not just the robot pose.",
+        "question": "Which explanation helps repair an infeasible shot without losing the intention?",
+        "ids": [
+          "reality-proxy",
+          "mr-3d-teaming",
+          "cinempc"
+        ]
+      },
+      "focusMap": {
+        "id": "R1",
+        "columns": [
+          "technique",
+          "grounding",
+          "constraints",
+          "validation"
+        ],
+        "paperIds": [
+          "reality-proxy",
+          "poros",
+          "mr-3d-teaming",
+          "cinempc",
+          "wyfiwyg",
+          "heterogeneous-mr"
+        ],
+        "cards": true,
+        "mainReference": "reality-proxy"
+      },
+      "feasibility": {
+        "id": "R1",
+        "slug": "equipment-proxies",
+        "title": "R1 · Constraint-aware equipment proxies",
+        "motivation": "Shape a physical camera move or light placement through a reachable XR proxy.",
+        "question": "Which constraint feedback helps users author a feasible shot without losing the intended framing?",
+        "ids": [
+          "reality-proxy",
+          "poros",
+          "mr-3d-teaming",
+          "cinempc",
+          "wyfiwyg",
+          "heterogeneous-mr"
+        ],
+        "columns": [
+          "technique",
+          "grounding",
+          "constraints",
+          "validation"
+        ],
+        "known": "Proxies support distant interaction; planners already correct goals and optimize camera shots.",
+        "gap": "Can a proxy explain why a requested move fails and help repair the shot better than a normal preview?",
+        "boundary": "Test added explanation against existing feasibility previews; camera-domain transfer alone is insufficient.",
+        "papers": [
+          [
+            "reality-proxy",
+            "Interface anchor",
+            [
+              "Semantic/spatial proxies for distant objects.",
+              "Expert probe; not a comparative camera-control result."
+            ]
+          ],
+          [
+            "mr-3d-teaming",
+            "Closest constraint-aware baseline",
+            [
+              "Miniature goals with feasible-goal correction.",
+              "New work must improve on this overlap."
+            ]
+          ],
+          [
+            "cinempc",
+            "Controller baseline",
+            [
+              "Pose and lens objectives with modeled constraints.",
+              "Use the released ROS controller as a candidate."
+            ]
+          ]
+        ],
+        "datasets": [
+          [
+            "Authored shot cases",
+            null,
+            [
+              "Known camera, actor and obstacle geometry.",
+              "Include impossible framing and reachable alternatives."
+            ]
+          ],
+          [
+            "CineMPC ROS / CinemAirSim",
+            "https://github.com/ppueyor/CineMPC_ros",
+            [
+              "Released controller and simulation instructions.",
+              "Installation and hardware transfer remain feasibility gates."
+            ]
+          ],
+          [
+            "Recorded physical trials",
+            null,
+            [
+              "Own time-aligned pose, framing and constraint logs.",
+              "No verified public dataset replaces the UI experiment."
+            ]
+          ]
+        ],
+        "test": [
+          "Ask users to repair one infeasible camera move.",
+          "Compare direct preview, ordinary constraint overlay and explanation proxy.",
+          "Measure framing error, repair time and correct understanding."
+        ],
+        "need": [
+          "MR headset + workstation and known simulated rig.",
+          "Tracked camera/gimbal or arm only for later physical validation.",
+          "Calibrated scene transforms and a timestamped command log."
+        ],
+        "decision": "Continue only if explanation improves the task beyond the same planner and ordinary preview.",
+        "scope": "Candidate investigation; not a user-selected topic or established novel gap.",
+        "techniques": "Proxies support distant interaction; planners already correct goals and optimize camera shots.",
+        "data": "Matched authored tasks and own event/pose logs; see resource cards.",
+        "resources": "Simulation first; physical equipment access remains unconfirmed.",
+        "experiment": "Ask users to repair one infeasible camera move. Compare direct preview, ordinary constraint overlay and explanation proxy. Measure framing error, repair time and correct understanding.",
+        "stop": "Continue only if explanation improves the task beyond the same planner and ordinary preview.",
+        "firstInvestigation": "Which constraint feedback helps users author a feasible shot without losing the intended framing?",
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "reality-proxy",
+              "role": "Interface anchor",
+              "bullets": [
+                "Semantic/spatial proxies for distant objects.",
+                "Expert probe; not a comparative camera-control result."
+              ],
+              "url": "https://arxiv.org/html/2507.17248v2",
+              "linkLabel": "Primary paper / evidence"
+            },
+            {
+              "id": "mr-3d-teaming",
+              "role": "Closest constraint-aware baseline",
+              "bullets": [
+                "Miniature goals with feasible-goal correction.",
+                "New work must improve on this overlap."
+              ],
+              "url": "https://arxiv.org/html/2310.02392v1",
+              "linkLabel": "Primary paper / evidence"
+            },
+            {
+              "id": "cinempc",
+              "role": "Controller baseline",
+              "bullets": [
+                "Pose and lens objectives with modeled constraints.",
+                "Use the released ROS controller as a candidate."
+              ],
+              "url": "https://github.com/ppueyor/CineMPC_ros",
+              "linkLabel": "Code / simulator"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "Authored shot cases",
+              "bullets": [
+                "Known camera, actor and obstacle geometry.",
+                "Include impossible framing and reachable alternatives."
+              ]
+            },
+            {
+              "label": "CineMPC ROS / CinemAirSim",
+              "bullets": [
+                "Released controller and simulation instructions.",
+                "Installation and hardware transfer remain feasibility gates."
+              ],
+              "url": "https://github.com/ppueyor/CineMPC_ros"
+            },
+            {
+              "label": "Recorded physical trials",
+              "bullets": [
+                "Own time-aligned pose, framing and constraint logs.",
+                "No verified public dataset replaces the UI experiment."
+              ]
+            }
+          ]
+        },
+        "simpleTest": {
+          "test": [
+            "Ask users to repair one infeasible camera move.",
+            "Compare direct preview, ordinary constraint overlay and explanation proxy.",
+            "Measure framing error, repair time and correct understanding."
+          ],
+          "need": [
+            "MR headset + workstation and known simulated rig.",
+            "Tracked camera/gimbal or arm only for later physical validation.",
+            "Calibrated scene transforms and a timestamped command log."
+          ],
+          "evidence": [
+            {
+              "id": "reality-proxy",
+              "text": "Proxies support distant interaction; planners already correct goals and optimize camera shots."
+            },
+            {
+              "id": "mr-3d-teaming",
+              "text": "Test added explanation against existing feasibility previews; camera-domain transfer alone is insufficient."
+            }
+          ],
+          "decision": "Continue only if explanation improves the task beyond the same planner and ordinary preview."
+        }
+      },
+      "simpleTest": {
+        "test": [
+          "Ask users to repair one infeasible camera move.",
+          "Compare direct preview, ordinary constraint overlay and explanation proxy.",
+          "Measure framing error, repair time and correct understanding."
+        ],
+        "need": [
+          "MR headset + workstation and known simulated rig.",
+          "Tracked camera/gimbal or arm only for later physical validation.",
+          "Calibrated scene transforms and a timestamped command log."
+        ],
+        "evidence": [
+          {
+            "id": "reality-proxy",
+            "text": "Proxies support distant interaction; planners already correct goals and optimize camera shots."
+          },
+          {
+            "id": "mr-3d-teaming",
+            "text": "Test added explanation against existing feasibility previews; camera-domain transfer alone is insufficient."
+          }
+        ],
+        "decision": "Continue only if explanation improves the task beyond the same planner and ordinary preview."
+      },
+      "speakerNotes": "Explain what each cited resource contributes and what it does not validate. Start with fixed controllers and simulation to isolate interface effects. Code availability is not reproduction; physical rig access remains unconfirmed.\nWhich constraint feedback helps users author a feasible shot without losing the intended framing? Test added explanation against existing feasibility previews; camera-domain transfer alone is insufficient.",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-robotics-motion-affordances",
+      "kind": "v2-subtopic",
+      "topicId": "robotics",
+      "chapter": "3 · Physical equipment",
+      "title": "R2 · Perceptual affordances for fluid motion",
+      "lead": "Help a director shape camera motion and understand equipment response through XR interaction.",
+      "points": [],
+      "paperIds": [
+        "xavier",
+        "wang-audio",
+        "hosl",
+        "praveena",
+        "wyfiwyg",
+        "poros"
+      ],
+      "branchIds": [],
+      "track": {
+        "label": "R2 · Perceptual affordances for fluid motion",
+        "known": "Camera authoring controls and perceptual feedback are established design resources.",
+        "gap": "Their value for a particular shot-control task must be distinguished from an appealing interface effect.",
+        "question": "Can a spatial or pseudo-haptic control help while actual motion remains understandable?",
+        "ids": [
+          "hosl",
+          "xavier",
+          "praveena"
+        ]
+      },
+      "focusMap": {
+        "id": "R2",
+        "columns": [
+          "technique",
+          "feedback",
+          "authority",
+          "validation"
+        ],
+        "paperIds": [
+          "xavier",
+          "wang-audio",
+          "hosl",
+          "praveena",
+          "wyfiwyg",
+          "poros"
+        ],
+        "cards": true,
+        "mainReference": "xavier"
+      },
+      "feasibility": {
+        "id": "R2",
+        "slug": "motion-affordances",
+        "title": "R2 · Perceptual affordances for fluid motion",
+        "motivation": "Help a director shape camera motion and understand equipment response through XR interaction.",
+        "question": "Can visual motion gain or audio cues improve control without confusing perceived resistance with physical motion?",
+        "ids": [
+          "xavier",
+          "wang-audio",
+          "hosl",
+          "praveena",
+          "wyfiwyg",
+          "poros"
+        ],
+        "columns": [
+          "technique",
+          "feedback",
+          "authority",
+          "validation"
+        ],
+        "known": "Pseudo-haptic reviews organize perceptual mappings; camera studies examine control and automation.",
+        "gap": "Do these cues improve a specific shot task while preserving agency and accurate equipment-state understanding?",
+        "boundary": "Perceived resistance is a hypothesis to test, not a substitute for a physical controller.",
+        "papers": [
+          [
+            "xavier",
+            "Design vocabulary",
+            [
+              "Survey of visual/input mappings and perceived effects.",
+              "Not evidence of a camera-rig benefit."
+            ]
+          ],
+          [
+            "hosl",
+            "Control / automation baseline",
+            [
+              "Slider studies distinguish manual and delegated control.",
+              "Creative exploration requires its own evaluation."
+            ]
+          ],
+          [
+            "praveena",
+            "Production-workflow evidence",
+            [
+              "Practitioner probe informs control and replay needs.",
+              "Three interviews; not a population-level result."
+            ]
+          ]
+        ],
+        "datasets": [
+          [
+            "Matched motion tasks",
+            null,
+            [
+              "Own follow, stop and framing-repair trajectories.",
+              "Keep controller and simulated-plant dynamics identical between cue conditions."
+            ]
+          ],
+          [
+            "CineMPC reference trajectories",
+            "https://github.com/ppueyor/CineMPC_ros",
+            [
+              "Candidate constrained motion/controller resource.",
+              "No generative training needed for the first UI pilot."
+            ]
+          ],
+          [
+            "Cue-response study data",
+            null,
+            [
+              "Collect perceived agency, error and true-state judgments.",
+              "Do not treat subjective realism as motion accuracy."
+            ]
+          ]
+        ],
+        "test": [
+          "Compare plain motion, visual gain and visual-plus-audio cues.",
+          "Use one framing/stop task with identical controller and simulated-plant dynamics.",
+          "Measure overshoot, jerk, task time and true-state understanding."
+        ],
+        "need": [
+          "MR headset, tracked controller and workstation.",
+          "Simulated camera first; instrumented gimbal/slider if access is confirmed.",
+          "Common controller and event/pose timestamps across conditions."
+        ],
+        "decision": "Reject or narrow a cue that feels convincing but worsens precision or equipment-state understanding.",
+        "scope": "Candidate investigation; not a user-selected topic or established novel gap.",
+        "techniques": "Pseudo-haptic reviews organize perceptual mappings; camera studies examine control and automation.",
+        "data": "Matched authored tasks and own event/pose logs; see resource cards.",
+        "resources": "Simulation first; physical equipment access remains unconfirmed.",
+        "experiment": "Compare plain motion, visual gain and visual-plus-audio cues. Use one framing/stop task with identical controller and simulated-plant dynamics. Measure overshoot, jerk, task time and true-state understanding.",
+        "stop": "Reject or narrow a cue that feels convincing but worsens precision or equipment-state understanding.",
+        "firstInvestigation": "Can visual motion gain or audio cues improve control without confusing perceived resistance with physical motion?",
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "xavier",
+              "role": "Design vocabulary",
+              "bullets": [
+                "Survey of visual/input mappings and perceived effects.",
+                "Not evidence of a camera-rig benefit."
+              ],
+              "url": "https://doi.org/10.1109/ACCESS.2024.3409449",
+              "linkLabel": "Primary paper / evidence"
+            },
+            {
+              "id": "hosl",
+              "role": "Control / automation baseline",
+              "bullets": [
+                "Slider studies distinguish manual and delegated control.",
+                "Creative exploration requires its own evaluation."
+              ],
+              "url": "https://www.medien.ifi.lmu.de/pubdb/publications/pub/hoesl2017interact/hoesl2017interact.pdf",
+              "linkLabel": "Primary paper / evidence"
+            },
+            {
+              "id": "praveena",
+              "role": "Production-workflow evidence",
+              "bullets": [
+                "Practitioner probe informs control and replay needs.",
+                "Three interviews; not a population-level result."
+              ],
+              "url": "https://graphics.cs.wisc.edu/Papers/2023/PCGM23/pcgm.pdf",
+              "linkLabel": "Primary paper / evidence"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "Matched motion tasks",
+              "bullets": [
+                "Own follow, stop and framing-repair trajectories.",
+                "Keep controller and simulated-plant dynamics identical between cue conditions."
+              ]
+            },
+            {
+              "label": "CineMPC reference trajectories",
+              "bullets": [
+                "Candidate constrained motion/controller resource.",
+                "No generative training needed for the first UI pilot."
+              ],
+              "url": "https://github.com/ppueyor/CineMPC_ros"
+            },
+            {
+              "label": "Cue-response study data",
+              "bullets": [
+                "Collect perceived agency, error and true-state judgments.",
+                "Do not treat subjective realism as motion accuracy."
+              ]
+            }
+          ]
+        },
+        "simpleTest": {
+          "test": [
+            "Compare plain motion, visual gain and visual-plus-audio cues.",
+            "Use one framing/stop task with identical controller and simulated-plant dynamics.",
+            "Measure overshoot, jerk, task time and true-state understanding."
+          ],
+          "need": [
+            "MR headset, tracked controller and workstation.",
+            "Simulated camera first; instrumented gimbal/slider if access is confirmed.",
+            "Common controller and event/pose timestamps across conditions."
+          ],
+          "evidence": [
+            {
+              "id": "xavier",
+              "text": "Pseudo-haptic reviews organize perceptual mappings; camera studies examine control and automation."
+            },
+            {
+              "id": "hosl",
+              "text": "Perceived resistance is a hypothesis to test, not a substitute for a physical controller."
+            }
+          ],
+          "decision": "Reject or narrow a cue that feels convincing but worsens precision or equipment-state understanding."
+        }
+      },
+      "simpleTest": {
+        "test": [
+          "Compare plain motion, visual gain and visual-plus-audio cues.",
+          "Use one framing/stop task with identical controller and simulated-plant dynamics.",
+          "Measure overshoot, jerk, task time and true-state understanding."
+        ],
+        "need": [
+          "MR headset, tracked controller and workstation.",
+          "Simulated camera first; instrumented gimbal/slider if access is confirmed.",
+          "Common controller and event/pose timestamps across conditions."
+        ],
+        "evidence": [
+          {
+            "id": "xavier",
+            "text": "Pseudo-haptic reviews organize perceptual mappings; camera studies examine control and automation."
+          },
+          {
+            "id": "hosl",
+            "text": "Perceived resistance is a hypothesis to test, not a substitute for a physical controller."
+          }
+        ],
+        "decision": "Reject or narrow a cue that feels convincing but worsens precision or equipment-state understanding."
+      },
+      "speakerNotes": "Explain what each cited resource contributes and what it does not validate. Start with fixed controllers and simulation to isolate interface effects. Code availability is not reproduction; physical rig access remains unconfirmed.\nCan visual motion gain or audio cues improve control without confusing perceived resistance with physical motion? Perceived resistance is a hypothesis to test, not a substitute for a physical controller.",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
+    },
+    {
+      "id": "v2-robotics-coordinated-equipment",
+      "kind": "v2-subtopic",
+      "topicId": "robotics",
+      "chapter": "3 · Physical equipment",
+      "title": "R3 · Coordinated camera and light supervision",
+      "lead": "Keep a shot coherent when a director changes one member of a camera/light robot team.",
+      "points": [],
+      "paperIds": [
+        "mrpilot",
+        "spot-on",
+        "kennel",
+        "heterogeneous-mr",
+        "aerial-jib",
+        "vrgit",
+        "realitygit",
+        "cinempc"
+      ],
+      "branchIds": [],
+      "track": {
+        "label": "R3 · Coordinated camera and light supervision",
+        "known": "Interfaces expose tasks, plans and robot state.",
+        "gap": "A change to one item may violate an explicitly linked camera/light requirement that must be noticed and repaired.",
+        "question": "What feedback supports this dependency without creating more supervision effort?",
+        "ids": [
+          "spot-on",
+          "mrpilot",
+          "cinempc"
+        ]
+      },
+      "focusMap": {
+        "id": "R3",
+        "columns": [
+          "platform",
+          "technique",
+          "authority",
+          "validation"
+        ],
+        "paperIds": [
+          "mrpilot",
+          "spot-on",
+          "kennel",
+          "heterogeneous-mr",
+          "aerial-jib",
+          "vrgit",
+          "realitygit"
+        ],
+        "cards": true,
+        "mainReference": "mrpilot"
+      },
+      "feasibility": {
+        "id": "R3",
+        "slug": "coordinated-equipment",
+        "title": "R3 · Coordinated camera and light supervision",
+        "motivation": "Keep a shot coherent when a director changes one member of a camera/light robot team.",
+        "question": "How should XR show and repair the downstream effects of a local equipment change?",
+        "ids": [
+          "mrpilot",
+          "spot-on",
+          "kennel",
+          "heterogeneous-mr",
+          "aerial-jib",
+          "vrgit",
+          "realitygit"
+        ],
+        "columns": [
+          "platform",
+          "technique",
+          "authority",
+          "validation"
+        ],
+        "known": "MR systems already support robot-team commands, plan inspection and contextual intervention.",
+        "gap": "Can shot-specific dependencies make a camera or light revision understandable without disrupting valid work?",
+        "boundary": "Start with two simulated devices; generic robot supervision is already populated.",
+        "papers": [
+          [
+            "mrpilot",
+            "Intervention baseline",
+            [
+              "Spatial plan inspection and contextual edits.",
+              "Controlled evaluation remains VR-only."
+            ]
+          ],
+          [
+            "spot-on",
+            "Physical task-state example",
+            [
+              "Two physical robots with object/task states.",
+              "10Hz state polling is not physical response latency."
+            ]
+          ],
+          [
+            "vrgit",
+            "Revision / history comparison",
+            [
+              "Inspect and reuse branching virtual scene states.",
+              "Physical execution requires separate acknowledgement."
+            ]
+          ]
+        ],
+        "datasets": [
+          [
+            "Scripted shot revisions",
+            null,
+            [
+              "Two simulated devices, one actor and an explicit camera-relative key-light target.",
+              "Inject stale acknowledgement and timing conflicts."
+            ]
+          ],
+          [
+            "Own event / state traces",
+            null,
+            [
+              "Separate proposed, accepted, executing and observed states.",
+              "Release synthetic cases; physical traces depend on access."
+            ]
+          ],
+          [
+            "Simulation before robot fleet",
+            null,
+            [
+              "Use a fixed deterministic planner and camera/light models.",
+              "No LLM or training dataset required to isolate interface effects."
+            ]
+          ]
+        ],
+        "test": [
+          "Edit a camera pose under a fixed camera-relative key-light direction requirement.",
+          "Compare local-only editing with explicit dependency and light-aim repair feedback.",
+          "Measure missed conflicts, repair time and key-light direction error relative to the new camera pose."
+        ],
+        "need": [
+          "MR headset, workstation and two simulated equipment models.",
+          "One tracked rig plus controllable light for later physical transfer.",
+          "Explicit ownership, acknowledgements and timestamped state logs."
+        ],
+        "decision": "Expand to real teams only after a measurable dependency-understanding benefit and confirmed equipment access.",
+        "scope": "Candidate investigation; not a user-selected topic or established novel gap.",
+        "techniques": "MR systems already support robot-team commands, plan inspection and contextual intervention.",
+        "data": "Matched authored tasks and own event/pose logs; see resource cards.",
+        "resources": "Simulation first; physical equipment access remains unconfirmed.",
+        "experiment": "Edit a camera pose under a fixed camera-relative key-light direction requirement. Compare local-only editing with explicit dependency and light-aim repair feedback. Measure missed conflicts, repair time and key-light direction error relative to the new camera pose.",
+        "stop": "Expand to real teams only after a measurable dependency-understanding benefit and confirmed equipment access.",
+        "firstInvestigation": "How should XR show and repair the downstream effects of a local equipment change?",
+        "feasibilityPlan": {
+          "papers": [
+            {
+              "id": "mrpilot",
+              "role": "Intervention baseline",
+              "bullets": [
+                "Spatial plan inspection and contextual edits.",
+                "Controlled evaluation remains VR-only."
+              ],
+              "url": "https://arxiv.org/html/2610.07477v1",
+              "linkLabel": "Primary paper / evidence"
+            },
+            {
+              "id": "spot-on",
+              "role": "Physical task-state example",
+              "bullets": [
+                "Two physical robots with object/task states.",
+                "10Hz state polling is not physical response latency."
+              ],
+              "url": "https://arxiv.org/html/2505.22539v1",
+              "linkLabel": "Primary paper / evidence"
+            },
+            {
+              "id": "vrgit",
+              "role": "Revision / history comparison",
+              "bullets": [
+                "Inspect and reuse branching virtual scene states.",
+                "Physical execution requires separate acknowledgement."
+              ],
+              "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+              "linkLabel": "Primary paper / evidence"
+            }
+          ],
+          "datasets": [
+            {
+              "label": "Scripted shot revisions",
+              "bullets": [
+                "Two simulated devices, one actor and an explicit camera-relative key-light target.",
+                "Inject stale acknowledgement and timing conflicts."
+              ]
+            },
+            {
+              "label": "Own event / state traces",
+              "bullets": [
+                "Separate proposed, accepted, executing and observed states.",
+                "Release synthetic cases; physical traces depend on access."
+              ]
+            },
+            {
+              "label": "Simulation before robot fleet",
+              "bullets": [
+                "Use a fixed deterministic planner and camera/light models.",
+                "No LLM or training dataset required to isolate interface effects."
+              ]
+            }
+          ]
+        },
+        "simpleTest": {
+          "test": [
+            "Edit a camera pose under a fixed camera-relative key-light direction requirement.",
+            "Compare local-only editing with explicit dependency and light-aim repair feedback.",
+            "Measure missed conflicts, repair time and key-light direction error relative to the new camera pose."
+          ],
+          "need": [
+            "MR headset, workstation and two simulated equipment models.",
+            "One tracked rig plus controllable light for later physical transfer.",
+            "Explicit ownership, acknowledgements and timestamped state logs."
+          ],
+          "evidence": [
+            {
+              "id": "mrpilot",
+              "text": "MR systems already support robot-team commands, plan inspection and contextual intervention."
+            },
+            {
+              "id": "spot-on",
+              "text": "Start with two simulated devices; generic robot supervision is already populated."
+            }
+          ],
+          "decision": "Expand to real teams only after a measurable dependency-understanding benefit and confirmed equipment access."
+        }
+      },
+      "simpleTest": {
+        "test": [
+          "Edit a camera pose under a fixed camera-relative key-light direction requirement.",
+          "Compare local-only editing with explicit dependency and light-aim repair feedback.",
+          "Measure missed conflicts, repair time and key-light direction error relative to the new camera pose."
+        ],
+        "need": [
+          "MR headset, workstation and two simulated equipment models.",
+          "One tracked rig plus controllable light for later physical transfer.",
+          "Explicit ownership, acknowledgements and timestamped state logs."
+        ],
+        "evidence": [
+          {
+            "id": "mrpilot",
+            "text": "MR systems already support robot-team commands, plan inspection and contextual intervention."
+          },
+          {
+            "id": "spot-on",
+            "text": "Start with two simulated devices; generic robot supervision is already populated."
+          }
+        ],
+        "decision": "Expand to real teams only after a measurable dependency-understanding benefit and confirmed equipment access."
+      },
+      "speakerNotes": "Explain what each cited resource contributes and what it does not validate. Start with fixed controllers and simulation to isolate interface effects. Code availability is not reproduction; physical rig access remains unconfirmed.\nHow should XR show and repair the downstream effects of a local equipment change? Start with two simulated devices; generic robot supervision is already populated.",
+      "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
     },
     {
       "id": "v2-baseline",
@@ -26049,7 +28590,7 @@ window.RESEARCH_STORY_V2 = {
   "evidenceStatus": "Bounded snowballing and selective primary-source research; not an exhaustive literature review or established novelty.",
   "version": 2,
   "date": "2026-10-21",
-  "basis": "User meeting notes; high-level synthesis of selected reviewed sources",
+  "basis": "Original presentation retained and reorganized around meeting comments: figures, interactive explanations, grouped gaps, paper-count charts, and inline Sankeys.",
   "evidenceMaps": {
     "illumination": {
       "topicId": "illumination-v2",
@@ -26879,6 +29420,6955 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
             "outcome": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
             "validation": "Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "genlit",
+          "shortLabel": "GenLit: Reformulating Single-Image Relighting as Video Generation",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Partial full text: Sections 1, 3/3.2 and 10; selected supplement; v2 preprint versus final differences pending.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2412.11224v2",
+              "locator": "Sections 3, 3.2, 10",
+              "claim": "Scope, controls and stated limits."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.11224v2",
+                  "locator": "Sections 3, 3.2, 10",
+                  "claim": "Scope, controls and stated limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.11224v2",
+                  "locator": "Sections 3, 3.2, 10",
+                  "claim": "Scope, controls and stated limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Generate lighting motion while scene/object remain static.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.11224v2",
+                  "locator": "Sections 3, 3.2, 10",
+                  "claim": "Scope, controls and stated limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+            "outcome": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+            "validation": "Generate lighting motion while scene/object remain static."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "gr3en",
+          "shortLabel": "GR3EN: Generative Relighting for 3D Environments",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original research slides",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Method details await careful full-paper reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Method details await careful full-paper reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Contribution and evaluation scope await verification.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Method details await careful full-paper reading.",
+            "outcome": "Method details await careful full-paper reading.",
+            "validation": "Contribution and evaluation scope await verification."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "lightlab",
+          "shortLabel": "LightLab: Controlling Light Sources in Images with Diffusion Models",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text §§2–4.1,6 and bibliography",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "locator": "§3.4, Fig.3; §4.1; §6",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "locator": "Sections 3.4, 4.1, 6",
+              "claim": "Conditioning, timing and limits."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Relit RGB image",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+            "outcome": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+            "validation": "Relit RGB image"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "survey2020",
+          "shortLabel": "Illumination & visual coherence survey",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "primary-abstract",
+          "evidence": [
+            {
+              "url": "https://scholarworks.indianapolis.iu.edu/items/c8cb7930-e8fc-4d37-8710-cfcbb4d4d5fe",
+              "locator": "Author repository abstract and manuscript record",
+              "claim": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition. Provides foundational AR/MR illumination taxonomy and references."
+            },
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original research slides",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition.",
+              "sources": [
+                {
+                  "url": "https://scholarworks.indianapolis.iu.edu/items/c8cb7930-e8fc-4d37-8710-cfcbb4d4d5fe",
+                  "locator": "Author repository abstract and manuscript record",
+                  "claim": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition. Provides foundational AR/MR illumination taxonomy and references."
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition.",
+              "sources": [
+                {
+                  "url": "https://scholarworks.indianapolis.iu.edu/items/c8cb7930-e8fc-4d37-8710-cfcbb4d4d5fe",
+                  "locator": "Author repository abstract and manuscript record",
+                  "claim": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition. Provides foundational AR/MR illumination taxonomy and references."
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Provides foundational AR/MR illumination taxonomy and references.",
+              "sources": [
+                {
+                  "url": "https://scholarworks.indianapolis.iu.edu/items/c8cb7930-e8fc-4d37-8710-cfcbb4d4d5fe",
+                  "locator": "Author repository abstract and manuscript record",
+                  "claim": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition. Provides foundational AR/MR illumination taxonomy and references."
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition.",
+            "outcome": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition.",
+            "validation": "Provides foundational AR/MR illumination taxonomy and references."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "delta",
+          "shortLabel": "Delta Path Tracing for Real-Time Global Illumination in Mixed Reality",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary indexed introduction/related-work excerpts only; PDF fetch exceeded tool size limit",
+          "evidence": [
+            {
+              "url": "https://sapphiresoul.github.io/DPT.pdf",
+              "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://ieeevr.org/2023/program/papers/",
+              "locator": "Delta Path Tracing paper entry and abstract",
+              "claim": "Authors, venue and approach."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+              "sources": [
+                {
+                  "url": "https://sapphiresoul.github.io/DPT.pdf",
+                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://ieeevr.org/2023/program/papers/",
+                  "locator": "Delta Path Tracing paper entry and abstract",
+                  "claim": "Authors, venue and approach."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+              "sources": [
+                {
+                  "url": "https://sapphiresoul.github.io/DPT.pdf",
+                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://ieeevr.org/2023/program/papers/",
+                  "locator": "Delta Path Tracing paper entry and abstract",
+                  "claim": "Authors, venue and approach."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "MR composite with transport changes",
+              "sources": [
+                {
+                  "url": "https://sapphiresoul.github.io/DPT.pdf",
+                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://ieeevr.org/2023/program/papers/",
+                  "locator": "Delta Path Tracing paper entry and abstract",
+                  "claim": "Authors, venue and approach."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+            "outcome": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+            "validation": "MR composite with transport changes"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "gruber2015",
+          "shortLabel": "Image-Space Illumination for Augmented Reality in Dynamic Environments",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original research slides",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Image-space illumination from reconstructed geometry; full algorithm pending reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Image-space illumination from reconstructed geometry; full algorithm pending reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Contribution and evaluation scope await verification.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Image-space illumination from reconstructed geometry; full algorithm pending reading.",
+            "outcome": "Image-space illumination from reconstructed geometry; full algorithm pending reading.",
+            "validation": "Contribution and evaluation scope await verification."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "deeplight",
+          "shortLabel": "DeepLight: Learning Illumination for Unconstrained Mobile Mixed Reality",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original slide 11 says 2021; supplied review reference 41 says 2019; unresolved",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Method details await careful full-paper reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original slide 11 says 2021; supplied review reference 41 says 2019; unresolved",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Method details await careful full-paper reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original slide 11 says 2021; supplied review reference 41 says 2019; unresolved",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Contribution and evaluation scope await verification.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original slide 11 says 2021; supplied review reference 41 says 2019; unresolved",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Method details await careful full-paper reading.",
+            "outcome": "Method details await careful full-paper reading.",
+            "validation": "Contribution and evaluation scope await verification."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "luxremix",
+          "shortLabel": "LuxRemix: Lighting Decomposition and Remixing for Indoor Scenes",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original research slides",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Recover controllable lighting components in a relightable Gaussian scene.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Recover controllable lighting components in a relightable Gaussian scene.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The review describes interactive editing after capture and processing.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Recover controllable lighting components in a relightable Gaussian scene.",
+            "outcome": "Recover controllable lighting components in a relightable Gaussian scene.",
+            "validation": "The review describes interactive editing after capture and processing."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "livelight",
+          "shortLabel": "LiveLight: Real-time Streaming Video Relighting with Interactive Control",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original research slides",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Streaming relighting; architectural details await full-paper reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Streaming relighting; architectural details await full-paper reading.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Real-time behavior is claimed by the supplied title; conditions not checked.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Streaming relighting; architectural details await full-paper reading.",
+            "outcome": "Streaming relighting; architectural details await full-paper reading.",
+            "validation": "Real-time behavior is claimed by the supplied title; conditions not checked."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "gao2020",
+          "shortLabel": "Influence of Virtual Objects’ Shadows and Lighting Coherence on Distance Perception in Optical See-through AR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Author abstract only; full-paper methods, statistics and page locators pending. Do not treat as full-text-reviewed evidence.",
+          "evidence": [
+            {
+              "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+              "locator": "Abstract, paragraphs 1–4; PDF page pending",
+              "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two HoloLens virtual-object/real-target alignment experiments.",
+              "sources": [
+                {
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
+                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two HoloLens virtual-object/real-target alignment experiments.",
+              "sources": [
+                {
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
+                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Abstract reports shadow/coherence effects but rejects the shadow-shape hypothesis.",
+              "sources": [
+                {
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
+                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Two HoloLens virtual-object/real-target alignment experiments.",
+            "outcome": "Two HoloLens virtual-object/real-target alignment experiments.",
+            "validation": "Abstract reports shadow/coherence effects but rejects the shadow-shape hypothesis."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "ptrl",
+          "shortLabel": "Meta Passthrough Relighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Supplied illumination review §§1.6–1.8",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supplied review describes mesh-based compositing and depth masking.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Supplied illumination review §§1.6–1.8",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supplied review describes mesh-based compositing and depth masking.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Supplied illumination review §§1.6–1.8",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A candidate deployed baseline, not a peer-reviewed paper.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Supplied illumination review §§1.6–1.8",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Supplied review describes mesh-based compositing and depth masking.",
+            "outcome": "Supplied review describes mesh-based compositing and depth masking.",
+            "validation": "A candidate deployed baseline, not a peer-reviewed paper."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "luminet",
+          "shortLabel": "LumiNet: Latent Intrinsics Meets Diffusion Models for Indoor Scene Relighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text §§4–7, Appendix A; official code erratum checked",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2412.00177v3",
+              "locator": "§§5.3–5.5,6.1,7; Appendix A",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://github.com/xyxingx/LumiNet",
+              "locator": "September2025 erratum: corrected normalization in Table1; code/model release",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Latent-intrinsic ControlNet and lighting adaptor, with paired scene training.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.00177v3",
+                  "locator": "§§5.3–5.5,6.1,7; Appendix A",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://github.com/xyxingx/LumiNet",
+                  "locator": "September2025 erratum: corrected normalization in Table1; code/model release",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Latent-intrinsic ControlNet and lighting adaptor, with paired scene training.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.00177v3",
+                  "locator": "§§5.3–5.5,6.1,7; Appendix A",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://github.com/xyxingx/LumiNet",
+                  "locator": "September2025 erratum: corrected normalization in Table1; code/model release",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Relit source RGB",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.00177v3",
+                  "locator": "§§5.3–5.5,6.1,7; Appendix A",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://github.com/xyxingx/LumiNet",
+                  "locator": "September2025 erratum: corrected normalization in Table1; code/model release",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Latent-intrinsic ControlNet and lighting adaptor, with paired scene training.",
+            "outcome": "Latent-intrinsic ControlNet and lighting adaptor, with paired scene training.",
+            "validation": "Relit source RGB"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "li-inverse2020",
+          "shortLabel": "Inverse Rendering for Complex Indoor Scenes: Shape, Spatially-Varying Lighting and SVBRDF From a Single Image",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Author-hosted PDF selected pp.1–5,8; not complete evaluation reading",
+          "evidence": [
+            {
+              "url": "https://cseweb.ucsd.edu/~ravir/zhengqin_cvpr.pdf",
+              "locator": "PDF p.2 Fig.2 caption; pp.3–5 §§3–4; p.8 applications",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Cascaded CNN, spherical-Gaussian lighting, differentiable rendering and bilateral refinement.",
+              "sources": [
+                {
+                  "url": "https://cseweb.ucsd.edu/~ravir/zhengqin_cvpr.pdf",
+                  "locator": "PDF p.2 Fig.2 caption; pp.3–5 §§3–4; p.8 applications",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Cascaded CNN, spherical-Gaussian lighting, differentiable rendering and bilateral refinement.",
+              "sources": [
+                {
+                  "url": "https://cseweb.ucsd.edu/~ravir/zhengqin_cvpr.pdf",
+                  "locator": "PDF p.2 Fig.2 caption; pp.3–5 §§3–4; p.8 applications",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Depth, normals, reflectance, roughness and local lighting",
+              "sources": [
+                {
+                  "url": "https://cseweb.ucsd.edu/~ravir/zhengqin_cvpr.pdf",
+                  "locator": "PDF p.2 Fig.2 caption; pp.3–5 §§3–4; p.8 applications",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Cascaded CNN, spherical-Gaussian lighting, differentiable rendering and bilateral refinement.",
+            "outcome": "Cascaded CNN, spherical-Gaussian lighting, differentiable rendering and bilateral refinement.",
+            "validation": "Depth, normals, reflectance, roughness and local lighting"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "miiw2019",
+          "shortLabel": "A Dataset of Multi-Illumination Images in the Wild",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary project abstract/data and author SDK inspected; full methods pending",
+          "evidence": [
+            {
+              "url": "https://projects.csail.mit.edu/illumination/",
+              "locator": "Abstract and Data",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://github.com/lmurmann/multi_illumination",
+              "locator": "README SDK image,probe,material-mask and metadata access",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Capture more than1000 scenes under25 illumination conditions; supply HDR images,probes and annotations.",
+              "sources": [
+                {
+                  "url": "https://projects.csail.mit.edu/illumination/",
+                  "locator": "Abstract and Data",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://github.com/lmurmann/multi_illumination",
+                  "locator": "README SDK image,probe,material-mask and metadata access",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Capture more than1000 scenes under25 illumination conditions; supply HDR images,probes and annotations.",
+              "sources": [
+                {
+                  "url": "https://projects.csail.mit.edu/illumination/",
+                  "locator": "Abstract and Data",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://github.com/lmurmann/multi_illumination",
+                  "locator": "README SDK image,probe,material-mask and metadata access",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Image/probe pairs and metadata",
+              "sources": [
+                {
+                  "url": "https://projects.csail.mit.edu/illumination/",
+                  "locator": "Abstract and Data",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://github.com/lmurmann/multi_illumination",
+                  "locator": "README SDK image,probe,material-mask and metadata access",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Capture more than1000 scenes under25 illumination conditions; supply HDR images,probes and annotations.",
+            "outcome": "Capture more than1000 scenes under25 illumination conditions; supply HDR images,probes and annotations.",
+            "validation": "Image/probe pairs and metadata"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "rgbx",
+          "shortLabel": "RGB↔X: Image Decomposition and Synthesis Using Material- and Lighting-Aware Diffusion Models",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Author publication abstract and resource description; full PDF unavailable in this pass",
+          "evidence": [
+            {
+              "url": "https://iliyan.com/publications/RGBX/",
+              "locator": "Abstract and Figure description",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Conditional diffusion decomposes RGB into scene channels and synthesizes RGB from full or partial channels.",
+              "sources": [
+                {
+                  "url": "https://iliyan.com/publications/RGBX/",
+                  "locator": "Abstract and Figure description",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Conditional diffusion decomposes RGB into scene channels and synthesizes RGB from full or partial channels.",
+              "sources": [
+                {
+                  "url": "https://iliyan.com/publications/RGBX/",
+                  "locator": "Abstract and Figure description",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Intrinsic channels or synthesized RGB",
+              "sources": [
+                {
+                  "url": "https://iliyan.com/publications/RGBX/",
+                  "locator": "Abstract and Figure description",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Conditional diffusion decomposes RGB into scene channels and synthesizes RGB from full or partial channels.",
+            "outcome": "Conditional diffusion decomposes RGB into scene channels and synthesizes RGB from full or partial channels.",
+            "validation": "Intrinsic channels or synthesized RGB"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "depth-anything-v2",
+          "shortLabel": "Depth Anything V2",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text §§2–6 and supplementary B.4–B.5; lighting application not evaluated",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2406.09414v2",
+              "locator": "§§2–5; Table11; §B.5",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "locator": "§4.1 identifies Yang2024 depth preprocessing",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Synthetic-supervised teacher pseudo-labels real images to train smaller discriminative depth models.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2406.09414v2",
+                  "locator": "§§2–5; Table11; §B.5",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§4.1 identifies Yang2024 depth preprocessing",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Synthetic-supervised teacher pseudo-labels real images to train smaller discriminative depth models.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2406.09414v2",
+                  "locator": "§§2–5; Table11; §B.5",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§4.1 identifies Yang2024 depth preprocessing",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Depth map",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2406.09414v2",
+                  "locator": "§§2–5; Table11; §B.5",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§4.1 identifies Yang2024 depth preprocessing",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Synthetic-supervised teacher pseudo-labels real images to train smaller discriminative depth models.",
+            "outcome": "Synthetic-supervised teacher pseudo-labels real images to train smaller discriminative depth models.",
+            "validation": "Depth map"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "rgbx-next",
+          "shortLabel": "RGBX-Next: Towards Realistic Generative Rendering from G-Buffers",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text §§1,3,6,8.1,8.5 and references",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2608.13929v1",
+              "locator": "§1 RGB↔X relationship; §8.1 timing; §8.5 limitation",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Adapt Wan2.1 DiT using modality-aware frame tokens and staged streaming fine-tuning.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2608.13929v1",
+                  "locator": "§1 RGB↔X relationship; §8.1 timing; §8.5 limitation",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Adapt Wan2.1 DiT using modality-aware frame tokens and staged streaming fine-tuning.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2608.13929v1",
+                  "locator": "§1 RGB↔X relationship; §8.1 timing; §8.5 limitation",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "RGB or intrinsic video/stream",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2608.13929v1",
+                  "locator": "§1 RGB↔X relationship; §8.1 timing; §8.5 limitation",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Adapt Wan2.1 DiT using modality-aware frame tokens and staged streaming fine-tuning.",
+            "outcome": "Adapt Wan2.1 DiT using modality-aware frame tokens and staged streaming fine-tuning.",
+            "validation": "RGB or intrinsic video/stream"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-4",
+          "shortLabel": "ARCore for Jetpack XR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official developer documentation read; not a research paper",
+          "evidence": [
+            {
+              "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/arcore",
+              "locator": "Overview, Access a session, Next steps; updated September 22, 2026",
+              "claim": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose. Platform access for geometry-aware XR implementation. The reviewed overview does not document a bidirectional lighting solver or benchmark."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose.",
+              "sources": [
+                {
+                  "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/arcore",
+                  "locator": "Overview, Access a session, Next steps; updated September 22, 2026",
+                  "claim": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose. Platform access for geometry-aware XR implementation. The reviewed overview does not document a bidirectional lighting solver or benchmark."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose.",
+              "sources": [
+                {
+                  "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/arcore",
+                  "locator": "Overview, Access a session, Next steps; updated September 22, 2026",
+                  "claim": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose. Platform access for geometry-aware XR implementation. The reviewed overview does not document a bidirectional lighting solver or benchmark."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Platform access for geometry-aware XR implementation.",
+              "sources": [
+                {
+                  "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/arcore",
+                  "locator": "Overview, Access a session, Next steps; updated September 22, 2026",
+                  "claim": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose. Platform access for geometry-aware XR implementation. The reviewed overview does not document a bidirectional lighting solver or benchmark."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose.",
+            "outcome": "Session-based APIs supply planes, anchors, hands, faces, depth and device pose.",
+            "validation": "Platform access for geometry-aware XR implementation."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-5",
+          "shortLabel": "Spatial computing rendering",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official WWDC transcript read; platform baseline",
+          "evidence": [
+            {
+              "url": "https://developer.apple.com/videos/play/wwdc2023/10095/",
+              "locator": "Lighting and shadows 1:15–5:05; Materials 5:05 onward",
+              "claim": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows. Documents IBL, physical-space grounding shadows and physically based virtual materials. This session does not demonstrate arbitrary virtual lights relighting the camera image or measure illumination response latency."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows.",
+              "sources": [
+                {
+                  "url": "https://developer.apple.com/videos/play/wwdc2023/10095/",
+                  "locator": "Lighting and shadows 1:15–5:05; Materials 5:05 onward",
+                  "claim": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows. Documents IBL, physical-space grounding shadows and physically based virtual materials. This session does not demonstrate arbitrary virtual lights relighting the camera image or measure illumination response latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows.",
+              "sources": [
+                {
+                  "url": "https://developer.apple.com/videos/play/wwdc2023/10095/",
+                  "locator": "Lighting and shadows 1:15–5:05; Materials 5:05 onward",
+                  "claim": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows. Documents IBL, physical-space grounding shadows and physically based virtual materials. This session does not demonstrate arbitrary virtual lights relighting the camera image or measure illumination response latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Documents IBL, physical-space grounding shadows and physically based virtual materials.",
+              "sources": [
+                {
+                  "url": "https://developer.apple.com/videos/play/wwdc2023/10095/",
+                  "locator": "Lighting and shadows 1:15–5:05; Materials 5:05 onward",
+                  "claim": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows. Documents IBL, physical-space grounding shadows and physically based virtual materials. This session does not demonstrate arbitrary virtual lights relighting the camera image or measure illumination response latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows.",
+            "outcome": "RealityKit combines an ARKit room environment probe with a system IBL; developers can override system IBL and enable grounding shadows.",
+            "validation": "Documents IBL, physical-space grounding shadows and physically based virtual materials."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-6",
+          "shortLabel": "Enterprise APIs for visionOS",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official WWDC transcript read; platform baseline",
+          "evidence": [
+            {
+              "url": "https://developer.apple.com/videos/play/wwdc2024/10139/",
+              "locator": "Introduction, enhanced sensor access 2:36–11:38 and main-camera code 3:36",
+              "claim": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access. Documents an implementation route for camera-based CV pipelines on Vision Pro. The 2024 APIs require managed entitlements, a license and eligible private enterprise distribution."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access.",
+              "sources": [
+                {
+                  "url": "https://developer.apple.com/videos/play/wwdc2024/10139/",
+                  "locator": "Introduction, enhanced sensor access 2:36–11:38 and main-camera code 3:36",
+                  "claim": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access. Documents an implementation route for camera-based CV pipelines on Vision Pro. The 2024 APIs require managed entitlements, a license and eligible private enterprise distribution."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access.",
+              "sources": [
+                {
+                  "url": "https://developer.apple.com/videos/play/wwdc2024/10139/",
+                  "locator": "Introduction, enhanced sensor access 2:36–11:38 and main-camera code 3:36",
+                  "claim": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access. Documents an implementation route for camera-based CV pipelines on Vision Pro. The 2024 APIs require managed entitlements, a license and eligible private enterprise distribution."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Documents an implementation route for camera-based CV pipelines on Vision Pro.",
+              "sources": [
+                {
+                  "url": "https://developer.apple.com/videos/play/wwdc2024/10139/",
+                  "locator": "Introduction, enhanced sensor access 2:36–11:38 and main-camera code 3:36",
+                  "claim": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access. Documents an implementation route for camera-based CV pipelines on Vision Pro. The 2024 APIs require managed entitlements, a license and eligible private enterprise distribution."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access.",
+            "outcome": "Entitled CameraFrameProvider access exposes main-camera frames; enterprise APIs also enable passthrough capture and Neural Engine access.",
+            "validation": "Documents an implementation route for camera-based CV pipelines on Vision Pro."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-7",
+          "shortLabel": "Channel-wise noise diffusion",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2503.09993v1",
+              "locator": "§3.1–3.4; §4 evaluation settings; Table 8",
+              "claim": "OpenRooms FF supervision and spatial lighting are explicit; SDM uses T=4, which is not measured MR latency."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Channel-specific diffusion schedules jointly predict geometry, reflectance and per-pixel lighting before RGB-guided upsampling.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2503.09993v1",
+                  "locator": "§3.1–3.4; §4 evaluation settings; Table 8",
+                  "claim": "OpenRooms FF supervision and spatial lighting are explicit; SDM uses T=4, which is not measured MR latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Channel-specific diffusion schedules jointly predict geometry, reflectance and per-pixel lighting before RGB-guided upsampling.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2503.09993v1",
+                  "locator": "§3.1–3.4; §4 evaluation settings; Table 8",
+                  "claim": "OpenRooms FF supervision and spatial lighting are explicit; SDM uses T=4, which is not measured MR latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Accuracy-focused SDM and diversity-focused PDM improve complementary inverse-rendering settings.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2503.09993v1",
+                  "locator": "§3.1–3.4; §4 evaluation settings; Table 8",
+                  "claim": "OpenRooms FF supervision and spatial lighting are explicit; SDM uses T=4, which is not measured MR latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Channel-specific diffusion schedules jointly predict geometry, reflectance and per-pixel lighting before RGB-guided upsampling.",
+            "outcome": "Channel-specific diffusion schedules jointly predict geometry, reflectance and per-pixel lighting before RGB-guided upsampling.",
+            "validation": "Accuracy-focused SDM and diversity-focused PDM improve complementary inverse-rendering settings."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-8",
+          "shortLabel": "ScribbleLight",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2411.17696v1",
+              "locator": "§3.1–3.3; §4.1; §4.4 limitations; Appendix A",
+              "claim": "100K LSUN-bedroom images train the model; inference uses 20 DDIM steps, and reported user results remain single images."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Albedo-conditioned Stable Diffusion and a normals/scribble ControlNet generate brightening and darkening edits.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2411.17696v1",
+                  "locator": "§3.1–3.3; §4.1; §4.4 limitations; Appendix A",
+                  "claim": "100K LSUN-bedroom images train the model; inference uses 20 DDIM steps, and reported user results remain single images."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Albedo-conditioned Stable Diffusion and a normals/scribble ControlNet generate brightening and darkening edits.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2411.17696v1",
+                  "locator": "§3.1–3.3; §4.1; §4.4 limitations; Appendix A",
+                  "claim": "100K LSUN-bedroom images train the model; inference uses 20 DDIM steps, and reported user results remain single images."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Sparse binary scribbles control lamp effects and cast shadows without precise target shading.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2411.17696v1",
+                  "locator": "§3.1–3.3; §4.1; §4.4 limitations; Appendix A",
+                  "claim": "100K LSUN-bedroom images train the model; inference uses 20 DDIM steps, and reported user results remain single images."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Albedo-conditioned Stable Diffusion and a normals/scribble ControlNet generate brightening and darkening edits.",
+            "outcome": "Albedo-conditioned Stable Diffusion and a normals/scribble ControlNet generate brightening and darkening edits.",
+            "validation": "Sparse binary scribbles control lamp effects and cast shadows without precise target shading."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-9",
+          "shortLabel": "Debevec differential rendering",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected author-hosted PDF §§1,3–8; not an exhaustive evaluation audit.",
+          "evidence": [
+            {
+              "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+              "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
+              "sources": [
+                {
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
+              "sources": [
+                {
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Shows shadows and interreflection between inserted objects and nearby real surfaces.",
+              "sources": [
+                {
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
+            "outcome": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
+            "validation": "Shows shadows and interreflection between inserted objects and nearby real surfaces."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-11",
+          "shortLabel": "Neural illumination & relighting survey",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.14283",
+              "locator": "§1.2; §2.4; §§3–5",
+              "claim": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements. Provides technique taxonomy and dataset overview, including spatial variation and temporal coherence."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements.",
+              "sources": [
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.14283",
+                  "locator": "§1.2; §2.4; §§3–5",
+                  "claim": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements. Provides technique taxonomy and dataset overview, including spatial variation and temporal coherence."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements.",
+              "sources": [
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.14283",
+                  "locator": "§1.2; §2.4; §§3–5",
+                  "claim": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements. Provides technique taxonomy and dataset overview, including spatial variation and temporal coherence."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Provides technique taxonomy and dataset overview, including spatial variation and temporal coherence.",
+              "sources": [
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.14283",
+                  "locator": "§1.2; §2.4; §§3–5",
+                  "claim": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements. Provides technique taxonomy and dataset overview, including spatial variation and temporal coherence."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements.",
+            "outcome": "Separates illumination estimation, reflectance-aware scene-specific representations and image-to-image relighting; compares lighting models and training requirements.",
+            "validation": "Provides technique taxonomy and dataset overview, including spatial variation and temporal coherence."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-12",
+          "shortLabel": "Common illumination",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected publisher PDF abstract/introduction and method framing; implementation evaluation not exhaustively checked.",
+          "evidence": [
+            {
+              "url": "https://graphicsinterface.org/wp-content/uploads/gi1993-35.pdf",
+              "locator": "pp.254–262; abstract, §1 and common radiosity construction",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Approximate photographed objects with boxes, initialize their radiosity from image intensities and solve common radiosity.",
+              "sources": [
+                {
+                  "url": "https://graphicsinterface.org/wp-content/uploads/gi1993-35.pdf",
+                  "locator": "pp.254–262; abstract, §1 and common radiosity construction",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Approximate photographed objects with boxes, initialize their radiosity from image intensities and solve common radiosity.",
+              "sources": [
+                {
+                  "url": "https://graphicsinterface.org/wp-content/uploads/gi1993-35.pdf",
+                  "locator": "pp.254–262; abstract, §1 and common radiosity construction",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates image corrections and a moving synthetic light in a composited animation.",
+              "sources": [
+                {
+                  "url": "https://graphicsinterface.org/wp-content/uploads/gi1993-35.pdf",
+                  "locator": "pp.254–262; abstract, §1 and common radiosity construction",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Approximate photographed objects with boxes, initialize their radiosity from image intensities and solve common radiosity.",
+            "outcome": "Approximate photographed objects with boxes, initialize their radiosity from image intensities and solve common radiosity.",
+            "validation": "Demonstrates image corrections and a moving synthetic light in a composited animation."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-13",
+          "shortLabel": "Delta light propagation volumes",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://www.tobias-franke.eu/publications/franke13dlpv/franke13dlpv.pdf",
+              "locator": "§§3–6; Table1; §7 limitations; §8 future work",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Inject reflective-shadow-map virtual point lights into a spherical-harmonic delta light propagation volume.",
+              "sources": [
+                {
+                  "url": "https://www.tobias-franke.eu/publications/franke13dlpv/franke13dlpv.pdf",
+                  "locator": "§§3–6; Table1; §7 limitations; §8 future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Inject reflective-shadow-map virtual point lights into a spherical-harmonic delta light propagation volume.",
+              "sources": [
+                {
+                  "url": "https://www.tobias-franke.eu/publications/franke13dlpv/franke13dlpv.pdf",
+                  "locator": "§§3–6; Table1; §7 limitations; §8 future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Provides temporally coherent first-bounce diffuse transfer and smooth low-frequency shadows.",
+              "sources": [
+                {
+                  "url": "https://www.tobias-franke.eu/publications/franke13dlpv/franke13dlpv.pdf",
+                  "locator": "§§3–6; Table1; §7 limitations; §8 future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Inject reflective-shadow-map virtual point lights into a spherical-harmonic delta light propagation volume.",
+            "outcome": "Inject reflective-shadow-map virtual point lights into a spherical-harmonic delta light propagation volume.",
+            "validation": "Provides temporally coherent first-bounce diffuse transfer and smooth low-frequency shadows."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-14",
+          "shortLabel": "Indoor illumination prediction",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1704.00090",
+              "locator": "§§4–8; Limitations and future work",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1704.00090",
+                  "locator": "§§4–8; Limitations and future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1704.00090",
+                  "locator": "§§4–8; Limitations and future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Produces an HDR environment map used for virtual-object insertion and perceptual comparisons.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1704.00090",
+                  "locator": "§§4–8; Limitations and future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
+            "outcome": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
+            "validation": "Produces an HDR environment map used for virtual-object insertion and perceptual comparisons."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-15",
+          "shortLabel": "Deep parametric lighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1910.08812",
+              "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+              "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1910.08812",
+                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1910.08812",
+                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Compact editable lighting parameters support object insertion at different scene positions.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1910.08812",
+                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+            "outcome": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+            "validation": "Compact editable lighting parameters support object insertion at different scene positions."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-16",
+          "shortLabel": "Fast spatially varying lighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1906.03799",
+              "locator": "§4 global/local network; §6 live AR demo; §7 conclusion",
+              "claim": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation. Local lighting estimates permit live virtual-object relighting from RGB. SH bounds angular detail; the live demo independently predicts each frame without enforcing temporal consistency."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1906.03799",
+                  "locator": "§4 global/local network; §6 live AR demo; §7 conclusion",
+                  "claim": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation. Local lighting estimates permit live virtual-object relighting from RGB. SH bounds angular detail; the live demo independently predicts each frame without enforcing temporal consistency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1906.03799",
+                  "locator": "§4 global/local network; §6 live AR demo; §7 conclusion",
+                  "claim": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation. Local lighting estimates permit live virtual-object relighting from RGB. SH bounds angular detail; the live demo independently predicts each frame without enforcing temporal consistency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Local lighting estimates permit live virtual-object relighting from RGB.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1906.03799",
+                  "locator": "§4 global/local network; §6 live AR demo; §7 conclusion",
+                  "claim": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation. Local lighting estimates permit live virtual-object relighting from RGB. SH bounds angular detail; the live demo independently predicts each frame without enforcing temporal consistency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation.",
+            "outcome": "A global/local CNN predicts fifth-degree spherical-harmonic lighting at a selected pixel; synthetic probe supervision is paired with real-image domain adaptation.",
+            "validation": "Local lighting estimates permit live virtual-object relighting from RGB."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-17",
+          "shortLabel": "ARCore lighting estimation",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official developer documentation read; not a research paper",
+          "evidence": [
+            {
+              "url": "https://developers.google.com/ar/develop/lighting-estimation",
+              "locator": "Environmental HDR and Ambient Intensity sections",
+              "claim": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color. A practical real→virtual baseline for shading, cast shadows and shiny reflections. The reviewed guide supplies no full-pipeline latency or arbitrary nearby-emitter reconstruction guarantee."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color.",
+              "sources": [
+                {
+                  "url": "https://developers.google.com/ar/develop/lighting-estimation",
+                  "locator": "Environmental HDR and Ambient Intensity sections",
+                  "claim": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color. A practical real→virtual baseline for shading, cast shadows and shiny reflections. The reviewed guide supplies no full-pipeline latency or arbitrary nearby-emitter reconstruction guarantee."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color.",
+              "sources": [
+                {
+                  "url": "https://developers.google.com/ar/develop/lighting-estimation",
+                  "locator": "Environmental HDR and Ambient Intensity sections",
+                  "claim": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color. A practical real→virtual baseline for shading, cast shadows and shiny reflections. The reviewed guide supplies no full-pipeline latency or arbitrary nearby-emitter reconstruction guarantee."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A practical real→virtual baseline for shading, cast shadows and shiny reflections.",
+              "sources": [
+                {
+                  "url": "https://developers.google.com/ar/develop/lighting-estimation",
+                  "locator": "Environmental HDR and Ambient Intensity sections",
+                  "claim": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color. A practical real→virtual baseline for shading, cast shadows and shiny reflections. The reviewed guide supplies no full-pipeline latency or arbitrary nearby-emitter reconstruction guarantee."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color.",
+            "outcome": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color.",
+            "validation": "A practical real→virtual baseline for shading, cast shadows and shiny reflections."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-18",
+          "shortLabel": "Photometric registration",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+              "locator": "§3–4 pipeline; §5.5 limitations and performance",
+              "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
+              "sources": [
+                {
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
+                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
+              "sources": [
+                {
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
+                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions.",
+              "sources": [
+                {
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
+                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
+            "outcome": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
+            "validation": "Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-20",
+          "shortLabel": "AR shadow volumes",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text rendering algorithm and §4 experiments; numeric timing not verified.",
+          "evidence": [
+            {
+              "url": "https://www.cse.cuhk.edu.hk/~hanqiu/Seminar/AS-1.pdf",
+              "locator": "§§3–4; experiments pp.6–7",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Render stencil shadow volumes using pre-modeled phantom geometry and marker tracking.",
+              "sources": [
+                {
+                  "url": "https://www.cse.cuhk.edu.hk/~hanqiu/Seminar/AS-1.pdf",
+                  "locator": "§§3–4; experiments pp.6–7",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Render stencil shadow volumes using pre-modeled phantom geometry and marker tracking.",
+              "sources": [
+                {
+                  "url": "https://www.cse.cuhk.edu.hk/~hanqiu/Seminar/AS-1.pdf",
+                  "locator": "§§3–4; experiments pp.6–7",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates real objects shadowing virtual objects and virtual objects shadowing real surfaces.",
+              "sources": [
+                {
+                  "url": "https://www.cse.cuhk.edu.hk/~hanqiu/Seminar/AS-1.pdf",
+                  "locator": "§§3–4; experiments pp.6–7",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Render stencil shadow volumes using pre-modeled phantom geometry and marker tracking.",
+            "outcome": "Render stencil shadow volumes using pre-modeled phantom geometry and marker tracking.",
+            "validation": "Demonstrates real objects shadowing virtual objects and virtual objects shadowing real surfaces."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-21",
+          "shortLabel": "Deep sky modeling",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1905.03897",
+              "locator": "§4 sky model, §5 image estimation, conclusion",
+              "claim": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image. Handles broader weather variation than an analytic clear-sky model. Authors report limited sky texture recovery and sometimes weaker shadows than the analytic comparison preferred by users."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1905.03897",
+                  "locator": "§4 sky model, §5 image estimation, conclusion",
+                  "claim": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image. Handles broader weather variation than an analytic clear-sky model. Authors report limited sky texture recovery and sometimes weaker shadows than the analytic comparison preferred by users."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1905.03897",
+                  "locator": "§4 sky model, §5 image estimation, conclusion",
+                  "claim": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image. Handles broader weather variation than an analytic clear-sky model. Authors report limited sky texture recovery and sometimes weaker shadows than the analytic comparison preferred by users."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Handles broader weather variation than an analytic clear-sky model.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1905.03897",
+                  "locator": "§4 sky model, §5 image estimation, conclusion",
+                  "claim": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image. Handles broader weather variation than an analytic clear-sky model. Authors report limited sky texture recovery and sometimes weaker shadows than the analytic comparison preferred by users."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image.",
+            "outcome": "A learned HDR sky latent model combines SUN360 illumination diversity with calibrated Laval HDR sky data, then predicts a sky map from an image.",
+            "validation": "Handles broader weather variation than an analytic clear-sky model."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-22",
+          "shortLabel": "DeProCams",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2003.03040",
+              "locator": "§3.2; §3.3; §6 Discussion",
+              "claim": "Explicit rough diffuse/specular shading initializes neural direct/indirect transport; indirect regions remain a limitation."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Learn geometric/photometric mappings with shading estimation, direct-light approximation, neural rendering and a differentiable occlusion mask.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.03040",
+                  "locator": "§3.2; §3.3; §6 Discussion",
+                  "claim": "Explicit rough diffuse/specular shading initializes neural direct/indirect transport; indirect regions remain a limitation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Learn geometric/photometric mappings with shading estimation, direct-light approximation, neural rendering and a differentiable occlusion mask.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.03040",
+                  "locator": "§3.2; §3.3; §6 Discussion",
+                  "claim": "Explicit rough diffuse/specular shading initializes neural direct/indirect transport; indirect regions remain a limitation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "One trained scene-specific model supports three ProCam tasks.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.03040",
+                  "locator": "§3.2; §3.3; §6 Discussion",
+                  "claim": "Explicit rough diffuse/specular shading initializes neural direct/indirect transport; indirect regions remain a limitation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Learn geometric/photometric mappings with shading estimation, direct-light approximation, neural rendering and a differentiable occlusion mask.",
+            "outcome": "Learn geometric/photometric mappings with shading estimation, direct-light approximation, neural rendering and a differentiable occlusion mask.",
+            "validation": "One trained scene-specific model supports three ProCam tasks."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-23",
+          "shortLabel": "Light attenuation display",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://www.hci.otago.ac.nz/papers/ItohIEEETVCG2019.pdf",
+              "locator": "Abstract; §1; §7",
+              "claim": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering. Proof-of-concept near-eye display changes the viewed real scene through attenuation."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering.",
+              "sources": [
+                {
+                  "url": "https://www.hci.otago.ac.nz/papers/ItohIEEETVCG2019.pdf",
+                  "locator": "Abstract; §1; §7",
+                  "claim": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering. Proof-of-concept near-eye display changes the viewed real scene through attenuation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering.",
+              "sources": [
+                {
+                  "url": "https://www.hci.otago.ac.nz/papers/ItohIEEETVCG2019.pdf",
+                  "locator": "Abstract; §1; §7",
+                  "claim": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering. Proof-of-concept near-eye display changes the viewed real scene through attenuation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Proof-of-concept near-eye display changes the viewed real scene through attenuation.",
+              "sources": [
+                {
+                  "url": "https://www.hci.otago.ac.nz/papers/ItohIEEETVCG2019.pdf",
+                  "locator": "Abstract; §1; §7",
+                  "claim": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering. Proof-of-concept near-eye display changes the viewed real scene through attenuation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering.",
+            "outcome": "Phase-only spatial light modulation plus polarization optics creates pixel-wise subtractive color filtering.",
+            "validation": "Proof-of-concept near-eye display changes the viewed real scene through attenuation."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-24",
+          "shortLabel": "Neural Gaffer",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2406.07520v2",
+              "locator": "§3.1–3.3; §4; §5 and Fig. 9",
+              "claim": "HDR environment maps condition 256×256 object relighting; the optional NeRF procedure is separate from the 2D model."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "An environment-conditioned image diffusion model learns from synthetic object relighting and can guide NeRF relighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2406.07520v2",
+                  "locator": "§3.1–3.3; §4; §5 and Fig. 9",
+                  "claim": "HDR environment maps condition 256×256 object relighting; the optional NeRF procedure is separate from the 2D model."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "An environment-conditioned image diffusion model learns from synthetic object relighting and can guide NeRF relighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2406.07520v2",
+                  "locator": "§3.1–3.3; §4; §5 and Fig. 9",
+                  "claim": "HDR environment maps condition 256×256 object relighting; the optional NeRF procedure is separate from the 2D model."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The same learned prior supports object-image relighting and a two-stage radiance-field workflow.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2406.07520v2",
+                  "locator": "§3.1–3.3; §4; §5 and Fig. 9",
+                  "claim": "HDR environment maps condition 256×256 object relighting; the optional NeRF procedure is separate from the 2D model."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "An environment-conditioned image diffusion model learns from synthetic object relighting and can guide NeRF relighting.",
+            "outcome": "An environment-conditioned image diffusion model learns from synthetic object relighting and can guide NeRF relighting.",
+            "validation": "The same learned prior supports object-image relighting and a two-stage radiance-field workflow."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-25",
+          "shortLabel": "RoomAlive",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper2943.pdf",
+              "locator": "Abstract; Introduction; Fig.1 live prototype",
+              "claim": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position. Demonstrates room-scale interactive projection mapping with four experience prototypes."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position.",
+              "sources": [
+                {
+                  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper2943.pdf",
+                  "locator": "Abstract; Introduction; Fig.1 live prototype",
+                  "claim": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position. Demonstrates room-scale interactive projection mapping with four experience prototypes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position.",
+              "sources": [
+                {
+                  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper2943.pdf",
+                  "locator": "Abstract; Introduction; Fig.1 live prototype",
+                  "claim": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position. Demonstrates room-scale interactive projection mapping with four experience prototypes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates room-scale interactive projection mapping with four experience prototypes.",
+              "sources": [
+                {
+                  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper2943.pdf",
+                  "locator": "Abstract; Introduction; Fig.1 live prototype",
+                  "claim": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position. Demonstrates room-scale interactive projection mapping with four experience prototypes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position.",
+            "outcome": "Autocalibrating projector-depth-camera units build a shared room model and adapt projected game content to room/user position.",
+            "validation": "Demonstrates room-scale interactive projection mapping with four experience prototypes."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-26",
+          "shortLabel": "IllumiRoom",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2013/04/illumiroom-illumiroom_chi2013_bjones.pdf",
+              "locator": "Abstract; system contributions",
+              "claim": "Kinect room geometry/appearance guides peripheral projected illusions around a television. Real-time proof-of-concept changes room appearance and perceived motion."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Kinect room geometry/appearance guides peripheral projected illusions around a television.",
+              "sources": [
+                {
+                  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2013/04/illumiroom-illumiroom_chi2013_bjones.pdf",
+                  "locator": "Abstract; system contributions",
+                  "claim": "Kinect room geometry/appearance guides peripheral projected illusions around a television. Real-time proof-of-concept changes room appearance and perceived motion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Kinect room geometry/appearance guides peripheral projected illusions around a television.",
+              "sources": [
+                {
+                  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2013/04/illumiroom-illumiroom_chi2013_bjones.pdf",
+                  "locator": "Abstract; system contributions",
+                  "claim": "Kinect room geometry/appearance guides peripheral projected illusions around a television. Real-time proof-of-concept changes room appearance and perceived motion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Real-time proof-of-concept changes room appearance and perceived motion.",
+              "sources": [
+                {
+                  "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2013/04/illumiroom-illumiroom_chi2013_bjones.pdf",
+                  "locator": "Abstract; system contributions",
+                  "claim": "Kinect room geometry/appearance guides peripheral projected illusions around a television. Real-time proof-of-concept changes room appearance and perceived motion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Kinect room geometry/appearance guides peripheral projected illusions around a television.",
+            "outcome": "Kinect room geometry/appearance guides peripheral projected illusions around a television.",
+            "validation": "Real-time proof-of-concept changes room appearance and perceived motion."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-27",
+          "shortLabel": "LumiGauss",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2408.04474v2",
+              "locator": "§3; Table 2; §4.5",
+              "claim": "Diffuse reconstruction, learned shadow transport, fitting and rendering scope."
+            },
+            {
+              "url": "https://lumigauss.github.io/",
+              "locator": "Qualitative Results: Point Light Synthesis",
+              "claim": "Point-light synthesis appears as a project demonstration."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "2D Gaussian splatting separates diffuse albedo from spherical-harmonic light transport and environment illumination.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2408.04474v2",
+                  "locator": "§3; Table 2; §4.5",
+                  "claim": "Diffuse reconstruction, learned shadow transport, fitting and rendering scope."
+                },
+                {
+                  "url": "https://lumigauss.github.io/",
+                  "locator": "Qualitative Results: Point Light Synthesis",
+                  "claim": "Point-light synthesis appears as a project demonstration."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "2D Gaussian splatting separates diffuse albedo from spherical-harmonic light transport and environment illumination.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2408.04474v2",
+                  "locator": "§3; Table 2; §4.5",
+                  "claim": "Diffuse reconstruction, learned shadow transport, fitting and rendering scope."
+                },
+                {
+                  "url": "https://lumigauss.github.io/",
+                  "locator": "Qualitative Results: Point Light Synthesis",
+                  "claim": "Point-light synthesis appears as a project demonstration."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Precomputed radiance transfer enables novel-view and novel-light rendering with learned shadows.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2408.04474v2",
+                  "locator": "§3; Table 2; §4.5",
+                  "claim": "Diffuse reconstruction, learned shadow transport, fitting and rendering scope."
+                },
+                {
+                  "url": "https://lumigauss.github.io/",
+                  "locator": "Qualitative Results: Point Light Synthesis",
+                  "claim": "Point-light synthesis appears as a project demonstration."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "2D Gaussian splatting separates diffuse albedo from spherical-harmonic light transport and environment illumination.",
+            "outcome": "2D Gaussian splatting separates diffuse albedo from spherical-harmonic light transport and environment illumination.",
+            "validation": "Precomputed radiance transfer enables novel-view and novel-light rendering with learned shadows."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-28",
+          "shortLabel": "Differential irradiance caching",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Author institutional abstract only; primary full text not retrieved in this pass.",
+          "evidence": [
+            {
+              "url": "https://www.vr.tuwien.ac.at/publications/differential-irradiance-caching-for-fast-high-quality-light-transport-between-virtual-and-real-worlds-2013/",
+              "locator": "Author institutional abstract, paragraphs1–4",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "GPU ray tracing evaluates differential irradiance cache records and rasterized cache splats interpolate the result.",
+              "sources": [
+                {
+                  "url": "https://www.vr.tuwien.ac.at/publications/differential-irradiance-caching-for-fast-high-quality-light-transport-between-virtual-and-real-worlds-2013/",
+                  "locator": "Author institutional abstract, paragraphs1–4",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "GPU ray tracing evaluates differential irradiance cache records and rasterized cache splats interpolate the result.",
+              "sources": [
+                {
+                  "url": "https://www.vr.tuwien.ac.at/publications/differential-irradiance-caching-for-fast-high-quality-light-transport-between-virtual-and-real-worlds-2013/",
+                  "locator": "Author institutional abstract, paragraphs1–4",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Institutional abstract reports multiple diffuse bounces with dynamic geometry, lights, materials and camera.",
+              "sources": [
+                {
+                  "url": "https://www.vr.tuwien.ac.at/publications/differential-irradiance-caching-for-fast-high-quality-light-transport-between-virtual-and-real-worlds-2013/",
+                  "locator": "Author institutional abstract, paragraphs1–4",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "GPU ray tracing evaluates differential irradiance cache records and rasterized cache splats interpolate the result.",
+            "outcome": "GPU ray tracing evaluates differential irradiance cache records and rasterized cache splats interpolate the result.",
+            "validation": "Institutional abstract reports multiple diffuse bounces with dynamic geometry, lights, materials and camera."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-29",
+          "shortLabel": "Cascaded LPV",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://cg.ivd.kit.edu/publications/p2010/CLPVFRII_Kaplanyan_2010/CLPVFRII_Kaplanyan_2010.pdf",
+              "locator": "§§3–7; Fig1; Fig11–12; §8 conclusion",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Propagate low-order spherical-harmonic radiance through cascaded grids initialized from reflective shadow maps.",
+              "sources": [
+                {
+                  "url": "https://cg.ivd.kit.edu/publications/p2010/CLPVFRII_Kaplanyan_2010/CLPVFRII_Kaplanyan_2010.pdf",
+                  "locator": "§§3–7; Fig1; Fig11–12; §8 conclusion",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Propagate low-order spherical-harmonic radiance through cascaded grids initialized from reflective shadow maps.",
+              "sources": [
+                {
+                  "url": "https://cg.ivd.kit.edu/publications/p2010/CLPVFRII_Kaplanyan_2010/CLPVFRII_Kaplanyan_2010.pdf",
+                  "locator": "§§3–7; Fig1; Fig11–12; §8 conclusion",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates dynamic low-frequency diffuse lighting without scene precomputation.",
+              "sources": [
+                {
+                  "url": "https://cg.ivd.kit.edu/publications/p2010/CLPVFRII_Kaplanyan_2010/CLPVFRII_Kaplanyan_2010.pdf",
+                  "locator": "§§3–7; Fig1; Fig11–12; §8 conclusion",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Propagate low-order spherical-harmonic radiance through cascaded grids initialized from reflective shadow maps.",
+            "outcome": "Propagate low-order spherical-harmonic radiance through cascaded grids initialized from reflective shadow maps.",
+            "validation": "Demonstrates dynamic low-frequency diffuse lighting without scene precomputation."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-30",
+          "shortLabel": "EverLight",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Dastjerdi_EverLight_Indoor-Outdoor_Editable_HDR_Lighting_Estimation_ICCV_2023_paper.pdf",
+              "locator": "§§3–5; Figs4–5; limitations paragraph",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Combine predicted spherical-Gaussian light parameters with a co-modulated GAN panorama generator.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Dastjerdi_EverLight_Indoor-Outdoor_Editable_HDR_Lighting_Estimation_ICCV_2023_paper.pdf",
+                  "locator": "§§3–5; Figs4–5; limitations paragraph",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Combine predicted spherical-Gaussian light parameters with a co-modulated GAN panorama generator.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Dastjerdi_EverLight_Indoor-Outdoor_Editable_HDR_Lighting_Estimation_ICCV_2023_paper.pdf",
+                  "locator": "§§3–5; Figs4–5; limitations paragraph",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Produces editable illumination and detailed environment texture for shading and specular reflection.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Dastjerdi_EverLight_Indoor-Outdoor_Editable_HDR_Lighting_Estimation_ICCV_2023_paper.pdf",
+                  "locator": "§§3–5; Figs4–5; limitations paragraph",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Combine predicted spherical-Gaussian light parameters with a co-modulated GAN panorama generator.",
+            "outcome": "Combine predicted spherical-Gaussian light parameters with a co-modulated GAN panorama generator.",
+            "validation": "Produces editable illumination and detailed environment texture for shading and specular reflection."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-31",
+          "shortLabel": "Mutual occlusion display",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://citeseerx.ist.psu.edu/document?doi=3662b5b2e3d75dc939576c3fd086f4d3c1a87d32&repid=rep1&type=pdf",
+              "locator": "Abstract; Introduction",
+              "claim": "Embedded light-blocking mechanism separates attenuation from the color graphics display. Prototype enables mutual real/virtual occlusion."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Embedded light-blocking mechanism separates attenuation from the color graphics display.",
+              "sources": [
+                {
+                  "url": "https://citeseerx.ist.psu.edu/document?doi=3662b5b2e3d75dc939576c3fd086f4d3c1a87d32&repid=rep1&type=pdf",
+                  "locator": "Abstract; Introduction",
+                  "claim": "Embedded light-blocking mechanism separates attenuation from the color graphics display. Prototype enables mutual real/virtual occlusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Embedded light-blocking mechanism separates attenuation from the color graphics display.",
+              "sources": [
+                {
+                  "url": "https://citeseerx.ist.psu.edu/document?doi=3662b5b2e3d75dc939576c3fd086f4d3c1a87d32&repid=rep1&type=pdf",
+                  "locator": "Abstract; Introduction",
+                  "claim": "Embedded light-blocking mechanism separates attenuation from the color graphics display. Prototype enables mutual real/virtual occlusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Prototype enables mutual real/virtual occlusion.",
+              "sources": [
+                {
+                  "url": "https://citeseerx.ist.psu.edu/document?doi=3662b5b2e3d75dc939576c3fd086f4d3c1a87d32&repid=rep1&type=pdf",
+                  "locator": "Abstract; Introduction",
+                  "claim": "Embedded light-blocking mechanism separates attenuation from the color graphics display. Prototype enables mutual real/virtual occlusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Embedded light-blocking mechanism separates attenuation from the color graphics display.",
+            "outcome": "Embedded light-blocking mechanism separates attenuation from the color graphics display.",
+            "validation": "Prototype enables mutual real/virtual occlusion."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-32",
+          "shortLabel": "Assessing photorealism",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2407.01767v1",
+              "locator": "§§3.1–3.4; §4.4; §§5–6",
+              "claim": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls. Hardest-shadow control differed; HDRI and real-reference groups were not significantly separated in this setup."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2407.01767v1",
+                  "locator": "§§3.1–3.4; §4.4; §§5–6",
+                  "claim": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls. Hardest-shadow control differed; HDRI and real-reference groups were not significantly separated in this setup."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2407.01767v1",
+                  "locator": "§§3.1–3.4; §4.4; §§5–6",
+                  "claim": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls. Hardest-shadow control differed; HDRI and real-reference groups were not significantly separated in this setup."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Hardest-shadow control differed; HDRI and real-reference groups were not significantly separated in this setup.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2407.01767v1",
+                  "locator": "§§3.1–3.4; §4.4; §§5–6",
+                  "claim": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls. Hardest-shadow control differed; HDRI and real-reference groups were not significantly separated in this setup."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls.",
+            "outcome": "Online two-alternative realism comparison; HDRI/Cycles pipeline versus real photographs and directional-light penumbra controls.",
+            "validation": "Hardest-shadow control differed; HDRI and real-reference groups were not significantly separated in this setup."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-34",
+          "shortLabel": "Differential instant radiosity",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://www.cs.ucf.edu/courses/cap6121/spr16/readings/RadiosityMR.pdf",
+              "locator": "§§3.1–3.4; temporal coherence; results and conclusion",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Combine differential rendering with reflective-shadow-map virtual point lights and instant radiosity.",
+              "sources": [
+                {
+                  "url": "https://www.cs.ucf.edu/courses/cap6121/spr16/readings/RadiosityMR.pdf",
+                  "locator": "§§3.1–3.4; temporal coherence; results and conclusion",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Combine differential rendering with reflective-shadow-map virtual point lights and instant radiosity.",
+              "sources": [
+                {
+                  "url": "https://www.cs.ucf.edu/courses/cap6121/spr16/readings/RadiosityMR.pdf",
+                  "locator": "§§3.1–3.4; temporal coherence; results and conclusion",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Shows reciprocal diffuse shading and temporally stabilized shadow boundaries.",
+              "sources": [
+                {
+                  "url": "https://www.cs.ucf.edu/courses/cap6121/spr16/readings/RadiosityMR.pdf",
+                  "locator": "§§3.1–3.4; temporal coherence; results and conclusion",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Combine differential rendering with reflective-shadow-map virtual point lights and instant radiosity.",
+            "outcome": "Combine differential rendering with reflective-shadow-map virtual point lights and instant radiosity.",
+            "validation": "Shows reciprocal diffuse shading and temporally stabilized shadow boundaries."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-36",
+          "shortLabel": "LightIt",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official project method and demonstrations checked; full-paper evaluation and limitations not fully inspected.",
+          "evidence": [
+            {
+              "url": "https://peter-kocsis.github.io/LightIt/",
+              "locator": "Shading Estimation; Model Overview",
+              "claim": "The estimator traces toward a sun direction with specified solid angle, then conditions the generative model."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A density-based shadow/shading estimator conditions diffusion through normal and direct-shading maps.",
+              "sources": [
+                {
+                  "url": "https://peter-kocsis.github.io/LightIt/",
+                  "locator": "Shading Estimation; Model Overview",
+                  "claim": "The estimator traces toward a sun direction with specified solid angle, then conditions the generative model."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A density-based shadow/shading estimator conditions diffusion through normal and direct-shading maps.",
+              "sources": [
+                {
+                  "url": "https://peter-kocsis.github.io/LightIt/",
+                  "locator": "Shading Estimation; Model Overview",
+                  "claim": "The estimator traces toward a sun direction with specified solid angle, then conditions the generative model."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The pipeline controls cast-shadow direction and supports an identity-preserving image-relighting variant.",
+              "sources": [
+                {
+                  "url": "https://peter-kocsis.github.io/LightIt/",
+                  "locator": "Shading Estimation; Model Overview",
+                  "claim": "The estimator traces toward a sun direction with specified solid angle, then conditions the generative model."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A density-based shadow/shading estimator conditions diffusion through normal and direct-shading maps.",
+            "outcome": "A density-based shadow/shading estimator conditions diffusion through normal and direct-shading maps.",
+            "validation": "The pipeline controls cast-shadow direction and supports an identity-preserving image-relighting variant."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-37",
+          "shortLabel": "Mixed reality rendering survey",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "primary-abstract",
+          "evidence": [
+            {
+              "url": "https://vcg.isti.cnr.it/publication/2015/KBGMU15/",
+              "locator": "Author institutional publication abstract",
+              "claim": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements. Provides foundational technique selection context across AR/VFX/product visualization."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements.",
+              "sources": [
+                {
+                  "url": "https://vcg.isti.cnr.it/publication/2015/KBGMU15/",
+                  "locator": "Author institutional publication abstract",
+                  "claim": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements. Provides foundational technique selection context across AR/VFX/product visualization."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements.",
+              "sources": [
+                {
+                  "url": "https://vcg.isti.cnr.it/publication/2015/KBGMU15/",
+                  "locator": "Author institutional publication abstract",
+                  "claim": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements. Provides foundational technique selection context across AR/VFX/product visualization."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Provides foundational technique selection context across AR/VFX/product visualization.",
+              "sources": [
+                {
+                  "url": "https://vcg.isti.cnr.it/publication/2015/KBGMU15/",
+                  "locator": "Author institutional publication abstract",
+                  "claim": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements. Provides foundational technique selection context across AR/VFX/product visualization."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements.",
+            "outcome": "Survey categorizes image-based lighting, spatially varying capture and rendering without explicit lighting measurements.",
+            "validation": "Provides foundational technique selection context across AR/VFX/product visualization."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-38",
+          "shortLabel": "Perspective-correct passthrough",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary paper abstract/architecture and official author project checked; detailed evaluation pending",
+          "evidence": [
+            {
+              "url": "https://doi.org/10.1145/3588432.3591534",
+              "locator": "Paper abstract and Figure1; author project https://grace-kuo.com/",
+              "claim": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype. Preserves perspective even with transparency, specular highlights and complex occlusion. Full limitations and numeric timings have not yet been independently checked in this reading pass."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype.",
+              "sources": [
+                {
+                  "url": "https://doi.org/10.1145/3588432.3591534",
+                  "locator": "Paper abstract and Figure1; author project https://grace-kuo.com/",
+                  "claim": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype. Preserves perspective even with transparency, specular highlights and complex occlusion. Full limitations and numeric timings have not yet been independently checked in this reading pass."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype.",
+              "sources": [
+                {
+                  "url": "https://doi.org/10.1145/3588432.3591534",
+                  "locator": "Paper abstract and Figure1; author project https://grace-kuo.com/",
+                  "claim": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype. Preserves perspective even with transparency, specular highlights and complex occlusion. Full limitations and numeric timings have not yet been independently checked in this reading pass."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Preserves perspective even with transparency, specular highlights and complex occlusion.",
+              "sources": [
+                {
+                  "url": "https://doi.org/10.1145/3588432.3591534",
+                  "locator": "Paper abstract and Figure1; author project https://grace-kuo.com/",
+                  "claim": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype. Preserves perspective even with transparency, specular highlights and complex occlusion. Full limitations and numeric timings have not yet been independently checked in this reading pass."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype.",
+            "outcome": "A lens/aperture array directly samples eye-position rays, followed by lightweight reconstruction in a binocular prototype.",
+            "validation": "Preserves perspective even with transparency, specular highlights and complex occlusion."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-39",
+          "shortLabel": "Differential progressive path tracing",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://peterkan.com/download/isvc.pdf",
+              "locator": "§§3–5; progressive mode; §6 future work",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Differential GPU path tracing renders low-sample previews and accumulates a static view; photon mapping handles caustics.",
+              "sources": [
+                {
+                  "url": "https://peterkan.com/download/isvc.pdf",
+                  "locator": "§§3–5; progressive mode; §6 future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Differential GPU path tracing renders low-sample previews and accumulates a static view; photon mapping handles caustics.",
+              "sources": [
+                {
+                  "url": "https://peterkan.com/download/isvc.pdf",
+                  "locator": "§§3–5; progressive mode; §6 future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supports reciprocal diffuse/specular global illumination and depth of field.",
+              "sources": [
+                {
+                  "url": "https://peterkan.com/download/isvc.pdf",
+                  "locator": "§§3–5; progressive mode; §6 future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Differential GPU path tracing renders low-sample previews and accumulates a static view; photon mapping handles caustics.",
+            "outcome": "Differential GPU path tracing renders low-sample previews and accumulates a static view; photon mapping handles caustics.",
+            "validation": "Supports reciprocal diffuse/specular global illumination and depth of field."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-40",
+          "shortLabel": "Quest 3 compositing feasibility",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2509.18929v1",
+              "locator": "§III methodology; §IV-I interpretation; §V-A–E limitations",
+              "claim": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs. Proposes a standalone compositing architecture and resource/headroom analysis. §V explicitly says no hardware prototype validation and generic thermal modeling, despite stronger language in the abstract."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2509.18929v1",
+                  "locator": "§III methodology; §IV-I interpretation; §V-A–E limitations",
+                  "claim": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs. Proposes a standalone compositing architecture and resource/headroom analysis. §V explicitly says no hardware prototype validation and generic thermal modeling, despite stronger language in the abstract."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2509.18929v1",
+                  "locator": "§III methodology; §IV-I interpretation; §V-A–E limitations",
+                  "claim": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs. Proposes a standalone compositing architecture and resource/headroom analysis. §V explicitly says no hardware prototype validation and generic thermal modeling, despite stronger language in the abstract."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Proposes a standalone compositing architecture and resource/headroom analysis.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2509.18929v1",
+                  "locator": "§III methodology; §IV-I interpretation; §V-A–E limitations",
+                  "claim": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs. Proposes a standalone compositing architecture and resource/headroom analysis. §V explicitly says no hardware prototype validation and generic thermal modeling, despite stronger language in the abstract."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs.",
+            "outcome": "Simulation and public SoC benchmarks estimate passthrough, segmentation, scene rendering and encoding costs.",
+            "validation": "Proposes a standalone compositing architecture and resource/headroom analysis."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-42",
+          "shortLabel": "Instant indirect illumination",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary conference identity verified; full-text access unresolved; classification withheld.",
+          "evidence": [
+            {
+              "url": "https://ismar2012.vgtc.org/ismar/2012/info/overview/accepted-papers-posters.html",
+              "locator": "Official ISMAR2012 accepted-paper list",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Method details have not been verified from primary full text in this pass.",
+              "sources": [
+                {
+                  "url": "https://ismar2012.vgtc.org/ismar/2012/info/overview/accepted-papers-posters.html",
+                  "locator": "Official ISMAR2012 accepted-paper list",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Method details have not been verified from primary full text in this pass.",
+              "sources": [
+                {
+                  "url": "https://ismar2012.vgtc.org/ismar/2012/info/overview/accepted-papers-posters.html",
+                  "locator": "Official ISMAR2012 accepted-paper list",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Official conference listing verifies identity and venue only.",
+              "sources": [
+                {
+                  "url": "https://ismar2012.vgtc.org/ismar/2012/info/overview/accepted-papers-posters.html",
+                  "locator": "Official ISMAR2012 accepted-paper list",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Method details have not been verified from primary full text in this pass.",
+            "outcome": "Method details have not been verified from primary full text in this pass.",
+            "validation": "Official conference listing verifies identity and venue only."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-44",
+          "shortLabel": "Physically based lighting editing",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136660545.pdf",
+              "locator": "§3.1–3.2, pp.5–6; §4; §5–6",
+              "claim": "Rectangular windows use sun/sky/ground spherical-Gaussian radiance; lamp geometry and reflectance are explicitly predicted."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Parametric lamp/window inference combines Monte Carlo direct rendering, shadow denoising and learned indirect illumination.",
+              "sources": [
+                {
+                  "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136660545.pdf",
+                  "locator": "§3.1–3.2, pp.5–6; §4; §5–6",
+                  "claim": "Rectangular windows use sun/sky/ground spherical-Gaussian radiance; lamp geometry and reflectance are explicitly predicted."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Parametric lamp/window inference combines Monte Carlo direct rendering, shadow denoising and learned indirect illumination.",
+              "sources": [
+                {
+                  "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136660545.pdf",
+                  "locator": "§3.1–3.2, pp.5–6; §4; §5–6",
+                  "claim": "Rectangular windows use sun/sky/ground spherical-Gaussian radiance; lamp geometry and reflectance are explicitly predicted."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Visible and invisible sources can be inserted, removed or edited with material-aware room effects.",
+              "sources": [
+                {
+                  "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136660545.pdf",
+                  "locator": "§3.1–3.2, pp.5–6; §4; §5–6",
+                  "claim": "Rectangular windows use sun/sky/ground spherical-Gaussian radiance; lamp geometry and reflectance are explicitly predicted."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Parametric lamp/window inference combines Monte Carlo direct rendering, shadow denoising and learned indirect illumination.",
+            "outcome": "Parametric lamp/window inference combines Monte Carlo direct rendering, shadow denoising and learned indirect illumination.",
+            "validation": "Visible and invisible sources can be inserted, removed or edited with material-aware room effects."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-45",
+          "shortLabel": "Spatiotemporal HDR estimation",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2305.04374",
+              "locator": "§3–4 architecture/data/runtime; §5 real iPad sequences; §6 limitations",
+              "claim": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps. Supports consistent reflections and shadows in object-insertion videos. Depth/pose errors propagate; highly glossy or mirror surfaces can cause disappearing or blurred highlights."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2305.04374",
+                  "locator": "§3–4 architecture/data/runtime; §5 real iPad sequences; §6 limitations",
+                  "claim": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps. Supports consistent reflections and shadows in object-insertion videos. Depth/pose errors propagate; highly glossy or mirror surfaces can cause disappearing or blurred highlights."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2305.04374",
+                  "locator": "§3–4 architecture/data/runtime; §5 real iPad sequences; §6 limitations",
+                  "claim": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps. Supports consistent reflections and shadows in object-insertion videos. Depth/pose errors propagate; highly glossy or mirror surfaces can cause disappearing or blurred highlights."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supports consistent reflections and shadows in object-insertion videos.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2305.04374",
+                  "locator": "§3–4 architecture/data/runtime; §5 real iPad sequences; §6 limitations",
+                  "claim": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps. Supports consistent reflections and shadows in object-insertion videos. Depth/pose errors propagate; highly glossy or mirror surfaces can cause disappearing or blurred highlights."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps.",
+            "outcome": "An RGB-D/pose-conditioned spherical-Gaussian lighting volume, hybrid detailed-probe blending, rendering loss and recurrent networks predict HDR maps.",
+            "validation": "Supports consistent reflections and shadows in object-insertion videos."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-46",
+          "shortLabel": "Diffusion-guided object insertion",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07871.pdf",
+              "locator": "§4.2–4.3; §7 limitations",
+              "claim": "Per-scene LoRA personalization usually takes under15min on one high-end GPU before inverse-rendering optimization."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Scene-personalized diffusion guidance optimizes spherical-Gaussian lighting and tone mapping through physically based rendering.",
+              "sources": [
+                {
+                  "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07871.pdf",
+                  "locator": "§4.2–4.3; §7 limitations",
+                  "claim": "Per-scene LoRA personalization usually takes under15min on one high-end GPU before inverse-rendering optimization."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Scene-personalized diffusion guidance optimizes spherical-Gaussian lighting and tone mapping through physically based rendering.",
+              "sources": [
+                {
+                  "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07871.pdf",
+                  "locator": "§4.2–4.3; §7 limitations",
+                  "claim": "Per-scene LoRA personalization usually takes under15min on one high-end GPU before inverse-rendering optimization."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "DiPIR produces object composites and allows material and camera-response refinement.",
+              "sources": [
+                {
+                  "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07871.pdf",
+                  "locator": "§4.2–4.3; §7 limitations",
+                  "claim": "Per-scene LoRA personalization usually takes under15min on one high-end GPU before inverse-rendering optimization."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Scene-personalized diffusion guidance optimizes spherical-Gaussian lighting and tone mapping through physically based rendering.",
+            "outcome": "Scene-personalized diffusion guidance optimizes spherical-Gaussian lighting and tone mapping through physically based rendering.",
+            "validation": "DiPIR produces object composites and allows material and camera-response refinement."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-47",
+          "shortLabel": "DiffusionRenderer",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2501.18590v2",
+              "locator": "§4; §5.3–5.5; §6; Supplement B runtime",
+              "claim": "On one A100, 24 frames at512×512 take9.7s inverse and20.3s forward,20 steps each, with about21GB peak memory."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Video diffusion first estimates material/geometry G-buffers, then generates relit frames conditioned on environment lighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.18590v2",
+                  "locator": "§4; §5.3–5.5; §6; Supplement B runtime",
+                  "claim": "On one A100, 24 frames at512×512 take9.7s inverse and20.3s forward,20 steps each, with about21GB peak memory."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Video diffusion first estimates material/geometry G-buffers, then generates relit frames conditioned on environment lighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.18590v2",
+                  "locator": "§4; §5.3–5.5; §6; Supplement B runtime",
+                  "claim": "On one A100, 24 frames at512×512 take9.7s inverse and20.3s forward,20 steps each, with about21GB peak memory."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A common inverse/forward framework supports relighting, object insertion and material edits.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.18590v2",
+                  "locator": "§4; §5.3–5.5; §6; Supplement B runtime",
+                  "claim": "On one A100, 24 frames at512×512 take9.7s inverse and20.3s forward,20 steps each, with about21GB peak memory."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Video diffusion first estimates material/geometry G-buffers, then generates relit frames conditioned on environment lighting.",
+            "outcome": "Video diffusion first estimates material/geometry G-buffers, then generates relit frames conditioned on environment lighting.",
+            "validation": "A common inverse/forward framework supports relighting, object insertion and material edits."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-48",
+          "shortLabel": "LuxDiT",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2509.03680v1",
+              "locator": "§3–5; §6 Discussion",
+              "claim": "The model predicts HDR panoramas, and authors explicitly identify computationally intensive inference as a real-time limitation."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A video diffusion transformer predicts dual-tonemapped environment maps, with synthetic training and real-panorama LoRA adaptation.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2509.03680v1",
+                  "locator": "§3–5; §6 Discussion",
+                  "claim": "The model predicts HDR panoramas, and authors explicitly identify computationally intensive inference as a real-time limitation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A video diffusion transformer predicts dual-tonemapped environment maps, with synthetic training and real-panorama LoRA adaptation.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2509.03680v1",
+                  "locator": "§3–5; §6 Discussion",
+                  "claim": "The model predicts HDR panoramas, and authors explicitly identify computationally intensive inference as a real-time limitation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The model estimates detailed scene-aligned HDR illumination from images or video.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2509.03680v1",
+                  "locator": "§3–5; §6 Discussion",
+                  "claim": "The model predicts HDR panoramas, and authors explicitly identify computationally intensive inference as a real-time limitation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A video diffusion transformer predicts dual-tonemapped environment maps, with synthetic training and real-panorama LoRA adaptation.",
+            "outcome": "A video diffusion transformer predicts dual-tonemapped environment maps, with synthetic training and real-panorama LoRA adaptation.",
+            "validation": "The model estimates detailed scene-aligned HDR illumination from images or video."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-50",
+          "shortLabel": "IRIS",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2401.12977v2",
+              "locator": "Fig.3; §5.2–5.4; §13–14",
+              "claim": "A surface light field approximates diffuse global illumination; multibounce shading baking aids BRDF/CRF fitting."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Given posed multiview images and a mesh, staged path-traced optimization restores emitter HDR, BRDF and camera response.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2401.12977v2",
+                  "locator": "Fig.3; §5.2–5.4; §13–14",
+                  "claim": "A surface light field approximates diffuse global illumination; multibounce shading baking aids BRDF/CRF fitting."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Given posed multiview images and a mesh, staged path-traced optimization restores emitter HDR, BRDF and camera response.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2401.12977v2",
+                  "locator": "Fig.3; §5.2–5.4; §13–14",
+                  "claim": "A surface light field approximates diffuse global illumination; multibounce shading baking aids BRDF/CRF fitting."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "IRIS recovers spatial illumination and editable materials without HDR input imagery.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2401.12977v2",
+                  "locator": "Fig.3; §5.2–5.4; §13–14",
+                  "claim": "A surface light field approximates diffuse global illumination; multibounce shading baking aids BRDF/CRF fitting."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Given posed multiview images and a mesh, staged path-traced optimization restores emitter HDR, BRDF and camera response.",
+            "outcome": "Given posed multiview images and a mesh, staged path-traced optimization restores emitter HDR, BRDF and camera response.",
+            "validation": "IRIS recovers spatial illumination and editable materials without HDR input imagery."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-51",
+          "shortLabel": "ARShadowGAN",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_ARShadowGAN_Shadow_Generative_Adversarial_Network_for_Augmented_Reality_in_Single_CVPR_2020_paper.pdf",
+              "locator": "§1 contributions; §3 dataset; method overview",
+              "claim": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation. Introduces Shadow-AR training data and learned shadow synthesis."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_ARShadowGAN_Shadow_Generative_Adversarial_Network_for_Augmented_Reality_in_Single_CVPR_2020_paper.pdf",
+                  "locator": "§1 contributions; §3 dataset; method overview",
+                  "claim": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation. Introduces Shadow-AR training data and learned shadow synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_ARShadowGAN_Shadow_Generative_Adversarial_Network_for_Augmented_Reality_in_Single_CVPR_2020_paper.pdf",
+                  "locator": "§1 contributions; §3 dataset; method overview",
+                  "claim": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation. Introduces Shadow-AR training data and learned shadow synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Introduces Shadow-AR training data and learned shadow synthesis.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_ARShadowGAN_Shadow_Generative_Adversarial_Network_for_Augmented_Reality_in_Single_CVPR_2020_paper.pdf",
+                  "locator": "§1 contributions; §3 dataset; method overview",
+                  "claim": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation. Introduces Shadow-AR training data and learned shadow synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation.",
+            "outcome": "Attention GAN maps composite image and object mask to shadows using existing real shadow/occluder clues, without explicit geometry/light estimation.",
+            "validation": "Introduces Shadow-AR training data and learned shadow synthesis."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-52",
+          "shortLabel": "Interactive virtual relighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://ima.udg.edu/~closcos/Publications/TVCG2000.pdf",
+              "locator": "§§3–6; §7.1 comparison; §7.2 limitations/future work",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Precompute hierarchical radiosity and unoccluded illumination textures, then modulate them for lighting edits.",
+              "sources": [
+                {
+                  "url": "https://ima.udg.edu/~closcos/Publications/TVCG2000.pdf",
+                  "locator": "§§3–6; §7.1 comparison; §7.2 limitations/future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Precompute hierarchical radiosity and unoccluded illumination textures, then modulate them for lighting edits.",
+              "sources": [
+                {
+                  "url": "https://ima.udg.edu/~closcos/Publications/TVCG2000.pdf",
+                  "locator": "§§3–6; §7.1 comparison; §7.2 limitations/future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Enables interactive diffuse real/virtual illumination and real-light intensity changes after preparation.",
+              "sources": [
+                {
+                  "url": "https://ima.udg.edu/~closcos/Publications/TVCG2000.pdf",
+                  "locator": "§§3–6; §7.1 comparison; §7.2 limitations/future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Precompute hierarchical radiosity and unoccluded illumination textures, then modulate them for lighting edits.",
+            "outcome": "Precompute hierarchical radiosity and unoccluded illumination textures, then modulate them for lighting edits.",
+            "validation": "Enables interactive diffuse real/virtual illumination and real-light intensity changes after preparation."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-54",
+          "shortLabel": "Shadow Inducers",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://www.rm2c.ise.ritsumei.ac.jp/rm/pdf/IEEEVR2019_manabe.pdf",
+              "locator": "Abstract; method description, pp.1–2",
+              "claim": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness. Demo handles changing viewpoint, moving/deforming objects and nonplanar surfaces."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness.",
+              "sources": [
+                {
+                  "url": "https://www.rm2c.ise.ritsumei.ac.jp/rm/pdf/IEEEVR2019_manabe.pdf",
+                  "locator": "Abstract; method description, pp.1–2",
+                  "claim": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness. Demo handles changing viewpoint, moving/deforming objects and nonplanar surfaces."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness.",
+              "sources": [
+                {
+                  "url": "https://www.rm2c.ise.ritsumei.ac.jp/rm/pdf/IEEEVR2019_manabe.pdf",
+                  "locator": "Abstract; method description, pp.1–2",
+                  "claim": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness. Demo handles changing viewpoint, moving/deforming objects and nonplanar surfaces."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demo handles changing viewpoint, moving/deforming objects and nonplanar surfaces.",
+              "sources": [
+                {
+                  "url": "https://www.rm2c.ise.ritsumei.ac.jp/rm/pdf/IEEEVR2019_manabe.pdf",
+                  "locator": "Abstract; method description, pp.1–2",
+                  "claim": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness. Demo handles changing viewpoint, moving/deforming objects and nonplanar surfaces."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness.",
+            "outcome": "Shadow maps and difference-of-Gaussian luminance amplification surround shadow regions to induce apparent darkness.",
+            "validation": "Demo handles changing viewpoint, moving/deforming objects and nonplanar surfaces."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-55",
+          "shortLabel": "HDR dense visual SLAM",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://hal.science/hal-01357357/document",
+              "locator": "§2 HDR mapping; §3 probe/light-source rendering; §4 implementation and limitations; §5 conclusion",
+              "claim": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes. Demonstrates reflective virtual objects with estimated light-source shadows in live camera AR. Only static virtual objects are evaluated using precomputed reflection/shadow maps; center-projected cubemaps give incorrect parallax near contact surfaces."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes.",
+              "sources": [
+                {
+                  "url": "https://hal.science/hal-01357357/document",
+                  "locator": "§2 HDR mapping; §3 probe/light-source rendering; §4 implementation and limitations; §5 conclusion",
+                  "claim": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes. Demonstrates reflective virtual objects with estimated light-source shadows in live camera AR. Only static virtual objects are evaluated using precomputed reflection/shadow maps; center-projected cubemaps give incorrect parallax near contact surfaces."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes.",
+              "sources": [
+                {
+                  "url": "https://hal.science/hal-01357357/document",
+                  "locator": "§2 HDR mapping; §3 probe/light-source rendering; §4 implementation and limitations; §5 conclusion",
+                  "claim": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes. Demonstrates reflective virtual objects with estimated light-source shadows in live camera AR. Only static virtual objects are evaluated using precomputed reflection/shadow maps; center-projected cubemaps give incorrect parallax near contact surfaces."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates reflective virtual objects with estimated light-source shadows in live camera AR.",
+              "sources": [
+                {
+                  "url": "https://hal.science/hal-01357357/document",
+                  "locator": "§2 HDR mapping; §3 probe/light-source rendering; §4 implementation and limitations; §5 conclusion",
+                  "claim": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes. Demonstrates reflective virtual objects with estimated light-source shadows in live camera AR. Only static virtual objects are evaluated using precomputed reflection/shadow maps; center-projected cubemaps give incorrect parallax near contact surfaces."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes.",
+            "outcome": "Dense RGB-D SLAM fuses moving LDR exposures into a 3D HDR radiance model and synthesizes virtual local probes.",
+            "validation": "Demonstrates reflective virtual objects with estimated light-source shadows in live camera AR."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-56",
+          "shortLabel": "Passthrough Camera API",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official developer documentation read; not a research paper",
+          "evidence": [
+            {
+              "url": "https://developers.meta.com/vr/documentation/unity/unity-pca-overview/",
+              "locator": "Overview, Known issues, Performance; updated October 7, 2026",
+              "claim": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled. An input pathway for real-scene analysis on standalone MR hardware. Camera texture does not cover the entire user view; capture is distinct from user-POV compositing."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled.",
+              "sources": [
+                {
+                  "url": "https://developers.meta.com/vr/documentation/unity/unity-pca-overview/",
+                  "locator": "Overview, Known issues, Performance; updated October 7, 2026",
+                  "claim": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled. An input pathway for real-scene analysis on standalone MR hardware. Camera texture does not cover the entire user view; capture is distinct from user-POV compositing."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled.",
+              "sources": [
+                {
+                  "url": "https://developers.meta.com/vr/documentation/unity/unity-pca-overview/",
+                  "locator": "Overview, Known issues, Performance; updated October 7, 2026",
+                  "claim": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled. An input pathway for real-scene analysis on standalone MR hardware. Camera texture does not cover the entire user view; capture is distinct from user-POV compositing."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "An input pathway for real-scene analysis on standalone MR hardware.",
+              "sources": [
+                {
+                  "url": "https://developers.meta.com/vr/documentation/unity/unity-pca-overview/",
+                  "locator": "Overview, Known issues, Performance; updated October 7, 2026",
+                  "claim": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled. An input pathway for real-scene analysis on standalone MR hardware. Camera texture does not cover the entire user view; capture is distinct from user-POV compositing."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled.",
+            "outcome": "Camera2-based access supplies left/right forward RGB cameras on Quest 3/3S with permission and passthrough enabled.",
+            "validation": "An input pathway for real-scene analysis on standalone MR hardware."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-59",
+          "shortLabel": "Diminished reality survey",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://link.springer.com/article/10.1186/s41074-017-0028-1",
+              "locator": "§§3–4; author scope statement",
+              "claim": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation. Useful framework for separating object removal from appearance/illumination consistency."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation.",
+              "sources": [
+                {
+                  "url": "https://link.springer.com/article/10.1186/s41074-017-0028-1",
+                  "locator": "§§3–4; author scope statement",
+                  "claim": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation. Useful framework for separating object removal from appearance/illumination consistency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation.",
+              "sources": [
+                {
+                  "url": "https://link.springer.com/article/10.1186/s41074-017-0028-1",
+                  "locator": "§§3–4; author scope statement",
+                  "claim": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation. Useful framework for separating object removal from appearance/illumination consistency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Useful framework for separating object removal from appearance/illumination consistency.",
+              "sources": [
+                {
+                  "url": "https://link.springer.com/article/10.1186/s41074-017-0028-1",
+                  "locator": "§§3–4; author scope statement",
+                  "claim": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation. Useful framework for separating object removal from appearance/illumination consistency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation.",
+            "outcome": "Technology map covers observation/inpainting, camera pose, ROI tracking, background synthesis and display representation.",
+            "validation": "Useful framework for separating object removal from appearance/illumination consistency."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-60",
+          "shortLabel": "Perceiving illumination inconsistency",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://web.mit.edu/sinhalab/Papers/anomalous_illumination2005.pdf",
+              "locator": "Abstract; experimental procedures and results",
+              "claim": "Visual-search experiments randomize object poses and test edited natural images. Direction inconsistencies become difficult to detect when simple image regularity is removed."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Visual-search experiments randomize object poses and test edited natural images.",
+              "sources": [
+                {
+                  "url": "https://web.mit.edu/sinhalab/Papers/anomalous_illumination2005.pdf",
+                  "locator": "Abstract; experimental procedures and results",
+                  "claim": "Visual-search experiments randomize object poses and test edited natural images. Direction inconsistencies become difficult to detect when simple image regularity is removed."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Visual-search experiments randomize object poses and test edited natural images.",
+              "sources": [
+                {
+                  "url": "https://web.mit.edu/sinhalab/Papers/anomalous_illumination2005.pdf",
+                  "locator": "Abstract; experimental procedures and results",
+                  "claim": "Visual-search experiments randomize object poses and test edited natural images. Direction inconsistencies become difficult to detect when simple image regularity is removed."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Direction inconsistencies become difficult to detect when simple image regularity is removed.",
+              "sources": [
+                {
+                  "url": "https://web.mit.edu/sinhalab/Papers/anomalous_illumination2005.pdf",
+                  "locator": "Abstract; experimental procedures and results",
+                  "claim": "Visual-search experiments randomize object poses and test edited natural images. Direction inconsistencies become difficult to detect when simple image regularity is removed."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Visual-search experiments randomize object poses and test edited natural images.",
+            "outcome": "Visual-search experiments randomize object poses and test edited natural images.",
+            "validation": "Direction inconsistencies become difficult to detect when simple image regularity is removed."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-61",
+          "shortLabel": "DiffusionLight",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official implementation README, inference workflow and evaluation links checked; full-paper limitations not fully inspected.",
+          "evidence": [
+            {
+              "url": "https://github.com/DiffusionLight/DiffusionLight",
+              "locator": "README Prediction steps1–3; Evaluation",
+              "claim": "The official implementation requires ball inpainting, environment unwrapping and exposure-to-HDR merging."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "SDXL inpaints a chrome ball at multiple exposures, which are unwrapped and merged into an HDR probe.",
+              "sources": [
+                {
+                  "url": "https://github.com/DiffusionLight/DiffusionLight",
+                  "locator": "README Prediction steps1–3; Evaluation",
+                  "claim": "The official implementation requires ball inpainting, environment unwrapping and exposure-to-HDR merging."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "SDXL inpaints a chrome ball at multiple exposures, which are unwrapped and merged into an HDR probe.",
+              "sources": [
+                {
+                  "url": "https://github.com/DiffusionLight/DiffusionLight",
+                  "locator": "README Prediction steps1–3; Evaluation",
+                  "claim": "The official implementation requires ball inpainting, environment unwrapping and exposure-to-HDR merging."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Generative image priors produce usable environment estimates in diverse captured scenes.",
+              "sources": [
+                {
+                  "url": "https://github.com/DiffusionLight/DiffusionLight",
+                  "locator": "README Prediction steps1–3; Evaluation",
+                  "claim": "The official implementation requires ball inpainting, environment unwrapping and exposure-to-HDR merging."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "SDXL inpaints a chrome ball at multiple exposures, which are unwrapped and merged into an HDR probe.",
+            "outcome": "SDXL inpaints a chrome ball at multiple exposures, which are unwrapped and merged into an HDR probe.",
+            "validation": "Generative image priors produce usable environment estimates in diverse captured scenes."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-62",
+          "shortLabel": "GLEAM",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://prakashsidd18.github.io/papers/gleam-MobiSysCameraReady.pdf",
+              "locator": "§3 design; §5–6 benchmarks/user study; §8 discussion",
+              "claim": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices. Supports reflective materials with tunable freshness, coverage and fidelity. Denser sampling costs update speed; probe visibility and additional capture/setup remain practical constraints."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices.",
+              "sources": [
+                {
+                  "url": "https://prakashsidd18.github.io/papers/gleam-MobiSysCameraReady.pdf",
+                  "locator": "§3 design; §5–6 benchmarks/user study; §8 discussion",
+                  "claim": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices. Supports reflective materials with tunable freshness, coverage and fidelity. Denser sampling costs update speed; probe visibility and additional capture/setup remain practical constraints."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices.",
+              "sources": [
+                {
+                  "url": "https://prakashsidd18.github.io/papers/gleam-MobiSysCameraReady.pdf",
+                  "locator": "§3 design; §5–6 benchmarks/user study; §8 discussion",
+                  "claim": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices. Supports reflective materials with tunable freshness, coverage and fidelity. Denser sampling costs update speed; probe visibility and additional capture/setup remain practical constraints."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supports reflective materials with tunable freshness, coverage and fidelity.",
+              "sources": [
+                {
+                  "url": "https://prakashsidd18.github.io/papers/gleam-MobiSysCameraReady.pdf",
+                  "locator": "§3 design; §5–6 benchmarks/user study; §8 discussion",
+                  "claim": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices. Supports reflective materials with tunable freshness, coverage and fidelity. Denser sampling costs update speed; probe visibility and additional capture/setup remain practical constraints."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices.",
+            "outcome": "Observe a reflective physical probe, accumulate radiance samples into cubemaps and optionally share samples across devices.",
+            "validation": "Supports reflective materials with tunable freshness, coverage and fidelity."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-63",
+          "shortLabel": "Blind Augmentation",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2503.01387v1",
+              "locator": "§2 method; §3.6 demo; §4 limitations/future work",
+              "claim": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content. Improves camera-appearance consistency without markers or prior camera calibration. Inherits restoration-model domain errors; linear noise estimation fails in some saturated regions."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2503.01387v1",
+                  "locator": "§2 method; §3.6 demo; §4 limitations/future work",
+                  "claim": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content. Improves camera-appearance consistency without markers or prior camera calibration. Inherits restoration-model domain errors; linear noise estimation fails in some saturated regions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2503.01387v1",
+                  "locator": "§2 method; §3.6 demo; §4 limitations/future work",
+                  "claim": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content. Improves camera-appearance consistency without markers or prior camera calibration. Inherits restoration-model domain errors; linear noise estimation fails in some saturated regions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Improves camera-appearance consistency without markers or prior camera calibration.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2503.01387v1",
+                  "locator": "§2 method; §3.6 demo; §4 limitations/future work",
+                  "claim": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content. Improves camera-appearance consistency without markers or prior camera calibration. Inherits restoration-model domain errors; linear noise estimation fails in some saturated regions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content.",
+            "outcome": "Pretrained image-restoration models generate calibration pairs online to tune noise, motion-blur and DoF effects on virtual content.",
+            "validation": "Improves camera-appearance consistency without markers or prior camera calibration."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-64",
+          "shortLabel": "Shader Lamps",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://web.media.mit.edu/~raskar/Shaderlamps/shaderlampsRaskar01.pdf",
+              "locator": "Abstract; contributions",
+              "claim": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery. Demonstrates tabletop and larger physical objects as displays."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery.",
+              "sources": [
+                {
+                  "url": "https://web.media.mit.edu/~raskar/Shaderlamps/shaderlampsRaskar01.pdf",
+                  "locator": "Abstract; contributions",
+                  "claim": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery. Demonstrates tabletop and larger physical objects as displays."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery.",
+              "sources": [
+                {
+                  "url": "https://web.media.mit.edu/~raskar/Shaderlamps/shaderlampsRaskar01.pdf",
+                  "locator": "Abstract; contributions",
+                  "claim": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery. Demonstrates tabletop and larger physical objects as displays."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates tabletop and larger physical objects as displays.",
+              "sources": [
+                {
+                  "url": "https://web.media.mit.edu/~raskar/Shaderlamps/shaderlampsRaskar01.pdf",
+                  "locator": "Abstract; contributions",
+                  "claim": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery. Demonstrates tabletop and larger physical objects as displays."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery.",
+            "outcome": "Multiple calibrated projectors illuminate neutral physical models with geometrically/radiometrically corrected imagery.",
+            "validation": "Demonstrates tabletop and larger physical objects as displays."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-65",
+          "shortLabel": "Near-field illumination for AR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+              "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+              "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+              "sources": [
+                {
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+              "sources": [
+                {
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets.",
+              "sources": [
+                {
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+            "outcome": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+            "validation": "Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-66",
+          "shortLabel": "Illumination from shadows",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://www.ri.cmu.edu/pub_files/pub2/sato_i_1999_3/sato_i_1999_3.pdf",
+              "locator": "§§2–4; Figs5–7; §5 conclusions",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Solve directional illumination using known occluder shape, receiver geometry/reflectance and shadow visibility.",
+              "sources": [
+                {
+                  "url": "https://www.ri.cmu.edu/pub_files/pub2/sato_i_1999_3/sato_i_1999_3.pdf",
+                  "locator": "§§2–4; Figs5–7; §5 conclusions",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Solve directional illumination using known occluder shape, receiver geometry/reflectance and shadow visibility.",
+              "sources": [
+                {
+                  "url": "https://www.ri.cmu.edu/pub_files/pub2/sato_i_1999_3/sato_i_1999_3.pdf",
+                  "locator": "§§2–4; Figs5–7; §5 conclusions",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Shows estimated illumination can reproduce shadows in office-scene experiments.",
+              "sources": [
+                {
+                  "url": "https://www.ri.cmu.edu/pub_files/pub2/sato_i_1999_3/sato_i_1999_3.pdf",
+                  "locator": "§§2–4; Figs5–7; §5 conclusions",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Solve directional illumination using known occluder shape, receiver geometry/reflectance and shadow visibility.",
+            "outcome": "Solve directional illumination using known occluder shape, receiver geometry/reflectance and shadow visibility.",
+            "validation": "Shows estimated illumination can reproduce shadows in office-scene experiments."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-67",
+          "shortLabel": "Radiance distribution acquisition",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected author-hosted full-text acquisition and method framing; evaluation not exhaustively checked.",
+          "evidence": [
+            {
+              "url": "https://research.nii.ac.jp/~imarik/resources/papers/TVCG99-AcquiringRadianceDistribution.pdf",
+              "locator": "Selected author PDF abstract; acquisition method and rendering examples",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Capture omnidirectional radiance and combine nearby scene geometry with radiance-distribution rendering.",
+              "sources": [
+                {
+                  "url": "https://research.nii.ac.jp/~imarik/resources/papers/TVCG99-AcquiringRadianceDistribution.pdf",
+                  "locator": "Selected author PDF abstract; acquisition method and rendering examples",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Capture omnidirectional radiance and combine nearby scene geometry with radiance-distribution rendering.",
+              "sources": [
+                {
+                  "url": "https://research.nii.ac.jp/~imarik/resources/papers/TVCG99-AcquiringRadianceDistribution.pdf",
+                  "locator": "Selected author PDF abstract; acquisition method and rendering examples",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Models illumination needed for object insertion using measured real-scene radiance.",
+              "sources": [
+                {
+                  "url": "https://research.nii.ac.jp/~imarik/resources/papers/TVCG99-AcquiringRadianceDistribution.pdf",
+                  "locator": "Selected author PDF abstract; acquisition method and rendering examples",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Capture omnidirectional radiance and combine nearby scene geometry with radiance-distribution rendering.",
+            "outcome": "Capture omnidirectional radiance and combine nearby scene geometry with radiance-distribution rendering.",
+            "validation": "Models illumination needed for object insertion using measured real-scene radiance."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-68",
+          "shortLabel": "STGlight",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official single-image and static-video inference code inspected; primary manuscript and quantitative evaluation inaccessible in this pass.",
+          "evidence": [
+            {
+              "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_single.py",
+              "locator": "depth_to_pointcloud; pack_isotropic_gaussians; inference_pipeline_single, lines210–254",
+              "claim": "RGB-D geometry becomes Gaussian probes; visible-source and ambient predictions combine into environment maps at query points."
+            },
+            {
+              "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_static.py",
+              "locator": "_fuse_point_cloud; inference_pipeline_static",
+              "claim": "The static-video path fuses world-space point clouds across posed RGB-D frames and resets model temporal state."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The released pipeline converts RGB-D to point clouds, fuses posed geometry, splats probe panoramas and combines visible-source, ambient and neural-fusion predictions.",
+              "sources": [
+                {
+                  "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_single.py",
+                  "locator": "depth_to_pointcloud; pack_isotropic_gaussians; inference_pipeline_single, lines210–254",
+                  "claim": "RGB-D geometry becomes Gaussian probes; visible-source and ambient predictions combine into environment maps at query points."
+                },
+                {
+                  "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_static.py",
+                  "locator": "_fuse_point_cloud; inference_pipeline_static",
+                  "claim": "The static-video path fuses world-space point clouds across posed RGB-D frames and resets model temporal state."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The released pipeline converts RGB-D to point clouds, fuses posed geometry, splats probe panoramas and combines visible-source, ambient and neural-fusion predictions.",
+              "sources": [
+                {
+                  "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_single.py",
+                  "locator": "depth_to_pointcloud; pack_isotropic_gaussians; inference_pipeline_single, lines210–254",
+                  "claim": "RGB-D geometry becomes Gaussian probes; visible-source and ambient predictions combine into environment maps at query points."
+                },
+                {
+                  "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_static.py",
+                  "locator": "_fuse_point_cloud; inference_pipeline_static",
+                  "claim": "The static-video path fuses world-space point clouds across posed RGB-D frames and resets model temporal state."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Released code supplies query-position environment maps from images or static-scene video sequences.",
+              "sources": [
+                {
+                  "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_single.py",
+                  "locator": "depth_to_pointcloud; pack_isotropic_gaussians; inference_pipeline_single, lines210–254",
+                  "claim": "RGB-D geometry becomes Gaussian probes; visible-source and ambient predictions combine into environment maps at query points."
+                },
+                {
+                  "url": "https://raw.githubusercontent.com/nauyihsnehs/STGlight/main/inference_pipeline_static.py",
+                  "locator": "_fuse_point_cloud; inference_pipeline_static",
+                  "claim": "The static-video path fuses world-space point clouds across posed RGB-D frames and resets model temporal state."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "The released pipeline converts RGB-D to point clouds, fuses posed geometry, splats probe panoramas and combines visible-source, ambient and neural-fusion predictions.",
+            "outcome": "The released pipeline converts RGB-D to point clouds, fuses posed geometry, splats probe panoramas and combines visible-source, ambient and neural-fusion predictions.",
+            "validation": "Released code supplies query-position environment maps from images or static-scene video sequences."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-69",
+          "shortLabel": "Soft Shadow Network",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Sheng_SSN_Soft_Shadow_Network_for_Image_Compositing_CVPR_2021_paper.pdf",
+              "locator": "§§3–5; Fig.3",
+              "claim": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it. Supports angle/softness control without explicit inference-time object reconstruction."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Sheng_SSN_Soft_Shadow_Network_for_Image_Compositing_CVPR_2021_paper.pdf",
+                  "locator": "§§3–5; Fig.3",
+                  "claim": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it. Supports angle/softness control without explicit inference-time object reconstruction."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Sheng_SSN_Soft_Shadow_Network_for_Image_Compositing_CVPR_2021_paper.pdf",
+                  "locator": "§§3–5; Fig.3",
+                  "claim": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it. Supports angle/softness control without explicit inference-time object reconstruction."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supports angle/softness control without explicit inference-time object reconstruction.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Sheng_SSN_Soft_Shadow_Network_for_Image_Compositing_CVPR_2021_paper.pdf",
+                  "locator": "§§3–5; Fig.3",
+                  "claim": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it. Supports angle/softness control without explicit inference-time object reconstruction."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it.",
+            "outcome": "U-Net-based shadow synthesis uses object mask, environment light map and predicted/editable ambient occlusion; synthetic hard-shadow bases train it.",
+            "validation": "Supports angle/softness control without explicit inference-time object reconstruction."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-70",
+          "shortLabel": "PixHt-Lab",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2303.00137v1",
+              "locator": "§§3.1–3.3; limitations paragraph",
+              "claim": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows. Supports shadows on complex receivers and image-compositing light effects."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2303.00137v1",
+                  "locator": "§§3.1–3.3; limitations paragraph",
+                  "claim": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows. Supports shadows on complex receivers and image-compositing light effects."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2303.00137v1",
+                  "locator": "§§3.1–3.3; limitations paragraph",
+                  "claim": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows. Supports shadows on complex receivers and image-compositing light effects."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supports shadows on complex receivers and image-compositing light effects.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2303.00137v1",
+                  "locator": "§§3.1–3.3; limitations paragraph",
+                  "claim": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows. Supports shadows on complex receivers and image-compositing light effects."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows.",
+            "outcome": "Pixel-height maps map 2.5D to 3D; tilt-shift model and SSG++ geometry buffers guide soft shadows.",
+            "validation": "Supports shadows on complex receivers and image-compositing light effects."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-71",
+          "shortLabel": "TypeGPU light injection",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Official open-source implementation inspected; not a peer-reviewed paper",
+          "evidence": [
+            {
+              "url": "https://github.com/software-mansion/TypeGPU/tree/main/apps/typegpu-docs/src/examples/image-processing/monocular-light-injection",
+              "locator": "index.ts source selection/controls; shaders.ts surfaceKernel,shadowFactor and relight shader",
+              "claim": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights. Source code provides camera/photo inputs and controls for light position, color, intensity, shadow and occlusion. This code inspection establishes implementation, not physical material recovery, stereo validity or measured latency."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights.",
+              "sources": [
+                {
+                  "url": "https://github.com/software-mansion/TypeGPU/tree/main/apps/typegpu-docs/src/examples/image-processing/monocular-light-injection",
+                  "locator": "index.ts source selection/controls; shaders.ts surfaceKernel,shadowFactor and relight shader",
+                  "claim": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights. Source code provides camera/photo inputs and controls for light position, color, intensity, shadow and occlusion. This code inspection establishes implementation, not physical material recovery, stereo validity or measured latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights.",
+              "sources": [
+                {
+                  "url": "https://github.com/software-mansion/TypeGPU/tree/main/apps/typegpu-docs/src/examples/image-processing/monocular-light-injection",
+                  "locator": "index.ts source selection/controls; shaders.ts surfaceKernel,shadowFactor and relight shader",
+                  "claim": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights. Source code provides camera/photo inputs and controls for light position, color, intensity, shadow and occlusion. This code inspection establishes implementation, not physical material recovery, stereo validity or measured latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Source code provides camera/photo inputs and controls for light position, color, intensity, shadow and occlusion.",
+              "sources": [
+                {
+                  "url": "https://github.com/software-mansion/TypeGPU/tree/main/apps/typegpu-docs/src/examples/image-processing/monocular-light-injection",
+                  "locator": "index.ts source selection/controls; shaders.ts surfaceKernel,shadowFactor and relight shader",
+                  "claim": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights. Source code provides camera/photo inputs and controls for light position, color, intensity, shadow and occlusion. This code inspection establishes implementation, not physical material recovery, stereo validity or measured latency."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights.",
+            "outcome": "DepthART inference feeds a temporally smoothed height field; WebGPU shaders derive normals, local lighting, depth-marched shadows and heuristic specular highlights.",
+            "validation": "Source code provides camera/photo inputs and controls for light position, color, intensity, shadow and occlusion."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-72",
+          "shortLabel": "EnvMapNet",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2011.10687",
+              "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+              "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2011.10687",
+                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2011.10687",
+                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2011.10687",
+                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
+            "outcome": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
+            "validation": "Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-73",
+          "shortLabel": "Blending Shadows",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "primary-project-summary",
+          "evidence": [
+            {
+              "url": "https://www.ar.comp.isct.ac.jp/projects/blending-shadow-2021/",
+              "locator": "Official project Abstract",
+              "claim": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering. Proof-of-concept demonstrates mutual shadows and compares with real shadows using a perceptual metric."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering.",
+              "sources": [
+                {
+                  "url": "https://www.ar.comp.isct.ac.jp/projects/blending-shadow-2021/",
+                  "locator": "Official project Abstract",
+                  "claim": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering. Proof-of-concept demonstrates mutual shadows and compares with real shadows using a perceptual metric."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering.",
+              "sources": [
+                {
+                  "url": "https://www.ar.comp.isct.ac.jp/projects/blending-shadow-2021/",
+                  "locator": "Official project Abstract",
+                  "claim": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering. Proof-of-concept demonstrates mutual shadows and compares with real shadows using a perceptual metric."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Proof-of-concept demonstrates mutual shadows and compares with real shadows using a perceptual metric.",
+              "sources": [
+                {
+                  "url": "https://www.ar.comp.isct.ac.jp/projects/blending-shadow-2021/",
+                  "locator": "Official project Abstract",
+                  "claim": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering. Proof-of-concept demonstrates mutual shadows and compares with real shadows using a perceptual metric."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering.",
+            "outcome": "Custom occlusion-capable OST display combines global light estimation, 3D registration and ray-traced rendering.",
+            "validation": "Proof-of-concept demonstrates mutual shadows and compares with real shadows using a perceptual metric."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-74",
+          "shortLabel": "Neural Illumination",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1906.07370",
+              "locator": "§4 dataset; §5 architecture; §6 evaluation; §7 conclusion",
+              "claim": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama. Structured subtasks improve fine illumination details over direct black-box prediction. When lights are unobserved, predicted maps may be plausible rather than accurate; explicit reflectance modeling remains future work."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1906.07370",
+                  "locator": "§4 dataset; §5 architecture; §6 evaluation; §7 conclusion",
+                  "claim": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama. Structured subtasks improve fine illumination details over direct black-box prediction. When lights are unobserved, predicted maps may be plausible rather than accurate; explicit reflectance modeling remains future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1906.07370",
+                  "locator": "§4 dataset; §5 architecture; §6 evaluation; §7 conclusion",
+                  "claim": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama. Structured subtasks improve fine illumination details over direct black-box prediction. When lights are unobserved, predicted maps may be plausible rather than accurate; explicit reflectance modeling remains future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Structured subtasks improve fine illumination details over direct black-box prediction.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1906.07370",
+                  "locator": "§4 dataset; §5 architecture; §6 evaluation; §7 conclusion",
+                  "claim": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama. Structured subtasks improve fine illumination details over direct black-box prediction. When lights are unobserved, predicted maps may be plausible rather than accurate; explicit reflectance modeling remains future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama.",
+            "outcome": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama.",
+            "validation": "Structured subtasks improve fine illumination details over direct black-box prediction."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-75",
+          "shortLabel": "Lighthouse",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2003.08367",
+              "locator": "§3–4 representation/query; §5training; §7discussion",
+              "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "One shared 3D lighting model yields spatially consistent probes and specular object insertions.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+            "outcome": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+            "validation": "One shared 3D lighting model yields spatially consistent probes and specular object insertions."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-76",
+          "shortLabel": "Shadow representation in AR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "primary-fulltext-pending",
+          "evidence": [
+            {
+              "url": "https://doi.org/10.1109/ISMAR.2003.1240690",
+              "locator": "Publisher DOI identity; full text pending",
+              "claim": "Two experiments compare shadow representation and light consistency. Supplied reference retained as early perceptual evidence pending primary full-text access."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two experiments compare shadow representation and light consistency.",
+              "sources": [
+                {
+                  "url": "https://doi.org/10.1109/ISMAR.2003.1240690",
+                  "locator": "Publisher DOI identity; full text pending",
+                  "claim": "Two experiments compare shadow representation and light consistency. Supplied reference retained as early perceptual evidence pending primary full-text access."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two experiments compare shadow representation and light consistency.",
+              "sources": [
+                {
+                  "url": "https://doi.org/10.1109/ISMAR.2003.1240690",
+                  "locator": "Publisher DOI identity; full text pending",
+                  "claim": "Two experiments compare shadow representation and light consistency. Supplied reference retained as early perceptual evidence pending primary full-text access."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supplied reference retained as early perceptual evidence pending primary full-text access.",
+              "sources": [
+                {
+                  "url": "https://doi.org/10.1109/ISMAR.2003.1240690",
+                  "locator": "Publisher DOI identity; full text pending",
+                  "claim": "Two experiments compare shadow representation and light consistency. Supplied reference retained as early perceptual evidence pending primary full-text access."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Two experiments compare shadow representation and light consistency.",
+            "outcome": "Two experiments compare shadow representation and light consistency.",
+            "validation": "Supplied reference retained as early perceptual evidence pending primary full-text access."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-77",
+          "shortLabel": "Environmental projection mapping",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2403.02547v1",
+              "locator": "§3.5; §4 Discussion",
+              "claim": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection. Improves target contrast; user study found less directional appearance and communication disturbance with larger aperture."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.02547v1",
+                  "locator": "§3.5; §4 Discussion",
+                  "claim": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection. Improves target contrast; user study found less directional appearance and communication disturbance with larger aperture."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.02547v1",
+                  "locator": "§3.5; §4 Discussion",
+                  "claim": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection. Improves target contrast; user study found less directional appearance and communication disturbance with larger aperture."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Improves target contrast; user study found less directional appearance and communication disturbance with larger aperture.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.02547v1",
+                  "locator": "§3.5; §4 Discussion",
+                  "claim": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection. Improves target contrast; user study found less directional appearance and communication disturbance with larger aperture."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection.",
+            "outcome": "Optimize distributed projectors to reproduce room illumination while excluding the target; add large-aperture projection.",
+            "validation": "Improves target contrast; user study found less directional appearance and communication disturbance with larger aperture."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-78",
+          "shortLabel": "Diffusion-prior temporal lighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2508.08384v1",
+              "locator": "§3.1–3.3; §4.2; §5",
+              "claim": "Training takes14h on A6000; field distillation takes about40min for100frames, so dynamic results are offline."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A multi-chrome-ball diffusion prior supervises an optimized MLP representing a continuous spatiotemporal light field.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2508.08384v1",
+                  "locator": "§3.1–3.3; §4.2; §5",
+                  "claim": "Training takes14h on A6000; field distillation takes about40min for100frames, so dynamic results are offline."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A multi-chrome-ball diffusion prior supervises an optimized MLP representing a continuous spatiotemporal light field.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2508.08384v1",
+                  "locator": "§3.1–3.3; §4.2; §5",
+                  "claim": "Training takes14h on A6000; field distillation takes about40min for100frames, so dynamic results are offline."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The field supports consistent position-dependent lighting and virtual-object insertion in changing indoor videos.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2508.08384v1",
+                  "locator": "§3.1–3.3; §4.2; §5",
+                  "claim": "Training takes14h on A6000; field distillation takes about40min for100frames, so dynamic results are offline."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A multi-chrome-ball diffusion prior supervises an optimized MLP representing a continuous spatiotemporal light field.",
+            "outcome": "A multi-chrome-ball diffusion prior supervises an optimized MLP representing a continuous spatiotemporal light field.",
+            "validation": "The field supports consistent position-dependent lighting and virtual-object insertion in changing indoor videos."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-79",
+          "shortLabel": "Objects with Lighting dataset",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2401.09126v1",
+              "locator": "§3 dataset; Fig.1; official evaluation repository",
+              "claim": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps. Provides real relighting benchmark and PSNR/SSIM/LPIPS evaluation tools."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2401.09126v1",
+                  "locator": "§3 dataset; Fig.1; official evaluation repository",
+                  "claim": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps. Provides real relighting benchmark and PSNR/SSIM/LPIPS evaluation tools."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2401.09126v1",
+                  "locator": "§3 dataset; Fig.1; official evaluation repository",
+                  "claim": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps. Provides real relighting benchmark and PSNR/SSIM/LPIPS evaluation tools."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Provides real relighting benchmark and PSNR/SSIM/LPIPS evaluation tools.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2401.09126v1",
+                  "locator": "§3 dataset; Fig.1; official evaluation repository",
+                  "claim": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps. Provides real relighting benchmark and PSNR/SSIM/LPIPS evaluation tools."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps.",
+            "outcome": "Eight objects captured across three environments with calibrated multiview images and aligned HDR environment maps.",
+            "validation": "Provides real relighting benchmark and PSNR/SSIM/LPIPS evaluation tools."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-80",
+          "shortLabel": "StyleLight",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2207.14811v1",
+              "locator": "§3 framework and GAN inversion; §4 experiments",
+              "claim": "Lighting generation uses coupled StyleGAN branches rather than diffusion."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Coupled LDR/HDR StyleGAN synthesis and focal-masked GAN inversion infer the panorama latent code.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2207.14811v1",
+                  "locator": "§3 framework and GAN inversion; §4 experiments",
+                  "claim": "Lighting generation uses coupled StyleGAN branches rather than diffusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Coupled LDR/HDR StyleGAN synthesis and focal-masked GAN inversion infer the panorama latent code.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2207.14811v1",
+                  "locator": "§3 framework and GAN inversion; §4 experiments",
+                  "claim": "Lighting generation uses coupled StyleGAN branches rather than diffusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A shared latent space supports indoor HDR lighting estimation and illumination editing.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2207.14811v1",
+                  "locator": "§3 framework and GAN inversion; §4 experiments",
+                  "claim": "Lighting generation uses coupled StyleGAN branches rather than diffusion."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Coupled LDR/HDR StyleGAN synthesis and focal-masked GAN inversion infer the panorama latent code.",
+            "outcome": "Coupled LDR/HDR StyleGAN synthesis and focal-masked GAN inversion infer the panorama latent code.",
+            "validation": "A shared latent space supports indoor HDR lighting estimation and illumination editing."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-81",
+          "shortLabel": "Editable Indoor Lighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2211.03928v1",
+              "locator": "§3.1–3.3; §4–5; §7",
+              "claim": "One dominant source has3D position,size,color and ambient parameters; Cycles renders it with the textured room."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Separate light, room-layout and texture networks predict an emitting sphere plus textured cuboid.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2211.03928v1",
+                  "locator": "§3.1–3.3; §4–5; §7",
+                  "claim": "One dominant source has3D position,size,color and ambient parameters; Cycles renders it with the textured room."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Separate light, room-layout and texture networks predict an emitting sphere plus textured cuboid.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2211.03928v1",
+                  "locator": "§3.1–3.3; §4–5; §7",
+                  "claim": "One dominant source has3D position,size,color and ambient parameters; Cycles renders it with the textured room."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "The hybrid representation offers editable dominant-light parameters and useful glossy reflections.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2211.03928v1",
+                  "locator": "§3.1–3.3; §4–5; §7",
+                  "claim": "One dominant source has3D position,size,color and ambient parameters; Cycles renders it with the textured room."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Separate light, room-layout and texture networks predict an emitting sphere plus textured cuboid.",
+            "outcome": "Separate light, room-layout and texture networks predict an emitting sphere plus textured cuboid.",
+            "validation": "The hybrid representation offers editable dominant-light parameters and useful glossy reflections."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-82",
+          "shortLabel": "ObjectDrop",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2403.18818v1",
+              "locator": "§§4–5; §7 Limitations",
+              "claim": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision. Models object-caused shadows/reflections instead of only filling masked pixels."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.18818v1",
+                  "locator": "§§4–5; §7 Limitations",
+                  "claim": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision. Models object-caused shadows/reflections instead of only filling masked pixels."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.18818v1",
+                  "locator": "§§4–5; §7 Limitations",
+                  "claim": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision. Models object-caused shadows/reflections instead of only filling masked pixels."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Models object-caused shadows/reflections instead of only filling masked pixels.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.18818v1",
+                  "locator": "§§4–5; §7 Limitations",
+                  "claim": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision. Models object-caused shadows/reflections instead of only filling masked pixels."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision.",
+            "outcome": "Fine-tune diffusion using real before/after counterfactual pairs; bootstrap synthetic insertion supervision.",
+            "validation": "Models object-caused shadows/reflections instead of only filling masked pixels."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-83",
+          "shortLabel": "Emptying & relighting rooms",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://grail.cs.washington.edu/projects/emptying/emptying.pdf",
+              "locator": "§§4–6; §8 results, runtime and §8.1 limitations",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Jointly calibrate radiance, fit diffuse scene reflectance and parametric emitters, then rerender the reconstructed room.",
+              "sources": [
+                {
+                  "url": "https://grail.cs.washington.edu/projects/emptying/emptying.pdf",
+                  "locator": "§§4–6; §8 results, runtime and §8.1 limitations",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Jointly calibrate radiance, fit diffuse scene reflectance and parametric emitters, then rerender the reconstructed room.",
+              "sources": [
+                {
+                  "url": "https://grail.cs.washington.edu/projects/emptying/emptying.pdf",
+                  "locator": "§§4–6; §8 results, runtime and §8.1 limitations",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates empty-room reconstruction, relighting and object insertion with baked global illumination.",
+              "sources": [
+                {
+                  "url": "https://grail.cs.washington.edu/projects/emptying/emptying.pdf",
+                  "locator": "§§4–6; §8 results, runtime and §8.1 limitations",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Jointly calibrate radiance, fit diffuse scene reflectance and parametric emitters, then rerender the reconstructed room.",
+            "outcome": "Jointly calibrate radiance, fit diffuse scene reflectance and parametric emitters, then rerender the reconstructed room.",
+            "validation": "Demonstrates empty-room reconstruction, relighting and object insertion with baked global illumination."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-84",
+          "shortLabel": "No Shadow Left Behind",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_No_Shadow_Left_Behind_Removing_Objects_and_Their_Shadows_Using_CVPR_2021_paper.pdf",
+              "locator": "Abstract; §1 scope; method introduction",
+              "claim": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits. Avoids requiring explicit user segmentation of every shadow."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_No_Shadow_Left_Behind_Removing_Objects_and_Their_Shadows_Using_CVPR_2021_paper.pdf",
+                  "locator": "Abstract; §1 scope; method introduction",
+                  "claim": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits. Avoids requiring explicit user segmentation of every shadow."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_No_Shadow_Left_Behind_Removing_Objects_and_Their_Shadows_Using_CVPR_2021_paper.pdf",
+                  "locator": "Abstract; §1 scope; method introduction",
+                  "claim": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits. Avoids requiring explicit user segmentation of every shadow."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Avoids requiring explicit user segmentation of every shadow.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhang_No_Shadow_Left_Behind_Removing_Objects_and_Their_Shadows_Using_CVPR_2021_paper.pdf",
+                  "locator": "Abstract; §1 scope; method introduction",
+                  "claim": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits. Avoids requiring explicit user segmentation of every shadow."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits.",
+            "outcome": "Approximate geometry/lighting guides a learned removal pipeline trained on synthetic scene edits.",
+            "validation": "Avoids requiring explicit user segmentation of every shadow."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-86",
+          "shortLabel": "PointAR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2004.00006",
+              "locator": "§4 pipeline; §5 evaluation; §7 future work",
+              "claim": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network. Reduces model resource complexity while improving reported lighting estimates. Fixed-view estimation leaves temporal/spatial correlation and heterogeneous-device optimization as future work."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2004.00006",
+                  "locator": "§4 pipeline; §5 evaluation; §7 future work",
+                  "claim": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network. Reduces model resource complexity while improving reported lighting estimates. Fixed-view estimation leaves temporal/spatial correlation and heterogeneous-device optimization as future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2004.00006",
+                  "locator": "§4 pipeline; §5 evaluation; §7 future work",
+                  "claim": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network. Reduces model resource complexity while improving reported lighting estimates. Fixed-view estimation leaves temporal/spatial correlation and heterogeneous-device optimization as future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Reduces model resource complexity while improving reported lighting estimates.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2004.00006",
+                  "locator": "§4 pipeline; §5 evaluation; §7 future work",
+                  "claim": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network. Reduces model resource complexity while improving reported lighting estimates. Fixed-view estimation leaves temporal/spatial correlation and heterogeneous-device optimization as future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network.",
+            "outcome": "Transform RGB-D input into a point cloud around an insertion location and regress second-order SH with a compact point-based network.",
+            "validation": "Reduces model resource complexity while improving reported lighting estimates."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-87",
+          "shortLabel": "Xihe",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://tianguo.info/project/lighting-estimation/xihe_mobisys2021.pdf",
+              "locator": "§4–5 framework; §6 timing; §8 discussion",
+              "claim": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting. Integrates mobile sensing,networking and temporally compensated rendering. XiheNet handles low-frequency lighting; metallic/high-frequency appearance is less accurate and supporting new estimators needs redesign."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting.",
+              "sources": [
+                {
+                  "url": "https://tianguo.info/project/lighting-estimation/xihe_mobisys2021.pdf",
+                  "locator": "§4–5 framework; §6 timing; §8 discussion",
+                  "claim": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting. Integrates mobile sensing,networking and temporally compensated rendering. XiheNet handles low-frequency lighting; metallic/high-frequency appearance is less accurate and supporting new estimators needs redesign."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting.",
+              "sources": [
+                {
+                  "url": "https://tianguo.info/project/lighting-estimation/xihe_mobisys2021.pdf",
+                  "locator": "§4–5 framework; §6 timing; §8 discussion",
+                  "claim": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting. Integrates mobile sensing,networking and temporally compensated rendering. XiheNet handles low-frequency lighting; metallic/high-frequency appearance is less accurate and supporting new estimators needs redesign."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Integrates mobile sensing,networking and temporally compensated rendering.",
+              "sources": [
+                {
+                  "url": "https://tianguo.info/project/lighting-estimation/xihe_mobisys2021.pdf",
+                  "locator": "§4–5 framework; §6 timing; §8 discussion",
+                  "claim": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting. Integrates mobile sensing,networking and temporally compensated rendering. XiheNet handles low-frequency lighting; metallic/high-frequency appearance is less accurate and supporting new estimators needs redesign."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting.",
+            "outcome": "Unit-sphere point-cloud sampling and compression, GPU device processing, edge XiheNet inference and adaptive triggering return SH lighting.",
+            "validation": "Integrates mobile sensing,networking and temporally compensated rendering."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-88",
+          "shortLabel": "LITAR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2301.06184",
+              "locator": "§4 design; §6.1 runtime/quality; conclusion",
+              "claim": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction. Mobile/edge integration improves reflection details and spatial coherence. Authors identify remaining map-detail and temporally varying-light robustness work; capture movement and asynchronous registration affect freshness."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2301.06184",
+                  "locator": "§4 design; §6.1 runtime/quality; conclusion",
+                  "claim": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction. Mobile/edge integration improves reflection details and spatial coherence. Authors identify remaining map-detail and temporally varying-light robustness work; capture movement and asynchronous registration affect freshness."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2301.06184",
+                  "locator": "§4 design; §6.1 runtime/quality; conclusion",
+                  "claim": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction. Mobile/edge integration improves reflection details and spatial coherence. Authors identify remaining map-detail and temporally varying-light robustness work; capture movement and asynchronous registration affect freshness."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Mobile/edge integration improves reflection details and spatial coherence.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2301.06184",
+                  "locator": "§4 design; §6.1 runtime/quality; conclusion",
+                  "claim": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction. Mobile/edge integration improves reflection details and spatial coherence. Authors identify remaining map-detail and temporally varying-light robustness work; capture movement and asynchronous registration affect freshness."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction.",
+            "outcome": "Two-field reconstruction separates near-field colored geometry from directional far-field lighting; multiresolution projection and anchor extrapolation generate probes without mesh reconstruction.",
+            "validation": "Mobile/edge integration improves reflection details and spatial coherence."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-89",
+          "shortLabel": "Private reflection rendering",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2207.03056",
+              "locator": "§4 attacks; §5 defenses; §6.3 tradeoffs/future policy",
+              "claim": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense. Evaluates privacy attacks and visual-similarity/privacy tradeoffs for environment-map reflections. Defense depends on detection coverage; choosing policies between complementary defenses remains future work."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2207.03056",
+                  "locator": "§4 attacks; §5 defenses; §6.3 tradeoffs/future policy",
+                  "claim": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense. Evaluates privacy attacks and visual-similarity/privacy tradeoffs for environment-map reflections. Defense depends on detection coverage; choosing policies between complementary defenses remains future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2207.03056",
+                  "locator": "§4 attacks; §5 defenses; §6.3 tradeoffs/future policy",
+                  "claim": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense. Evaluates privacy attacks and visual-similarity/privacy tradeoffs for environment-map reflections. Defense depends on detection coverage; choosing policies between complementary defenses remains future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Evaluates privacy attacks and visual-similarity/privacy tradeoffs for environment-map reflections.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2207.03056",
+                  "locator": "§4 attacks; §5 defenses; §6.3 tradeoffs/future policy",
+                  "claim": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense. Evaluates privacy attacks and visual-similarity/privacy tradeoffs for environment-map reflections. Defense depends on detection coverage; choosing policies between complementary defenses remains future work."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense.",
+            "outcome": "IPC2S detects faces/text and blurs associated reconstructed color samples; R2 provides a complementary conditional defense.",
+            "validation": "Evaluates privacy attacks and visual-similarity/privacy tradeoffs for environment-map reflections."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-90",
+          "shortLabel": "CleAR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary method, evaluation and limitation sections checked; not an exhaustive full-paper review.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2411.02179v3",
+              "locator": "§4.2–4.3; §5–6; §8",
+              "claim": "Full generation can take3.2s, whereas real-time refinement adjusts prior maps; these are different timing scopes."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Context-conditioned diffusion completes LDR panoramas and high-intensity maps while on-device color refinement updates cached estimates.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2411.02179v3",
+                  "locator": "§4.2–4.3; §5–6; §8",
+                  "claim": "Full generation can take3.2s, whereas real-time refinement adjusts prior maps; these are different timing scopes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Context-conditioned diffusion completes LDR panoramas and high-intensity maps while on-device color refinement updates cached estimates.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2411.02179v3",
+                  "locator": "§4.2–4.3; §5–6; §8",
+                  "claim": "Full generation can take3.2s, whereas real-time refinement adjusts prior maps; these are different timing scopes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "An edge-server/mobile pipeline combines richer HDR estimates with inexpensive ongoing refinement.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2411.02179v3",
+                  "locator": "§4.2–4.3; §5–6; §8",
+                  "claim": "Full generation can take3.2s, whereas real-time refinement adjusts prior maps; these are different timing scopes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Context-conditioned diffusion completes LDR panoramas and high-intensity maps while on-device color refinement updates cached estimates.",
+            "outcome": "Context-conditioned diffusion completes LDR panoramas and high-intensity maps while on-device color refinement updates cached estimates.",
+            "validation": "An edge-server/mobile pipeline combines richer HDR estimates with inexpensive ongoing refinement."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         }
@@ -27759,6 +37249,2584 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
+          "id": "interagent",
+          "shortLabel": "InterAgent",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Earlier selective full-text assessment retained; runtime not newly measured.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2512.07410v2",
+              "locator": "§§3–5; §11",
+              "claim": "Method, two-agent scope and planning/scaling limits"
+            },
+            {
+              "url": "https://arxiv.org/html/2512.07410v2",
+              "locator": "§§3,4.1–4.3",
+              "claim": "Training pipeline, two-agent state/action model and sparse graph."
+            },
+            {
+              "url": "https://arxiv.org/html/2512.07410v2",
+              "locator": "§§5.1–5.2 Table 1; §5.4 Figure 7; §10 Table 4",
+              "claim": "Benchmark and reactive-control evidence; metrics differ in ranking."
+            },
+            {
+              "url": "https://arxiv.org/html/2512.07410v2",
+              "locator": "§11 Discussion",
+              "claim": "Failure cases and scope limits."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Reactive conditioning demo",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§3–5; §11",
+                  "claim": "Method, two-agent scope and planning/scaling limits"
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§3,4.1–4.3",
+                  "claim": "Training pipeline, two-agent state/action model and sparse graph."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§5.1–5.2 Table 1; §5.4 Figure 7; §10 Table 4",
+                  "claim": "Benchmark and reactive-control evidence; metrics differ in ranking."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§11 Discussion",
+                  "claim": "Failure cases and scope limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Coupled actor actions",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§3–5; §11",
+                  "claim": "Method, two-agent scope and planning/scaling limits"
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§3,4.1–4.3",
+                  "claim": "Training pipeline, two-agent state/action model and sparse graph."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§5.1–5.2 Table 1; §5.4 Figure 7; §10 Table 4",
+                  "claim": "Benchmark and reactive-control evidence; metrics differ in ranking."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§11 Discussion",
+                  "claim": "Failure cases and scope limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two-agent simulation benchmarks",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§3–5; §11",
+                  "claim": "Method, two-agent scope and planning/scaling limits"
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§3,4.1–4.3",
+                  "claim": "Training pipeline, two-agent state/action model and sparse graph."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§§5.1–5.2 Table 1; §5.4 Figure 7; §10 Table 4",
+                  "claim": "Benchmark and reactive-control evidence; metrics differ in ranking."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.07410v2",
+                  "locator": "§11 Discussion",
+                  "claim": "Failure cases and scope limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Reactive conditioning demo",
+            "outcome": "Coupled actor actions",
+            "validation": "Two-agent simulation benchmarks"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "lyric",
+          "shortLabel": "LYRIC",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Earlier selective full-text assessment retained; related work and references additionally inspected for snowballing.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.19688v2",
+              "locator": "§§2,3.1,4.1,4.6",
+              "claim": "Capability, stages, rates and existing waypoint control"
+            },
+            {
+              "url": "https://arxiv.org/html/2609.19688v2",
+              "locator": "§§3.1,3.3–3.4",
+              "claim": "Physical action formulation and staged method."
+            },
+            {
+              "url": "https://arxiv.org/html/2609.19688v2",
+              "locator": "§§4.4–4.6; §5",
+              "claim": "Success protocol, matched baselines, guidance and future scope."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Test-time spatial guidance",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§2,3.1,4.1,4.6",
+                  "claim": "Capability, stages, rates and existing waypoint control"
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§3.1,3.3–3.4",
+                  "claim": "Physical action formulation and staged method."
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§4.4–4.6; §5",
+                  "claim": "Success protocol, matched baselines, guidance and future scope."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Closed-loop motor targets",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§2,3.1,4.1,4.6",
+                  "claim": "Capability, stages, rates and existing waypoint control"
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§3.1,3.3–3.4",
+                  "claim": "Physical action formulation and staged method."
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§4.4–4.6; §5",
+                  "claim": "Success protocol, matched baselines, guidance and future scope."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Simulation + perceptual comparison",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§2,3.1,4.1,4.6",
+                  "claim": "Capability, stages, rates and existing waypoint control"
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§3.1,3.3–3.4",
+                  "claim": "Physical action formulation and staged method."
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.19688v2",
+                  "locator": "§§4.4–4.6; §5",
+                  "claim": "Success protocol, matched baselines, guidance and future scope."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Test-time spatial guidance",
+            "outcome": "Closed-loop motor targets",
+            "validation": "Simulation + perceptual comparison"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "pami",
+          "shortLabel": "PAMI",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Earlier selective full-text assessment retained.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2609.38466v1",
+              "locator": "§3; Appendices A.2,B.1,C",
+              "claim": "Method, timing and rigid-mesh scope"
+            },
+            {
+              "url": "https://arxiv.org/html/2609.38466",
+              "locator": "§3 Figure 2; §§4.1–4.2",
+              "claim": "Generation/refinement and evaluation."
+            },
+            {
+              "url": "https://arxiv.org/html/2609.38466",
+              "locator": "Appendices A.2,B.1,C",
+              "claim": "Sequence timing and scope limits."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Batch generation / refinement",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2609.38466v1",
+                  "locator": "§3; Appendices A.2,B.1,C",
+                  "claim": "Method, timing and rigid-mesh scope"
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.38466",
+                  "locator": "§3 Figure 2; §§4.1–4.2",
+                  "claim": "Generation/refinement and evaluation."
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.38466",
+                  "locator": "Appendices A.2,B.1,C",
+                  "claim": "Sequence timing and scope limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Human + object poses",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2609.38466v1",
+                  "locator": "§3; Appendices A.2,B.1,C",
+                  "claim": "Method, timing and rigid-mesh scope"
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.38466",
+                  "locator": "§3 Figure 2; §§4.1–4.2",
+                  "claim": "Generation/refinement and evaluation."
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.38466",
+                  "locator": "Appendices A.2,B.1,C",
+                  "claim": "Sequence timing and scope limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Contact / penetration benchmarks",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2609.38466v1",
+                  "locator": "§3; Appendices A.2,B.1,C",
+                  "claim": "Method, timing and rigid-mesh scope"
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.38466",
+                  "locator": "§3 Figure 2; §§4.1–4.2",
+                  "claim": "Generation/refinement and evaluation."
+                },
+                {
+                  "url": "https://arxiv.org/html/2609.38466",
+                  "locator": "Appendices A.2,B.1,C",
+                  "claim": "Sequence timing and scope limits."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Batch generation / refinement",
+            "outcome": "Human + object poses",
+            "validation": "Contact / penetration benchmarks"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "gaits",
+          "shortLabel": "Disney stylized gaits",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Earlier partial primary-paper reading retained.",
+          "evidence": [
+            {
+              "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+              "locator": "§§3,8,9",
+              "claim": "Artist control, real-time experiments and feasibility limits"
+            },
+            {
+              "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+              "locator": "pp. 1–2, §1 Introduction",
+              "claim": "Artist-directed problem and integrated authoring contribution; no offline trajectory optimization or training step."
+            },
+            {
+              "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+              "locator": "p. 3, §3 Overview and Figure 2",
+              "claim": "Procedural samples, phase-space blending, model-based tracking and live editing architecture."
+            },
+            {
+              "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+              "locator": "p. 11, §8 Results and §8.1",
+              "claim": "MuJoCo simulation, Intel i7 real-time experiments, and dinosaur neck/tail gait authoring."
+            },
+            {
+              "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+              "locator": "p. 12, §§8.3–8.5; p. 13, §8.5 continuation",
+              "claim": "Groot hardware transfer, authoring examples and four-participant exploratory usability study; no broad usability superiority established."
+            },
+            {
+              "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+              "locator": "p. 13, §9 Limitations and Future Work",
+              "claim": "Controller feasibility guarantees, manual curves, walk-cycle scope and difficult control tuning remain limitations."
+            },
+            {
+              "url": "https://la.disneyresearch.com/publication/interactive-design-of-stylized-walking-gaits-for-robotic-characters/",
+              "locator": "Title/date/venue block and Abstract",
+              "claim": "Official title, July 28 2024 date and SIGGRAPH 2024 venue."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Interactive gait editing",
+              "sources": [
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "§§3,8,9",
+                  "claim": "Artist control, real-time experiments and feasibility limits"
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "pp. 1–2, §1 Introduction",
+                  "claim": "Artist-directed problem and integrated authoring contribution; no offline trajectory optimization or training step."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 3, §3 Overview and Figure 2",
+                  "claim": "Procedural samples, phase-space blending, model-based tracking and live editing architecture."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 11, §8 Results and §8.1",
+                  "claim": "MuJoCo simulation, Intel i7 real-time experiments, and dinosaur neck/tail gait authoring."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 12, §§8.3–8.5; p. 13, §8.5 continuation",
+                  "claim": "Groot hardware transfer, authoring examples and four-participant exploratory usability study; no broad usability superiority established."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 13, §9 Limitations and Future Work",
+                  "claim": "Controller feasibility guarantees, manual curves, walk-cycle scope and difficult control tuning remain limitations."
+                },
+                {
+                  "url": "https://la.disneyresearch.com/publication/interactive-design-of-stylized-walking-gaits-for-robotic-characters/",
+                  "locator": "Title/date/venue block and Abstract",
+                  "claim": "Official title, July 28 2024 date and SIGGRAPH 2024 venue."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Physical tracking references",
+              "sources": [
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "§§3,8,9",
+                  "claim": "Artist control, real-time experiments and feasibility limits"
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "pp. 1–2, §1 Introduction",
+                  "claim": "Artist-directed problem and integrated authoring contribution; no offline trajectory optimization or training step."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 3, §3 Overview and Figure 2",
+                  "claim": "Procedural samples, phase-space blending, model-based tracking and live editing architecture."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 11, §8 Results and §8.1",
+                  "claim": "MuJoCo simulation, Intel i7 real-time experiments, and dinosaur neck/tail gait authoring."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 12, §§8.3–8.5; p. 13, §8.5 continuation",
+                  "claim": "Groot hardware transfer, authoring examples and four-participant exploratory usability study; no broad usability superiority established."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 13, §9 Limitations and Future Work",
+                  "claim": "Controller feasibility guarantees, manual curves, walk-cycle scope and difficult control tuning remain limitations."
+                },
+                {
+                  "url": "https://la.disneyresearch.com/publication/interactive-design-of-stylized-walking-gaits-for-robotic-characters/",
+                  "locator": "Title/date/venue block and Abstract",
+                  "claim": "Official title, July 28 2024 date and SIGGRAPH 2024 venue."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Simulation + robot + exploratory study",
+              "sources": [
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "§§3,8,9",
+                  "claim": "Artist control, real-time experiments and feasibility limits"
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "pp. 1–2, §1 Introduction",
+                  "claim": "Artist-directed problem and integrated authoring contribution; no offline trajectory optimization or training step."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 3, §3 Overview and Figure 2",
+                  "claim": "Procedural samples, phase-space blending, model-based tracking and live editing architecture."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 11, §8 Results and §8.1",
+                  "claim": "MuJoCo simulation, Intel i7 real-time experiments, and dinosaur neck/tail gait authoring."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 12, §§8.3–8.5; p. 13, §8.5 continuation",
+                  "claim": "Groot hardware transfer, authoring examples and four-participant exploratory usability study; no broad usability superiority established."
+                },
+                {
+                  "url": "https://www.baecher.info/assets/pdf/Hopkins2024.pdf",
+                  "locator": "p. 13, §9 Limitations and Future Work",
+                  "claim": "Controller feasibility guarantees, manual curves, walk-cycle scope and difficult control tuning remain limitations."
+                },
+                {
+                  "url": "https://la.disneyresearch.com/publication/interactive-design-of-stylized-walking-gaits-for-robotic-characters/",
+                  "locator": "Title/date/venue block and Abstract",
+                  "claim": "Official title, July 28 2024 date and SIGGRAPH 2024 venue."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Interactive gait editing",
+            "outcome": "Physical tracking references",
+            "validation": "Simulation + robot + exploratory study"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "deepmimic",
+          "shortLabel": "DeepMimic",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selective full text: abstract, body/task examples, §9 and Table 2; architecture, complete evaluation and runtime audit pending.",
+          "evidence": [
+            {
+              "url": "https://xbpeng.github.io/projects/DeepMimic/DeepMimic_2018.pdf",
+              "locator": "§§8–9; Table 2",
+              "claim": "Characters, task control and skill-training scope"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Runtime task steering",
+              "sources": [
+                {
+                  "url": "https://xbpeng.github.io/projects/DeepMimic/DeepMimic_2018.pdf",
+                  "locator": "§§8–9; Table 2",
+                  "claim": "Characters, task control and skill-training scope"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Motor targets",
+              "sources": [
+                {
+                  "url": "https://xbpeng.github.io/projects/DeepMimic/DeepMimic_2018.pdf",
+                  "locator": "§§8–9; Table 2",
+                  "claim": "Characters, task control and skill-training scope"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Simulation tasks",
+              "sources": [
+                {
+                  "url": "https://xbpeng.github.io/projects/DeepMimic/DeepMimic_2018.pdf",
+                  "locator": "§§8–9; Table 2",
+                  "claim": "Characters, task control and skill-training scope"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Runtime task steering",
+            "outcome": "Motor targets",
+            "validation": "Simulation tasks"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "chois",
+          "shortLabel": "CHOIS",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selective full text §§3.2–3.3,4.1 and project abstract; complete evaluation and supplement pending.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2312.03913v2",
+              "locator": "§§3.2–3.3; §4.1",
+              "claim": "Geometry, guidance and FullBodyManipulation training/evaluation"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Generation-time constraints",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2312.03913v2",
+                  "locator": "§§3.2–3.3; §4.1",
+                  "claim": "Geometry, guidance and FullBodyManipulation training/evaluation"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Human + object poses",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2312.03913v2",
+                  "locator": "§§3.2–3.3; §4.1",
+                  "claim": "Geometry, guidance and FullBodyManipulation training/evaluation"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Motion metrics + perceptual study",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2312.03913v2",
+                  "locator": "§§3.2–3.3; §4.1",
+                  "claim": "Geometry, guidance and FullBodyManipulation training/evaluation"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Generation-time constraints",
+            "outcome": "Human + object poses",
+            "validation": "Motion metrics + perceptual study"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "intermimic",
+          "shortLabel": "InterMimic",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selective arXiv v2 §§1,3.1–3.3,4 implementation details, Appendix H; version dated 2026, publication year 2025.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2502.20390v2",
+              "locator": "§3; §4 implementation; Appendix H",
+              "claim": "Training, control rate and stated failure modes"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Reference tracking",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2502.20390v2",
+                  "locator": "§3; §4 implementation; Appendix H",
+                  "claim": "Training, control rate and stated failure modes"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Motor targets",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2502.20390v2",
+                  "locator": "§3; §4 implementation; Appendix H",
+                  "claim": "Training, control rate and stated failure modes"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Simulation HOI benchmarks",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2502.20390v2",
+                  "locator": "§3; §4 implementation; Appendix H",
+                  "claim": "Training, control rate and stated failure modes"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Reference tracking",
+            "outcome": "Motor targets",
+            "validation": "Simulation HOI benchmarks"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "trumans",
+          "shortLabel": "Scaling Up Dynamic Human-Scene Interaction Modeling",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text method/runtime sections",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2403.08629v1",
+              "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+              "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+            },
+            {
+              "url": "https://arxiv.org/html/2403.08629v1",
+              "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+              "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "TRUMANS mocap data and autoregressive scene/action-conditioned diffusion.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.08629v1",
+                  "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+                  "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+                },
+                {
+                  "url": "https://arxiv.org/html/2403.08629v1",
+                  "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+                  "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "TRUMANS mocap data and autoregressive scene/action-conditioned diffusion.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.08629v1",
+                  "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+                  "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+                },
+                {
+                  "url": "https://arxiv.org/html/2403.08629v1",
+                  "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+                  "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "TRUMANS mocap data and autoregressive scene/action-conditioned diffusion.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2403.08629v1",
+                  "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+                  "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+                },
+                {
+                  "url": "https://arxiv.org/html/2403.08629v1",
+                  "locator": "Introduction contributions; implementation paragraph reporting 0.7-second sampling",
+                  "claim": "Authors explicitly target real-time autoregressive HSI and describe incremental sampling."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "TRUMANS mocap data and autoregressive scene/action-conditioned diffusion.",
+            "outcome": "TRUMANS mocap data and autoregressive scene/action-conditioned diffusion.",
+            "validation": "TRUMANS mocap data and autoregressive scene/action-conditioned diffusion."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "hosig",
+          "shortLabel": "HOSIG: Full-Body Human-Object-Scene Interaction Generation with Hierarchical Scene Perception",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text method/evaluation sections",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2506.01579v1",
+              "locator": "Abstract; Sections 3.2-3.4; 4",
+              "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+            },
+            {
+              "url": "https://arxiv.org/html/2506.01579v1",
+              "locator": "Abstract; Sections 3.2-3.4; 4",
+              "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Grasp-pose, navigation and scene-guided diffusion hierarchy.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2506.01579v1",
+                  "locator": "Abstract; Sections 3.2-3.4; 4",
+                  "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+                },
+                {
+                  "url": "https://arxiv.org/html/2506.01579v1",
+                  "locator": "Abstract; Sections 3.2-3.4; 4",
+                  "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Grasp-pose, navigation and scene-guided diffusion hierarchy.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2506.01579v1",
+                  "locator": "Abstract; Sections 3.2-3.4; 4",
+                  "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+                },
+                {
+                  "url": "https://arxiv.org/html/2506.01579v1",
+                  "locator": "Abstract; Sections 3.2-3.4; 4",
+                  "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Grasp-pose, navigation and scene-guided diffusion hierarchy.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2506.01579v1",
+                  "locator": "Abstract; Sections 3.2-3.4; 4",
+                  "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+                },
+                {
+                  "url": "https://arxiv.org/html/2506.01579v1",
+                  "locator": "Abstract; Sections 3.2-3.4; 4",
+                  "claim": "Hierarchical geometry/perception and finger-level contacts are modeled with autoregressive long-motion synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Grasp-pose, navigation and scene-guided diffusion hierarchy.",
+            "outcome": "Grasp-pose, navigation and scene-guided diffusion hierarchy.",
+            "validation": "Grasp-pose, navigation and scene-guided diffusion hierarchy."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "interactmove",
+          "shortLabel": "InteractMove: Text-Controlled Human-Object Interaction Generation in 3D Scenes with Movable Objects",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text method/ablation sections",
+          "evidence": [
+            {
+              "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+              "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+              "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+            },
+            {
+              "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+              "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+              "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Grounding, hand-object affordance and local scene conditions with collision guidance.",
+              "sources": [
+                {
+                  "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+                  "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+                  "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+                },
+                {
+                  "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+                  "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+                  "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Grounding, hand-object affordance and local scene conditions with collision guidance.",
+              "sources": [
+                {
+                  "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+                  "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+                  "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+                },
+                {
+                  "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+                  "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+                  "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Grounding, hand-object affordance and local scene conditions with collision guidance.",
+              "sources": [
+                {
+                  "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+                  "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+                  "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+                },
+                {
+                  "url": "https://cxhcmhhh.github.io/InteractMoveProject/static/pdfs/paper.pdf",
+                  "locator": "Sections 4-5; Table 4; inference collision-aware loss discussion",
+                  "claim": "Grounding, affordance and scene constraints are evaluated; constraints trade against motion diversity."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Grounding, hand-object affordance and local scene conditions with collision guidance.",
+            "outcome": "Grounding, hand-object affordance and local scene conditions with collision guidance.",
+            "validation": "Grounding, hand-object affordance and local scene conditions with collision guidance."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "infbagel",
+          "shortLabel": "InfBaGel: Human-Object-Scene Interaction Generation with Dynamic Perception and Iterative Refinement",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text method and speed-table sections",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2604.04843v1",
+              "locator": "Sections 3 and 4.1; Table 2",
+              "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+            },
+            {
+              "url": "https://arxiv.org/html/2607.08741v1",
+              "locator": "Section 5.1; Table 6",
+              "claim": "Control-error and perceptual evaluation already exist."
+            },
+            {
+              "url": "https://arxiv.org/html/2604.04843v1",
+              "locator": "Section 4.1",
+              "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+            },
+            {
+              "url": "https://arxiv.org/html/2604.04843v1",
+              "locator": "Sections 3 and 4.1; Table 2",
+              "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+            },
+            {
+              "url": "https://arxiv.org/html/2607.08741v1",
+              "locator": "Section 5.1; Table 6",
+              "claim": "Control-error and perceptual evaluation already exist."
+            },
+            {
+              "url": "https://arxiv.org/html/2604.04843v1",
+              "locator": "Section 4.1",
+              "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Consistency-model distillation and iteratively updated scene guidance.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Sections 3 and 4.1; Table 2",
+                  "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.08741v1",
+                  "locator": "Section 5.1; Table 6",
+                  "claim": "Control-error and perceptual evaluation already exist."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Section 4.1",
+                  "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Sections 3 and 4.1; Table 2",
+                  "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.08741v1",
+                  "locator": "Section 5.1; Table 6",
+                  "claim": "Control-error and perceptual evaluation already exist."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Section 4.1",
+                  "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Consistency-model distillation and iteratively updated scene guidance.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Sections 3 and 4.1; Table 2",
+                  "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.08741v1",
+                  "locator": "Section 5.1; Table 6",
+                  "claim": "Control-error and perceptual evaluation already exist."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Section 4.1",
+                  "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Sections 3 and 4.1; Table 2",
+                  "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.08741v1",
+                  "locator": "Section 5.1; Table 6",
+                  "claim": "Control-error and perceptual evaluation already exist."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Section 4.1",
+                  "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Consistency-model distillation and iteratively updated scene guidance.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Sections 3 and 4.1; Table 2",
+                  "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.08741v1",
+                  "locator": "Section 5.1; Table 6",
+                  "claim": "Control-error and perceptual evaluation already exist."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Section 4.1",
+                  "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Sections 3 and 4.1; Table 2",
+                  "claim": "Generation speed is sequence AITS/FPS; full guided method reports 6.75 s and 28.75 fps."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.08741v1",
+                  "locator": "Section 5.1; Table 6",
+                  "claim": "Control-error and perceptual evaluation already exist."
+                },
+                {
+                  "url": "https://arxiv.org/html/2604.04843v1",
+                  "locator": "Section 4.1",
+                  "claim": "Contact, sliding and scene/object penetration are established evaluation dimensions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Consistency-model distillation and iteratively updated scene guidance.",
+            "outcome": "Consistency-model distillation and iteratively updated scene guidance.",
+            "validation": "Consistency-model distillation and iteratively updated scene guidance."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "maskedmimic",
+          "shortLabel": "MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text capabilities/limitations",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2409.14393v1",
+              "locator": "Sections 8.4 and 9",
+              "claim": "Long sequential text instructions and several motion classes remain difficult."
+            },
+            {
+              "url": "https://arxiv.org/html/2410.03441v1",
+              "locator": "Sections 4.1 and 6",
+              "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+            },
+            {
+              "url": "https://arxiv.org/html/2409.14393v1",
+              "locator": "Sections 8.4 and 9",
+              "claim": "Long sequential text instructions and several motion classes remain difficult."
+            },
+            {
+              "url": "https://arxiv.org/html/2410.03441v1",
+              "locator": "Sections 4.1 and 6",
+              "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Masked motion inpainting controller trained from sparse/full motion targets.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2409.14393v1",
+                  "locator": "Sections 8.4 and 9",
+                  "claim": "Long sequential text instructions and several motion classes remain difficult."
+                },
+                {
+                  "url": "https://arxiv.org/html/2410.03441v1",
+                  "locator": "Sections 4.1 and 6",
+                  "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+                },
+                {
+                  "url": "https://arxiv.org/html/2409.14393v1",
+                  "locator": "Sections 8.4 and 9",
+                  "claim": "Long sequential text instructions and several motion classes remain difficult."
+                },
+                {
+                  "url": "https://arxiv.org/html/2410.03441v1",
+                  "locator": "Sections 4.1 and 6",
+                  "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Masked motion inpainting controller trained from sparse/full motion targets.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2409.14393v1",
+                  "locator": "Sections 8.4 and 9",
+                  "claim": "Long sequential text instructions and several motion classes remain difficult."
+                },
+                {
+                  "url": "https://arxiv.org/html/2410.03441v1",
+                  "locator": "Sections 4.1 and 6",
+                  "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+                },
+                {
+                  "url": "https://arxiv.org/html/2409.14393v1",
+                  "locator": "Sections 8.4 and 9",
+                  "claim": "Long sequential text instructions and several motion classes remain difficult."
+                },
+                {
+                  "url": "https://arxiv.org/html/2410.03441v1",
+                  "locator": "Sections 4.1 and 6",
+                  "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Masked motion inpainting controller trained from sparse/full motion targets.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2409.14393v1",
+                  "locator": "Sections 8.4 and 9",
+                  "claim": "Long sequential text instructions and several motion classes remain difficult."
+                },
+                {
+                  "url": "https://arxiv.org/html/2410.03441v1",
+                  "locator": "Sections 4.1 and 6",
+                  "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+                },
+                {
+                  "url": "https://arxiv.org/html/2409.14393v1",
+                  "locator": "Sections 8.4 and 9",
+                  "claim": "Long sequential text instructions and several motion classes remain difficult."
+                },
+                {
+                  "url": "https://arxiv.org/html/2410.03441v1",
+                  "locator": "Sections 4.1 and 6",
+                  "claim": "DiP generates two-second plans in 11.4 ms; authors propose exteroception and longer-time-scale planning."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Masked motion inpainting controller trained from sparse/full motion targets.",
+            "outcome": "Masked motion inpainting controller trained from sparse/full motion targets.",
+            "validation": "Masked motion inpainting controller trained from sparse/full motion targets."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "intention-reactive",
+          "shortLabel": "Real-Time and Controllable Reactive Motion Synthesis via Intention Guidance",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected publisher full-text method/timing",
+          "evidence": [
+            {
+              "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+              "locator": "Sections 3 and 4.1; 4.3",
+              "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+            },
+            {
+              "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+              "locator": "Sections 3 and 4.1; 4.3",
+              "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Key-joint intention prediction and adversarial codebook matching.",
+              "sources": [
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+                  "locator": "Sections 3 and 4.1; 4.3",
+                  "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+                },
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+                  "locator": "Sections 3 and 4.1; 4.3",
+                  "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Key-joint intention prediction and adversarial codebook matching.",
+              "sources": [
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+                  "locator": "Sections 3 and 4.1; 4.3",
+                  "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+                },
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+                  "locator": "Sections 3 and 4.1; 4.3",
+                  "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Key-joint intention prediction and adversarial codebook matching.",
+              "sources": [
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+                  "locator": "Sections 3 and 4.1; 4.3",
+                  "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+                },
+                {
+                  "url": "https://onlinelibrary.wiley.com/doi/10.1111/cgf.70222",
+                  "locator": "Sections 3 and 4.1; 4.3",
+                  "claim": "History-based key-joint intention guides online reaction; 7 ms/frame inference is reported."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Key-joint intention prediction and adversarial codebook matching.",
+            "outcome": "Key-joint intention prediction and adversarial codebook matching.",
+            "validation": "Key-joint intention prediction and adversarial codebook matching."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "dense-inbetween",
+          "shortLabel": "Motion In-Betweening for Densely Interacting Characters",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text method/runtime",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2510.00314v1",
+              "locator": "Section 5.3, Interaction In-betweening and Controllability",
+              "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+            },
+            {
+              "url": "https://arxiv.org/html/2510.00314v1",
+              "locator": "Section 5.3, Interaction In-betweening and Controllability",
+              "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Cross-space FiLM conditioning, periodicity learning and latent refinement.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2510.00314v1",
+                  "locator": "Section 5.3, Interaction In-betweening and Controllability",
+                  "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+                },
+                {
+                  "url": "https://arxiv.org/html/2510.00314v1",
+                  "locator": "Section 5.3, Interaction In-betweening and Controllability",
+                  "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Cross-space FiLM conditioning, periodicity learning and latent refinement.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2510.00314v1",
+                  "locator": "Section 5.3, Interaction In-betweening and Controllability",
+                  "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+                },
+                {
+                  "url": "https://arxiv.org/html/2510.00314v1",
+                  "locator": "Section 5.3, Interaction In-betweening and Controllability",
+                  "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Cross-space FiLM conditioning, periodicity learning and latent refinement.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2510.00314v1",
+                  "locator": "Section 5.3, Interaction In-betweening and Controllability",
+                  "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+                },
+                {
+                  "url": "https://arxiv.org/html/2510.00314v1",
+                  "locator": "Section 5.3, Interaction In-betweening and Controllability",
+                  "claim": "Authors report real-time generation at 125 ms per ten frames and interactively adjustable keyposes."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Cross-space FiLM conditioning, periodicity learning and latent refinement.",
+            "outcome": "Cross-space FiLM conditioning, periodicity learning and latent refinement.",
+            "validation": "Cross-space FiLM conditioning, periodicity learning and latent refinement."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "multi-person-priors",
+          "shortLabel": "Multi-Person Interaction Generation from Two-Person Motion Priors",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Abstract and selected method overview",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2505.17860v1",
+              "locator": "Abstract and method overview",
+              "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+            },
+            {
+              "url": "https://arxiv.org/html/2505.17860v1",
+              "locator": "Abstract and method overview",
+              "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Pairwise interaction graph with graph-driven sampling from two-person diffusion priors.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.17860v1",
+                  "locator": "Abstract and method overview",
+                  "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.17860v1",
+                  "locator": "Abstract and method overview",
+                  "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Pairwise interaction graph with graph-driven sampling from two-person diffusion priors.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.17860v1",
+                  "locator": "Abstract and method overview",
+                  "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.17860v1",
+                  "locator": "Abstract and method overview",
+                  "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Pairwise interaction graph with graph-driven sampling from two-person diffusion priors.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.17860v1",
+                  "locator": "Abstract and method overview",
+                  "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.17860v1",
+                  "locator": "Abstract and method overview",
+                  "claim": "Pairwise interaction graphs reuse existing two-person models for variable-size interactions."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Pairwise interaction graph with graph-driven sampling from two-person diffusion priors.",
+            "outcome": "Pairwise interaction graph with graph-driven sampling from two-person diffusion priors.",
+            "validation": "Pairwise interaction graph with graph-driven sampling from two-person diffusion priors."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "imprecise-keyframes",
+          "shortLabel": "Generative Motion Infilling From Imprecisely Timed Keyframes",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected full-text method/runtime/limitations",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2503.01016",
+              "locator": "§4.2.1.3; §4.3.2, p.5; §6",
+              "claim": "Time-warp and pose-residual prediction; reported inference configuration is batch generation."
+            },
+            {
+              "url": "https://arxiv.org/html/2607.29133",
+              "locator": "§2.1",
+              "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Diffusion jointly predicts time warp and pose residuals.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2503.01016",
+                  "locator": "§4.2.1.3; §4.3.2, p.5; §6",
+                  "claim": "Time-warp and pose-residual prediction; reported inference configuration is batch generation."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1",
+                  "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Diffusion jointly predicts time warp and pose residuals.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2503.01016",
+                  "locator": "§4.2.1.3; §4.3.2, p.5; §6",
+                  "claim": "Time-warp and pose-residual prediction; reported inference configuration is batch generation."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1",
+                  "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2503.01016",
+                  "locator": "§4.2.1.3; §4.3.2, p.5; §6",
+                  "claim": "Time-warp and pose-residual prediction; reported inference configuration is batch generation."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1",
+                  "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Diffusion jointly predicts time warp and pose residuals.",
+            "outcome": "Diffusion jointly predicts time warp and pose residuals.",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "body-part-phase",
+          "shortLabel": "Controllable Text-to-Motion Generation via Modular Body-Part Phase Control",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected full-text method/runtime/limitations",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2603.19795",
+              "locator": "§4.4 inference; Table1 and §5.2 runtime, p.10; §6, p.14",
+              "claim": "Phase-conditioned regeneration is efficient on MotionLCM; periodicity, topology changes and contact-rich behavior limit transfer."
+            },
+            {
+              "url": "https://arxiv.org/html/2607.29133",
+              "locator": "§2.1",
+              "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Body-part phase parameters condition frozen generators via ControlNet.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2603.19795",
+                  "locator": "§4.4 inference; Table1 and §5.2 runtime, p.10; §6, p.14",
+                  "claim": "Phase-conditioned regeneration is efficient on MotionLCM; periodicity, topology changes and contact-rich behavior limit transfer."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1",
+                  "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Body-part phase parameters condition frozen generators via ControlNet.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2603.19795",
+                  "locator": "§4.4 inference; Table1 and §5.2 runtime, p.10; §6, p.14",
+                  "claim": "Phase-conditioned regeneration is efficient on MotionLCM; periodicity, topology changes and contact-rich behavior limit transfer."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1",
+                  "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2603.19795",
+                  "locator": "§4.4 inference; Table1 and §5.2 runtime, p.10; §6, p.14",
+                  "claim": "Phase-conditioned regeneration is efficient on MotionLCM; periodicity, topology changes and contact-rich behavior limit transfer."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1",
+                  "claim": "Related work explicitly distinguishes online generation control from existing-clip editing; the broader literature must be searched before a universal absence claim."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Body-part phase parameters condition frozen generators via ControlNet.",
+            "outcome": "Body-part phase parameters condition frozen generators via ControlNet.",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "simmotionedit",
+          "shortLabel": "SimMotionEdit: Text-Based Human Motion Editing with Motion Similarity Prediction",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "primary abstract and introduction",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/abs/2408.00712",
+              "locator": "Abstract; author project publication metadata",
+              "claim": "MotionFix supplies source/target/edit-text triplets and TMED conditional diffusion; SIGGRAPH Asia 2024."
+            },
+            {
+              "url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_SimMotionEdit_Text-Based_Human_Motion_Editing_with_Motion_Similarity_Prediction_CVPR_2025_paper.pdf",
+              "locator": "p.1 abstract and introduction",
+              "claim": "SimMotionEdit jointly trains editing and motion-similarity prediction using a diffusion-transformer; CVPR2025."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Joint editing/similarity-prediction training with diffusion transformer.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2408.00712",
+                  "locator": "Abstract; author project publication metadata",
+                  "claim": "MotionFix supplies source/target/edit-text triplets and TMED conditional diffusion; SIGGRAPH Asia 2024."
+                },
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_SimMotionEdit_Text-Based_Human_Motion_Editing_with_Motion_Similarity_Prediction_CVPR_2025_paper.pdf",
+                  "locator": "p.1 abstract and introduction",
+                  "claim": "SimMotionEdit jointly trains editing and motion-similarity prediction using a diffusion-transformer; CVPR2025."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Joint editing/similarity-prediction training with diffusion transformer.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2408.00712",
+                  "locator": "Abstract; author project publication metadata",
+                  "claim": "MotionFix supplies source/target/edit-text triplets and TMED conditional diffusion; SIGGRAPH Asia 2024."
+                },
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_SimMotionEdit_Text-Based_Human_Motion_Editing_with_Motion_Similarity_Prediction_CVPR_2025_paper.pdf",
+                  "locator": "p.1 abstract and introduction",
+                  "claim": "SimMotionEdit jointly trains editing and motion-similarity prediction using a diffusion-transformer; CVPR2025."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2408.00712",
+                  "locator": "Abstract; author project publication metadata",
+                  "claim": "MotionFix supplies source/target/edit-text triplets and TMED conditional diffusion; SIGGRAPH Asia 2024."
+                },
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_SimMotionEdit_Text-Based_Human_Motion_Editing_with_Motion_Similarity_Prediction_CVPR_2025_paper.pdf",
+                  "locator": "p.1 abstract and introduction",
+                  "claim": "SimMotionEdit jointly trains editing and motion-similarity prediction using a diffusion-transformer; CVPR2025."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Joint editing/similarity-prediction training with diffusion transformer.",
+            "outcome": "Joint editing/similarity-prediction training with diffusion transformer.",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "condmdi",
+          "shortLabel": "Flexible Motion In-betweening with Diffusion Models",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "abstract plus Scheduled Inpainting task comparison",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/abs/2405.11126",
+              "locator": "Abstract",
+              "claim": "Flexible spatial constraints with text conditioning for motion in-betweening."
+            },
+            {
+              "url": "https://arxiv.org/html/2607.29133",
+              "locator": "§2.1 and §5.1",
+              "claim": "Describes CondMDI and its separately trained CondEditor adaptation."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Conditional motion diffusion in-betweening.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2405.11126",
+                  "locator": "Abstract",
+                  "claim": "Flexible spatial constraints with text conditioning for motion in-betweening."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1 and §5.1",
+                  "claim": "Describes CondMDI and its separately trained CondEditor adaptation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Conditional motion diffusion in-betweening.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2405.11126",
+                  "locator": "Abstract",
+                  "claim": "Flexible spatial constraints with text conditioning for motion in-betweening."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1 and §5.1",
+                  "claim": "Describes CondMDI and its separately trained CondEditor adaptation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2405.11126",
+                  "locator": "Abstract",
+                  "claim": "Flexible spatial constraints with text conditioning for motion in-betweening."
+                },
+                {
+                  "url": "https://arxiv.org/html/2607.29133",
+                  "locator": "§2.1 and §5.1",
+                  "claim": "Describes CondMDI and its separately trained CondEditor adaptation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Conditional motion diffusion in-betweening.",
+            "outcome": "Conditional motion diffusion in-betweening.",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "emage",
+          "shortLabel": "EMAGE: Towards Unified Holistic Co-Speech Gesture Generation via Expressive Masked Audio Gesture Modeling",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected abstract, introduction and Figure 1",
+          "evidence": [
+            {
+              "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_EMAGE_Towards_Unified_Holistic_Co-Speech_Gesture_Generation_via_Expressive_Masked_CVPR_2024_paper.pdf",
+              "locator": "Abstract; Figure 1; introduction",
+              "claim": "Audio and masked-gesture conditioning produces holistic gestures."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Masked audio-gesture transformer with compositional VQ-VAE representations.",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_EMAGE_Towards_Unified_Holistic_Co-Speech_Gesture_Generation_via_Expressive_Masked_CVPR_2024_paper.pdf",
+                  "locator": "Abstract; Figure 1; introduction",
+                  "claim": "Audio and masked-gesture conditioning produces holistic gestures."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "face + body + hands + global translation",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_EMAGE_Towards_Unified_Holistic_Co-Speech_Gesture_Generation_via_Expressive_Masked_CVPR_2024_paper.pdf",
+                  "locator": "Abstract; Figure 1; introduction",
+                  "claim": "Audio and masked-gesture conditioning produces holistic gestures."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_EMAGE_Towards_Unified_Holistic_Co-Speech_Gesture_Generation_via_Expressive_Masked_CVPR_2024_paper.pdf",
+                  "locator": "Abstract; Figure 1; introduction",
+                  "claim": "Audio and masked-gesture conditioning produces holistic gestures."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Masked audio-gesture transformer with compositional VQ-VAE representations.",
+            "outcome": "face + body + hands + global translation",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "motion-x-plusplus",
+          "shortLabel": "Motion-X++: A Large-Scale Multimodal 3D Whole-body Human Motion Dataset",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "abstract and official repository release notes",
+          "evidence": [
+            {
+              "url": "https://github.com/IDEA-Research/Motion-X",
+              "locator": "News entries 2024-04-25 and 2025-03-01",
+              "claim": "Motion-X++ adds aligned video, keypoints, SMPL-X, text and available audio; later release fixes modality consistency."
+            },
+            {
+              "url": "https://arxiv.org/abs/2501.05098",
+              "locator": "Title and abstract",
+              "claim": "Exact identity: Motion-X++: A Large-Scale Multimodal 3D Whole-body Human Motion Dataset."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Automatic annotation and alignment of video, expressive motion and language, with additional modalities.",
+              "sources": [
+                {
+                  "url": "https://github.com/IDEA-Research/Motion-X",
+                  "locator": "News entries 2024-04-25 and 2025-03-01",
+                  "claim": "Motion-X++ adds aligned video, keypoints, SMPL-X, text and available audio; later release fixes modality consistency."
+                },
+                {
+                  "url": "https://arxiv.org/abs/2501.05098",
+                  "locator": "Title and abstract",
+                  "claim": "Exact identity: Motion-X++: A Large-Scale Multimodal 3D Whole-body Human Motion Dataset."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Automatic annotation and alignment of video, expressive motion and language, with additional modalities.",
+              "sources": [
+                {
+                  "url": "https://github.com/IDEA-Research/Motion-X",
+                  "locator": "News entries 2024-04-25 and 2025-03-01",
+                  "claim": "Motion-X++ adds aligned video, keypoints, SMPL-X, text and available audio; later release fixes modality consistency."
+                },
+                {
+                  "url": "https://arxiv.org/abs/2501.05098",
+                  "locator": "Title and abstract",
+                  "claim": "Exact identity: Motion-X++: A Large-Scale Multimodal 3D Whole-body Human Motion Dataset."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://github.com/IDEA-Research/Motion-X",
+                  "locator": "News entries 2024-04-25 and 2025-03-01",
+                  "claim": "Motion-X++ adds aligned video, keypoints, SMPL-X, text and available audio; later release fixes modality consistency."
+                },
+                {
+                  "url": "https://arxiv.org/abs/2501.05098",
+                  "locator": "Title and abstract",
+                  "claim": "Exact identity: Motion-X++: A Large-Scale Multimodal 3D Whole-body Human Motion Dataset."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Automatic annotation and alignment of video, expressive motion and language, with additional modalities.",
+            "outcome": "Automatic annotation and alignment of video, expressive motion and language, with additional modalities.",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "omnimotion-x",
+          "shortLabel": "OmniMotion-X: Versatile Multimodal Whole-Body Motion Generation",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected full-text sections 4 and 5.1, Figure 4",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2510.19789v2",
+              "locator": "Sections 4, 5.1; Figure 4",
+              "claim": "Unified multimodal conditions; default reference/prediction length 150 frames; progressive training on one H800."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Autoregressive diffusion transformer with reference motion and progressively stronger mixed-condition training.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2510.19789v2",
+                  "locator": "Sections 4, 5.1; Figure 4",
+                  "claim": "Unified multimodal conditions; default reference/prediction length 150 frames; progressive training on one H800."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "SMPL-X whole-body motion",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2510.19789v2",
+                  "locator": "Sections 4, 5.1; Figure 4",
+                  "claim": "Unified multimodal conditions; default reference/prediction length 150 frames; progressive training on one H800."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2510.19789v2",
+                  "locator": "Sections 4, 5.1; Figure 4",
+                  "claim": "Unified multimodal conditions; default reference/prediction length 150 frames; progressive training on one H800."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Autoregressive diffusion transformer with reference motion and progressively stronger mixed-condition training.",
+            "outcome": "SMPL-X whole-body motion",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "miburi",
+          "shortLabel": "MIBURI: Towards Expressive Interactive Gesture Synthesis",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected full text: abstract, sections 4.3 and 5; official project page",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2603.03282",
+              "locator": "Section 4.3; Table 4; Section 5",
+              "claim": "Demo reports 36 ms/frame on RTX3090 including model and web rendering; A100 table reports 34.9 ms per two-frame forward pass excluding rendering. Limitations exclude user body dynamics/full dyadic context."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Body-part-aware codecs and a two-dimensional causal autoregressive generator conditioned on speech-text embeddings.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2603.03282",
+                  "locator": "Section 4.3; Table 4; Section 5",
+                  "claim": "Demo reports 36 ms/frame on RTX3090 including model and web rendering; A100 table reports 34.9 ms per two-frame forward pass excluding rendering. Limitations exclude user body dynamics/full dyadic context."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "body gestures + facial expressions",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2603.03282",
+                  "locator": "Section 4.3; Table 4; Section 5",
+                  "claim": "Demo reports 36 ms/frame on RTX3090 including model and web rendering; A100 table reports 34.9 ms per two-frame forward pass excluding rendering. Limitations exclude user body dynamics/full dyadic context."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2603.03282",
+                  "locator": "Section 4.3; Table 4; Section 5",
+                  "claim": "Demo reports 36 ms/frame on RTX3090 including model and web rendering; A100 table reports 34.9 ms per two-frame forward pass excluding rendering. Limitations exclude user body dynamics/full dyadic context."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Body-part-aware codecs and a two-dimensional causal autoregressive generator conditioned on speech-text embeddings.",
+            "outcome": "body gestures + facial expressions",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "filmagent",
+          "shortLabel": "FilmAgent: A Multi-Agent Framework for End-to-End Film Automation in Virtual 3D Spaces",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected full text: sections 3.1 and 5",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2501.12909",
+              "locator": "Section 3.1; Section 5",
+              "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+            },
+            {
+              "url": "https://arxiv.org/html/2603.14790",
+              "locator": "Section III-C Motion Selection; Section VI; Section VII",
+              "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "LLM crew roles with critique/revision and debate/judging select preset positions, library actions and shots.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.12909",
+                  "locator": "Section 3.1; Section 5",
+                  "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+                },
+                {
+                  "url": "https://arxiv.org/html/2603.14790",
+                  "locator": "Section III-C Motion Selection; Section VI; Section VII",
+                  "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "LLM crew roles with critique/revision and debate/judging select preset positions, library actions and shots.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.12909",
+                  "locator": "Section 3.1; Section 5",
+                  "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+                },
+                {
+                  "url": "https://arxiv.org/html/2603.14790",
+                  "locator": "Section III-C Motion Selection; Section VI; Section VII",
+                  "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.12909",
+                  "locator": "Section 3.1; Section 5",
+                  "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+                },
+                {
+                  "url": "https://arxiv.org/html/2603.14790",
+                  "locator": "Section III-C Motion Selection; Section VI; Section VII",
+                  "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "LLM crew roles with critique/revision and debate/judging select preset positions, library actions and shots.",
+            "outcome": "LLM crew roles with critique/revision and debate/judging select preset positions, library actions and shots.",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "mind-of-director",
+          "shortLabel": "Mind-of-Director: Multi-modal Agent-Driven Film Previsualization via Collaborative Decision-Making",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected full text: III-C, VI, VII and abstract",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2501.12909",
+              "locator": "Section 3.1; Section 5",
+              "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+            },
+            {
+              "url": "https://arxiv.org/html/2603.14790",
+              "locator": "Section III-C Motion Selection; Section VI; Section VII",
+              "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Multimodal agents, library animation retargeting, NavMesh and synchronized Unity timeline.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.12909",
+                  "locator": "Section 3.1; Section 5",
+                  "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+                },
+                {
+                  "url": "https://arxiv.org/html/2603.14790",
+                  "locator": "Section III-C Motion Selection; Section VI; Section VII",
+                  "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Multimodal agents, library animation retargeting, NavMesh and synchronized Unity timeline.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.12909",
+                  "locator": "Section 3.1; Section 5",
+                  "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+                },
+                {
+                  "url": "https://arxiv.org/html/2603.14790",
+                  "locator": "Section III-C Motion Selection; Section VI; Section VII",
+                  "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2501.12909",
+                  "locator": "Section 3.1; Section 5",
+                  "claim": "21 Mixamo actions and preset positions; discussion identifies line-level control as too coarse."
+                },
+                {
+                  "url": "https://arxiv.org/html/2603.14790",
+                  "locator": "Section III-C Motion Selection; Section VI; Section VII",
+                  "claim": "Curated Mixamo motion and NavMesh navigation; limited contact physics; synchronized timeline editing after roughly 25-minute idea-to-previz generation."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Multimodal agents, library animation retargeting, NavMesh and synchronized Unity timeline.",
+            "outcome": "Multimodal agents, library animation retargeting, NavMesh and synchronized Unity timeline.",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "dramadirector",
+          "shortLabel": "DramaDirector: Geometry-Guided Short Drama Generation",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "selected full text: section 2.1 and Appendix A.6",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2606.24107v2",
+              "locator": "Section 2.1; Appendix A.6 First-frame generation and Image-to-video generation",
+              "claim": "Structured storyboard retrieves depth-pose references; Seedream-v5-lite first frames feed Vidu-q3-turbo video synthesis."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Storyboard planner trained with supervised finetuning and GRPO retrieves depth-pose shot references for image/video generation.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2606.24107v2",
+                  "locator": "Section 2.1; Appendix A.6 First-frame generation and Image-to-video generation",
+                  "claim": "Structured storyboard retrieves depth-pose references; Seedream-v5-lite first frames feed Vidu-q3-turbo video synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "multi-shot raster video",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2606.24107v2",
+                  "locator": "Section 2.1; Appendix A.6 First-frame generation and Image-to-video generation",
+                  "claim": "Structured storyboard retrieves depth-pose references; Seedream-v5-lite first frames feed Vidu-q3-turbo video synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not established",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2606.24107v2",
+                  "locator": "Section 2.1; Appendix A.6 First-frame generation and Image-to-video generation",
+                  "claim": "Structured storyboard retrieves depth-pose references; Seedream-v5-lite first frames feed Vidu-q3-turbo video synthesis."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Storyboard planner trained with supervised finetuning and GRPO retrieves depth-pose shot references for image/video generation.",
+            "outcome": "multi-shot raster video",
+            "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
           "id": "smartbody-gaze2009",
           "shortLabel": "Real-Time Expressive Gaze Animation for Virtual Humans",
           "values": {
@@ -27888,6 +39956,79 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Procedural SmartBody gaze control with head and torso coordination and behavior parameters.",
             "outcome": "Procedural SmartBody gaze control with head and torso coordination and behavior parameters.",
             "validation": "Not established"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "interaction-motion-survey2025",
+          "shortLabel": "Human interaction motion survey",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Abstract and primary arXiv metadata inspected 2026-10-15; full survey reading pending.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/abs/2503.12763",
+              "locator": "Abstract and bibliographic metadata",
+              "claim": "Reviews human-human, human-object and human-scene interaction generation, datasets and metrics."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Survey taxonomy of tasks, datasets and evaluation metrics.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2503.12763",
+                  "locator": "Abstract and bibliographic metadata",
+                  "claim": "Reviews human-human, human-object and human-scene interaction generation, datasets and metrics."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Survey taxonomy of tasks, datasets and evaluation metrics.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2503.12763",
+                  "locator": "Abstract and bibliographic metadata",
+                  "claim": "Reviews human-human, human-object and human-scene interaction generation, datasets and metrics."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Provides a citation and dataset discovery starting point across interaction settings.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/abs/2503.12763",
+                  "locator": "Abstract and bibliographic metadata",
+                  "claim": "Reviews human-human, human-object and human-scene interaction generation, datasets and metrics."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Survey taxonomy of tasks, datasets and evaluation metrics.",
+            "outcome": "Survey taxonomy of tasks, datasets and evaluation metrics.",
+            "validation": "Provides a citation and dataset discovery starting point across interaction settings."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         }
@@ -28852,6 +40993,99 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
+          "id": "walker",
+          "shortLabel": "Virtual, Augmented, and Mixed Reality for Human-robot Interaction: A Survey and Virtual Design Element Taxonomy",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "XR Robotics Related Work deck and speaker notes",
+              "url": ""
+            },
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "XR Robotics Related Work deck and speaker notes",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Multiple modes surveyed",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Design vocabulary",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Survey: 1991–2019 coverage",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Multiple modes surveyed",
+            "outcome": "Design vocabulary",
+            "validation": "Survey: 1991–2019 coverage"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
           "id": "xavier",
           "shortLabel": "Pseudo-Haptics Survey: Human-Computer Interaction in Extended Reality and Teleoperation",
           "values": {
@@ -28941,6 +41175,678 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Study-dependent",
             "outcome": "Perceived haptic effects",
             "validation": "Review; primary instances pending"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "wang-audio",
+          "shortLabel": "Audio-Influenced Pseudo-Haptics: A Review of Effects, Applications, and Research Directions",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "XR Robotics Related Work deck and speaker notes",
+              "url": ""
+            },
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "XR Robotics Related Work deck and speaker notes",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Study-dependent",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Perceived haptic effects",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Review; primary instances pending",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Study-dependent",
+            "outcome": "Perceived haptic effects",
+            "validation": "Review; primary instances pending"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "aerial-jib",
+          "shortLabel": "Aerial Multi-Camera Robotic Jib Crane",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "source-summary",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "XR Robotics Related Work deck and speaker notes",
+              "url": ""
+            },
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "XR Robotics Related Work deck and speaker notes",
+              "url": ""
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not assessed",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not assessed",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Not assessed",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                },
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "XR Robotics Related Work deck and speaker notes",
+                  "url": ""
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Not assessed",
+            "outcome": "Not assessed",
+            "validation": "Not assessed"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "kennel",
+          "shortLabel": "Interacting with Multi-Robot Systems via Mixed Reality",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Author project page/abstract and metadata inspected only. Primary PDF fetch failed (tool reported 27,588,790-byte content too large). Full-paper methods/results/limitations reading pending.",
+          "evidence": [
+            {
+              "id": "R-M1",
+              "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+              "locator": "Abstract and BibTeX",
+              "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+            },
+            {
+              "id": "R-M1",
+              "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+              "locator": "Abstract and BibTeX",
+              "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Human operator + robot execution",
+              "sources": [
+                {
+                  "id": "R-M1",
+                  "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+                  "locator": "Abstract and BibTeX",
+                  "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+                },
+                {
+                  "id": "R-M1",
+                  "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+                  "locator": "Abstract and BibTeX",
+                  "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Multi-robot goals",
+              "sources": [
+                {
+                  "id": "R-M1",
+                  "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+                  "locator": "Abstract and BibTeX",
+                  "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+                },
+                {
+                  "id": "R-M1",
+                  "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+                  "locator": "Abstract and BibTeX",
+                  "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Construction-inspired comparison",
+              "sources": [
+                {
+                  "id": "R-M1",
+                  "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+                  "locator": "Abstract and BibTeX",
+                  "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+                },
+                {
+                  "id": "R-M1",
+                  "url": "https://flokm.github.io/projects/mixed-reality-multi-robot/",
+                  "locator": "Abstract and BibTeX",
+                  "claim": "Interface/platforms and task-dependent comparison summary; abstract-level evidence only."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Human operator + robot execution",
+            "outcome": "Multi-robot goals",
+            "validation": "Construction-inspired comparison"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "vrgit",
+          "shortLabel": "VRGit: A Version Control System for Collaborative Content Creation in Virtual Reality",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary PDF text inspected through search-index extraction: Figure 7, §§4.1–4.3, selected §5.1, §§6.3–6.6 and conclusion. Direct PDF fetch timed out; not a complete PDF/figure inspection.",
+          "evidence": [
+            {
+              "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+              "locator": "§§4.1–4.3; §§6.3–6.6",
+              "claim": "Study context, scaling, awareness and generalization boundaries."
+            },
+            {
+              "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+              "locator": "§§4.1–4.3; §§6.3–6.6",
+              "claim": "Study context, scaling, awareness and generalization boundaries."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Collaborators inspect/reuse states",
+              "sources": [
+                {
+                  "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+                  "locator": "§§4.1–4.3; §§6.3–6.6",
+                  "claim": "Study context, scaling, awareness and generalization boundaries."
+                },
+                {
+                  "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+                  "locator": "§§4.1–4.3; §§6.3–6.6",
+                  "claim": "Study context, scaling, awareness and generalization boundaries."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "History graph / previews / reuse",
+              "sources": [
+                {
+                  "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+                  "locator": "§§4.1–4.3; §§6.3–6.6",
+                  "claim": "Study context, scaling, awareness and generalization boundaries."
+                },
+                {
+                  "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+                  "locator": "§§4.1–4.3; §§6.3–6.6",
+                  "claim": "Study context, scaling, awareness and generalization boundaries."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Exploratory VR interior design",
+              "sources": [
+                {
+                  "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+                  "locator": "§§4.1–4.3; §§6.3–6.6",
+                  "claim": "Study context, scaling, awareness and generalization boundaries."
+                },
+                {
+                  "url": "https://guoanhong.com/papers/CHI23-VRGit.pdf",
+                  "locator": "§§4.1–4.3; §§6.3–6.6",
+                  "claim": "Study context, scaling, awareness and generalization boundaries."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Collaborators inspect/reuse states",
+            "outcome": "History graph / previews / reuse",
+            "validation": "Exploratory VR interior design"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "poros",
+          "shortLabel": "Poros: Configurable Proxies for Distant Interactions in VR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary methods/results sections read",
+          "evidence": [
+            {
+              "url": "https://henningpohl.net/papers/Pohl2021CHI.pdf",
+              "locator": "§3.1, §3.4, §5.2–5.4, §6.1",
+              "claim": "Basis for classification and bounded summary"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Manual manipulation",
+              "sources": [
+                {
+                  "url": "https://henningpohl.net/papers/Pohl2021CHI.pdf",
+                  "locator": "§3.1, §3.4, §5.2–5.4, §6.1",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Linked virtual manipulation",
+              "sources": [
+                {
+                  "url": "https://henningpohl.net/papers/Pohl2021CHI.pdf",
+                  "locator": "§3.1, §3.4, §5.2–5.4, §6.1",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "VR expert evaluation",
+              "sources": [
+                {
+                  "url": "https://henningpohl.net/papers/Pohl2021CHI.pdf",
+                  "locator": "§3.1, §3.4, §5.2–5.4, §6.1",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Manual manipulation",
+            "outcome": "Linked virtual manipulation",
+            "validation": "VR expert evaluation"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "wyfiwyg",
+          "shortLabel": "WYFIWYG: Investigating Effective User Support in Aerial Videography",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary methods/results sections read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1801.05972",
+              "locator": "Video UI / Virtual Flight; Method Target Framing pp.3–4; appendix A",
+              "claim": "Basis for classification and bounded summary"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Human authors; optimizer smooths",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1801.05972",
+                  "locator": "Video UI / Virtual Flight; Method Target Framing pp.3–4; appendix A",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Optimized camera trajectory",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1801.05972",
+                  "locator": "Video UI / Virtual Flight; Method Target Framing pp.3–4; appendix A",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Aerial-videography interface study",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1801.05972",
+                  "locator": "Video UI / Virtual Flight; Method Target Framing pp.3–4; appendix A",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Human authors; optimizer smooths",
+            "outcome": "Optimized camera trajectory",
+            "validation": "Aerial-videography interface study"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "heterogeneous-mr",
+          "shortLabel": "A Mixed Reality System for Interaction with Heterogeneous Robotic Systems",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary methods/results sections read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2307.05280v1",
+              "locator": "§III-A–E; §IV-A; References [28]",
+              "claim": "Basis for classification and bounded summary"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Human commands; contextual actions",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2307.05280v1",
+                  "locator": "§III-A–E; §IV-A; References [28]",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Drone / AGV commands",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2307.05280v1",
+                  "locator": "§III-A–E; §IV-A; References [28]",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "VR intralogistics study",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2307.05280v1",
+                  "locator": "§III-A–E; §IV-A; References [28]",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Human commands; contextual actions",
+            "outcome": "Drone / AGV commands",
+            "validation": "VR intralogistics study"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "realitygit",
+          "shortLabel": "RealityGit: Cross Reality Version Control of R&D Optical Workbench",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary institutional abstract only; restricted full text",
+          "evidence": [
+            {
+              "url": "https://bib-pubdb1.desy.de/record/599819",
+              "locator": "Institutional abstract and publication metadata",
+              "claim": "Basis for classification and bounded summary"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Human review / annotation",
+              "sources": [
+                {
+                  "url": "https://bib-pubdb1.desy.de/record/599819",
+                  "locator": "Institutional abstract and publication metadata",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Historical workspace views / annotations",
+              "sources": [
+                {
+                  "url": "https://bib-pubdb1.desy.de/record/599819",
+                  "locator": "Institutional abstract and publication metadata",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Optical-workbench prototype",
+              "sources": [
+                {
+                  "url": "https://bib-pubdb1.desy.de/record/599819",
+                  "locator": "Institutional abstract and publication metadata",
+                  "claim": "Basis for classification and bounded summary"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Human review / annotation",
+            "outcome": "Historical workspace views / annotations",
+            "validation": "Optical-workbench prototype"
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         }
