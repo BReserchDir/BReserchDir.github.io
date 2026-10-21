@@ -1,5 +1,5 @@
 window.RESEARCH_STORY_V2 = {
-  "title": "Version 2 · Visual research discussion",
+  "title": "Version 2 · Problem, methods, gaps and investigations",
   "subtitle": "Three possibilities in interactive graphics and XR · Bhasura Gunawardhana · PI discussion",
   "slides": [
     {
@@ -298,100 +298,754 @@ window.RESEARCH_STORY_V2 = {
     {
       "id": "v2-illumination-why",
       "kind": "v2-chain",
-      "title": "Bidirectional Illumination in Mixed Reality",
-      "lead": "A shared lighting setup must work across the real and virtual parts of a shot.",
+      "title": "One lighting setup across real and virtual content",
+      "lead": "Goal: a physical or virtual light should shape both actors and both props coherently.",
       "chapter": "1 · Shared lighting",
       "topicId": "illumination",
       "points": [],
       "paperIds": [
         "depthlab",
+        "review-ref-65",
+        "handlight",
         "review-ref-85",
-        "limo",
-        "review-ref-1",
-        "review-ref-33"
+        "limo"
       ],
       "branchIds": [],
-      "speakerNotes": "Production need comes from the user brief and SharedVP prototype limits, not a new controlled expert study. Current-state statements synthesize the cited lines of work. The gap is a task-specific working synthesis over selected sources, not proof of universal absence. The broader MR value follows from the domain question: cue requirements for reliable preview-to-world decisions, not an unrelated generic perception study.",
+      "speakerNotes": "Production need comes from the user brief and SharedVP prototype limits, not a new controlled expert study. Current-state statements synthesize the cited lines of work. The gap is a task-specific working synthesis over selected sources, not proof of universal absence. The broader MR value follows from the domain question: cue requirements for reliable preview-to-world decisions, not an unrelated generic perception study.\nEvery scene symbol is conceptual. Native physical illumination and rendered virtual illumination are distinguished from cross-world estimation and passthrough relighting. Source type, extent, locality, material, shadows, bounce and changes form the problem space; the first study will isolate one contrast.",
       "transition": "Check how several research strands support—and limit—this argument.",
       "chain": [
         {
           "label": "Production problem",
-          "text": "Adjust a physical or virtual light and see coherent effects on real and virtual actors, props and surroundings."
+          "text": "An actor or prop can look detached when real and virtual lighting, reflections or contact shadows disagree."
         },
         {
           "label": "Current state",
-          "text": "Relighting, local illumination estimates and perception studies solve complementary parts under different assumptions."
+          "text": "Methods already estimate physical light and render mutual effects, under different scene, material and update assumptions."
         },
         {
-          "label": "Working gap",
-          "text": "The reviewed work does not establish the lighting correspondence needed as nearby lights and content change, or which remaining errors disrupt a production task."
+          "label": "High-level gap",
+          "text": "Nearby lights, source type, material response and lighting-update cost limit which changes a method can reproduce live."
         },
         {
           "label": "Research aim",
-          "text": "Develop a bounded real-time lighting capability and test the accuracy and response needed for a production task."
+          "text": "Keep illumination coherent across real and virtual content during live lighting changes; develop and test one limiting capability first."
         }
       ],
-      "broaderMotivation": "Broader motivation: coherent lighting supports perception and interaction throughout mixed reality."
+      "broaderMotivation": "Broader motivation: Shared lighting cues support coherent appearance and interaction when real and virtual content occupy the same space."
     },
     {
-      "id": "v2-illumination-evidence",
-      "kind": "v2-synthesis",
-      "title": "What existing work enables, and what remains unresolved",
-      "lead": "Compare related results together; select a strand or paper to inspect its original figure.",
-      "chapter": "1 · Shared lighting",
+      "id": "v2-light-literature-estimation",
+      "kind": "v2-literature",
       "topicId": "illumination",
+      "chapter": "1 · Illumination · Existing work",
+      "title": "How do people recover physical illumination?",
+      "lead": "Physical light must be estimated at the position of the virtual actor or prop.",
+      "groups": [
+        {
+          "label": "Physical objects / dedicated probes",
+          "icon": "probe",
+          "diagramLabel": "Reference → light",
+          "papers": [
+            {
+              "id": "review-ref-9",
+              "title": "Rendering Synthetic Objects into Real Scenes: Bridging Traditional and Image-Based Graphics with Global Illumination and High Dynamic Range Photography",
+              "authors": [
+                "Paul Debevec"
+              ],
+              "year": 1998,
+              "venue": "SIGGRAPH 1998",
+              "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+              "method": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering.",
+              "limitation": "The demonstrated pipeline needs probe capture and a local scene model; efficient changing-object rendering and richer reflectance recovery are future work.",
+              "verification": {
+                "depth": "Selected primary full text",
+                "locator": "Section 1, PDF p.2; Sections 5–7; Section 9",
+                "status": "Explicit mirror-sphere example and scene partition verified."
+              },
+              "shortMethod": "HDR mirror probe + differential rendering.",
+              "venueLabel": "SIGGRAPH"
+            },
+            {
+              "id": null,
+              "title": "Real-Time Surface Light-field Capture for Augmentation of Planar Specular Surfaces",
+              "authors": [
+                "Jan Jachnik",
+                "Richard A. Newcombe",
+                "Andrew J. Davison"
+              ],
+              "year": 2012,
+              "venue": "IEEE ISMAR 2012",
+              "url": "https://www.doc.ic.ac.uk/~ajd/Publications/jachnik_etal_ismar2012.pdf",
+              "method": "Track a moving monocular camera, capture a planar surface light field, and separate diffuse/specular components to infer an environment map.",
+              "limitation": "Authors explicitly assume a static planar scene and static illumination approximated as distant relative to camera motion.",
+              "verification": {
+                "depth": "Primary PDF indexed abstract and Section 1; official ISMAR demonstration description",
+                "locator": "PDF p.1, Section 1; https://ismar2012.vgtc.org/ismar/2012/info/overview/demos.html",
+                "status": "Method and simplifying assumptions verified; full evaluation not audited."
+              },
+              "shortMethod": "A planar specular surface becomes the probe.",
+              "venueLabel": "ISMAR"
+            },
+            {
+              "id": null,
+              "title": "Learning Lightprobes for Mixed Reality Illumination",
+              "authors": [
+                "David Mandl",
+                "Kwang Moo Yi",
+                "Peter Mohr",
+                "Peter M. Roth",
+                "Pascal Fua",
+                "Vincent Lepetit",
+                "Dieter Schmalstieg",
+                "Denis Kalkofen"
+              ],
+              "year": 2017,
+              "venue": "IEEE ISMAR 2017",
+              "url": "https://vincentlepetit.github.io/files/papers/comp_mandl_ismar17.pdf",
+              "method": "Reconstruct a known object's geometry/material, train view-specific CNNs on synthetic lighting, and infer 16 SH coefficients from its observed appearance.",
+              "limitation": "Requires object preparation and pose-dependent model selection; limited normal coverage motivates temporal fusion under constant or slowly changing light.",
+              "verification": {
+                "depth": "Selected primary full text",
+                "locator": "Sections 1 and 3.1; Figure 2",
+                "status": "Object-specific preparation, SH representation and temporal-fusion assumption verified."
+              },
+              "shortMethod": "Prepared object + learned SH lighting.",
+              "venueLabel": "ISMAR"
+            }
+          ],
+          "sharedLimitation": "Needs suitable reference capture or object appearance; geometry and preparation assumptions differ."
+        },
+        {
+          "label": "3D reconstruction",
+          "icon": "mesh",
+          "diagramLabel": "Geometry → light",
+          "papers": [
+            {
+              "id": "review-ref-18",
+              "title": "Real-Time Photometric Registration from Arbitrary Geometry",
+              "authors": [
+                "Lukas Gruber",
+                "Thomas Richter-Trummer",
+                "Dieter Schmalstieg"
+              ],
+              "year": 2012,
+              "venue": "IEEE ISMAR 2012",
+              "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+              "method": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics.",
+              "limitation": "Reconstructed geometry and a useful surface-normal distribution are prerequisites; the method targets diffuse, bandwidth-limited environment lighting.",
+              "verification": {
+                "depth": "Primary abstract/introduction plus existing selective source assessment",
+                "locator": "Abstract; Section 1; comparison in Mandl 2017 Section 2",
+                "status": "Dynamically changing geometry/light is supported; do not call this a static-scene method."
+              },
+              "shortMethod": "RGB-D geometry + diffuse SH lighting.",
+              "venueLabel": "ISMAR"
+            },
+            {
+              "id": null,
+              "title": "Efficient and Robust Radiance Transfer for Probeless Photorealistic Augmented Reality",
+              "authors": [
+                "Lukas Gruber",
+                "Tobias Langlotz",
+                "Pradeep Sen",
+                "Tobias Höllerer",
+                "Dieter Schmalstieg"
+              ],
+              "year": 2014,
+              "venue": "IEEE Virtual Reality 2014",
+              "url": "https://web.ece.ucsb.edu/~psen/Papers/VR2014_EfficientRadianceTransferAR.pdf",
+              "method": "Accelerate RGB-D reconstruction-based photometric registration with adaptive image/visibility sampling and radiance-transfer caching.",
+              "limitation": "The implementation uses Lambertian reflection, 16-coefficient SH and a bounded KinectFusion volume; sampled temporal caches trade computation for update fidelity.",
+              "verification": {
+                "depth": "Selected primary methods, implementation and evaluation",
+                "locator": "Sections 3.1–3.3, 4 and 5.1; Figure 5",
+                "status": "Dynamic scene/light support verified; measured timing must be read with configuration, not equated to headset latency."
+              },
+              "shortMethod": "Sample and cache radiance transfer.",
+              "venueLabel": "IEEE VR"
+            },
+            {
+              "id": null,
+              "title": "Natural Environment Illumination: Coherent Interactive Augmented Reality for Mobile and Non-Mobile Devices",
+              "authors": [
+                "Kai Rohmer",
+                "Johannes Jendersie",
+                "Thorsten Grosch"
+              ],
+              "year": 2017,
+              "venue": "IEEE TVCG 23(11), 2474–2484; ISMAR special section",
+              "url": "https://doi.org/10.1109/TVCG.2017.2734426",
+              "method": "Acquire HDR-colored 3D point samples with camera color compensation; use environment/voxel/impostor queries for differential rendering including near-field light.",
+              "limitation": "Authors assume Lambertian real surfaces and a static environment after acquisition; switching a lamp can invalidate the captured reconstruction.",
+              "verification": {
+                "depth": "Selected primary full text",
+                "locator": "Sections 3, 6.1, 6.4 and 9; published PDF pp.2474–2483",
+                "primaryPdf": "https://pervasivecomputing.se/M7012E_2017/papers/17%20Natural%20Environment%20Illumination%20-%20Coherent%20Interactive%20Augmented%20Reality%20for%20Mobile%20and%20non-Mobile%20Devices.pdf",
+                "status": "Full published primary document inspected on university course mirror; DOI and journal metadata verified from its first page."
+              },
+              "shortMethod": "HDR point cloud + near-field rendering.",
+              "venueLabel": "IEEE TVCG"
+            }
+          ],
+          "sharedLimitation": "Depends on scene geometry, reflectance and update validity; Rohmer explicitly assumes a static captured environment."
+        },
+        {
+          "label": "Scene images",
+          "icon": "image",
+          "diagramLabel": "Image → light",
+          "papers": [
+            {
+              "id": "review-ref-14",
+              "title": "Learning to Predict Indoor Illumination from a Single Image",
+              "authors": [
+                "Marc-André Gardner",
+                "Kalyan Sunkavalli",
+                "Ersin Yumer",
+                "Xiaohui Shen",
+                "Emiliano Gambaretto",
+                "Christian Gagné",
+                "Jean-François Lalonde"
+              ],
+              "year": 2017,
+              "venue": "ACM TOG 36(6), Article 176; SIGGRAPH Asia 2017",
+              "url": "https://arxiv.org/html/1704.00090v3",
+              "method": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning.",
+              "limitation": "Unseen lighting is inferred from learned evidence rather than directly measured; single-view ambiguity remains. Further author-specific failure cases require the complete discussion audit.",
+              "verification": {
+                "depth": "Primary abstract and Sections 1, 3; existing selective review retained",
+                "locator": "Abstract; Section 1; arXiv v3 title/author record",
+                "status": "Method verified; limitation is an explicitly marked inference from the observation scope, not an exhaustive extracted author limitation."
+              },
+              "shortMethod": "One image predicts indoor environment light.",
+              "venueLabel": "ACM TOG / SIGGRAPH Asia"
+            },
+            {
+              "id": "review-ref-72",
+              "title": "HDR Environment Map Estimation for Real-Time Augmented Reality",
+              "authors": [
+                "Gowri Somanath",
+                "Daniel Kurz"
+              ],
+              "year": 2021,
+              "venue": "IEEE/CVF CVPR 2021",
+              "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Somanath_HDR_Environment_Map_Estimation_for_Real-Time_Augmented_Reality_CVPR_2021_paper.pdf",
+              "method": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS.",
+              "limitation": "Missing directions are plausible generated completions, not direct measurements; the network timing excludes a complete capture-to-headset pipeline.",
+              "verification": {
+                "depth": "Primary abstract/introduction and supplementary setup",
+                "locator": "Abstract; Section 1; supplemental Section 1",
+                "status": "Mobile component time verified; do not label the method generally offline."
+              },
+              "shortMethod": "One image predicts an HDR environment map.",
+              "venueLabel": "CVPR"
+            }
+          ],
+          "sharedLimitation": "Image cues and learned priors predict illumination; a global map alone does not resolve every nearby query."
+        },
+        {
+          "label": "Humans as light probes",
+          "icon": "human",
+          "diagramLabel": "Body → light",
+          "papers": [
+            {
+              "id": null,
+              "title": "Real-Time Illumination Estimation from Faces for Coherent Rendering",
+              "authors": [
+                "Sebastian B. Knorr",
+                "Daniel Kurz"
+              ],
+              "year": 2014,
+              "venue": "IEEE ISMAR 2014",
+              "url": "https://www.da.nielkurz.de/data/ISMAR2014_Knorr_Kurz_preprint.pdf",
+              "method": "Learn radiance-transfer functions at facial sample points, then regress incident distant illumination in SH from a tracked face image.",
+              "limitation": "Requires suitable face visibility/tracking and face appearance assumptions; lighting near the visible face is its stated beneficial application scope.",
+              "verification": {
+                "depth": "Selected primary abstract and method",
+                "locator": "Abstract; Sections 3.1–3.5",
+                "status": "Do not describe it as general lighting at arbitrary head-distant positions; no headset pipeline timing inferred."
+              },
+              "shortMethod": "Face appearance provides lighting cues.",
+              "venueLabel": "ISMAR"
+            },
+            {
+              "id": null,
+              "title": "Eyes for Relighting",
+              "authors": [
+                "Ko Nishino",
+                "Shree K. Nayar"
+              ],
+              "year": 2004,
+              "venue": "ACM TOG 23(3), 704–711; SIGGRAPH 2004",
+              "url": "https://cave.cs.columbia.edu/projects/categories/project?cid=Computational+Imaging&pid=Eyes+for+Relighting",
+              "method": "Model the cornea and camera as a catadioptric system to recover a wide-FOV environment map from eye reflections.",
+              "limitation": "Needs a usable corneal reflection and corneal geometric fit; the recovered map represents illumination relative to the eye, not a measured room-wide volume.",
+              "verification": {
+                "depth": "Author project and primary abstract",
+                "locator": "CAVE project abstract/publication entry; original paper Figure 1 and abstract",
+                "status": "Correct title, authors, venue and local probe interpretation verified; full failure analysis not audited."
+              },
+              "shortMethod": "Corneal reflections reveal the environment.",
+              "venueLabel": "ACM TOG / SIGGRAPH"
+            },
+            {
+              "id": null,
+              "title": "Deep Spherical Harmonics Light Probe Estimator for Mixed Reality Games",
+              "authors": [
+                "Bruno Augusto Dorta Marques",
+                "Esteban Walter Gonzalez Clua",
+                "Cristina Nader Vasconcelos"
+              ],
+              "year": 2018,
+              "venue": "Computers & Graphics 76, 96–106",
+              "url": "https://www.brunodorta.com.br/publication/deep-sh-lighting/",
+              "method": "Infer a nine-SH-coefficient lighting probe from a segmented RGB hand image and use it to match the composite virtual environment.",
+              "limitation": "Nine SH coefficients describe low-frequency illumination; the author page reports synthetic validation, while broader real-hand generalization must be checked in the full article.",
+              "verification": {
+                "depth": "Primary author abstract; indexed author PDF Figure 3; HandLight direct baseline comparison",
+                "locator": "Author project abstract; DOI 10.1016/j.cag.2018.09.003; HandLight Sections 4.3–4.4",
+                "primaryPdf": "https://www.brunodorta.com.br/publication/deep-sh-lighting/deep-sh-lighting.pdf",
+                "status": "This is the intended C&G article, distinct from the GRAPP point-light predecessor. HandLight names it the closest comparator."
+              },
+              "shortMethod": "Hand appearance predicts nine SH coefficients.",
+              "venueLabel": "Computers & Graphics"
+            }
+          ],
+          "sharedLimitation": "Needs a visible, informative body part. HandLight still reports spatial mismatch, backlighting and flicker limits."
+        }
+      ],
+      "takeaway": "Gesture-specific hand estimates and a spatial atlas reduce separate scene preparation, while probe visibility and position still matter.",
+      "points": [],
+      "paperIds": [
+        "review-ref-9",
+        "review-ref-18",
+        "review-ref-14",
+        "review-ref-72",
+        "handlight"
+      ],
+      "branchIds": [],
+      "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.",
+      "transition": "Use these method assumptions to locate a specific unresolved requirement.",
+      "contextNote": "HandLight: Mandl et al., 2026, TVCG / IEEE VR. HDR foundation: Debevec & Malik 1997; mirror-probe insertion: Debevec 1998. Historical context is not automatically coded in the chart corpus.",
+      "takeawayLabel": "HandLight’s position"
+    },
+    {
+      "id": "v2-light-literature-relighting",
+      "kind": "v2-literature",
+      "topicId": "illumination",
+      "chapter": "1 · Illumination · Existing work",
+      "title": "How do virtual lights change real imagery?",
+      "lead": "This direction changes the passthrough image, while physical objects remain in the real set.",
+      "groups": [
+        {
+          "label": "Depth and hybrid rendering",
+          "icon": "mesh",
+          "diagramLabel": "Geometry → edited view",
+          "papers": [
+            {
+              "id": "depthlab",
+              "title": "DepthLab: Real-Time 3D Interaction With Depth Maps for Mobile Augmented Reality",
+              "authorLabel": "Du et al.",
+              "authors": [],
+              "year": 2020,
+              "venue": "ACM UIST",
+              "venueLabel": "ACM UIST",
+              "url": "https://augmentedperception.github.io/depthlab/",
+              "method": "Depth-driven rendering library including camera-image relighting and shadows.",
+              "shortMethod": "Depth maps drive geometry-aware AR effects.",
+              "limitation": "Not fully verified in this pass; see remaining question and reading status.",
+              "verification": {
+                "depth": "Primary project metadata and abstract checked; no new full-paper audit.",
+                "locator": "Official project heading, author list, abstract and BibTeX"
+              }
+            },
+            {
+              "id": "review-ref-85",
+              "title": "Hybrelighter: Combining Deep Anisotropic Diffusion and Scene Reconstruction for On-device Real-time Relighting in Mixed Reality",
+              "authorLabel": "Zhao et al.",
+              "authors": [],
+              "year": 2025,
+              "venue": "arXiv preprint; final venue unverified",
+              "venueLabel": "arXiv preprint; final venue unverified",
+              "url": "https://arxiv.org/html/2508.14930v1",
+              "method": "Mesh-rendered light filters are corrected using learned-edge-guided cascaded anisotropic diffusion and a separate shadow pass.",
+              "shortMethod": "Learned-edge-guided diffusion corrects mesh lighting.",
+              "limitation": "The pipeline cannot consistently distinguish actual shadows from reconstruction errors.",
+              "verification": {
+                "depth": "Primary manuscript identifies Hanwen Zhao, John Akers, Baback Elmieh and Ira Kemelmacher-Shlizerman. Do not infer a conference from template headers.",
+                "locator": "Title, author footer and abstract; Sections 2.1–2.5"
+              }
+            }
+          ],
+          "sharedLimitation": "Geometry errors and genuine shadow boundaries are hard to separate; HybRelighter reports that ambiguity."
+        },
+        {
+          "label": "Reconstructed light transport",
+          "icon": "light",
+          "diagramLabel": "Transport → edited view",
+          "papers": [
+            {
+              "id": "review-ref-35",
+              "title": "Reciprocal Shading",
+              "authorLabel": "Knecht et al.",
+              "authors": [],
+              "year": 2012,
+              "venue": "Computers & Graphics",
+              "venueLabel": "Computers & Graphics",
+              "url": "https://www.cg.tuwien.ac.at/research/publications/2012/knecht_martin_2012_RSMR/knecht_martin_2012_RSMR-draft.pdf",
+              "method": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
+              "shortMethod": "Instant radiosity + differential rendering.",
+              "limitation": "Unseen geometry is absent; temporal reprojection artifacts persist; real BRDFs are not recovered and specular terms are zeroed.",
+              "verification": {
+                "depth": "Authors Martin Knecht, Christoph Traxler, Oliver Mattausch and Michael Wimmer verified. Existing selected method reading retained.",
+                "locator": "Primary draft first page authors/abstract; official VRVis publication PB-VRVis-2012-029 confirms journal 36(7)"
+              }
+            },
+            {
+              "id": "delta",
+              "title": "Delta Path Tracing for Real-Time Global Illumination in Mixed Reality",
+              "authorLabel": "Xu et al.",
+              "authors": [],
+              "year": 2023,
+              "venue": "IEEE VR",
+              "venueLabel": "IEEE VR",
+              "url": "https://sapphiresoul.github.io/DPT.pdf",
+              "method": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+              "shortMethod": "Path-trace the radiance change caused by virtual content.",
+              "limitation": "Not fully verified in this pass; see remaining question and reading status.",
+              "verification": {
+                "depth": "Primary PDF indexed first page checked; authors Yang Xu, Yuanfa Jiang, Shibo Wang, Kang Li and Guohua Geng. No new methods/evaluation audit.",
+                "locator": "Primary PDF first page title, authors and IEEE VR 2023 proceedings header; abstract in existing assessment"
+              }
+            }
+          ],
+          "sharedLimitation": "Transport is computed from a scene/material model. Preparation and changed-light updates must be assessed separately."
+        },
+        {
+          "label": "Learned image / sequence edits",
+          "icon": "neural",
+          "diagramLabel": "Image → generated lighting",
+          "papers": [
+            {
+              "id": "lightlab",
+              "title": "LightLab: Controlling Light Sources in Images with Diffusion Models",
+              "authorLabel": "Magar et al.",
+              "authors": [],
+              "year": 2025,
+              "venue": "SIGGRAPH Conference Papers",
+              "venueLabel": "SIGGRAPH Conference Papers",
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "method": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+              "shortMethod": "Diffusion edits lamp intensity and color.",
+              "limitation": "Dataset bias; consumer capture does not enable precise physical-unit relighting (§6).",
+              "verification": {
+                "depth": "Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+                "locator": "Title block, conference imprint, author list and abstract"
+              }
+            },
+            {
+              "id": "genlit",
+              "title": "GenLit: Reformulating Single-Image Relighting as Video Generation",
+              "authorLabel": "Bharadwaj, Feng et al.",
+              "authors": [],
+              "year": 2025,
+              "venue": "SIGGRAPH Asia Conference Papers",
+              "venueLabel": "SIGGRAPH Asia Conference Papers",
+              "url": "https://genlit.is.tue.mpg.de/",
+              "method": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+              "shortMethod": "Generate a relit sequence from a moving point light.",
+              "limitation": "Single light; retained self-shadows; VAE detail loss; slow inference.",
+              "verification": {
+                "depth": "Shrisha Bharadwaj and Haiwen Feng are equal first authors; conference proceedings venue explicitly confirmed.",
+                "locator": "Official project author list, venue heading, method sentence and BibTeX"
+              }
+            }
+          ],
+          "sharedLimitation": "Controllable image edits do not by themselves establish calibrated, stereo-consistent, live MR response."
+        }
+      ],
+      "takeaway": "Our technical opportunity must improve a concrete geometry, material or temporal failure beyond these baselines.",
       "points": [],
       "paperIds": [
         "depthlab",
         "review-ref-85",
         "review-ref-35",
+        "delta",
+        "lightlab",
+        "genlit"
+      ],
+      "branchIds": [],
+      "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.",
+      "transition": "Use these method assumptions to locate a specific unresolved requirement."
+    },
+    {
+      "id": "v2-light-literature-effects",
+      "kind": "v2-literature",
+      "topicId": "illumination",
+      "chapter": "1 · Illumination · Existing work",
+      "title": "What is known about light types and their effects?",
+      "lead": "A small source, spotlight, area light and environment light create different illumination and shadow cues.",
+      "groups": [
+        {
+          "label": "Source type and locality",
+          "icon": "light",
+          "diagramLabel": "Source → spatial lighting",
+          "papers": [
+            {
+              "id": "review-ref-15",
+              "title": "Deep Parametric Indoor Lighting Estimation",
+              "authorLabel": "Gardner et al.",
+              "authors": [],
+              "year": 2019,
+              "venue": "IEEE/CVF ICCV",
+              "venueLabel": "IEEE/CVF ICCV",
+              "url": "https://openaccess.thecvf.com/content_ICCV_2019/html/Gardner_Deep_Parametric_Indoor_Lighting_Estimation_ICCV_2019_paper.html",
+              "method": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+              "shortMethod": "Predict discrete 3D light geometry and photometry.",
+              "limitation": "The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction.",
+              "verification": {
+                "depth": "Primary CVF proceedings record confirms first author and venue. Method clause limited to abstract.",
+                "locator": "CVF accepted-paper author list, abstract and BibTeX"
+              }
+            },
+            {
+              "id": "review-ref-65",
+              "title": "Interactive Near-Field Illumination for Photorealistic Augmented Reality on Mobile Devices",
+              "authorLabel": "Rohmer et al.",
+              "authors": [],
+              "year": 2014,
+              "venue": "IEEE ISMAR",
+              "venueLabel": "IEEE ISMAR",
+              "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+              "method": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+              "shortMethod": "HDR-camera near-field illumination reaches mobile AR.",
+              "limitation": "No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display.",
+              "verification": {
+                "depth": "Authors Kai Rohmer, Wolfgang Büschel, Raimund Dachselt and Thorsten Grosch verified. Existing scoped runtime/limitations remain authoritative.",
+                "locator": "Primary first-page author list and abstract; official Interactive Media Lab publication BibTeX confirms ISMAR2014"
+              }
+            }
+          ],
+          "sharedLimitation": "Source representation, local capture and update assumptions differ. A fast displayed view can use slower lighting updates."
+        },
+        {
+          "label": "Shadows and mutual transport",
+          "icon": "shadow",
+          "diagramLabel": "Light → shadow / bounce",
+          "papers": [
+            {
+              "id": "review-ref-35",
+              "title": "Reciprocal Shading",
+              "authorLabel": "Knecht et al.",
+              "authors": [],
+              "year": 2012,
+              "venue": "Computers & Graphics",
+              "venueLabel": "Computers & Graphics",
+              "url": "https://www.cg.tuwien.ac.at/research/publications/2012/knecht_martin_2012_RSMR/knecht_martin_2012_RSMR-draft.pdf",
+              "method": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
+              "shortMethod": "Model reciprocal shading with differential rendering.",
+              "limitation": "Unseen geometry is absent; temporal reprojection artifacts persist; real BRDFs are not recovered and specular terms are zeroed.",
+              "verification": {
+                "depth": "Authors Martin Knecht, Christoph Traxler, Oliver Mattausch and Michael Wimmer verified. Existing selected method reading retained.",
+                "locator": "Primary draft first page authors/abstract; official VRVis publication PB-VRVis-2012-029 confirms journal 36(7)"
+              }
+            },
+            {
+              "id": "delta",
+              "title": "Delta Path Tracing for Real-Time Global Illumination in Mixed Reality",
+              "authorLabel": "Xu et al.",
+              "authors": [],
+              "year": 2023,
+              "venue": "IEEE VR",
+              "venueLabel": "IEEE VR",
+              "url": "https://sapphiresoul.github.io/DPT.pdf",
+              "method": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+              "shortMethod": "Compute blocked and multi-bounce changed radiance.",
+              "limitation": "Not fully verified in this pass; see remaining question and reading status.",
+              "verification": {
+                "depth": "Primary PDF indexed first page checked; authors Yang Xu, Yuanfa Jiang, Shibo Wang, Kang Li and Guohua Geng. No new methods/evaluation audit.",
+                "locator": "Primary PDF first page title, authors and IEEE VR 2023 proceedings header; abstract in existing assessment"
+              }
+            }
+          ],
+          "sharedLimitation": "These methods demonstrate effects under model/hardware assumptions; they do not settle the needed fidelity for every light type or mixed shot."
+        },
+        {
+          "label": "What users can judge",
+          "icon": "human",
+          "diagramLabel": "Appearance → task outcome",
+          "papers": [
+            {
+              "id": "review-ref-2",
+              "title": "Shedding light on cast shadows",
+              "authorLabel": "Adams et al.",
+              "authors": [],
+              "year": 2022,
+              "venue": "IEEE TVCG; online-year convention",
+              "venueLabel": "TVCG (2021 online / 2022 issue)",
+              "url": "https://haleyscommit.dev/publications.html",
+              "method": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
+              "shortMethod": "Compare shadow shading and perceived surface contact.",
+              "limitation": "Simple rectilinear target, one background and one headset per display family limit generalization.",
+              "verification": {
+                "depth": "Use 2021 when citing author-listed online publication. Existing website uses2022 final-issue year; keep an explicit online2021/issue2022 distinction rather than silently treating this as a new paper. Draft PDF has placeholder2020 headers and cannot settle final issue date.",
+                "locator": "Author publication list explicitly labels TVCG2021; linked primary PDF first-page author list/abstract"
+              }
+            },
+            {
+              "id": "gao2020",
+              "title": "Influence of Virtual Objects’ Shadows and Lighting Coherence on Distance Perception in Optical See-through AR",
+              "authorLabel": "Gao et al.",
+              "authors": [],
+              "year": 2020,
+              "venue": "Journal of the Society for Information Display",
+              "venueLabel": "Journal of the Society for Information Display",
+              "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+              "method": "Two HoloLens virtual-object/real-target alignment experiments.",
+              "shortMethod": "Test shadows and lighting alignment in distance judgment.",
+              "limitation": "Distance-underestimation trend has high variance and requires further experiments.",
+              "verification": {
+                "depth": "Primary author project verified; not a CV/graphics conference. Full primary PDF was not newly audited.",
+                "locator": "Coauthor project author list, February2020 metadata, publication field and abstract"
+              }
+            }
+          ],
+          "sharedLimitation": "Findings depend on the display, stimulus and task. They do not establish a production light-type benefit or show that more realism always helps."
+        }
+      ],
+      "takeaway": "I2 can test which light-type-dependent shadow and shading errors matter for a production task, then target the necessary correction.",
+      "points": [],
+      "paperIds": [
+        "review-ref-15",
+        "review-ref-65",
+        "review-ref-35",
+        "delta",
+        "review-ref-2",
+        "gao2020"
+      ],
+      "branchIds": [],
+      "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.",
+      "transition": "Use these method assumptions to locate a specific unresolved requirement."
+    },
+    {
+      "id": "v2-illumination-evidence",
+      "kind": "v2-synthesis",
+      "title": "The methods solve different parts of the shared-lighting goal",
+      "lead": "Compare related results together; select a strand or paper to inspect its original figure.",
+      "chapter": "1 · Illumination · Synthesis",
+      "topicId": "illumination",
+      "points": [],
+      "paperIds": [
+        "depthlab",
+        "review-ref-85",
+        "lightlab",
+        "review-ref-65",
+        "delta",
+        "review-ref-2",
         "handlight",
         "limo",
-        "review-ref-1",
-        "review-ref-2",
-        "review-ref-33"
+        "review-ref-75"
       ],
       "branchIds": [],
       "speakerNotes": "Each group contains multiple related sources. The boundary is our cross-paper reasoning about transfer to the stated production task. It must be challenged by closer work and practitioner feedback. Classification counts are not a novelty test.",
       "transition": "Use this working gap to narrow the possible contributions, rather than choose techniques first.",
       "groups": [
         {
-          "label": "Render a lighting change",
+          "label": "Relight the real view",
           "ids": [
             "depthlab",
             "review-ref-85",
-            "review-ref-35"
+            "lightlab"
           ],
-          "finding": "Depth-based and reconstructed-scene methods support real-scene lighting effects.",
-          "boundary": "Real-image relighting varies in geometry, material response and temporal behavior; these limits matter for changing mixed scenes."
+          "finding": "Geometry-based, hybrid and learned approaches alter captured real appearance.",
+          "boundary": "Compare material, boundary and temporal failures against their actual preparation and response costs."
         },
         {
-          "label": "Estimate the real illumination",
+          "label": "Preserve light-type effects",
+          "ids": [
+            "review-ref-65",
+            "delta",
+            "review-ref-2"
+          ],
+          "finding": "Near-field rendering, transport and shadow studies cover different effects and tasks.",
+          "boundary": "We still need a production-specific test of which source-type approximations change the useful result."
+        },
+        {
+          "label": "Estimate physical illumination",
           "ids": [
             "handlight",
-            "limo"
+            "limo",
+            "review-ref-75"
           ],
-          "finding": "Local or spatial estimates can light virtual content from the observed scene.",
-          "boundary": "A local light estimate must remain valid at the moving virtual object; query speed alone does not establish update latency."
-        },
-        {
-          "label": "Understand what users perceive",
-          "ids": [
-            "review-ref-1",
-            "review-ref-2",
-            "review-ref-33"
-          ],
-          "finding": "Shadow, contact and depth studies show that cue effects depend on the task and display.",
-          "boundary": "Depth/contact results do not establish which lighting errors alter a production operation such as face lighting or actor–prop blocking."
+          "finding": "Hand probes, temporal estimates and spatial volumes offer different sampling strategies.",
+          "boundary": "HandLight already reports spatial mismatch and flicker. Any extension must improve a known baseline limitation."
         }
       ],
-      "bridge": "The reviewed work does not establish the lighting correspondence needed as nearby lights and content change, or which remaining errors disrupt a production task."
+      "bridge": "A complete preview needs all three paths to remain coherent as lights, actors and props change; test a bounded failure rather than claim the whole pipeline is unsolved."
+    },
+    {
+      "id": "v2-light-concrete-gaps",
+      "kind": "v2-research-gaps",
+      "title": "Which unresolved problems matter on our set?",
+      "lead": "Each candidate follows from several complementary results, not from an empty Sankey category.",
+      "chapter": "1 · Illumination · Gaps",
+      "topicId": "illumination",
+      "points": [],
+      "paperIds": [
+        "depthlab",
+        "review-ref-85",
+        "lightlab",
+        "review-ref-15",
+        "review-ref-65",
+        "review-ref-2",
+        "gao2020",
+        "handlight",
+        "limo",
+        "review-ref-75"
+      ],
+      "branchIds": [],
+      "speakerNotes": "Each group contains multiple related sources. The boundary is our cross-paper reasoning about transfer to the stated production task. It must be challenged by closer work and practitioner feedback. Classification counts are not a novelty test.",
+      "transition": "Use this working gap to narrow the possible contributions, rather than choose techniques first.",
+      "groups": [
+        {
+          "label": "Changing real appearance",
+          "ids": [
+            "depthlab",
+            "review-ref-85",
+            "lightlab"
+          ],
+          "finding": "DepthLab uses depth; HybRelighter cannot always separate geometry error from a real shadow.",
+          "boundary": "Stable moving boundaries: improve the remaining geometry, material or temporal artifact beyond the closest baseline."
+        },
+        {
+          "label": "Light-type-dependent effects",
+          "ids": [
+            "review-ref-15",
+            "review-ref-65",
+            "review-ref-2",
+            "gao2020"
+          ],
+          "finding": "Near-field renderers separate lighting updates from display; shadow studies use constrained tasks.",
+          "boundary": "Light-type fidelity: establish which shadow or illumination errors change the production result."
+        },
+        {
+          "label": "Local physical-light estimates",
+          "ids": [
+            "handlight",
+            "limo",
+            "review-ref-75"
+          ],
+          "finding": "HandLight reports spatial mismatch and flicker; lighting volumes use different sampling assumptions.",
+          "boundary": "Probe validity: identify when an estimate becomes stale and whether targeted updates improve it."
+        }
+      ],
+      "bridge": "A complete preview needs all three paths to remain coherent as lights, actors and props change; test a bounded failure rather than claim the whole pipeline is unsolved.",
+      "takeaway": "Choose one consequential failure and improve it against its closest baseline; the exact contribution remains open for feedback."
     },
     {
       "id": "v2-illumination-coverage",
       "kind": "v2-coverage",
-      "title": "Where does the reviewed evidence concentrate?",
-      "lead": "Paper counts make the coverage visible; the research gap still comes from reading the results together.",
+      "title": "How much of the reviewed corpus addresses each requirement?",
+      "lead": "Use the counts as supporting evidence after the grouped limitations.",
       "chapter": "1 · Shared lighting",
       "topicId": "illumination",
       "points": [],
@@ -439,9 +1093,10 @@ window.RESEARCH_STORY_V2 = {
           "boundary": "Depth/contact results do not establish which lighting errors alter a production operation such as face lighting or actor–prop blocking."
         }
       ],
-      "bridge": "The reviewed work does not establish the lighting correspondence needed as nearby lights and content change, or which remaining errors disrupt a production task.",
+      "bridge": "The counts locate evidence to inspect; the gaps above come from method assumptions, results and the requirements of our mixed set.",
       "axes": [
         "direction",
+        "lightType",
         "locality",
         "timing"
       ]
@@ -567,7 +1222,7 @@ window.RESEARCH_STORY_V2 = {
             "handlight"
           ],
           "rationale": "Left column of slide 3 contains Lighting in Motion and HandLight.",
-          "evidenceStatus": "Original visual grouping confirmed; HandLight full text pending"
+          "evidenceStatus": "Original visual grouping confirmed; HandLight selected primary sections reviewed"
         },
         {
           "id": "virtual-light-image-video",
@@ -704,9 +1359,9 @@ window.RESEARCH_STORY_V2 = {
       "id": "v2-illumination-moving-prop",
       "kind": "v2-subtopic",
       "topicId": "illumination",
-      "chapter": "1 · Shared lighting",
+      "chapter": "1 · Illumination · Candidate investigations",
       "title": "I1 · Virtual light on real video see-through imagery",
-      "lead": "Virtual-production need: a virtual lamp must affect real and virtual actors/props coherently.",
+      "lead": "Production need: A virtual production lamp should change real displayed appearance coherently with virtual content.",
       "points": [],
       "paperIds": [
         "depthlab",
@@ -716,19 +1371,22 @@ window.RESEARCH_STORY_V2 = {
         "review-ref-44",
         "review-ref-83",
         "gruber2015",
-        "depth-anything-v2"
+        "depth-anything-v2",
+        "delta"
       ],
       "branchIds": [],
       "track": {
         "label": "I1 · Virtual light on real video see-through imagery",
-        "known": "Depth and reconstruction methods already alter captured real appearance.",
-        "gap": "Material response, imperfect geometry and changing shadows leave technical failures to isolate beyond current relighting baselines.",
-        "question": "Can a bounded correction improve stable virtual-light effects on real imagery at an interactive update cost?",
+        "known": "DepthLab, reconstructed transport and HybRelighter provide effects under different geometry/material assumptions.",
+        "gap": "The closest baselines leave different boundary, material and temporal errors; isolate which limits the target dynamic MR scene.",
+        "question": "Correct one consequential failure beyond the strongest matched-cost baseline.",
         "ids": [
           "depthlab",
           "review-ref-85",
-          "review-ref-35"
-        ]
+          "review-ref-35",
+          "delta"
+        ],
+        "aim": "Correct one consequential failure beyond the strongest matched-cost baseline."
       },
       "focusMap": {
         "id": "I1",
@@ -754,7 +1412,7 @@ window.RESEARCH_STORY_V2 = {
         "id": "I1",
         "slug": "moving-prop",
         "title": "I1 · Virtual light on real video see-through imagery",
-        "question": "How can virtual lights change the appearance of real actors, props and the surrounding scene in video see-through MR?",
+        "question": "Correct one consequential failure beyond the strongest matched-cost baseline.",
         "ids": [
           "depthlab",
           "review-ref-85",
@@ -774,7 +1432,7 @@ window.RESEARCH_STORY_V2 = {
         "techniques": "DepthLab-style ray marching; HybRelighter-style geometry filtering; reciprocal differential transport. Test a reflectance/geometry correction only after reproducing the simpler baselines.",
         "data": "Capture matched physical-lamp references with calibrated exposure, known prop motion and material swatches. OpenRooms / Objects with Lighting can support pretraining or checks, but do not replace dynamic MR ground truth.",
         "resources": "Begin with RGB-D or available device depth, tracked rigid props and a controllable reference lamp; use a camera-view prototype before committing to device-specific passthrough access.",
-        "experiment": "Compare mesh-only, geometry-filtered and proposed correction at matched compute. Measure material/color drift, shadow-boundary error, flicker and lighting-response latency.",
+        "experiment": "One virtual spotlight, tracked rigid real prop, two material classes and matched physical-light reference; compare alignment, material drift, artifacts and update delay.",
         "stop": "If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.",
         "resourceLinks": [
           {
@@ -786,10 +1444,10 @@ window.RESEARCH_STORY_V2 = {
             "url": "https://github.com/ViLab-UCSD/OpenRooms"
           }
         ],
-        "motivation": "Virtual-production need: a virtual lamp must affect real and virtual actors/props coherently.",
+        "motivation": "A virtual production lamp should change real displayed appearance coherently with virtual content.",
         "sourceSubtopic": "Real time virtual light affecting real video see though.",
         "sourceNumber": 1,
-        "firstInvestigation": "Material preservation and shadow placement during rigid real-prop motion.",
+        "firstInvestigation": "One virtual spotlight, tracked rigid real prop, two material classes and matched physical-light reference; compare alignment, material drift, artifacts and update delay.",
         "feasibilityPlan": {
           "papers": [
             {
@@ -888,37 +1546,25 @@ window.RESEARCH_STORY_V2 = {
         }
       },
       "simpleTest": {
-        "question": "Can a virtual spotlight stay convincing on a moving real prop?",
         "test": [
-          "Move one matte or rough prop under a virtual spotlight.",
-          "Compare DepthLab-style lighting with HybRelighter-style correction; measure shadow error, flicker and update delay."
+          "Move one matte or rough prop under a virtual spotlight; compare the closest baseline and correction at matched update cost."
         ],
         "need": [
           "Depth-capable camera/device, a prop and a controllable physical lamp for reference captures.",
           "Use the same motion and camera settings for each comparison."
         ],
-        "decision": "First reproduce the baselines. Develop a new method only if an important error remains.",
-        "evidence": [
-          {
-            "id": "depthlab",
-            "text": "DepthLab provides public depth-based relighting samples."
-          },
-          {
-            "id": "review-ref-85",
-            "text": "HybRelighter corrects mesh lighting, but reports difficulty separating shadows from reconstruction errors."
-          }
-        ]
+        "decision": "Use the closest baseline and the observed failure to refine this candidate; uncertainty is welcome in the discussion."
       },
-      "speakerNotes": "Original track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nOriginal track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. How can virtual lights change the appearance of real actors, props and the surrounding scene in video see-through MR? If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.",
+      "speakerNotes": "Original track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nOriginal track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. How can virtual lights change the appearance of real actors, props and the surrounding scene in video see-through MR? If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nThe closest baselines leave different boundary, material and temporal errors; isolate which limits the target dynamic MR scene. Proposed aim: Correct one consequential failure beyond the strongest matched-cost baseline.",
       "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
     },
     {
       "id": "v2-illumination-useful-cues",
       "kind": "v2-subtopic",
       "topicId": "illumination",
-      "chapter": "1 · Shared lighting",
-      "title": "I2 · MR perception and task performance",
-      "lead": "Virtual-production need: choose a face-lighting or key-light arrangement in MR that remains useful on set.",
+      "chapter": "1 · Illumination · Candidate investigations",
+      "title": "I2 · Light-type effects on shadows and illumination in XR",
+      "lead": "Production need: A filmmaker changes source type/extent to shape actor/prop illumination and shadow; MR must preserve the relevant distinction.",
       "points": [],
       "paperIds": [
         "review-ref-1",
@@ -926,51 +1572,62 @@ window.RESEARCH_STORY_V2 = {
         "review-ref-33",
         "gao2020",
         "review-ref-32",
-        "review-ref-60"
+        "review-ref-60",
+        "review-ref-15",
+        "review-ref-65"
       ],
       "branchIds": [],
       "track": {
-        "label": "I2 · MR perception and task performance",
-        "known": "Perceptual studies test depth, contact and rendering cues under particular displays and tasks.",
-        "gap": "Depth and contact studies do not establish which preview errors change a filmmaker’s face-lighting or key-light placement decision.",
-        "question": "Which cue fidelity preserves that production decision, and where is a cheaper approximation sufficient?",
+        "label": "I2 · Light-type effects on shadows and illumination in XR",
+        "known": "Source models and shadow/contact studies provide specific rendering and perceptual evidence.",
+        "gap": "The reviewed evidence does not establish how source-type approximations alter the selected production judgment across real and virtual content.",
+        "question": "Identify which source-type-dependent shadow/shading cues must be preserved and when an approximation suffices.",
         "ids": [
+          "review-ref-15",
+          "review-ref-65",
           "review-ref-1",
           "review-ref-2",
           "review-ref-33"
-        ]
+        ],
+        "aim": "Identify which source-type-dependent shadow/shading cues must be preserved and when an approximation suffices."
       },
       "focusMap": {
         "id": "I2",
         "columns": [
-          "direction",
+          "lightType",
+          "locality",
           "transport",
           "view",
           "timing"
         ],
         "paperIds": [
+          "review-ref-15",
+          "review-ref-65",
           "review-ref-1",
           "review-ref-2",
           "review-ref-33",
-          "gao2020",
-          "review-ref-32",
-          "review-ref-60"
+          "delta",
+          "depthlab",
+          "review-ref-35"
         ],
         "cards": true,
-        "mainReference": null
+        "mainReference": null,
+        "title": "Light-type effects on shadows and illumination in XR"
       },
       "feasibility": {
         "id": "I2",
         "slug": "useful-cues",
-        "title": "I2 · MR perception and task performance",
-        "question": "Which cue fidelity preserves that production decision, and where is a cheaper approximation sufficient?",
+        "title": "I2 · Light-type effects on shadows and illumination in XR",
+        "question": "Identify which source-type-dependent shadow/shading cues must be preserved and when an approximation suffices.",
         "ids": [
+          "review-ref-15",
+          "review-ref-65",
           "review-ref-1",
           "review-ref-2",
           "review-ref-33",
-          "gao2020",
-          "review-ref-32",
-          "review-ref-60"
+          "delta",
+          "depthlab",
+          "review-ref-35"
         ],
         "columns": [
           "direction",
@@ -978,11 +1635,11 @@ window.RESEARCH_STORY_V2 = {
           "view",
           "timing"
         ],
-        "scope": "Original independent perception-study track: illumination effects across MR tasks. Begin with one production-relevant task, then test whether effects transfer; do not equate aesthetic preference with interaction benefit.",
-        "techniques": "Compare controlled lighting conditions across real and virtual surfaces: mutual shadows, local shading and reflections. Include a simple approximation and a higher-fidelity reference, keeping geometry and task constant.",
-        "data": "Build paired MR previews and physical references for the same face/key-light arrangements; record choice, target error and revision effort.",
-        "resources": "Needs a reproducible MR display/setup, calibrated scenes, study approval where applicable, pilot tasks and a power analysis before recruitment.",
-        "experiment": "Choose between two key-light arrangements for a stated face-lighting intention; compare with a matched physical reference.",
+        "scope": "Identify which source-type-dependent shadow/shading cues must be preserved and when an approximation suffices.",
+        "techniques": "Geometric rendering baseline with one source-extent contrast; task design informed by shadow studies.",
+        "data": "Paired real/MR shadow and shading captures under a controlled small-versus-extended-source contrast.",
+        "resources": "Accessible MR camera/depth setup, tracked small emitter and diffuse panel, reference patch and props.",
+        "experiment": "Small versus extended source at matched illumination, one face/prop and stated face-visibility/shadow target; compare MR and physical reference. Measure target error, decision agreement, revision effort; preference separately.",
         "stop": "If a cue changes preference but not action, report that distinction. If a cheap approximation is practically equivalent, that is a useful result.",
         "resourceLinks": [
           {
@@ -994,65 +1651,51 @@ window.RESEARCH_STORY_V2 = {
             "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf"
           }
         ],
-        "motivation": "Virtual-production need: choose a face-lighting or key-light arrangement in MR that remains useful on set.",
+        "motivation": "A filmmaker changes source type/extent to shape actor/prop illumination and shadow; MR must preserve the relevant distinction.",
         "sourceSubtopic": "MR perception study of how virtual lights, illumination affect different tasks in MR.",
         "sourceNumber": 2,
-        "firstInvestigation": "Compare two key-light arrangements against a stated face-visibility or shadow target and a matched physical reference.",
+        "firstInvestigation": "Small versus extended source at matched illumination, one face/prop and stated face-visibility/shadow target; compare MR and physical reference. Measure target error, decision agreement, revision effort; preference separately.",
         "feasibilityPlan": {
           "papers": [
             {
-              "id": "review-ref-1",
-              "role": "Distance / display task precedent",
+              "id": "depthlab",
+              "role": "Reproducible geometric rendering baseline",
+              "url": "https://github.com/googlesamples/arcore-depth-lab",
               "bullets": [
-                "Defines display, shadow and target-placement conditions.",
-                "Use as a task-design reference, not a proven lighting benefit."
-              ],
-              "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf",
-              "linkLabel": "Experiment and stimuli"
+                "Released AR depth effects provide a starting point; extend only the required light/source contrast."
+              ]
+            },
+            {
+              "id": "review-ref-65",
+              "role": "Near-field source/transport precedent",
+              "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+              "bullets": [
+                "Study the source representation and separated display/update costs; not a plug-and-play headset implementation."
+              ]
             },
             {
               "id": "review-ref-2",
-              "role": "Contact / shadow cue precedent",
-              "bullets": [
-                "Tests perceived ground contact under shadow variations.",
-                "Keep appearance ratings separate from action outcomes."
-              ],
+              "role": "Shadow/contact experiment precedent",
               "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
-              "linkLabel": "Task and shadow conditions"
-            },
-            {
-              "id": "review-ref-33",
-              "role": "Photorealistic AR study framework",
               "bullets": [
-                "Precedent for comparing rendering modes in tasks.",
-                "Preliminary null effects rule out assuming realism always helps."
-              ],
-              "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf",
-              "linkLabel": "Framework and findings"
+                "Task-specific evidence; not a demonstrated production light-type benefit."
+              ]
             }
           ],
           "datasets": [
             {
-              "label": "Matched production-lighting stimuli",
+              "label": "Paired light-type reference captures",
               "bullets": [
-                "Two key-light arrangements with a stated face-visibility or shadow target.",
-                "Pair each MR condition with a matched physical reference and log choice agreement."
-              ]
-            },
-            {
-              "label": "Controlled rendering baseline",
-              "url": "https://github.com/googlesamples/arcore-depth-lab",
-              "bullets": [
-                "Candidate renderer: depth-based relighting samples.",
-                "No new generative model is needed for the first cue study."
+                "Small and extended emitters at matched illumination on a reference patch.",
+                "Log source size/pose, exposure, materials and physical shadow/illumination references."
               ]
             },
             {
               "label": "OpenRooms: optional synthetic controls",
               "url": "https://github.com/ViLab-UCSD/OpenRooms",
               "bullets": [
-                "Generate matched material/lighting variations.",
-                "Synthetic images alone cannot establish MR task benefit."
+                "Candidate geometry/material/lighting ground truth for controlled ablations.",
+                "Synthetic image evidence does not replace the MR production task."
               ]
             }
           ],
@@ -1060,62 +1703,49 @@ window.RESEARCH_STORY_V2 = {
             {
               "label": "Equipment",
               "bullets": [
-                "One reproducible MR display with input/tracking access.",
-                "Real face or prop and its matched MR lighting preview.",
-                "Controlled physical lamp and fixed reference locations.",
-                "Pose/response logging; optional timing camera."
+                "Accessible video-see-through MR display or camera/depth development setup.",
+                "Small emitter and diffuse panel; matte/rough real prop plus virtual counterpart.",
+                "Reference patch, fixed exposure, tracked source/object positions."
               ]
             },
             {
-              "label": "Experimental setup",
+              "label": "Controlled contrast",
               "bullets": [
-                "Choose one production task: key-light placement for a stated face-visibility or shadow target.",
-                "Manipulate selected lighting cues independently.",
-                "Hold geometry, exposure, display and task constant.",
-                "Counterbalance conditions; pilot task sensitivity."
-              ]
-            },
-            {
-              "label": "Models and study resources",
-              "bullets": [
-                "Use a controlled renderer; avoid a training dependency.",
-                "Measure key-light placement or face/shadow target error, time and confidence.",
-                "Collect appearance preference as a separate measure.",
-                "Plan recruitment/sample size from the pilot and study process."
+                "Start with source extent, not all four light families at once.",
+                "Separate shadow boundary/softness and illumination error from user judgment."
               ]
             }
           ],
           "pilot": [
-            "Compare an MR key-light choice to a matched physical reference.",
-            "Compare accurate, cheap and misleading cue conditions under the same target."
+            "Small versus extended source at matched illumination, one face/prop and stated face-visibility/shadow target; compare MR and physical reference. Measure target error, decision agreement, revision effort; preference separately."
           ],
           "measures": [
-            "Choice agreement and face/shadow target error.",
-            "Confidence and revision effort; appearance preference reported separately."
+            "Shadow-boundary/softness and face/prop illumination error.",
+            "Task agreement, revision effort and complete update cost."
           ]
         }
       },
       "simpleTest": {
         "test": [
-          "One face or prop, two key-light arrangements, one stated face-visibility or shadow intention.",
-          "Compare the MR choice to a matched physical reference and a cheap cue approximation."
+          "Compare small and extended sources on one face/prop at matched illumination; test the stated shadow or visibility target."
         ],
         "need": [
-          "One accessible MR display, controlled lamp and fixed exposure.",
-          "Log choice, target error, confidence and revision effort."
+          "Accessible video-see-through MR display or camera/depth development setup.",
+          "Small emitter and diffuse panel; matte/rough real prop plus virtual counterpart.",
+          "Reference patch, fixed exposure, tracked source/object positions."
         ],
-        "decision": "Establish that this production task matters with practitioners before fixing the full study."
+        "decision": "Use the closest baseline and the observed failure to refine this candidate; uncertainty is welcome in the discussion."
       },
-      "speakerNotes": "Production question: which lighting cues and approximation errors alter a face-lighting or key-light placement decision in MR? The broader transfer to other MR tasks follows after this domain study. Original independent perception-study track: illumination effects across MR tasks. Begin with one production-relevant task, then test whether effects transfer; do not equate aesthetic preference with interaction benefit. If a cue changes preference but not action, report that distinction. If a cheap approximation is practically equivalent, that is a useful result.\nOriginal independent perception-study track: illumination effects across MR tasks. Begin with one production-relevant task, then test whether effects transfer; do not equate aesthetic preference with interaction benefit. For later broader transfer, which virtual-light and illumination properties matter for different MR tasks—and how much correspondence is needed? If a cue changes preference but not action, report that distinction. If a cheap approximation is practically equivalent, that is a useful result.",
+      "speakerNotes": "Candidate I2 now studies light-type effects on shadows and illumination in XR. Source models and shadow/contact studies provide specific rendering and perceptual evidence. The reviewed evidence does not establish how source-type approximations alter the selected production judgment across real and virtual content. Start with small versus extended source extent at matched reference illumination; broader light families are future contrasts. ",
       "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
     },
     {
       "id": "v2-illumination-local-light",
       "kind": "v2-subtopic",
       "topicId": "illumination",
-      "chapter": "1 · Shared lighting",
+      "chapter": "1 · Illumination · Candidate investigations",
       "title": "I3 · Close-scene lighting estimation / probes",
-      "lead": "Virtual-production need: nearby physical lights must shade virtual content consistently with the real scene.",
+      "lead": "Production need: Nearby physical lights should illuminate virtual actors/props correctly as query position changes.",
       "points": [],
       "paperIds": [
         "handlight",
@@ -1129,13 +1759,16 @@ window.RESEARCH_STORY_V2 = {
       "branchIds": [],
       "track": {
         "label": "I3 · Close-scene lighting estimation / probes",
-        "known": "HandLight and spatial estimators provide local lighting estimates.",
-        "gap": "The reviewed estimates do not establish the spatial validity and update tolerance needed at a moving virtual prop when nearby physical lights change.",
-        "question": "How far or how long can a HandLight-style probe be reused before it changes the lighting decision?",
+        "known": "HandLight uses gesture-specific hand estimates and a spatial atlas; Marques et al. (2018) is its stated closest comparison.",
+        "gap": "HandLight already reports spatial mismatch and flicker; determine where probe reuse or updating can measurably improve this baseline.",
+        "question": "Establish validity and adapt sampling/updating only where the strongest baseline fails.",
         "ids": [
           "handlight",
-          "limo"
-        ]
+          "limo",
+          "review-ref-75",
+          "review-ref-68"
+        ],
+        "aim": "Establish validity and adapt sampling/updating only where the strongest baseline fails."
       },
       "focusMap": {
         "id": "I3",
@@ -1161,7 +1794,7 @@ window.RESEARCH_STORY_V2 = {
         "id": "I3",
         "slug": "local-light",
         "title": "I3 · Close-scene lighting estimation / probes",
-        "question": "How can hand-based light estimation provide useful local lighting probes for nearby virtual actors and props?",
+        "question": "Establish validity and adapt sampling/updating only where the strongest baseline fails.",
         "ids": [
           "handlight",
           "limo",
@@ -1181,7 +1814,7 @@ window.RESEARCH_STORY_V2 = {
         "techniques": "Start from HandLight: estimate environment lighting from hand appearance and accumulate a spatial atlas of probes. Compare with a global environment estimate and other local/spatial methods; do not assume a probe directly recovers individual lamps.",
         "data": "Check HandLight paper/code and hand-image training data availability first. Capture hand poses at known locations with calibrated light references; test held-out hands, materials, probe positions and nearby light changes.",
         "resources": "Needs tracked hand images/poses, exposure control and lighting references. Confirm image access, hand-appearance variation, self-shadowing and coverage before choosing a device or model.",
-        "experiment": "Compare global lighting, a single hand probe and an accumulated hand-probe atlas at held-out nearby virtual-object locations. Measure lighting/rendering error, spatial coverage, temporal stability and update delay.",
+        "experiment": "Global versus single-hand versus hand-atlas estimates at held-out virtual positions under one moving local light; measure error, coverage, temporal consistency and complete update cost.",
         "stop": "If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.",
         "resourceLinks": [
           {
@@ -1197,10 +1830,10 @@ window.RESEARCH_STORY_V2 = {
             "url": "https://eyeline-labs.github.io/LiMo/"
           }
         ],
-        "motivation": "Virtual-production need: nearby physical lights must shade virtual content consistently with the real scene.",
+        "motivation": "Nearby physical lights should illuminate virtual actors/props correctly as query position changes.",
         "sourceSubtopic": "Estimating close scene lighing for virtuall envs, or probes",
         "sourceNumber": 5,
-        "firstInvestigation": "Reproduce or approximate HandLight-style hand probes, then test local validity, probe coverage and update delay near real lights.",
+        "firstInvestigation": "Global versus single-hand versus hand-atlas estimates at held-out virtual positions under one moving local light; measure error, coverage, temporal consistency and complete update cost.",
         "mainReference": "handlight",
         "feasibilityPlan": {
           "papers": [
@@ -1300,28 +1933,16 @@ window.RESEARCH_STORY_V2 = {
         }
       },
       "simpleTest": {
-        "question": "Can hand-based probes light a nearby virtual prop reliably?",
         "test": [
-          "Compare one global estimate, one hand probe and HandLight’s accumulated probe atlas.",
-          "Move the light and sample new object positions; measure lighting error, flicker and update delay."
+          "Compare global, single-hand and hand-atlas estimates at held-out positions as one nearby light moves."
         ],
         "need": [
           "Hand-image/pose capture, a controllable lamp and an independently measured lighting reference.",
           "Test positions not used to collect the probes."
         ],
-        "decision": "Check HandLight code, weights and data access first; availability is unverified. Then test whether local probes improve on global lighting.",
-        "evidence": [
-          {
-            "id": "handlight",
-            "text": "HandLight is the main reference: illumination from hand images and a spatial probe atlas."
-          },
-          {
-            "id": "review-ref-75",
-            "text": "Lighthouse provides a spatial-lighting comparison; fast queries exclude lighting-volume inference."
-          }
-        ]
+        "decision": "Use the closest baseline and the observed failure to refine this candidate; uncertainty is welcome in the discussion."
       },
-      "speakerNotes": "Main reference: HandLight, which estimates lighting from hand images and builds a spatial probe atlas as the hand moves. Investigate where these local estimates help nearby virtual content agree with the physical scene. If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.\nMain reference: HandLight, which estimates lighting from hand images and builds a spatial probe atlas as the hand moves. Investigate where these local estimates help nearby virtual content agree with the physical scene. How can hand-based light estimation provide useful local lighting probes for nearby virtual actors and props? If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.",
+      "speakerNotes": "Main reference: HandLight, which estimates lighting from hand images and builds a spatial probe atlas as the hand moves. Investigate where these local estimates help nearby virtual content agree with the physical scene. If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.\nMain reference: HandLight, which estimates lighting from hand images and builds a spatial probe atlas as the hand moves. Investigate where these local estimates help nearby virtual content agree with the physical scene. How can hand-based light estimation provide useful local lighting probes for nearby virtual actors and props? If HandLight already meets the motivating task, identify a documented failure before adding a method. If hand appearance or sparse coverage prevents reliable estimates, narrow the setting or compare an alternative probe.\nThe selected evidence does not establish spatial reuse and update tolerance of hand-derived probes for the intended changing scene. Proposed aim: Establish validity and adapt sampling/updating only where the strongest baseline fails.",
       "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
     },
     {
@@ -28739,6 +29360,11 @@ window.RESEARCH_STORY_V2 = {
               "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
               "locator": "PDF p. 12, Limitations",
               "claim": "Dynamic-depth scope."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+              "locator": "Official project heading, author list, abstract and BibTeX",
+              "url": "https://augmentedperception.github.io/depthlab/"
             }
           ],
           "fieldEvidence": {
@@ -28772,6 +29398,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
                   "locator": "PDF p. 12, Limitations",
                   "claim": "Dynamic-depth scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+                  "locator": "Official project heading, author list, abstract and BibTeX",
+                  "url": "https://augmentedperception.github.io/depthlab/"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -28806,6 +29437,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
                   "locator": "PDF p. 12, Limitations",
                   "claim": "Dynamic-depth scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+                  "locator": "Official project heading, author list, abstract and BibTeX",
+                  "url": "https://augmentedperception.github.io/depthlab/"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -28840,6 +29476,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
                   "locator": "PDF p. 12, Limitations",
                   "claim": "Dynamic-depth scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+                  "locator": "Official project heading, author list, abstract and BibTeX",
+                  "url": "https://augmentedperception.github.io/depthlab/"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -28849,6 +29490,192 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Depth-driven rendering library including camera-image relighting and shadows.",
             "outcome": "Depth-driven rendering library including camera-image relighting and shadows.",
             "validation": "Depth-aware mobile AR image"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-65",
+          "shortLabel": "Near-field illumination for AR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+              "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+              "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Authors Kai Rohmer, Wolfgang Büschel, Raimund Dachselt and Thorsten Grosch verified. Existing scoped runtime/limitations remain authoritative.",
+              "locator": "Primary first-page author list and abstract; official Interactive Media Lab publication BibTeX confirms ISMAR2014",
+              "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+              "sources": [
+                {
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Authors Kai Rohmer, Wolfgang Büschel, Raimund Dachselt and Thorsten Grosch verified. Existing scoped runtime/limitations remain authoritative.",
+                  "locator": "Primary first-page author list and abstract; official Interactive Media Lab publication BibTeX confirms ISMAR2014",
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+              "sources": [
+                {
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Authors Kai Rohmer, Wolfgang Büschel, Raimund Dachselt and Thorsten Grosch verified. Existing scoped runtime/limitations remain authoritative.",
+                  "locator": "Primary first-page author list and abstract; official Interactive Media Lab publication BibTeX confirms ISMAR2014",
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets.",
+              "sources": [
+                {
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
+                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
+                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Authors Kai Rohmer, Wolfgang Büschel, Raimund Dachselt and Thorsten Grosch verified. Existing scoped runtime/limitations remain authoritative.",
+                  "locator": "Primary first-page author list and abstract; official Interactive Media Lab publication BibTeX confirms ISMAR2014",
+                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+            "outcome": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
+            "validation": "Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "handlight",
+          "shortLabel": "HandLight: Light Estimation from Hand Interaction in Mixed Reality",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary sections checked; not an exhaustive full-paper or reproduction audit.",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original research slides",
+              "url": ""
+            },
+            {
+              "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+              "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+              "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                },
+                {
+                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                },
+                {
+                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                },
+                {
+                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+            "outcome": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+            "validation": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -28872,6 +29699,11 @@ window.RESEARCH_STORY_V2 = {
               "url": "https://arxiv.org/html/2508.14930v1",
               "locator": "§2.1–2.5; §3; Fig.11; §4",
               "claim": "Figure11 documents50fps on an iPhone16Pro room-scanning demo; abstract maximum100fps is a separate scope."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary manuscript identifies Hanwen Zhao, John Akers, Baback Elmieh and Ira Kemelmacher-Shlizerman. Do not infer a conference from template headers.",
+              "locator": "Title, author footer and abstract; Sections 2.1–2.5",
+              "url": "https://arxiv.org/html/2508.14930v1"
             }
           ],
           "fieldEvidence": {
@@ -28885,6 +29717,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://arxiv.org/html/2508.14930v1",
                   "locator": "§2.1–2.5; §3; Fig.11; §4",
                   "claim": "Figure11 documents50fps on an iPhone16Pro room-scanning demo; abstract maximum100fps is a separate scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary manuscript identifies Hanwen Zhao, John Akers, Baback Elmieh and Ira Kemelmacher-Shlizerman. Do not infer a conference from template headers.",
+                  "locator": "Title, author footer and abstract; Sections 2.1–2.5",
+                  "url": "https://arxiv.org/html/2508.14930v1"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -28899,6 +29736,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://arxiv.org/html/2508.14930v1",
                   "locator": "§2.1–2.5; §3; Fig.11; §4",
                   "claim": "Figure11 documents50fps on an iPhone16Pro room-scanning demo; abstract maximum100fps is a separate scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary manuscript identifies Hanwen Zhao, John Akers, Baback Elmieh and Ira Kemelmacher-Shlizerman. Do not infer a conference from template headers.",
+                  "locator": "Title, author footer and abstract; Sections 2.1–2.5",
+                  "url": "https://arxiv.org/html/2508.14930v1"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -28913,6 +29755,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://arxiv.org/html/2508.14930v1",
                   "locator": "§2.1–2.5; §3; Fig.11; §4",
                   "claim": "Figure11 documents50fps on an iPhone16Pro room-scanning demo; abstract maximum100fps is a separate scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary manuscript identifies Hanwen Zhao, John Akers, Baback Elmieh and Ira Kemelmacher-Shlizerman. Do not infer a conference from template headers.",
+                  "locator": "Title, author footer and abstract; Sections 2.1–2.5",
+                  "url": "https://arxiv.org/html/2508.14930v1"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -29059,6 +29906,1142 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
+          "id": "review-ref-9",
+          "shortLabel": "Debevec differential rendering",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary sections checked; not an exhaustive full-paper or reproduction audit.",
+          "evidence": [
+            {
+              "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+              "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            },
+            {
+              "claim": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering. Scope: The demonstrated pipeline needs probe capture and a local scene model; efficient changing-object rendering and richer reflectance recovery are future work.",
+              "locator": "Section 1, PDF p.2; Sections 5–7; Section 9",
+              "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering.",
+              "sources": [
+                {
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering. Scope: The demonstrated pipeline needs probe capture and a local scene model; efficient changing-object rendering and richer reflectance recovery are future work.",
+                  "locator": "Section 1, PDF p.2; Sections 5–7; Section 9",
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering.",
+              "sources": [
+                {
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering. Scope: The demonstrated pipeline needs probe capture and a local scene model; efficient changing-object rendering and richer reflectance recovery are future work.",
+                  "locator": "Section 1, PDF p.2; Sections 5–7; Section 9",
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Shows shadows and interreflection between inserted objects and nearby real surfaces.",
+              "sources": [
+                {
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
+                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering. Scope: The demonstrated pipeline needs probe capture and a local scene model; efficient changing-object rendering and richer reflectance recovery are future work.",
+                  "locator": "Section 1, PDF p.2; Sections 5–7; Section 9",
+                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering.",
+            "outcome": "Capture nearby HDR incident radiance with a mirror-ball probe; combine local geometry/materials and differential global-illumination rendering.",
+            "validation": "Shows shadows and interreflection between inserted objects and nearby real surfaces."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-18",
+          "shortLabel": "Photometric registration",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary sections checked; not an exhaustive full-paper or reproduction audit.",
+          "evidence": [
+            {
+              "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+              "locator": "§3–4 pipeline; §5.5 limitations and performance",
+              "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+            },
+            {
+              "claim": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics. Scope: Reconstructed geometry and a useful surface-normal distribution are prerequisites; the method targets diffuse, bandwidth-limited environment lighting.",
+              "locator": "Abstract; Section 1; comparison in Mandl 2017 Section 2",
+              "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics.",
+              "sources": [
+                {
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
+                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+                },
+                {
+                  "claim": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics. Scope: Reconstructed geometry and a useful surface-normal distribution are prerequisites; the method targets diffuse, bandwidth-limited environment lighting.",
+                  "locator": "Abstract; Section 1; comparison in Mandl 2017 Section 2",
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics.",
+              "sources": [
+                {
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
+                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+                },
+                {
+                  "claim": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics. Scope: Reconstructed geometry and a useful surface-normal distribution are prerequisites; the method targets diffuse, bandwidth-limited environment lighting.",
+                  "locator": "Abstract; Section 1; comparison in Mandl 2017 Section 2",
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions.",
+              "sources": [
+                {
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
+                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
+                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
+                },
+                {
+                  "claim": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics. Scope: Reconstructed geometry and a useful surface-normal distribution are prerequisites; the method targets diffuse, bandwidth-limited environment lighting.",
+                  "locator": "Abstract; Section 1; comparison in Mandl 2017 Section 2",
+                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics.",
+            "outcome": "Use online RGB-D scene reconstruction and surface observations to solve distant diffuse illumination in spherical harmonics.",
+            "validation": "Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-14",
+          "shortLabel": "Indoor illumination prediction",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary sections checked; not an exhaustive full-paper or reproduction audit.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1704.00090",
+              "locator": "§§4–8; Limitations and future work",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            },
+            {
+              "claim": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning. Scope: Unseen lighting is inferred from learned evidence rather than directly measured; single-view ambiguity remains. Further author-specific failure cases require the complete discussion audit.",
+              "locator": "Abstract; Section 1; arXiv v3 title/author record",
+              "url": "https://arxiv.org/html/1704.00090v3"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1704.00090",
+                  "locator": "§§4–8; Limitations and future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning. Scope: Unseen lighting is inferred from learned evidence rather than directly measured; single-view ambiguity remains. Further author-specific failure cases require the complete discussion audit.",
+                  "locator": "Abstract; Section 1; arXiv v3 title/author record",
+                  "url": "https://arxiv.org/html/1704.00090v3"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1704.00090",
+                  "locator": "§§4–8; Limitations and future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning. Scope: Unseen lighting is inferred from learned evidence rather than directly measured; single-view ambiguity remains. Further author-specific failure cases require the complete discussion audit.",
+                  "locator": "Abstract; Section 1; arXiv v3 title/author record",
+                  "url": "https://arxiv.org/html/1704.00090v3"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Produces an HDR environment map used for virtual-object insertion and perceptual comparisons.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1704.00090",
+                  "locator": "§§4–8; Limitations and future work",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning. Scope: Unseen lighting is inferred from learned evidence rather than directly measured; single-view ambiguity remains. Further author-specific failure cases require the complete discussion audit.",
+                  "locator": "Abstract; Section 1; arXiv v3 title/author record",
+                  "url": "https://arxiv.org/html/1704.00090v3"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning.",
+            "outcome": "Learn HDR indoor environment illumination from limited-FOV LDR photographs using panorama supervision and HDR fine-tuning.",
+            "validation": "Produces an HDR environment map used for virtual-object insertion and perceptual comparisons."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-72",
+          "shortLabel": "EnvMapNet",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary sections checked; not an exhaustive full-paper or reproduction audit.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2011.10687",
+              "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+              "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+            },
+            {
+              "claim": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS. Scope: Missing directions are plausible generated completions, not direct measurements; the network timing excludes a complete capture-to-headset pipeline.",
+              "locator": "Abstract; Section 1; supplemental Section 1",
+              "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Somanath_HDR_Environment_Map_Estimation_for_Real-Time_Augmented_Reality_CVPR_2021_paper.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2011.10687",
+                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+                },
+                {
+                  "claim": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS. Scope: Missing directions are plausible generated completions, not direct measurements; the network timing excludes a complete capture-to-headset pipeline.",
+                  "locator": "Abstract; Section 1; supplemental Section 1",
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Somanath_HDR_Environment_Map_Estimation_for_Real-Time_Augmented_Reality_CVPR_2021_paper.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2011.10687",
+                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+                },
+                {
+                  "claim": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS. Scope: Missing directions are plausible generated completions, not direct measurements; the network timing excludes a complete capture-to-headset pipeline.",
+                  "locator": "Abstract; Section 1; supplemental Section 1",
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Somanath_HDR_Environment_Map_Estimation_for_Real-Time_Augmented_Reality_CVPR_2021_paper.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2011.10687",
+                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
+                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
+                },
+                {
+                  "claim": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS. Scope: Missing directions are plausible generated completions, not direct measurements; the network timing excludes a complete capture-to-headset pipeline.",
+                  "locator": "Abstract; Section 1; supplemental Section 1",
+                  "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Somanath_HDR_Environment_Map_Estimation_for_Real-Time_Augmented_Reality_CVPR_2021_paper.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS.",
+            "outcome": "EnvMapNet completes partial LDR environment maps to HDR with projection/adversarial losses; mobile inference demonstrated under 9 ms on iPhone XS.",
+            "validation": "Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-35",
+          "shortLabel": "Reciprocal Shading",
+          "values": {
+            "intervention": [
+              "live"
+            ],
+            "outcome": [
+              "ar"
+            ],
+            "validation": [
+              "situated"
+            ]
+          },
+          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
+          "evidence": [
+            {
+              "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
+              "locator": "§5 limitations; §6 results, Fig11",
+              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Authors Martin Knecht, Christoph Traxler, Oliver Mattausch and Michael Wimmer verified. Existing selected method reading retained.",
+              "locator": "Primary draft first page authors/abstract; official VRVis publication PB-VRVis-2012-029 confirms journal 36(7)",
+              "url": "https://www.cg.tuwien.ac.at/research/publications/2012/knecht_martin_2012_RSMR/knecht_martin_2012_RSMR-draft.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "live"
+              ],
+              "rationale": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
+              "sources": [
+                {
+                  "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
+                  "locator": "§5 limitations; §6 results, Fig11",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Authors Martin Knecht, Christoph Traxler, Oliver Mattausch and Michael Wimmer verified. Existing selected method reading retained.",
+                  "locator": "Primary draft first page authors/abstract; official VRVis publication PB-VRVis-2012-029 confirms journal 36(7)",
+                  "url": "https://www.cg.tuwien.ac.at/research/publications/2012/knecht_martin_2012_RSMR/knecht_martin_2012_RSMR-draft.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "ar"
+              ],
+              "rationale": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
+              "sources": [
+                {
+                  "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
+                  "locator": "§5 limitations; §6 results, Fig11",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Authors Martin Knecht, Christoph Traxler, Oliver Mattausch and Michael Wimmer verified. Existing selected method reading retained.",
+                  "locator": "Primary draft first page authors/abstract; official VRVis publication PB-VRVis-2012-029 confirms journal 36(7)",
+                  "url": "https://www.cg.tuwien.ac.at/research/publications/2012/knecht_martin_2012_RSMR/knecht_martin_2012_RSMR-draft.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "situated"
+              ],
+              "rationale": "Demonstrates dynamic real/virtual interactions with tracked spotlights and captured environment lighting.",
+              "sources": [
+                {
+                  "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
+                  "locator": "§5 limitations; §6 results, Fig11",
+                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Authors Martin Knecht, Christoph Traxler, Oliver Mattausch and Michael Wimmer verified. Existing selected method reading retained.",
+                  "locator": "Primary draft first page authors/abstract; official VRVis publication PB-VRVis-2012-029 confirms journal 36(7)",
+                  "url": "https://www.cg.tuwien.ac.at/research/publications/2012/knecht_martin_2012_RSMR/knecht_martin_2012_RSMR-draft.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
+            "outcome": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
+            "validation": "Demonstrates dynamic real/virtual interactions with tracked spotlights and captured environment lighting."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "delta",
+          "shortLabel": "Delta Path Tracing for Real-Time Global Illumination in Mixed Reality",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary indexed introduction/related-work excerpts only; PDF fetch exceeded tool size limit",
+          "evidence": [
+            {
+              "url": "https://sapphiresoul.github.io/DPT.pdf",
+              "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://ieeevr.org/2023/program/papers/",
+              "locator": "Delta Path Tracing paper entry and abstract",
+              "claim": "Authors, venue and approach."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary PDF indexed first page checked; authors Yang Xu, Yuanfa Jiang, Shibo Wang, Kang Li and Guohua Geng. No new methods/evaluation audit.",
+              "locator": "Primary PDF first page title, authors and IEEE VR 2023 proceedings header; abstract in existing assessment",
+              "url": "https://sapphiresoul.github.io/DPT.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+              "sources": [
+                {
+                  "url": "https://sapphiresoul.github.io/DPT.pdf",
+                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://ieeevr.org/2023/program/papers/",
+                  "locator": "Delta Path Tracing paper entry and abstract",
+                  "claim": "Authors, venue and approach."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary PDF indexed first page checked; authors Yang Xu, Yuanfa Jiang, Shibo Wang, Kang Li and Guohua Geng. No new methods/evaluation audit.",
+                  "locator": "Primary PDF first page title, authors and IEEE VR 2023 proceedings header; abstract in existing assessment",
+                  "url": "https://sapphiresoul.github.io/DPT.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+              "sources": [
+                {
+                  "url": "https://sapphiresoul.github.io/DPT.pdf",
+                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://ieeevr.org/2023/program/papers/",
+                  "locator": "Delta Path Tracing paper entry and abstract",
+                  "claim": "Authors, venue and approach."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary PDF indexed first page checked; authors Yang Xu, Yuanfa Jiang, Shibo Wang, Kang Li and Guohua Geng. No new methods/evaluation audit.",
+                  "locator": "Primary PDF first page title, authors and IEEE VR 2023 proceedings header; abstract in existing assessment",
+                  "url": "https://sapphiresoul.github.io/DPT.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "MR composite with transport changes",
+              "sources": [
+                {
+                  "url": "https://sapphiresoul.github.io/DPT.pdf",
+                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://ieeevr.org/2023/program/papers/",
+                  "locator": "Delta Path Tracing paper entry and abstract",
+                  "claim": "Authors, venue and approach."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary PDF indexed first page checked; authors Yang Xu, Yuanfa Jiang, Shibo Wang, Kang Li and Guohua Geng. No new methods/evaluation audit.",
+                  "locator": "Primary PDF first page title, authors and IEEE VR 2023 proceedings header; abstract in existing assessment",
+                  "url": "https://sapphiresoul.github.io/DPT.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+            "outcome": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
+            "validation": "MR composite with transport changes"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "lightlab",
+          "shortLabel": "LightLab: Controlling Light Sources in Images with Diffusion Models",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected full-text §§2–4.1,6 and bibliography",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "locator": "§3.4, Fig.3; §4.1; §6",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "locator": "Sections 3.4, 4.1, 6",
+              "claim": "Conditioning, timing and limits."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+              "locator": "Title block, conference imprint, author list and abstract",
+              "url": "https://arxiv.org/html/2505.09608v1"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+                  "locator": "Title block, conference imprint, author list and abstract",
+                  "url": "https://arxiv.org/html/2505.09608v1"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+                  "locator": "Title block, conference imprint, author list and abstract",
+                  "url": "https://arxiv.org/html/2505.09608v1"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Relit RGB image",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+                  "locator": "Title block, conference imprint, author list and abstract",
+                  "url": "https://arxiv.org/html/2505.09608v1"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+            "outcome": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+            "validation": "Relit RGB image"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "genlit",
+          "shortLabel": "GenLit: Reformulating Single-Image Relighting as Video Generation",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Partial full text: Sections 1, 3/3.2 and 10; selected supplement; v2 preprint versus final differences pending.",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/html/2412.11224v2",
+              "locator": "Sections 3, 3.2, 10",
+              "claim": "Scope, controls and stated limits."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Shrisha Bharadwaj and Haiwen Feng are equal first authors; conference proceedings venue explicitly confirmed.",
+              "locator": "Official project author list, venue heading, method sentence and BibTeX",
+              "url": "https://genlit.is.tue.mpg.de/"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.11224v2",
+                  "locator": "Sections 3, 3.2, 10",
+                  "claim": "Scope, controls and stated limits."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Shrisha Bharadwaj and Haiwen Feng are equal first authors; conference proceedings venue explicitly confirmed.",
+                  "locator": "Official project author list, venue heading, method sentence and BibTeX",
+                  "url": "https://genlit.is.tue.mpg.de/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.11224v2",
+                  "locator": "Sections 3, 3.2, 10",
+                  "claim": "Scope, controls and stated limits."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Shrisha Bharadwaj and Haiwen Feng are equal first authors; conference proceedings venue explicitly confirmed.",
+                  "locator": "Official project author list, venue heading, method sentence and BibTeX",
+                  "url": "https://genlit.is.tue.mpg.de/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Generate lighting motion while scene/object remain static.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/html/2412.11224v2",
+                  "locator": "Sections 3, 3.2, 10",
+                  "claim": "Scope, controls and stated limits."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Shrisha Bharadwaj and Haiwen Feng are equal first authors; conference proceedings venue explicitly confirmed.",
+                  "locator": "Official project author list, venue heading, method sentence and BibTeX",
+                  "url": "https://genlit.is.tue.mpg.de/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+            "outcome": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
+            "validation": "Generate lighting motion while scene/object remain static."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-15",
+          "shortLabel": "Deep parametric lighting",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/1910.08812",
+              "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+              "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary CVF proceedings record confirms first author and venue. Method clause limited to abstract.",
+              "locator": "CVF accepted-paper author list, abstract and BibTeX",
+              "url": "https://openaccess.thecvf.com/content_ICCV_2019/html/Gardner_Deep_Parametric_Indoor_Lighting_Estimation_ICCV_2019_paper.html"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1910.08812",
+                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary CVF proceedings record confirms first author and venue. Method clause limited to abstract.",
+                  "locator": "CVF accepted-paper author list, abstract and BibTeX",
+                  "url": "https://openaccess.thecvf.com/content_ICCV_2019/html/Gardner_Deep_Parametric_Indoor_Lighting_Estimation_ICCV_2019_paper.html"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1910.08812",
+                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary CVF proceedings record confirms first author and venue. Method clause limited to abstract.",
+                  "locator": "CVF accepted-paper author list, abstract and BibTeX",
+                  "url": "https://openaccess.thecvf.com/content_ICCV_2019/html/Gardner_Deep_Parametric_Indoor_Lighting_Estimation_ICCV_2019_paper.html"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Compact editable lighting parameters support object insertion at different scene positions.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/1910.08812",
+                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
+                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary CVF proceedings record confirms first author and venue. Method clause limited to abstract.",
+                  "locator": "CVF accepted-paper author list, abstract and BibTeX",
+                  "url": "https://openaccess.thecvf.com/content_ICCV_2019/html/Gardner_Deep_Parametric_Indoor_Lighting_Estimation_ICCV_2019_paper.html"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+            "outcome": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
+            "validation": "Compact editable lighting parameters support object insertion at different scene positions."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-2",
+          "shortLabel": "Shedding light on cast shadows",
+          "values": {
+            "intervention": [
+              "study"
+            ],
+            "outcome": [
+              "study"
+            ],
+            "validation": [
+              "situated"
+            ]
+          },
+          "readStatus": "selective-fulltext",
+          "evidence": [
+            {
+              "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
+              "locator": "§6 General Discussion; §6.1 Limitations; §7",
+              "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Use 2021 when citing author-listed online publication. Existing website uses2022 final-issue year; keep an explicit online2021/issue2022 distinction rather than silently treating this as a new paper. Draft PDF has placeholder2020 headers and cannot settle final issue date.",
+              "locator": "Author publication list explicitly labels TVCG2021; linked primary PDF first-page author list/abstract",
+              "url": "https://haleyscommit.dev/publications.html"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "study"
+              ],
+              "rationale": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
+              "sources": [
+                {
+                  "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
+                  "locator": "§6 General Discussion; §6.1 Limitations; §7",
+                  "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Use 2021 when citing author-listed online publication. Existing website uses2022 final-issue year; keep an explicit online2021/issue2022 distinction rather than silently treating this as a new paper. Draft PDF has placeholder2020 headers and cannot settle final issue date.",
+                  "locator": "Author publication list explicitly labels TVCG2021; linked primary PDF first-page author list/abstract",
+                  "url": "https://haleyscommit.dev/publications.html"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "study"
+              ],
+              "rationale": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
+              "sources": [
+                {
+                  "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
+                  "locator": "§6 General Discussion; §6.1 Limitations; §7",
+                  "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Use 2021 when citing author-listed online publication. Existing website uses2022 final-issue year; keep an explicit online2021/issue2022 distinction rather than silently treating this as a new paper. Draft PDF has placeholder2020 headers and cannot settle final issue date.",
+                  "locator": "Author publication list explicitly labels TVCG2021; linked primary PDF first-page author list/abstract",
+                  "url": "https://haleyscommit.dev/publications.html"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "situated"
+              ],
+              "rationale": "Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks.",
+              "sources": [
+                {
+                  "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
+                  "locator": "§6 General Discussion; §6.1 Limitations; §7",
+                  "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Use 2021 when citing author-listed online publication. Existing website uses2022 final-issue year; keep an explicit online2021/issue2022 distinction rather than silently treating this as a new paper. Draft PDF has placeholder2020 headers and cannot settle final issue date.",
+                  "locator": "Author publication list explicitly labels TVCG2021; linked primary PDF first-page author list/abstract",
+                  "url": "https://haleyscommit.dev/publications.html"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
+            "outcome": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
+            "validation": "Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "gao2020",
+          "shortLabel": "Influence of Virtual Objects’ Shadows and Lighting Coherence on Distance Perception in Optical See-through AR",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Author abstract only; full-paper methods, statistics and page locators pending. Do not treat as full-text-reviewed evidence.",
+          "evidence": [
+            {
+              "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+              "locator": "Abstract, paragraphs 1–4; PDF page pending",
+              "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary author project verified; not a CV/graphics conference. Full primary PDF was not newly audited.",
+              "locator": "Coauthor project author list, February2020 metadata, publication field and abstract",
+              "url": "https://www.etiennepeillard.com/publication/gao-2020/"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two HoloLens virtual-object/real-target alignment experiments.",
+              "sources": [
+                {
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
+                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary author project verified; not a CV/graphics conference. Full primary PDF was not newly audited.",
+                  "locator": "Coauthor project author list, February2020 metadata, publication field and abstract",
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Two HoloLens virtual-object/real-target alignment experiments.",
+              "sources": [
+                {
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
+                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary author project verified; not a CV/graphics conference. Full primary PDF was not newly audited.",
+                  "locator": "Coauthor project author list, February2020 metadata, publication field and abstract",
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Abstract reports shadow/coherence effects but rejects the shadow-shape hypothesis.",
+              "sources": [
+                {
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
+                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
+                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary author project verified; not a CV/graphics conference. Full primary PDF was not newly audited.",
+                  "locator": "Coauthor project author list, February2020 metadata, publication field and abstract",
+                  "url": "https://www.etiennepeillard.com/publication/gao-2020/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Two HoloLens virtual-object/real-target alignment experiments.",
+            "outcome": "Two HoloLens virtual-object/real-target alignment experiments.",
+            "validation": "Abstract reports shadow/coherence effects but rejects the shadow-shape hypothesis."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "review-ref-75",
+          "shortLabel": "Lighthouse",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "evidence": [
+            {
+              "url": "https://arxiv.org/pdf/2003.08367",
+              "locator": "§3–4 representation/query; §5training; §7discussion",
+              "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "One shared 3D lighting model yields spatially consistent probes and specular object insertions.",
+              "sources": [
+                {
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+            "outcome": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+            "validation": "One shared 3D lighting model yields spatially consistent probes and specular object insertions."
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
           "id": "review-ref-1",
           "shortLabel": "Depth perception in AR",
           "values": {
@@ -29078,6 +31061,11 @@ window.RESEARCH_STORY_V2 = {
               "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf",
               "locator": "Experiment; §§4.2–4.3",
               "claim": "Verbal distance judgments with grounded/floating targets, shadows present/absent, HoloLens 2 versus Varjo XR-3. Both devices underestimated distance; OST performed better in this comparison; shadow effects were smaller than expected."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary source author identity verified; conference listed in official 2022 programme.",
+              "locator": "Primary first-page authors/abstract; official https://ieeevr.org/2022/program/papers/ and author publication list",
+              "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf"
             }
           ],
           "fieldEvidence": {
@@ -29091,6 +31079,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf",
                   "locator": "Experiment; §§4.2–4.3",
                   "claim": "Verbal distance judgments with grounded/floating targets, shadows present/absent, HoloLens 2 versus Varjo XR-3. Both devices underestimated distance; OST performed better in this comparison; shadow effects were smaller than expected."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary source author identity verified; conference listed in official 2022 programme.",
+                  "locator": "Primary first-page authors/abstract; official https://ieeevr.org/2022/program/papers/ and author publication list",
+                  "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -29105,6 +31098,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf",
                   "locator": "Experiment; §§4.2–4.3",
                   "claim": "Verbal distance judgments with grounded/floating targets, shadows present/absent, HoloLens 2 versus Varjo XR-3. Both devices underestimated distance; OST performed better in this comparison; shadow effects were smaller than expected."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary source author identity verified; conference listed in official 2022 programme.",
+                  "locator": "Primary first-page authors/abstract; official https://ieeevr.org/2022/program/papers/ and author publication list",
+                  "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -29119,6 +31117,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf",
                   "locator": "Experiment; §§4.2–4.3",
                   "claim": "Verbal distance judgments with grounded/floating targets, shadows present/absent, HoloLens 2 versus Varjo XR-3. Both devices underestimated distance; OST performed better in this comparison; shadow effects were smaller than expected."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary source author identity verified; conference listed in official 2022 programme.",
+                  "locator": "Primary first-page authors/abstract; official https://ieeevr.org/2022/program/papers/ and author publication list",
+                  "url": "https://haleyscommit.dev/docs/2022_Adams_IEEEVR_Depth.pdf"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -29151,6 +31154,11 @@ window.RESEARCH_STORY_V2 = {
               "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf",
               "locator": "§4; §5; §6.3",
               "claim": "Differential instant radiosity framework with tracked real/virtual spotlights; preliminary tabletop distance/matching tasks. Mutual lighting effects supported; preliminary study found no significant task-performance effect of rendering mode."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Workshop venue explicitly confirmed, pages27–32; do not promote to main IEEE VR or ISMAR proceedings.",
+              "locator": "Official author-institution publication record, author list and BibTeX; linked primary PDF abstract",
+              "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/"
             }
           ],
           "fieldEvidence": {
@@ -29164,6 +31172,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf",
                   "locator": "§4; §5; §6.3",
                   "claim": "Differential instant radiosity framework with tracked real/virtual spotlights; preliminary tabletop distance/matching tasks. Mutual lighting effects supported; preliminary study found no significant task-performance effect of rendering mode."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Workshop venue explicitly confirmed, pages27–32; do not promote to main IEEE VR or ISMAR proceedings.",
+                  "locator": "Official author-institution publication record, author list and BibTeX; linked primary PDF abstract",
+                  "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -29178,6 +31191,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf",
                   "locator": "§4; §5; §6.3",
                   "claim": "Differential instant radiosity framework with tracked real/virtual spotlights; preliminary tabletop distance/matching tasks. Mutual lighting effects supported; preliminary study found no significant task-performance effect of rendering mode."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Workshop venue explicitly confirmed, pages27–32; do not promote to main IEEE VR or ISMAR proceedings.",
+                  "locator": "Official author-institution publication record, author list and BibTeX; linked primary PDF abstract",
+                  "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -29192,6 +31210,11 @@ window.RESEARCH_STORY_V2 = {
                   "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/knecht_martin-2011-FPSPAR-paper.pdf",
                   "locator": "§4; §5; §6.3",
                   "claim": "Differential instant radiosity framework with tracked real/virtual spotlights; preliminary tabletop distance/matching tasks. Mutual lighting effects supported; preliminary study found no significant task-performance effect of rendering mode."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Workshop venue explicitly confirmed, pages27–32; do not promote to main IEEE VR or ISMAR proceedings.",
+                  "locator": "Official author-institution publication record, author list and BibTeX; linked primary PDF abstract",
+                  "url": "https://www.cg.tuwien.ac.at/research/publications/2011/knecht_martin-2011-FPSPAR/"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
@@ -29201,298 +31224,6 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Differential instant radiosity framework with tracked real/virtual spotlights; preliminary tabletop distance/matching tasks.",
             "outcome": "Differential instant radiosity framework with tracked real/virtual spotlights; preliminary tabletop distance/matching tasks.",
             "validation": "Mutual lighting effects supported; preliminary study found no significant task-performance effect of rendering mode."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "review-ref-35",
-          "shortLabel": "Reciprocal Shading",
-          "values": {
-            "intervention": [
-              "live"
-            ],
-            "outcome": [
-              "ar"
-            ],
-            "validation": [
-              "situated"
-            ]
-          },
-          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
-          "evidence": [
-            {
-              "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
-              "locator": "§5 limitations; §6 results, Fig11",
-              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "live"
-              ],
-              "rationale": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
-              "sources": [
-                {
-                  "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
-                  "locator": "§5 limitations; §6 results, Fig11",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "ar"
-              ],
-              "rationale": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
-              "sources": [
-                {
-                  "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
-                  "locator": "§5 limitations; §6 results, Fig11",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "situated"
-              ],
-              "rationale": "Demonstrates dynamic real/virtual interactions with tracked spotlights and captured environment lighting.",
-              "sources": [
-                {
-                  "url": "https://www.vrvis.at/publications/pdfs/PB-VRVis-2012-029.pdf",
-                  "locator": "§5 limitations; §6 results, Fig11",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
-            "outcome": "Extend differential instant radiosity and reconstruct a temporally filtered screen-space Kinect geometry buffer.",
-            "validation": "Demonstrates dynamic real/virtual interactions with tracked spotlights and captured environment lighting."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "handlight",
-          "shortLabel": "HandLight: Light Estimation from Hand Interaction in Mixed Reality",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "source-summary",
-          "evidence": [
-            {
-              "claim": "Seed metadata and framing",
-              "locator": "Original research slides",
-              "url": ""
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-              "sources": [
-                {
-                  "claim": "Seed metadata and framing",
-                  "locator": "Original research slides",
-                  "url": ""
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-              "sources": [
-                {
-                  "claim": "Seed metadata and framing",
-                  "locator": "Original research slides",
-                  "url": ""
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-              "sources": [
-                {
-                  "claim": "Seed metadata and framing",
-                  "locator": "Original research slides",
-                  "url": ""
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-            "outcome": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-            "validation": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "review-ref-2",
-          "shortLabel": "Shedding light on cast shadows",
-          "values": {
-            "intervention": [
-              "study"
-            ],
-            "outcome": [
-              "study"
-            ],
-            "validation": [
-              "situated"
-            ]
-          },
-          "readStatus": "selective-fulltext",
-          "evidence": [
-            {
-              "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
-              "locator": "§6 General Discussion; §6.1 Limitations; §7",
-              "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "study"
-              ],
-              "rationale": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
-              "sources": [
-                {
-                  "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
-                  "locator": "§6 General Discussion; §6.1 Limitations; §7",
-                  "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "study"
-              ],
-              "rationale": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
-              "sources": [
-                {
-                  "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
-                  "locator": "§6 General Discussion; §6.1 Limitations; §7",
-                  "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "situated"
-              ],
-              "rationale": "Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks.",
-              "sources": [
-                {
-                  "url": "https://haleyscommit.dev/docs/2021_Adams_TVCG_Shadows.pdf",
-                  "locator": "§6 General Discussion; §6.1 Limitations; §7",
-                  "claim": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets. Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
-            "outcome": "Two experiments manipulate object/shadow shading and height across OST, VST and VR headsets.",
-            "validation": "Dark-object/light-shadow conditions improved contact judgments; photorealistic shadows were not necessary in these tasks."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "genlit",
-          "shortLabel": "GenLit: Reformulating Single-Image Relighting as Video Generation",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Partial full text: Sections 1, 3/3.2 and 10; selected supplement; v2 preprint versus final differences pending.",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2412.11224v2",
-              "locator": "Sections 3, 3.2, 10",
-              "claim": "Scope, controls and stated limits."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2412.11224v2",
-                  "locator": "Sections 3, 3.2, 10",
-                  "claim": "Scope, controls and stated limits."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2412.11224v2",
-                  "locator": "Sections 3, 3.2, 10",
-                  "claim": "Scope, controls and stated limits."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Generate lighting motion while scene/object remain static.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2412.11224v2",
-                  "locator": "Sections 3, 3.2, 10",
-                  "claim": "Scope, controls and stated limits."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
-            "outcome": "Fine-tune Stable Video Diffusion with a 5D light control signal.",
-            "validation": "Generate lighting motion while scene/object remain static."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -29566,99 +31297,6 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Method details await careful full-paper reading.",
             "outcome": "Method details await careful full-paper reading.",
             "validation": "Contribution and evaluation scope await verification."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "lightlab",
-          "shortLabel": "LightLab: Controlling Light Sources in Images with Diffusion Models",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Selected full-text §§2–4.1,6 and bibliography",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2505.09608v1",
-              "locator": "§3.4, Fig.3; §4.1; §6",
-              "claim": "Supports method,scope or deployment assessment; see locator."
-            },
-            {
-              "url": "https://arxiv.org/html/2505.09608v1",
-              "locator": "Sections 3.4, 4.1, 6",
-              "claim": "Conditioning, timing and limits."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "§3.4, Fig.3; §4.1; §6",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "Sections 3.4, 4.1, 6",
-                  "claim": "Conditioning, timing and limits."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "§3.4, Fig.3; §4.1; §6",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "Sections 3.4, 4.1, 6",
-                  "claim": "Conditioning, timing and limits."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Relit RGB image",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "§3.4, Fig.3; §4.1; §6",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "Sections 3.4, 4.1, 6",
-                  "claim": "Conditioning, timing and limits."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-            "outcome": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-            "validation": "Relit RGB image"
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -29752,99 +31390,6 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition.",
             "outcome": "Survey organizes light acquisition/estimation, photometric registration and global-illumination composition.",
             "validation": "Provides foundational AR/MR illumination taxonomy and references."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "delta",
-          "shortLabel": "Delta Path Tracing for Real-Time Global Illumination in Mixed Reality",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Primary indexed introduction/related-work excerpts only; PDF fetch exceeded tool size limit",
-          "evidence": [
-            {
-              "url": "https://sapphiresoul.github.io/DPT.pdf",
-              "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
-              "claim": "Supports method,scope or deployment assessment; see locator."
-            },
-            {
-              "url": "https://ieeevr.org/2023/program/papers/",
-              "locator": "Delta Path Tracing paper entry and abstract",
-              "claim": "Authors, venue and approach."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
-              "sources": [
-                {
-                  "url": "https://sapphiresoul.github.io/DPT.pdf",
-                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://ieeevr.org/2023/program/papers/",
-                  "locator": "Delta Path Tracing paper entry and abstract",
-                  "claim": "Authors, venue and approach."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
-              "sources": [
-                {
-                  "url": "https://sapphiresoul.github.io/DPT.pdf",
-                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://ieeevr.org/2023/program/papers/",
-                  "locator": "Delta Path Tracing paper entry and abstract",
-                  "claim": "Authors, venue and approach."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "MR composite with transport changes",
-              "sources": [
-                {
-                  "url": "https://sapphiresoul.github.io/DPT.pdf",
-                  "locator": "Primary indexed introduction,contributions and§2; detailed evaluation not read",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://ieeevr.org/2023/program/papers/",
-                  "locator": "Delta Path Tracing paper entry and abstract",
-                  "claim": "Authors, venue and approach."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
-            "outcome": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
-            "validation": "MR composite with transport changes"
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -30137,79 +31682,6 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Streaming relighting; architectural details await full-paper reading.",
             "outcome": "Streaming relighting; architectural details await full-paper reading.",
             "validation": "Real-time behavior is claimed by the supplied title; conditions not checked."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "gao2020",
-          "shortLabel": "Influence of Virtual Objects’ Shadows and Lighting Coherence on Distance Perception in Optical See-through AR",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Author abstract only; full-paper methods, statistics and page locators pending. Do not treat as full-text-reviewed evidence.",
-          "evidence": [
-            {
-              "url": "https://www.etiennepeillard.com/publication/gao-2020/",
-              "locator": "Abstract, paragraphs 1–4; PDF page pending",
-              "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Two HoloLens virtual-object/real-target alignment experiments.",
-              "sources": [
-                {
-                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
-                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
-                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Two HoloLens virtual-object/real-target alignment experiments.",
-              "sources": [
-                {
-                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
-                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
-                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Abstract reports shadow/coherence effects but rejects the shadow-shape hypothesis.",
-              "sources": [
-                {
-                  "url": "https://www.etiennepeillard.com/publication/gao-2020/",
-                  "locator": "Abstract, paragraphs 1–4; PDF page pending",
-                  "claim": "Problem, experiments, results and uncertainty; abstract-level evidence only."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Two HoloLens virtual-object/real-target alignment experiments.",
-            "outcome": "Two HoloLens virtual-object/real-target alignment experiments.",
-            "validation": "Abstract reports shadow/coherence effects but rejects the shadow-shape hypothesis."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -31150,79 +32622,6 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
-          "id": "review-ref-9",
-          "shortLabel": "Debevec differential rendering",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Selected author-hosted PDF §§1,3–8; not an exhaustive evaluation audit.",
-          "evidence": [
-            {
-              "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
-              "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
-              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
-              "sources": [
-                {
-                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
-                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
-              "sources": [
-                {
-                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
-                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Shows shadows and interreflection between inserted objects and nearby real surfaces.",
-              "sources": [
-                {
-                  "url": "https://www.pauldebevec.com/Research/IBL/debevec-siggraph98.pdf",
-                  "locator": "§§3–8, local/distant scene partition, light probe and differential rendering",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
-            "outcome": "Measure HDR incident radiance, approximate local geometry/reflectance and composite a global-illumination difference.",
-            "validation": "Shows shadows and interreflection between inserted objects and nearby real surfaces."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
           "id": "review-ref-11",
           "shortLabel": "Neural illumination & relighting survey",
           "values": {
@@ -31442,152 +32841,6 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
-          "id": "review-ref-14",
-          "shortLabel": "Indoor illumination prediction",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Selected primary full text: method plus results/limitations; not exhaustive evaluation reading.",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/pdf/1704.00090",
-              "locator": "§§4–8; Limitations and future work",
-              "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/1704.00090",
-                  "locator": "§§4–8; Limitations and future work",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/1704.00090",
-                  "locator": "§§4–8; Limitations and future work",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Produces an HDR environment map used for virtual-object insertion and perceptual comparisons.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/1704.00090",
-                  "locator": "§§4–8; Limitations and future work",
-                  "claim": "Basis for the method, demonstrated scope and reading boundary reported here."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
-            "outcome": "Train light-position prediction with LDR panoramas, then fine-tune intensities on captured HDR environments.",
-            "validation": "Produces an HDR environment map used for virtual-object insertion and perceptual comparisons."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "review-ref-15",
-          "shortLabel": "Deep parametric lighting",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/pdf/1910.08812",
-              "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
-              "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/1910.08812",
-                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
-                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/1910.08812",
-                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
-                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Compact editable lighting parameters support object insertion at different scene positions.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/1910.08812",
-                  "locator": "§3 parameterization/projection; §3.4 implementation/timing; §5 conclusion",
-                  "claim": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection. Compact editable lighting parameters support object insertion at different scene positions. The model cannot represent directional sources or focused beams; visibility still needs scene reconstruction."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
-            "outcome": "A CNN regresses 3D diffuse area-light positions, angular sizes and RGB intensities, trained through spherical-Gaussian environment-map projection.",
-            "validation": "Compact editable lighting parameters support object insertion at different scene positions."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
           "id": "review-ref-16",
           "shortLabel": "Fast spatially varying lighting",
           "values": {
@@ -31730,79 +32983,6 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color.",
             "outcome": "Environmental HDR provides a main directional light, ambient SH and an HDR reflection cubemap; Ambient Intensity supplies coarse intensity/color.",
             "validation": "A practical real→virtual baseline for shading, cast shadows and shiny reflections."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "review-ref-18",
-          "shortLabel": "Photometric registration",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
-          "evidence": [
-            {
-              "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
-              "locator": "§3–4 pipeline; §5.5 limitations and performance",
-              "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
-              "sources": [
-                {
-                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
-                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
-                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
-              "sources": [
-                {
-                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
-                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
-                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions.",
-              "sources": [
-                {
-                  "url": "https://arbook.icg.tugraz.at/schmalstieg/Schmalstieg_245.pdf",
-                  "locator": "§3–4 pipeline; §5.5 limitations and performance",
-                  "claim": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry. Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions. Reflective surfaces violate diffuse assumptions; reconstruction delays and incomplete geometry degrade occlusion."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
-            "outcome": "RGB-D reconstruction supplies surface normals for inverse SH lighting estimation; differential radiance-transfer rendering integrates real and virtual geometry.",
-            "validation": "Supports dynamic-scene diffuse lighting and mutual soft-shadow interactions."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -34528,79 +35708,6 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
-          "id": "review-ref-65",
-          "shortLabel": "Near-field illumination for AR",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
-          "evidence": [
-            {
-              "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
-              "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
-              "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
-              "sources": [
-                {
-                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
-                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
-                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
-              "sources": [
-                {
-                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
-                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
-                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets.",
-              "sources": [
-                {
-                  "url": "https://imld.de/cnt/uploads/ISMAR2014_IPAR.pdf",
-                  "locator": "§3 setup; §4–5 near-field model/rendering; §6 timings; §7 future work",
-                  "claim": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting. Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets. No virtual→real indirect bounce is included; highly glossy virtual objects and general BRDFs are unsupported, while source updates lag the interactive display."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
-            "outcome": "A PC extracts coherent virtual area lights and indirect radiance from multiple HDR cameras; tablets perform differential rendering with compact transmitted lighting.",
-            "validation": "Demonstrates direct light, primary/secondary shadows and real-to-virtual color bleeding on tracked tablets."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
           "id": "review-ref-66",
           "shortLabel": "Illumination from shadows",
           "values": {
@@ -35059,79 +36166,6 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
-          "id": "review-ref-72",
-          "shortLabel": "EnvMapNet",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/pdf/2011.10687",
-              "locator": "§3 network/losses; §5.1 mobile application; conclusion",
-              "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/2011.10687",
-                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
-                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/2011.10687",
-                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
-                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/2011.10687",
-                  "locator": "§3 network/losses; §5.1 mobile application; conclusion",
-                  "claim": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss. Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials. Predicted unseen scene content is perceptually plausible and need not reproduce actual hidden geometry or texture."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
-            "outcome": "EnvMapNet completes the environment using a GAN trained with ProjectionLoss and ClusterLoss.",
-            "validation": "Mobile camera-AR demos show shading and reflections from diffuse to mirror virtual materials."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
           "id": "review-ref-73",
           "shortLabel": "Blending Shadows",
           "values": {
@@ -35274,79 +36308,6 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama.",
             "outcome": "Differentiable geometry estimation,view warping,unobserved-scene completion and LDR-to-HDR mapping predict a local panorama.",
             "validation": "Structured subtasks improve fine illumination details over direct black-box prediction."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "review-ref-75",
-          "shortLabel": "Lighthouse",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/pdf/2003.08367",
-              "locator": "§3–4 representation/query; §5training; §7discussion",
-              "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/2003.08367",
-                  "locator": "§3–4 representation/query; §5training; §7discussion",
-                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/2003.08367",
-                  "locator": "§3–4 representation/query; §5training; §7discussion",
-                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "One shared 3D lighting model yields spatially consistent probes and specular object insertions.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/pdf/2003.08367",
-                  "locator": "§3–4 representation/query; §5training; §7discussion",
-                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
-            "outcome": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
-            "validation": "One shared 3D lighting model yields spatially consistent probes and specular object insertions."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
