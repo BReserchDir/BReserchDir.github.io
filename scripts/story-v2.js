@@ -1,5 +1,5 @@
 window.RESEARCH_STORY_V2 = {
-  "title": "Version 2 · Problem, methods, gaps and investigations",
+  "title": "Version 2 · One production edit, evidence and candidate investigations",
   "subtitle": "Three possibilities in interactive graphics and XR · Bhasura Gunawardhana · PI discussion",
   "slides": [
     {
@@ -249,8 +249,8 @@ window.RESEARCH_STORY_V2 = {
       "id": "three-directions-preview",
       "chapter": "Research directions · Overview",
       "kind": "directions-preview",
-      "title": "Three directions from our shared workspace",
-      "lead": "Make mixed-reality production more coherent, directable and connected to physical action.",
+      "title": "Three ways to make a shared production plan work",
+      "lead": "A change made in MR must produce a result the team can inspect and revise.",
       "points": [],
       "paperIds": [],
       "branchIds": [],
@@ -258,17 +258,17 @@ window.RESEARCH_STORY_V2 = {
         {
           "id": "illumination",
           "title": "Bidirectional illumination",
-          "sentence": "Real and virtual actors and props should respond to a shared lighting setup."
+          "sentence": "A director changes a lamp; real and virtual subjects should share the lighting change."
         },
         {
           "id": "agents",
           "title": "Interactive actor direction",
-          "sentence": "Direct human and non-human virtual performers live, beyond selecting preset animations."
+          "sentence": "A director gives a note; the actor should respond while keeping the accepted action."
         },
         {
           "id": "robotics",
           "title": "Human–robot interaction in XR",
-          "sentence": "Guide physical cameras, lights and robots through spatial proxies and useful physical affordances."
+          "sentence": "A director changes the shot; physical cameras and lights should follow understandable, feasible commands."
         }
       ],
       "speakerNotes": "These are three candidate research directions arising from SharedVP, not an integrated system already implemented or a selected thesis. The illustrations represent research visions. Introduce each in one sentence, then begin illumination.",
@@ -298,48 +298,76 @@ window.RESEARCH_STORY_V2 = {
     {
       "id": "v2-illumination-why",
       "kind": "v2-chain",
-      "title": "One lighting setup across real and virtual content",
-      "lead": "Goal: a physical or virtual light should shape both actors and both props coherently.",
+      "title": "Rehearse one lighting change across the whole mixed shot",
+      "lead": "Rehearse changing the key-light setup from A to B; the real and virtual actors and props should show the intended change.",
       "chapter": "1 · Shared lighting",
       "topicId": "illumination",
       "points": [],
       "paperIds": [
-        "depthlab",
+        "review-ref-75",
         "review-ref-65",
-        "handlight",
         "review-ref-85",
-        "limo"
+        "lightlab"
       ],
       "branchIds": [],
-      "speakerNotes": "Production need comes from the user brief and SharedVP prototype limits, not a new controlled expert study. Current-state statements synthesize the cited lines of work. The gap is a task-specific working synthesis over selected sources, not proof of universal absence. The broader MR value follows from the domain question: cue requirements for reliable preview-to-world decisions, not an unrelated generic perception study.\nEvery scene symbol is conceptual. Native physical illumination and rendered virtual illumination are distinguished from cross-world estimation and passthrough relighting. Source type, extent, locality, material, shadows, bounce and changes form the problem space; the first study will isolate one contrast.",
+      "speakerNotes": "Production need comes from the user brief and SharedVP prototype limits, not a new controlled expert study. Current-state statements synthesize the cited lines of work. The gap is a task-specific working synthesis over selected sources, not proof of universal absence. The broader MR value follows from the domain question: cue requirements for reliable preview-to-world decisions, not an unrelated generic perception study.\nEvery scene symbol is conceptual. Native physical illumination and rendered virtual illumination are distinguished from cross-world estimation and passthrough relighting. Source type, extent, locality, material, shadows, bounce and changes form the problem space; the first study will isolate one contrast.\nCanonical scenario throughout: one nearby key-light edit in a shot containing real/virtual actors and props. This is a requirement from the user brief, not a new expert user-study finding. A physical lamp affects real subjects through photons and virtual subjects through estimation/rendering. A virtual lamp changes virtual rendering and the displayed real view; it does not emit photons.\nThe canonical edit replaces/repositions the key-light contribution from setup A to setup B. It is not an assumption that adding a second lamp removes all original shadows. Match the intended target using paired physical A/B captures; shading from unchanged lights may legitimately remain.",
       "transition": "Check how several research strands support—and limit—this argument.",
       "chain": [
         {
-          "label": "Production problem",
-          "text": "An actor or prop can look detached when real and virtual lighting, reflections or contact shadows disagree."
+          "label": "Production need",
+          "text": "A director uses the mixed preview to judge a lamp change before committing the shot setup."
         },
         {
-          "label": "Current state",
-          "text": "Methods already estimate physical light and render mutual effects, under different scene, material and update assumptions."
+          "label": "Current capability",
+          "text": "Light estimation supplies illumination for virtual content; relighting changes captured real appearance."
         },
         {
-          "label": "High-level gap",
-          "text": "Nearby lights, source type, material response and lighting-update cost limit which changes a method can reproduce live."
+          "label": "What can go wrong",
+          "text": "A shared environment estimate can miss local light, while the real image retains its original shading and shadows."
         },
         {
-          "label": "Research aim",
-          "text": "Keep illumination coherent across real and virtual content during live lighting changes; develop and test one limiting capability first."
+          "label": "Research goal",
+          "text": "Determine the local-light and scene information needed for this edit, then reduce the error that changes the intended shot."
         }
       ],
       "broaderMotivation": "Broader motivation: Shared lighting cues support coherent appearance and interaction when real and virtual content occupy the same space."
+    },
+    {
+      "id": "v2-light-information-bottlenecks",
+      "kind": "v2-causal-story",
+      "variant": "bottlenecks",
+      "chapter": "1 · Illumination · Why the edit can fail",
+      "topicId": "illumination",
+      "title": "Two missing pieces of information can break the same light edit",
+      "lead": "One path needs the light at the object; the other must explain and change the appearance already captured.",
+      "points": [],
+      "paperIds": [
+        "review-ref-75",
+        "handlight",
+        "review-ref-85",
+        "lightlab"
+      ],
+      "branchIds": [],
+      "blocks": [
+        {
+          "label": "Physical → virtual: which light reaches this position?",
+          "text": "Global environment-map IBL approximates shared distant lighting. Nearby lamps, occlusion and bounce can make each object receive different light."
+        },
+        {
+          "label": "Virtual → real view: why is this patch dark?",
+          "text": "Captured RGB mixes material, light and shadow. Dark or underexposed regions can leave too little evidence to recover the appearance under a new light."
+        }
+      ],
+      "speakerNotes": "Primary sources: Lighthouse 2020 abstract/introduction/Fig2 for spatial variation; LightLab2025 Sections1,3 and6 for intrinsic-lighting/camera entanglement; HybRelighter2025 Section2.1 Eq1 for multiplicative compositing. Gain times zero remains zero is our direct mathematical deduction for a strictly finite multiplicative filter, not an author theorem or universal impossibility result. IBL can illuminate foreground objects, and local probes/volumes already exist. Dark observations may retain recoverable signal; multiple views, exposures, geometry or priors can help. Distinguish old shadows baked into the input from target shadows generated by the new light.\nIn the canonical A→B key-light edit, update only shading that the intended replacement/repositioning should move, weaken or remove. Adding a second lamp does not erase all old shadows.",
+      "transition": "Now compare the existing method families by the information they measure, assume or infer."
     },
     {
       "id": "v2-light-literature-estimation",
       "kind": "v2-literature",
       "topicId": "illumination",
       "chapter": "1 · Illumination · Existing work",
-      "title": "How do people recover physical illumination?",
-      "lead": "Physical light must be estimated at the position of the virtual actor or prop.",
+      "title": "How have people obtained the missing physical-light information?",
+      "lead": "For this shot, the question is whether an estimate describes the virtual subject beside the nearby lamp.",
       "groups": [
         {
           "label": "Physical objects / dedicated probes",
@@ -540,7 +568,7 @@ window.RESEARCH_STORY_V2 = {
               "venueLabel": "CVPR"
             }
           ],
-          "sharedLimitation": "Image cues and learned priors predict illumination; a global map alone does not resolve every nearby query."
+          "sharedLimitation": "Global environment-map IBL captures surrounding illumination; one map can miss nearby, position-dependent lighting."
         },
         {
           "label": "Humans as light probes",
@@ -613,7 +641,7 @@ window.RESEARCH_STORY_V2 = {
           "sharedLimitation": "Needs a visible, informative body part. HandLight still reports spatial mismatch, backlighting and flicker limits."
         }
       ],
-      "takeaway": "Gesture-specific hand estimates and a spatial atlas reduce separate scene preparation, while probe visibility and position still matter.",
+      "takeaway": "Does light sampled at the camera, reference object or hand also describe the virtual actor beside the lamp?",
       "points": [],
       "paperIds": [
         "review-ref-9",
@@ -623,18 +651,18 @@ window.RESEARCH_STORY_V2 = {
         "handlight"
       ],
       "branchIds": [],
-      "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.",
+      "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.\nIBL does not mean background-only. It lights foreground objects, and local environment probes or volumes vary spatially. The limitation is reusing a single global/distant estimate for a near-field configuration.",
       "transition": "Use these method assumptions to locate a specific unresolved requirement.",
       "contextNote": "HandLight: Mandl et al., 2026, TVCG / IEEE VR. HDR foundation: Debevec & Malik 1997; mirror-probe insertion: Debevec 1998. Historical context is not automatically coded in the chart corpus.",
-      "takeawayLabel": "HandLight’s position"
+      "takeawayLabel": "Return to the shot"
     },
     {
       "id": "v2-light-literature-relighting",
       "kind": "v2-literature",
       "topicId": "illumination",
       "chapter": "1 · Illumination · Existing work",
-      "title": "How do virtual lights change real imagery?",
-      "lead": "This direction changes the passthrough image, while physical objects remain in the real set.",
+      "title": "How have people changed the lighting already in the real image?",
+      "lead": "The camera view is already lit. Update shading where the intended A-to-B lighting change should move, weaken or remove it.",
       "groups": [
         {
           "label": "Depth and hybrid rendering",
@@ -676,7 +704,7 @@ window.RESEARCH_STORY_V2 = {
               }
             }
           ],
-          "sharedLimitation": "Geometry errors and genuine shadow boundaries are hard to separate; HybRelighter reports that ambiguity."
+          "sharedLimitation": "Dark or shadowed RGB can confound material and illumination; a multiplicative filter alone cannot supply missing detail."
         },
         {
           "label": "Reconstructed light transport",
@@ -718,7 +746,7 @@ window.RESEARCH_STORY_V2 = {
               }
             }
           ],
-          "sharedLimitation": "Transport is computed from a scene/material model. Preparation and changed-light updates must be assessed separately."
+          "sharedLimitation": "These methods depend on scene/material models. Generating a target shadow is different from removing one already captured."
         },
         {
           "label": "Learned image / sequence edits",
@@ -760,10 +788,10 @@ window.RESEARCH_STORY_V2 = {
               }
             }
           ],
-          "sharedLimitation": "Controllable image edits do not by themselves establish calibrated, stereo-consistent, live MR response."
+          "sharedLimitation": "Learned priors can infer plausible appearance; reliable hidden detail, calibrated controls and live temporal stability still need testing."
         }
       ],
-      "takeaway": "Our technical opportunity must improve a concrete geometry, material or temporal failure beyond these baselines.",
+      "takeaway": "Can the real prop show the intended A-to-B change where its original image was dark or shadowed?",
       "points": [],
       "paperIds": [
         "depthlab",
@@ -774,15 +802,16 @@ window.RESEARCH_STORY_V2 = {
         "genlit"
       ],
       "branchIds": [],
-      "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.",
-      "transition": "Use these method assumptions to locate a specific unresolved requirement."
+      "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.\nAdditional user points: global IBL versus local near-field light and dark/shadowed appearance recovery. The filter information limit is an analytical deduction from S=R⊙C, HybRelighter Eq1; not every dark patch is clipped or unrecoverable. Rendering a new shadow does not establish correct removal of an old captured shadow.",
+      "transition": "Use these method assumptions to locate a specific unresolved requirement.",
+      "takeawayLabel": "Return to the shot"
     },
     {
       "id": "v2-light-literature-effects",
       "kind": "v2-literature",
       "topicId": "illumination",
       "chapter": "1 · Illumination · Existing work",
-      "title": "What is known about light types and their effects?",
+      "title": "Which remaining light and shadow errors matter for the shot?",
       "lead": "A small source, spotlight, area light and environment light create different illumination and shadow cues.",
       "groups": [
         {
@@ -912,7 +941,7 @@ window.RESEARCH_STORY_V2 = {
           "sharedLimitation": "Findings depend on the display, stimulus and task. They do not establish a production light-type benefit or show that more realism always helps."
         }
       ],
-      "takeaway": "I2 can test which light-type-dependent shadow and shading errors matter for a production task, then target the necessary correction.",
+      "takeaway": "I2 determines which remaining real-view or local-light errors change the director’s judgment; an inexpensive sufficient approximation is useful.",
       "points": [],
       "paperIds": [
         "review-ref-15",
@@ -924,13 +953,14 @@ window.RESEARCH_STORY_V2 = {
       ],
       "branchIds": [],
       "speakerNotes": "Grouped synthesis from selected primary sections. Limitations differ across papers and are not universal absence claims. Four argument groups checked against primary papers and author publication pages. Selected sections, not exhaustive reading or a systematic novelty review. Historical external references are not automatically members of the website taxonomy counts.",
-      "transition": "Use these method assumptions to locate a specific unresolved requirement."
+      "transition": "Use these method assumptions to locate a specific unresolved requirement.",
+      "takeawayLabel": "Return to the shot"
     },
     {
       "id": "v2-illumination-evidence",
       "kind": "v2-synthesis",
-      "title": "The methods solve different parts of the shared-lighting goal",
-      "lead": "Compare related results together; select a strand or paper to inspect its original figure.",
+      "title": "Existing work measures, reconstructs or infers different parts of this edit",
+      "lead": "Compare what each family actually knows about the same mixed shot.",
       "chapter": "1 · Illumination · Synthesis",
       "topicId": "illumination",
       "points": [],
@@ -956,8 +986,8 @@ window.RESEARCH_STORY_V2 = {
             "review-ref-85",
             "lightlab"
           ],
-          "finding": "Geometry-based, hybrid and learned approaches alter captured real appearance.",
-          "boundary": "Compare material, boundary and temporal failures against their actual preparation and response costs."
+          "finding": "Depth and hybrid methods reuse captured RGB; learned methods infer new appearance from training priors.",
+          "boundary": "A dark patch may be material, weak illumination or an old shadow. Separate this recovery problem from rendering a new target shadow."
         },
         {
           "label": "Preserve light-type effects",
@@ -976,17 +1006,17 @@ window.RESEARCH_STORY_V2 = {
             "limo",
             "review-ref-75"
           ],
-          "finding": "Hand probes, temporal estimates and spatial volumes offer different sampling strategies.",
-          "boundary": "HandLight already reports spatial mismatch and flicker. Any extension must improve a known baseline limitation."
+          "finding": "Global maps, local hand probes and spatial volumes provide different information about incident light.",
+          "boundary": "IBL is not background-only. Test whether the chosen estimate remains valid at the virtual subject as the nearby source moves."
         }
       ],
-      "bridge": "A complete preview needs all three paths to remain coherent as lights, actors and props change; test a bounded failure rather than claim the whole pipeline is unsolved."
+      "bridge": "For the same light edit, test wrong local illumination, incorrect real-view shadow/material change, and which resulting cue errors alter the production judgment."
     },
     {
       "id": "v2-light-concrete-gaps",
       "kind": "v2-research-gaps",
-      "title": "Which unresolved problems matter on our set?",
-      "lead": "Each candidate follows from several complementary results, not from an empty Sankey category.",
+      "title": "Three specific failures define our candidate investigations",
+      "lead": "Each candidate addresses a failure in the same shot, with existing methods as the baseline.",
       "chapter": "1 · Illumination · Gaps",
       "topicId": "illumination",
       "points": [],
@@ -1007,39 +1037,39 @@ window.RESEARCH_STORY_V2 = {
       "transition": "Use this working gap to narrow the possible contributions, rather than choose techniques first.",
       "groups": [
         {
-          "label": "Changing real appearance",
+          "label": "The real view keeps the wrong appearance",
           "ids": [
             "depthlab",
             "review-ref-85",
             "lightlab"
           ],
-          "finding": "DepthLab uses depth; HybRelighter cannot always separate geometry error from a real shadow.",
-          "boundary": "Stable moving boundaries: improve the remaining geometry, material or temporal artifact beyond the closest baseline."
+          "finding": "Captured RGB mixes material and old lighting; geometric filters and learned relighters use different recovery assumptions.",
+          "boundary": "I1: reproduce the intended shading change without retaining an obsolete shadow, repainting material, or inventing unsupported detail."
         },
         {
-          "label": "Light-type-dependent effects",
+          "label": "The approximation changes the intended shot",
           "ids": [
             "review-ref-15",
             "review-ref-65",
             "review-ref-2",
             "gao2020"
           ],
-          "finding": "Near-field renderers separate lighting updates from display; shadow studies use constrained tasks.",
-          "boundary": "Light-type fidelity: establish which shadow or illumination errors change the production result."
+          "finding": "Source models and shadow studies test particular effects, displays and tasks.",
+          "boundary": "I2: determine which residual I1/I3 light-type and shadow errors alter the stated production judgment."
         },
         {
-          "label": "Local physical-light estimates",
+          "label": "The virtual subject receives the wrong local light",
           "ids": [
             "handlight",
             "limo",
             "review-ref-75"
           ],
-          "finding": "HandLight reports spatial mismatch and flicker; lighting volumes use different sampling assumptions.",
-          "boundary": "Probe validity: identify when an estimate becomes stale and whether targeted updates improve it."
+          "finding": "A single global estimate can miss near-field variation; hand probes and volumes provide local alternatives.",
+          "boundary": "I3: establish where an estimate remains valid and how it must update when the hand, object or light moves."
         }
       ],
       "bridge": "A complete preview needs all three paths to remain coherent as lights, actors and props change; test a bounded failure rather than claim the whole pipeline is unsolved.",
-      "takeaway": "Choose one consequential failure and improve it against its closest baseline; the exact contribution remains open for feedback."
+      "takeaway": "Determine which failure remains in a reproducible baseline, then pursue the one that matters to the production task."
     },
     {
       "id": "v2-illumination-coverage",
@@ -1361,7 +1391,7 @@ window.RESEARCH_STORY_V2 = {
       "topicId": "illumination",
       "chapter": "1 · Illumination · Candidate investigations",
       "title": "I1 · Virtual light on real video see-through imagery",
-      "lead": "Production need: A virtual production lamp should change real displayed appearance coherently with virtual content.",
+      "lead": "Production need: a virtual lamp should reveal the real subject under new lighting, including regions originally in shadow.",
       "points": [],
       "paperIds": [
         "depthlab",
@@ -1372,21 +1402,23 @@ window.RESEARCH_STORY_V2 = {
         "review-ref-83",
         "gruber2015",
         "depth-anything-v2",
-        "delta"
+        "delta",
+        "lightlab",
+        "genlit"
       ],
       "branchIds": [],
       "track": {
         "label": "I1 · Virtual light on real video see-through imagery",
-        "known": "DepthLab, reconstructed transport and HybRelighter provide effects under different geometry/material assumptions.",
-        "gap": "The closest baselines leave different boundary, material and temporal errors; isolate which limits the target dynamic MR scene.",
-        "question": "Correct one consequential failure beyond the strongest matched-cost baseline.",
+        "known": "Geometric filters alter captured RGB; learned relighters can infer a newly lit appearance from priors.",
+        "gap": "A dark patch may be material, weak illumination or an old shadow. The available evidence may not identify the new appearance reliably.",
+        "question": "Reduce a repeatable shadow/material recovery failure beyond the closest matched baseline.",
         "ids": [
           "depthlab",
+          "lightlab",
           "review-ref-85",
-          "review-ref-35",
-          "delta"
+          "genlit"
         ],
-        "aim": "Correct one consequential failure beyond the strongest matched-cost baseline."
+        "aim": "Reduce a repeatable shadow/material recovery failure beyond the closest matched baseline."
       },
       "focusMap": {
         "id": "I1",
@@ -1428,11 +1460,11 @@ window.RESEARCH_STORY_V2 = {
           "preparation",
           "timing"
         ],
-        "scope": "Original track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials.",
-        "techniques": "DepthLab-style ray marching; HybRelighter-style geometry filtering; reciprocal differential transport. Test a reflectance/geometry correction only after reproducing the simpler baselines.",
+        "scope": "A specified replacement/repositioning of the key-light contribution, rather than assuming every added virtual light removes existing shadows.",
+        "techniques": "Compare geometry/filter baselines with an existing image relighter on its native supported edit. Use any extra observation only as an explicitly separate input condition.",
         "data": "Capture matched physical-lamp references with calibrated exposure, known prop motion and material swatches. OpenRooms / Objects with Lighting can support pretraining or checks, but do not replace dynamic MR ground truth.",
         "resources": "Begin with RGB-D or available device depth, tracked rigid props and a controllable reference lamp; use a camera-view prototype before committing to device-specific passthrough access.",
-        "experiment": "One virtual spotlight, tracked rigid real prop, two material classes and matched physical-light reference; compare alignment, material drift, artifacts and update delay.",
+        "experiment": "Paired physical A/B captures of the same tracked prop. Compare a geometric/filter baseline and an image relighter on supported controls; measure target shadow/material error and runtime separately.",
         "stop": "If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.",
         "resourceLinks": [
           {
@@ -1447,38 +1479,48 @@ window.RESEARCH_STORY_V2 = {
         "motivation": "A virtual production lamp should change real displayed appearance coherently with virtual content.",
         "sourceSubtopic": "Real time virtual light affecting real video see though.",
         "sourceNumber": 1,
-        "firstInvestigation": "One virtual spotlight, tracked rigid real prop, two material classes and matched physical-light reference; compare alignment, material drift, artifacts and update delay.",
+        "firstInvestigation": "Paired physical A/B captures of the same tracked prop. Compare a geometric/filter baseline and an image relighter on supported controls; measure target shadow/material error and runtime separately.",
         "feasibilityPlan": {
           "papers": [
             {
               "id": "depthlab",
-              "role": "Runnable geometric baseline",
-              "bullets": [
-                "Depth-based relighting and shadow samples.",
-                "Start with the released ARCore implementation."
-              ],
+              "role": "Geometric/filter baseline",
               "url": "https://github.com/googlesamples/arcore-depth-lab",
-              "linkLabel": "Code / samples"
+              "linkLabel": "Released samples",
+              "bullets": [
+                "Start with the released depth-based relighting samples.",
+                "Assess how captured shading survives the chosen supported edit."
+              ]
             },
             {
               "id": "review-ref-85",
-              "role": "Closest geometry-correction method",
-              "bullets": [
-                "Guided anisotropic filtering of mesh lighting.",
-                "Paper reports a mobile demo; code/weights not verified."
-              ],
+              "role": "Closest hybrid/filter comparison",
               "url": "https://arxiv.org/html/2508.14930v1",
-              "linkLabel": "Method and results"
+              "linkLabel": "Paper and method",
+              "bullets": [
+                "Mesh lighting plus guided anisotropic diffusion.",
+                "Code/weights remain unverified; do not claim a runnable release."
+              ]
             },
             {
-              "id": "depth-anything-v2",
-              "role": "Candidate depth component",
+              "id": "genlit",
+              "role": "Candidate offline image-relighting comparison",
+              "url": "https://genlit.is.tue.mpg.de/",
+              "linkLabel": "Official project",
               "bullets": [
-                "Small pretrained model for a depth ablation.",
-                "Relative depth needs metric anchoring; profile latency."
-              ],
-              "url": "https://github.com/DepthAnything/Depth-Anything-V2",
-              "linkLabel": "Code / checkpoints"
+                "Moving-point-light relighting provides an appearance-generation comparison.",
+                "Use only a native supported trajectory/control; report inference separately from interactive baselines."
+              ]
+            },
+            {
+              "id": "lightlab",
+              "role": "Supported intensity/color edit comparison",
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "linkLabel": "Primary paper",
+              "bullets": [
+                "Use a supported lamp-intensity/color or on/off contrast.",
+                "Do not assume arbitrary light repositioning or headset-speed inference."
+              ]
             }
           ],
           "datasets": [
@@ -1487,7 +1529,8 @@ window.RESEARCH_STORY_V2 = {
               "url": "https://github.com/ViLab-UCSD/OpenRooms",
               "bullets": [
                 "Synthetic geometry, material and lighting ground truth.",
-                "Useful for ablations; not dynamic MR validation."
+                "Useful for ablations; not dynamic MR validation.",
+                "Include paired originally shadowed and exposed regions; distinguish low signal from clipping."
               ]
             },
             {
@@ -1536,18 +1579,19 @@ window.RESEARCH_STORY_V2 = {
             }
           ],
           "pilot": [
-            "One spotlight; one rigid prop trajectory; diffuse/rough surfaces.",
-            "Compare mesh-only, filtered and proposed corrections at matched cost."
+            "Capture matched real setup A and target setup B at fixed camera/prop pose and logged exposure.",
+            "Compare supported edits fairly; an offline relighter is a quality comparison, not a live-MR baseline.",
+            "Keep target B as evaluation reference; any additional well-exposed input is a declared separate ablation."
           ],
           "measures": [
-            "Material/color drift; shadow-boundary error; temporal artifacts.",
-            "Stop if accurate geometry or an existing filter removes the proposed benefit."
+            "Shadow change relative to target B, material/color drift and temporal artifacts.",
+            "Low-signal versus clipped region performance; update, preprocessing and inference cost separately."
           ]
         }
       },
       "simpleTest": {
         "test": [
-          "Move one matte or rough prop under a virtual spotlight; compare the closest baseline and correction at matched update cost."
+          "Change the key-light setup A to B on one prop with a shadowed patch; compare with paired physical captures."
         ],
         "need": [
           "Depth-capable camera/device, a prop and a controllable physical lamp for reference captures.",
@@ -1555,7 +1599,7 @@ window.RESEARCH_STORY_V2 = {
         ],
         "decision": "Use the closest baseline and the observed failure to refine this candidate; uncertainty is welcome in the discussion."
       },
-      "speakerNotes": "Original track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nOriginal track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. How can virtual lights change the appearance of real actors, props and the surrounding scene in video see-through MR? If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nThe closest baselines leave different boundary, material and temporal errors; isolate which limits the target dynamic MR scene. Proposed aim: Correct one consequential failure beyond the strongest matched-cost baseline.",
+      "speakerNotes": "Original track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nOriginal track: real-time virtual-light effects on the camera view of real actors, props and the surrounding scene. A possible first investigation uses one virtual spotlight, rigid props and diffuse/rough materials. How can virtual lights change the appearance of real actors, props and the surrounding scene in video see-through MR? If accurate geometry removes the benefit, frame the problem as geometry correction. If an existing filter matches quality at lower cost, do not add the new model.\nThe closest baselines leave different boundary, material and temporal errors; isolate which limits the target dynamic MR scene. Proposed aim: Correct one consequential failure beyond the strongest matched-cost baseline.\nThe latest user asks to include dark/shadowed evidence explicitly. For strict multiplication C⊙R, a zero observation stays zero for finite R; additional observations or priors are needed for missing detail. This is a scoped information argument, not a blanket impossibility claim or proof of novelty.\nAn image-relighting comparison is necessary for an appearance-recovery claim. GenLit/LightLab are candidates only within native edit controls; offline quality and live response are different comparisons. Depth models remain auxiliary geometry controls. Target B must not become an undeclared method input.",
       "transition": "Inspect the focused Sankey or feasibility resources, then consider the next candidate."
     },
     {
@@ -1564,7 +1608,7 @@ window.RESEARCH_STORY_V2 = {
       "topicId": "illumination",
       "chapter": "1 · Illumination · Candidate investigations",
       "title": "I2 · Light-type effects on shadows and illumination in XR",
-      "lead": "Production need: A filmmaker changes source type/extent to shape actor/prop illumination and shadow; MR must preserve the relevant distinction.",
+      "lead": "Cross-cutting question: which remaining I1 real-view and I3 local-light errors change the intended shot?",
       "points": [],
       "paperIds": [
         "review-ref-1",
@@ -1581,7 +1625,7 @@ window.RESEARCH_STORY_V2 = {
         "label": "I2 · Light-type effects on shadows and illumination in XR",
         "known": "Source models and shadow/contact studies provide specific rendering and perceptual evidence.",
         "gap": "The reviewed evidence does not establish how source-type approximations alter the selected production judgment across real and virtual content.",
-        "question": "Identify which source-type-dependent shadow/shading cues must be preserved and when an approximation suffices.",
+        "question": "Identify which light-type/shadow errors from either path alter the production judgment, and when a cheaper approximation suffices.",
         "ids": [
           "review-ref-15",
           "review-ref-65",
@@ -1589,7 +1633,7 @@ window.RESEARCH_STORY_V2 = {
           "review-ref-2",
           "review-ref-33"
         ],
-        "aim": "Identify which source-type-dependent shadow/shading cues must be preserved and when an approximation suffices."
+        "aim": "Identify which light-type/shadow errors from either path alter the production judgment, and when a cheaper approximation suffices."
       },
       "focusMap": {
         "id": "I2",
@@ -1745,7 +1789,7 @@ window.RESEARCH_STORY_V2 = {
       "topicId": "illumination",
       "chapter": "1 · Illumination · Candidate investigations",
       "title": "I3 · Close-scene lighting estimation / probes",
-      "lead": "Production need: Nearby physical lights should illuminate virtual actors/props correctly as query position changes.",
+      "lead": "Production need: the virtual actor or prop should receive the local light at its own position, not just the camera or hand.",
       "points": [],
       "paperIds": [
         "handlight",
@@ -1760,15 +1804,15 @@ window.RESEARCH_STORY_V2 = {
       "track": {
         "label": "I3 · Close-scene lighting estimation / probes",
         "known": "HandLight uses gesture-specific hand estimates and a spatial atlas; Marques et al. (2018) is its stated closest comparison.",
-        "gap": "HandLight already reports spatial mismatch and flicker; determine where probe reuse or updating can measurably improve this baseline.",
-        "question": "Establish validity and adapt sampling/updating only where the strongest baseline fails.",
+        "gap": "Global estimates miss some near-field variation; HandLight already addresses local probing but reports position mismatch and flicker.",
+        "question": "Determine and improve the validity of local estimates beyond the existing hand-atlas baseline.",
         "ids": [
           "handlight",
           "limo",
           "review-ref-75",
           "review-ref-68"
         ],
-        "aim": "Establish validity and adapt sampling/updating only where the strongest baseline fails."
+        "aim": "Determine and improve the validity of local estimates beyond the existing hand-atlas baseline."
       },
       "focusMap": {
         "id": "I3",
@@ -1969,7 +2013,7 @@ window.RESEARCH_STORY_V2 = {
       "id": "v2-agents-why",
       "kind": "v2-chain",
       "title": "Directable Virtual Agents",
-      "lead": "Give a note, see the response, and keep the accepted parts of the performance.",
+      "lead": "The director says: look at the partner earlier, but keep the hand on the prop and stay on the mark.",
       "chapter": "2 · Directable performance",
       "topicId": "agents",
       "points": [],
@@ -1986,7 +2030,7 @@ window.RESEARCH_STORY_V2 = {
       "chain": [
         {
           "label": "Problem",
-          "text": "Blocking, gaze, contact and timing must respond together when a director gives a note."
+          "text": "A useful acting note changes one intention while preserving the accepted action and scene relationships."
         },
         {
           "label": "Current state",
@@ -1994,11 +2038,11 @@ window.RESEARCH_STORY_V2 = {
         },
         {
           "label": "Working gap",
-          "text": "A note that changes gaze or timing may disturb accepted contact or blocking; the reviewed capabilities do not establish how that directing trade-off should be expressed and preserved."
+          "text": "Changing gaze or timing can conflict with contact or blocking; the director needs to specify what must stay protected."
         },
         {
           "label": "Goal / aim",
-          "text": "Study a bounded directing operation and determine what representation or control is needed beyond the strongest existing method."
+          "text": "Evaluate one note and its protected relation against an existing controller/editor, including response and unwanted motion."
         }
       ],
       "broaderMotivation": "Broader motivation: directable embodied performance supports creative authoring and, where demonstrated, entertainment robotics."
@@ -2820,7 +2864,7 @@ window.RESEARCH_STORY_V2 = {
       "id": "v2-robotics-why",
       "kind": "v2-chain",
       "title": "Human Robot Interaction and Visualization in XR",
-      "lead": "A spatial camera or lighting intention must become understandable physical action.",
+      "lead": "The director moves the camera; the framing and the linked key-light direction must remain understandable.",
       "chapter": "3 · Physical equipment",
       "topicId": "robotics",
       "points": [],
@@ -2837,7 +2881,7 @@ window.RESEARCH_STORY_V2 = {
       "chain": [
         {
           "label": "Problem",
-          "text": "A director wants to move a camera or light while preserving framing, timing and scene relationships."
+          "text": "A camera or light change must become a feasible physical action that still achieves the intended shot."
         },
         {
           "label": "Current state",
@@ -2845,11 +2889,11 @@ window.RESEARCH_STORY_V2 = {
         },
         {
           "label": "Working gap",
-          "text": "A locally feasible equipment change may break framing or a linked lighting intention; the reviewed studies do not establish how operators should recognize and repair that conflict."
+          "text": "A reachable camera pose can still break framing or lighting. The operator needs to see and repair that conflict."
         },
         {
           "label": "Goal / aim",
-          "text": "Evaluate a specific spatial interaction against existing controls, with physical feasibility and operator understanding measured separately."
+          "text": "Test one XR shot-repair interaction against ordinary controls with the same robot/controller and state feedback."
         }
       ],
       "broaderMotivation": "Broader motivation: understandable spatial interfaces help people supervise robot intent, constraints and state."
@@ -29321,175 +29365,75 @@ window.RESEARCH_STORY_V2 = {
       ],
       "papers": [
         {
-          "id": "depthlab",
-          "shortLabel": "DepthLab: Real-Time 3D Interaction With Depth Maps for Mobile Augmented Reality",
+          "id": "review-ref-75",
+          "shortLabel": "Lighthouse",
           "values": {
             "intervention": [
-              "live"
+              "unknown"
             ],
             "outcome": [
-              "ar"
+              "unknown"
             ],
             "validation": [
-              "situated"
+              "unknown"
             ]
           },
-          "readStatus": "Primary project reread; earlier selected PDF assessment retained in illumination.json",
+          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
           "evidence": [
             {
-              "url": "https://augmentedperception.github.io/depthlab/",
-              "locator": "Abstract,code and BibTeX",
-              "claim": "Supports method,scope or deployment assessment; see locator."
-            },
-            {
-              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-              "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
-              "claim": "Supports method,scope or deployment assessment; see locator."
-            },
-            {
-              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-              "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
-              "claim": "Method and albedo issue."
-            },
-            {
-              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-              "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
-              "claim": "Relighting benchmark is separate from minimum-app timing."
-            },
-            {
-              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-              "locator": "PDF p. 12, Limitations",
-              "claim": "Dynamic-depth scope."
-            },
-            {
-              "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
-              "locator": "Official project heading, author list, abstract and BibTeX",
-              "url": "https://augmentedperception.github.io/depthlab/"
+              "url": "https://arxiv.org/pdf/2003.08367",
+              "locator": "§3–4 representation/query; §5training; §7discussion",
+              "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
             }
           ],
           "fieldEvidence": {
             "intervention": {
               "values": [
-                "live"
+                "unknown"
               ],
-              "rationale": "Depth-driven rendering library including camera-image relighting and shadows.",
+              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
               "sources": [
                 {
-                  "url": "https://augmentedperception.github.io/depthlab/",
-                  "locator": "Abstract,code and BibTeX",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
-                  "claim": "Method and albedo issue."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
-                  "claim": "Relighting benchmark is separate from minimum-app timing."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF p. 12, Limitations",
-                  "claim": "Dynamic-depth scope."
-                },
-                {
-                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
-                  "locator": "Official project heading, author list, abstract and BibTeX",
-                  "url": "https://augmentedperception.github.io/depthlab/"
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             },
             "outcome": {
               "values": [
-                "ar"
+                "unknown"
               ],
-              "rationale": "Depth-driven rendering library including camera-image relighting and shadows.",
+              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
               "sources": [
                 {
-                  "url": "https://augmentedperception.github.io/depthlab/",
-                  "locator": "Abstract,code and BibTeX",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
-                  "claim": "Method and albedo issue."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
-                  "claim": "Relighting benchmark is separate from minimum-app timing."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF p. 12, Limitations",
-                  "claim": "Dynamic-depth scope."
-                },
-                {
-                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
-                  "locator": "Official project heading, author list, abstract and BibTeX",
-                  "url": "https://augmentedperception.github.io/depthlab/"
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             },
             "validation": {
               "values": [
-                "situated"
+                "unknown"
               ],
-              "rationale": "Depth-aware mobile AR image",
+              "rationale": "One shared 3D lighting model yields spatially consistent probes and specular object insertions.",
               "sources": [
                 {
-                  "url": "https://augmentedperception.github.io/depthlab/",
-                  "locator": "Abstract,code and BibTeX",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
-                  "claim": "Method and albedo issue."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
-                  "claim": "Relighting benchmark is separate from minimum-app timing."
-                },
-                {
-                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
-                  "locator": "PDF p. 12, Limitations",
-                  "claim": "Dynamic-depth scope."
-                },
-                {
-                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
-                  "locator": "Official project heading, author list, abstract and BibTeX",
-                  "url": "https://augmentedperception.github.io/depthlab/"
+                  "url": "https://arxiv.org/pdf/2003.08367",
+                  "locator": "§3–4 representation/query; §5training; §7discussion",
+                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             }
           },
           "mappingNotes": {
-            "intervention": "Depth-driven rendering library including camera-image relighting and shadows.",
-            "outcome": "Depth-driven rendering library including camera-image relighting and shadows.",
-            "validation": "Depth-aware mobile AR image"
+            "intervention": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+            "outcome": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+            "validation": "One shared 3D lighting model yields spatially consistent probes and specular object insertions."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -29587,99 +29531,6 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
-          "id": "handlight",
-          "shortLabel": "HandLight: Light Estimation from Hand Interaction in Mixed Reality",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Selected primary sections checked; not an exhaustive full-paper or reproduction audit.",
-          "evidence": [
-            {
-              "claim": "Seed metadata and framing",
-              "locator": "Original research slides",
-              "url": ""
-            },
-            {
-              "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
-              "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
-              "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-              "sources": [
-                {
-                  "claim": "Seed metadata and framing",
-                  "locator": "Original research slides",
-                  "url": ""
-                },
-                {
-                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
-                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
-                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-              "sources": [
-                {
-                  "claim": "Seed metadata and framing",
-                  "locator": "Original research slides",
-                  "url": ""
-                },
-                {
-                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
-                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
-                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-              "sources": [
-                {
-                  "claim": "Seed metadata and framing",
-                  "locator": "Original research slides",
-                  "url": ""
-                },
-                {
-                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
-                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
-                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-            "outcome": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
-            "validation": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment."
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
           "id": "review-ref-85",
           "shortLabel": "Hybrelighter",
           "values": {
@@ -29773,40 +29624,35 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
-          "id": "limo",
-          "shortLabel": "Lighting in Motion: Spatiotemporal HDR Lighting Estimation",
+          "id": "lightlab",
+          "shortLabel": "LightLab: Controlling Light Sources in Images with Diffusion Models",
           "values": {
             "intervention": [
               "unknown"
             ],
             "outcome": [
-              "output"
+              "unknown"
             ],
             "validation": [
-              "component"
+              "unknown"
             ]
           },
-          "readStatus": "Project and selected manuscript method/limitations; final-version differences unverified",
+          "readStatus": "Selected full-text §§2–4.1,6 and bibliography",
           "evidence": [
             {
-              "url": "https://eyeline-labs.github.io/LiMo/",
-              "locator": "Pipeline overview and geometry conditioning",
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "locator": "§3.4, Fig.3; §4.1; §6",
               "claim": "Supports method,scope or deployment assessment; see locator."
             },
             {
-              "url": "https://arxiv.org/html/2512.13597v1",
-              "locator": "§§3.2–3.4 and5; earlier selected assessment",
-              "claim": "Supports method,scope or deployment assessment; see locator."
+              "url": "https://arxiv.org/html/2505.09608v1",
+              "locator": "Sections 3.4, 4.1, 6",
+              "claim": "Conditioning, timing and limits."
             },
             {
-              "url": "https://arxiv.org/html/2512.13597v1",
-              "locator": "Sections 3.2 and 3.4; Equations 1–6",
-              "claim": "Conditioning and optimization."
-            },
-            {
-              "url": "https://arxiv.org/html/2512.13597v1",
-              "locator": "Section 4.5, Table 3; Section 5",
-              "claim": "Ablations and explicit limitations."
+              "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+              "locator": "Title block, conference imprint, author list and abstract",
+              "url": "https://arxiv.org/html/2505.09608v1"
             }
           ],
           "fieldEvidence": {
@@ -29814,94 +29660,172 @@ window.RESEARCH_STORY_V2 = {
               "values": [
                 "unknown"
               ],
-              "rationale": "Selected sources establish the pipeline, not when a person may change the objective during execution; intervention type remains unknown.",
+              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
               "sources": [
                 {
-                  "url": "https://eyeline-labs.github.io/LiMo/",
-                  "locator": "Pipeline overview and geometry conditioning",
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
                   "claim": "Supports method,scope or deployment assessment; see locator."
                 },
                 {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "§§3.2–3.4 and5; earlier selected assessment",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
                 },
                 {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "Sections 3.2 and 3.4; Equations 1–6",
-                  "claim": "Conditioning and optimization."
-                },
-                {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "Section 4.5, Table 3; Section 5",
-                  "claim": "Ablations and explicit limitations."
+                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+                  "locator": "Title block, conference imprint, author list and abstract",
+                  "url": "https://arxiv.org/html/2505.09608v1"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             },
             "outcome": {
               "values": [
-                "output"
+                "unknown"
               ],
-              "rationale": "Geometry-conditioned diffusion generates exposed mirror/diffuse spheres; optimize an HDR probe.",
+              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
               "sources": [
                 {
-                  "url": "https://eyeline-labs.github.io/LiMo/",
-                  "locator": "Pipeline overview and geometry conditioning",
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
                   "claim": "Supports method,scope or deployment assessment; see locator."
                 },
                 {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "§§3.2–3.4 and5; earlier selected assessment",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
                 },
                 {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "Sections 3.2 and 3.4; Equations 1–6",
-                  "claim": "Conditioning and optimization."
-                },
-                {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "Section 4.5, Table 3; Section 5",
-                  "claim": "Ablations and explicit limitations."
+                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+                  "locator": "Title block, conference imprint, author list and abstract",
+                  "url": "https://arxiv.org/html/2505.09608v1"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             },
             "validation": {
               "values": [
-                "component"
+                "unknown"
               ],
-              "rationale": "HDR illumination probe",
+              "rationale": "Relit RGB image",
               "sources": [
                 {
-                  "url": "https://eyeline-labs.github.io/LiMo/",
-                  "locator": "Pipeline overview and geometry conditioning",
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "§3.4, Fig.3; §4.1; §6",
                   "claim": "Supports method,scope or deployment assessment; see locator."
                 },
                 {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "§§3.2–3.4 and5; earlier selected assessment",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
+                  "url": "https://arxiv.org/html/2505.09608v1",
+                  "locator": "Sections 3.4, 4.1, 6",
+                  "claim": "Conditioning, timing and limits."
                 },
                 {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "Sections 3.2 and 3.4; Equations 1–6",
-                  "claim": "Conditioning and optimization."
-                },
-                {
-                  "url": "https://arxiv.org/html/2512.13597v1",
-                  "locator": "Section 4.5, Table 3; Section 5",
-                  "claim": "Ablations and explicit limitations."
+                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
+                  "locator": "Title block, conference imprint, author list and abstract",
+                  "url": "https://arxiv.org/html/2505.09608v1"
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             }
           },
           "mappingNotes": {
-            "intervention": "Selected sources establish the pipeline, not when a person may change the objective during execution; intervention type remains unknown.",
-            "outcome": "Geometry-conditioned diffusion generates exposed mirror/diffuse spheres; optimize an HDR probe.",
-            "validation": "HDR illumination probe"
+            "intervention": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+            "outcome": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
+            "validation": "Relit RGB image"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
+          "id": "handlight",
+          "shortLabel": "HandLight: Light Estimation from Hand Interaction in Mixed Reality",
+          "values": {
+            "intervention": [
+              "unknown"
+            ],
+            "outcome": [
+              "unknown"
+            ],
+            "validation": [
+              "unknown"
+            ]
+          },
+          "readStatus": "Selected primary sections checked; not an exhaustive full-paper or reproduction audit.",
+          "evidence": [
+            {
+              "claim": "Seed metadata and framing",
+              "locator": "Original research slides",
+              "url": ""
+            },
+            {
+              "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+              "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+              "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                },
+                {
+                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                },
+                {
+                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "unknown"
+              ],
+              "rationale": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+              "sources": [
+                {
+                  "claim": "Seed metadata and framing",
+                  "locator": "Original research slides",
+                  "url": ""
+                },
+                {
+                  "claim": "Gesture-specific neural estimators recover SH lighting from hand images; moving observations populate a spatial light-probe atlas. Scope: Authors report hand visibility, hand/object lighting-location mismatch, backlighting, unseen poses/skin appearance and possible temporal flicker as limitations.",
+                  "locator": "Section 4.4 names Marques C&G2018 closest comparator; Section 5 explicit limitations; author publication page HandLight entry",
+                  "url": "https://schmalstieg.github.io/pdf/Schmalstieg_452.pdf"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+            "outcome": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment.",
+            "validation": "Merged record is source-summary only; a source-figure link is not sufficient verification of this field. Retain unknown pending a specific primary-source assessment."
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -30278,6 +30202,179 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
+          "id": "depthlab",
+          "shortLabel": "DepthLab: Real-Time 3D Interaction With Depth Maps for Mobile Augmented Reality",
+          "values": {
+            "intervention": [
+              "live"
+            ],
+            "outcome": [
+              "ar"
+            ],
+            "validation": [
+              "situated"
+            ]
+          },
+          "readStatus": "Primary project reread; earlier selected PDF assessment retained in illumination.json",
+          "evidence": [
+            {
+              "url": "https://augmentedperception.github.io/depthlab/",
+              "locator": "Abstract,code and BibTeX",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+              "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+              "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
+              "claim": "Method and albedo issue."
+            },
+            {
+              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+              "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
+              "claim": "Relighting benchmark is separate from minimum-app timing."
+            },
+            {
+              "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+              "locator": "PDF p. 12, Limitations",
+              "claim": "Dynamic-depth scope."
+            },
+            {
+              "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+              "locator": "Official project heading, author list, abstract and BibTeX",
+              "url": "https://augmentedperception.github.io/depthlab/"
+            }
+          ],
+          "fieldEvidence": {
+            "intervention": {
+              "values": [
+                "live"
+              ],
+              "rationale": "Depth-driven rendering library including camera-image relighting and shadows.",
+              "sources": [
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/",
+                  "locator": "Abstract,code and BibTeX",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
+                  "claim": "Method and albedo issue."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
+                  "claim": "Relighting benchmark is separate from minimum-app timing."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF p. 12, Limitations",
+                  "claim": "Dynamic-depth scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+                  "locator": "Official project heading, author list, abstract and BibTeX",
+                  "url": "https://augmentedperception.github.io/depthlab/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "outcome": {
+              "values": [
+                "ar"
+              ],
+              "rationale": "Depth-driven rendering library including camera-image relighting and shadows.",
+              "sources": [
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/",
+                  "locator": "Abstract,code and BibTeX",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
+                  "claim": "Method and albedo issue."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
+                  "claim": "Relighting benchmark is separate from minimum-app timing."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF p. 12, Limitations",
+                  "claim": "Dynamic-depth scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+                  "locator": "Official project heading, author list, abstract and BibTeX",
+                  "url": "https://augmentedperception.github.io/depthlab/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            },
+            "validation": {
+              "values": [
+                "situated"
+              ],
+              "rationale": "Depth-aware mobile AR image",
+              "sources": [
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/",
+                  "locator": "Abstract,code and BibTeX",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "Earlier selected reading pp.9–12,Algorithm3 and performance/limitations",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF pp. 9–10, Relighting; Algorithm 3",
+                  "claim": "Method and albedo issue."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF p. 11, Performance Evaluation; Figures 15–16",
+                  "claim": "Relighting benchmark is separate from minimum-app timing."
+                },
+                {
+                  "url": "https://augmentedperception.github.io/depthlab/assets/Du_DepthLab-Real-Time3DInteractionWithDepthMapsForMobileAugmentedReality_UIST2020.pdf",
+                  "locator": "PDF p. 12, Limitations",
+                  "claim": "Dynamic-depth scope."
+                },
+                {
+                  "claim": "Citation metadata and method framing checked. Primary project metadata and abstract checked; no new full-paper audit.",
+                  "locator": "Official project heading, author list, abstract and BibTeX",
+                  "url": "https://augmentedperception.github.io/depthlab/"
+                }
+              ],
+              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
+            }
+          },
+          "mappingNotes": {
+            "intervention": "Depth-driven rendering library including camera-image relighting and shadows.",
+            "outcome": "Depth-driven rendering library including camera-image relighting and shadows.",
+            "validation": "Depth-aware mobile AR image"
+          },
+          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
+        },
+        {
           "id": "review-ref-35",
           "shortLabel": "Reciprocal Shading",
           "values": {
@@ -30480,119 +30577,6 @@ window.RESEARCH_STORY_V2 = {
             "intervention": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
             "outcome": "Compute blocked radiance and multibounce illumination with hardware-accelerated path tracing.",
             "validation": "MR composite with transport changes"
-          },
-          "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
-        },
-        {
-          "id": "lightlab",
-          "shortLabel": "LightLab: Controlling Light Sources in Images with Diffusion Models",
-          "values": {
-            "intervention": [
-              "unknown"
-            ],
-            "outcome": [
-              "unknown"
-            ],
-            "validation": [
-              "unknown"
-            ]
-          },
-          "readStatus": "Selected full-text §§2–4.1,6 and bibliography",
-          "evidence": [
-            {
-              "url": "https://arxiv.org/html/2505.09608v1",
-              "locator": "§3.4, Fig.3; §4.1; §6",
-              "claim": "Supports method,scope or deployment assessment; see locator."
-            },
-            {
-              "url": "https://arxiv.org/html/2505.09608v1",
-              "locator": "Sections 3.4, 4.1, 6",
-              "claim": "Conditioning, timing and limits."
-            },
-            {
-              "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
-              "locator": "Title block, conference imprint, author list and abstract",
-              "url": "https://arxiv.org/html/2505.09608v1"
-            }
-          ],
-          "fieldEvidence": {
-            "intervention": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "§3.4, Fig.3; §4.1; §6",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "Sections 3.4, 4.1, 6",
-                  "claim": "Conditioning, timing and limits."
-                },
-                {
-                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
-                  "locator": "Title block, conference imprint, author list and abstract",
-                  "url": "https://arxiv.org/html/2505.09608v1"
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "outcome": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "§3.4, Fig.3; §4.1; §6",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "Sections 3.4, 4.1, 6",
-                  "claim": "Conditioning, timing and limits."
-                },
-                {
-                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
-                  "locator": "Title block, conference imprint, author list and abstract",
-                  "url": "https://arxiv.org/html/2505.09608v1"
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            },
-            "validation": {
-              "values": [
-                "unknown"
-              ],
-              "rationale": "Relit RGB image",
-              "sources": [
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "§3.4, Fig.3; §4.1; §6",
-                  "claim": "Supports method,scope or deployment assessment; see locator."
-                },
-                {
-                  "url": "https://arxiv.org/html/2505.09608v1",
-                  "locator": "Sections 3.4, 4.1, 6",
-                  "claim": "Conditioning, timing and limits."
-                },
-                {
-                  "claim": "Citation metadata and method framing checked. Primary manuscript explicitly names SIGGRAPH Conference Papers 2025 and first author Nadav Magar. Not automatically ACM TOG.",
-                  "locator": "Title block, conference imprint, author list and abstract",
-                  "url": "https://arxiv.org/html/2505.09608v1"
-                }
-              ],
-              "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
-            }
-          },
-          "mappingNotes": {
-            "intervention": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-            "outcome": "Fine-tune diffusion using real on/off pairs and synthetic transport, with lamp masks and predicted depth.",
-            "validation": "Relit RGB image"
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
@@ -30969,25 +30953,40 @@ window.RESEARCH_STORY_V2 = {
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
         {
-          "id": "review-ref-75",
-          "shortLabel": "Lighthouse",
+          "id": "limo",
+          "shortLabel": "Lighting in Motion: Spatiotemporal HDR Lighting Estimation",
           "values": {
             "intervention": [
               "unknown"
             ],
             "outcome": [
-              "unknown"
+              "output"
             ],
             "validation": [
-              "unknown"
+              "component"
             ]
           },
-          "readStatus": "Primary full text: selected methods, evaluation and limitations read",
+          "readStatus": "Project and selected manuscript method/limitations; final-version differences unverified",
           "evidence": [
             {
-              "url": "https://arxiv.org/pdf/2003.08367",
-              "locator": "§3–4 representation/query; §5training; §7discussion",
-              "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+              "url": "https://eyeline-labs.github.io/LiMo/",
+              "locator": "Pipeline overview and geometry conditioning",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://arxiv.org/html/2512.13597v1",
+              "locator": "§§3.2–3.4 and5; earlier selected assessment",
+              "claim": "Supports method,scope or deployment assessment; see locator."
+            },
+            {
+              "url": "https://arxiv.org/html/2512.13597v1",
+              "locator": "Sections 3.2 and 3.4; Equations 1–6",
+              "claim": "Conditioning and optimization."
+            },
+            {
+              "url": "https://arxiv.org/html/2512.13597v1",
+              "locator": "Section 4.5, Table 3; Section 5",
+              "claim": "Ablations and explicit limitations."
             }
           ],
           "fieldEvidence": {
@@ -30995,49 +30994,94 @@ window.RESEARCH_STORY_V2 = {
               "values": [
                 "unknown"
               ],
-              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+              "rationale": "Selected sources establish the pipeline, not when a person may change the objective during execution; intervention type remains unknown.",
               "sources": [
                 {
-                  "url": "https://arxiv.org/pdf/2003.08367",
-                  "locator": "§3–4 representation/query; §5training; §7discussion",
-                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                  "url": "https://eyeline-labs.github.io/LiMo/",
+                  "locator": "Pipeline overview and geometry conditioning",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "§§3.2–3.4 and5; earlier selected assessment",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "Sections 3.2 and 3.4; Equations 1–6",
+                  "claim": "Conditioning and optimization."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "Section 4.5, Table 3; Section 5",
+                  "claim": "Ablations and explicit limitations."
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             },
             "outcome": {
               "values": [
-                "unknown"
+                "output"
               ],
-              "rationale": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
+              "rationale": "Geometry-conditioned diffusion generates exposed mirror/diffuse spheres; optimize an HDR probe.",
               "sources": [
                 {
-                  "url": "https://arxiv.org/pdf/2003.08367",
-                  "locator": "§3–4 representation/query; §5training; §7discussion",
-                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                  "url": "https://eyeline-labs.github.io/LiMo/",
+                  "locator": "Pipeline overview and geometry conditioning",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "§§3.2–3.4 and5; earlier selected assessment",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "Sections 3.2 and 3.4; Equations 1–6",
+                  "claim": "Conditioning and optimization."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "Section 4.5, Table 3; Section 5",
+                  "claim": "Ablations and explicit limitations."
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             },
             "validation": {
               "values": [
-                "unknown"
+                "component"
               ],
-              "rationale": "One shared 3D lighting model yields spatially consistent probes and specular object insertions.",
+              "rationale": "HDR illumination probe",
               "sources": [
                 {
-                  "url": "https://arxiv.org/pdf/2003.08367",
-                  "locator": "§3–4 representation/query; §5training; §7discussion",
-                  "claim": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting. One shared 3D lighting model yields spatially consistent probes and specular object insertions. The fixed multiresolution sampling pattern limits adaptivity; the public implementation is memory hungry."
+                  "url": "https://eyeline-labs.github.io/LiMo/",
+                  "locator": "Pipeline overview and geometry conditioning",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "§§3.2–3.4 and5; earlier selected assessment",
+                  "claim": "Supports method,scope or deployment assessment; see locator."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "Sections 3.2 and 3.4; Equations 1–6",
+                  "claim": "Conditioning and optimization."
+                },
+                {
+                  "url": "https://arxiv.org/html/2512.13597v1",
+                  "locator": "Section 4.5, Table 3; Section 5",
+                  "claim": "Ablations and explicit limitations."
                 }
               ],
               "basis": "Source-scoped reviewer synthesis; inspect cited locators, not a measured rank."
             }
           },
           "mappingNotes": {
-            "intervention": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
-            "outcome": "A narrow-baseline stereo pair predicts visible geometry and a completed multiscale RGBA volume,then spherical volume rendering queries incident lighting.",
-            "validation": "One shared 3D lighting model yields spatially consistent probes and specular object insertions."
+            "intervention": "Selected sources establish the pipeline, not when a person may change the objective during execution; intervention type remains unknown.",
+            "outcome": "Geometry-conditioned diffusion generates exposed mirror/diffuse spheres; optimize an HDR probe.",
+            "validation": "HDR illumination probe"
           },
           "caveat": "Evidence types for selected supporting studies, not ranked levels. Mixed demonstrated settings remain visible. Membership, counts and unknowns do not establish novelty or end-to-end performance."
         },
