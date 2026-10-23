@@ -11,3 +11,4 @@
 @media(max-width:850px){.scene-topic-illumination svg{height:auto;max-height:340px}.scene-topic-illumination .v2-scene-controls{font-size:12px}}
 .scene-topic-illumination svg text{font-size:16px}.scene-topic-illumination svg .scene-small,.scene-topic-illumination .light-cross-directions text{font-size:14px}
 .scene-topic-illumination .v2-scene-label{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.light-types-at-glance{display:flex;gap:11px;align-items:center}.light-types-at-glance>span{display:flex;align-items:center;gap:3px;font-size:10px}.scene-topic-illumination .light-types-at-glance svg{width:22px!important;height:20px!important;fill:none;stroke:#6c88b2;stroke-width:1.6;flex:0 0 auto}
+.scene-optional-controls>summary{padding:8px 14px;font-size:11px;color:#536e95;cursor:pointer}.scene-topic-illumination .v2-scene-argument p{font-size:14px}.scene-topic-illumination .scene-optional-controls{background:white}

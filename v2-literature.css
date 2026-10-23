@@ -3,3 +3,5 @@
 #research-talk .scene-topic-illumination svg{height:310px}
 @media(max-width:850px){#research-talk .scene-topic-illumination svg{height:auto}}
 .literature-four{row-gap:12px}.lit-context-note{margin-top:5px!important}
+.lit-source-thumb{width:70px;height:70px;object-fit:contain;background:white;border:1px solid #d9e2ee}.literature-three .lit-source-thumb{width:100px;height:85px}.literature-family-main{align-items:start}
+.literature-four .lit-takeaway{font-size:14px}.talk-slide[data-kind=v2-literature] .lit-takeaway{font-size:14px;padding:8px 12px;margin-top:10px!important}.literature-four{row-gap:9px}

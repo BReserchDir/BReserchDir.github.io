@@ -1,0 +1,82 @@
+{
+  "humanMesh": {
+    "name": "Cesium Man",
+    "author": "Cesium",
+    "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CesiumMan",
+    "asset": "models/CesiumMan.glb",
+    "license": "CC BY 4.0",
+    "licenseFile": "models/CesiumMan-LICENSE.md",
+    "changes": "Neutral materials, body clipped at neck height, explicit spherical heads; one animation pose. CesiumMan body mesh, not SMPL."
+  },
+  "environments": [
+    {
+      "name": "Empty Warehouse 01",
+      "author": "Sergej Majboroda",
+      "source": "https://polyhaven.com/a/empty_warehouse_01",
+      "license": "CC0",
+      "asset": "environments/empty_warehouse_01_1k.hdr",
+      "use": "Warehouse HDRI background and illumination"
+    },
+    {
+      "name": "Venice Sunset",
+      "author": "Greg Zaal",
+      "source": "https://polyhaven.com/a/venice_sunset",
+      "license": "CC0",
+      "asset": "environments/venice_sunset_1k.hdr",
+      "use": "Virtual LED wall panorama"
+    }
+  ],
+  "renderer": {
+    "name": "Three.js",
+    "version": "r160 / 0.160.1 core",
+    "license": "MIT",
+    "licenseFile": "../scripts/vendor/THREE-LICENSE.txt"
+  },
+  "fixtureMesh": {
+    "title": "Theater spotlight",
+    "author": "lakescorp",
+    "sourcePage": "https://poly.pizza/m/Thhuwj9HCg",
+    "downloadUrl": "https://static.poly.pizza/164d67f5-1d1f-4f57-b4ae-3aeedf6172f3.glb",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "licenseEvidence": "Source page explicitly labels Public Domain (CC0), published 2022-02-22.",
+    "downloaded": "2026-10-22",
+    "sha256": "70b9424c7728459162cf58e0c12cc1a420f97c0ba099f7c4a0a578a1936704c2",
+    "bytes": 86032,
+    "bounds": {
+      "min": [
+        -2.032993033761155,
+        -2.6530719458459253,
+        -2.0329926645054393
+      ],
+      "max": [
+        2.03299281001091,
+        1.0509016326371352,
+        2.032993118537295
+      ],
+      "size": [
+        4.065985843772065,
+        3.7039735784830605,
+        4.065985783042734
+      ],
+      "center": [
+        -1.1187512249932752e-07,
+        -0.801085156604395,
+        2.2701592783391789e-07
+      ]
+    },
+    "integration": {
+      "nativeOpticalAxis": "+Y (lens facing upward in native model; verified rendered inspection)",
+      "meshStructure": "Root group with multiple transformed children; preserve node transforms.",
+      "suggestedScale": "For total barn-door width 0.65 scene units: multiply root scale by 0.65/4.065985843772065 = 0.159862.",
+      "lookAtCompatibility": "If parent uses +Z as lookAt optical axis, rotate this asset by +PI/2 around X inside the aiming parent, mapping native +Y onto +Z.",
+      "nativeLensApproximatePosition": [
+        0,
+        1,
+        0
+      ],
+      "material": "Embedded texture with black housing, yellow lens; no external files required."
+    }
+  },
+  "modelingScope": "Conceptual lighting preview. The curved LED wall is shaded by five planar area-light segments. Area-light shadows and indirect bounce are not simulated."
+}
