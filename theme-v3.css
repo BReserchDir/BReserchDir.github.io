@@ -89,3 +89,7 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
  #research-talk.talk-v3 .v3-eval-bars article h2{margin-bottom:2px!important}
  #research-talk.talk-v3 .v3-statements article{padding-block:9px!important}
 }
+
+#research-talk.talk-v3 .v3-single-chart{height:calc(100% - 95px)}
+#research-talk.talk-v3 .v3-decision>h2{display:none}
+@media(max-height:600px),(max-width:700px){#research-talk.talk-v3 .v3-single-chart{height:auto}}
