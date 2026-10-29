@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#142638">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="An evolving research atlas by Bhasura Gunawardhana. Explore papers, research trails, open questions and possible PhD directions.">
   <title>Research Atlas · Bhasura Gunawardhana</title>
   <link rel="stylesheet" href="styles.css?v=ad29b03ccbc5">
@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="v2-landscape.css?v=5e28acc4930f">
   <link rel="stylesheet" href="v2-light-evidence.css?v=310690eb7bdb">
   <link rel="stylesheet" href="v2-story-argument.css?v=bfa0d1e2649e">
+
+  <link rel="stylesheet" href="theme-v3.css?v=0d91ed38df27">
 
   <script defer src="scripts/data.js?v=7f5051d9e646"></script>
   <script defer src="scripts/direction-evaluation.js?v=9a0b41152a76"></script>
@@ -45,7 +47,10 @@
   <script defer src="scripts/v2-light-evidence.js?v=67395423ecc6"></script>
   <script defer src="scripts/v2-coverage.js?v=eeb4777e7100"></script>
   <script defer src="scripts/presentation-v2.js?v=264911030fb8"></script>
-  <script defer src="scripts/talk.js?v=5143253309d8"></script>
+  <script defer src="scripts/story-v3.js?v=7790e22b43d5"></script>
+  <script defer src="scripts/literature-v3.js?v=c85d8429c989"></script>
+  <script defer src="scripts/presentation-v3.js?v=b4afb5ed0f05"></script>
+  <script defer src="scripts/talk.js?v=2d56d94ec42d"></script>
 </head>
 <body>
   <a class="skip-link" href="#app">Skip to research content</a>
@@ -62,7 +67,7 @@
     <div id="sidebar-tracks"></div>
     <div class="sidebar-bottom"><span class="working-dot" aria-hidden="true"></span> Research in progress<small>Evidence first. Decisions remain open.</small></div>
   </aside>
-  <header class="site-header"><div class="header-inner"><div id="workspace-breadcrumb">Workspace <span>/</span> Overview</div><div class="header-actions"><span class="header-status">Working notes · October 2026</span><button class="button" id="present-v2-button" type="button">Version 2 · Present ↗</button><button class="button present-trigger" id="present-button" data-action="present" type="button">Version 1 <span aria-hidden="true">↗</span></button></div></div></header>
+  <header class="site-header"><div class="header-inner"><div id="workspace-breadcrumb">Workspace <span>/</span> Overview</div><div class="header-actions"><span class="header-status">Working notes · October 2026</span><button class="button button-primary" id="present-v3-button" type="button">Version 3 · Present ↗</button><button class="button" id="present-v2-button" type="button">Version 2 · Present ↗</button><button class="button present-trigger" id="present-button" data-action="present" type="button">Version 1 <span aria-hidden="true">↗</span></button></div></div></header>
   <main id="app" tabindex="-1"><div class="container empty-state"><h1>Research Atlas</h1><p>Loading research records…</p></div></main>
   <noscript><div class="container evidence-note">This interactive atlas needs JavaScript to display research records and filters.</div></noscript>
   <footer class="site-footer"><span>Research Atlas / Bhasura Gunawardhana</span><span>Provisional literature notes · source status visible throughout</span></footer>

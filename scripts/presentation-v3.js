@@ -1,0 +1,115 @@
+(() => {
+  'use strict';
+  const E = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const tones = ['#111111', '#777777', '#dddddd', '#444444', '#aaaaaa', '#eeeeee'];
+  let summary = null;
+  const topicLabel = id => ({illumination:'Illumination',agents:'Virtual agents',robotics:'XR robotics'}[id] || id);
+  function readSummary() { return summary || window.RESEARCH_LITERATURE_V3 || {}; }
+  function chart(name, buckets, total) {
+    const active = buckets.filter(x => x.ids.length), n = total ?? active.reduce((a,b) => a+b.ids.length,0);
+    if (!n) return '<p class="v3-empty">No assessed records in this group.</p>';
+    let a = -Math.PI/2;
+    const arcs = active.map((b,i) => {
+      const size = b.ids.length/n*Math.PI*2, end = a+size;
+      const x = angle => 200+143*Math.cos(angle), y = angle => 187+143*Math.sin(angle);
+      const d = size >= Math.PI*2-0.001 ? 'M200 44 A143 143 0 1 1 199.99 44 Z' : `M200 187 L${x(a)} ${y(a)} A143 143 0 ${size>Math.PI?1:0} 1 ${x(end)} ${y(end)} Z`;
+      const mid = a+size/2, tx=200+91*Math.cos(mid), ty=187+91*Math.sin(mid);
+      a=end;
+      return `<g class="v3-pie-sector" role="button" tabindex="0" data-v3-source="${E(name)}:${i}" aria-label="${E(b.label)}, ${b.ids.length} ${b.ids.length===1?'record':'records'}"><path d="${d}" fill="${tones[i%tones.length]}" stroke="white" stroke-width="3"/><text x="${tx}" y="${ty}" text-anchor="middle" fill="${i%tones.length===0||i%tones.length===3?'white':'#111'}">${b.ids.length}</text></g>`;
+    }).join('');
+    return `<svg class="v3-pie" viewBox="0 0 400 360" role="group" aria-label="${E(name)}: ${n} reviewed records">${arcs}</svg><div class="v3-chart-labels">${active.map((b,i)=>`<button data-v3-source="${E(name)}:${i}" style="--tone:${tones[i%tones.length]}"><i></i><span>${E(b.label)}</span><b>${b.ids.length}</b></button>`).join('')}</div>`;
+  }
+  function topicPapers(c,id){return c.data.papers.filter(p=>p.topic===id);}
+  function field(p, key){return p.reviewDimensions?.[key] || p.reviewRecord?.[key] || '';}
+  function bins(papers, definitions) {
+    const result=definitions.map(x=>({label:x.label,ids:[]}));
+    for(const p of papers){let k=definitions.findIndex(x=>x.test(p));if(k<0)k=definitions.length-1;result[k].ids.push(p.id);}
+    return result;
+  }
+  function directions(c){
+    const t=c.data.reviews?.illumination?.taxonomy || c.data.reviews?.illumination?.problemSpace || {};
+    const rows = readSummary().directionChart?.segments;
+    if(rows) return rows.map(b=>({label:b.label,ids:b.paperIds||b.ids||[]}));
+    const papers=topicPapers(c,'illumination');
+    return bins(papers,[{label:'Real light → virtual content',test:p=>/estimat|real light to virtual/i.test(field(p,'decisionRole')+' '+field(p,'sourceGroup'))},{label:'Virtual light → real imagery',test:p=>/relight|real.view|virtual.*real/i.test(field(p,'decisionRole')+' '+field(p,'sourceGroup'))},{label:'Other / mixed / unassessed',test:()=>true}]);
+  }
+  function runtimeBuckets(papers){return bins(papers,[{label:'Measured live updates',test:p=>p.runtime?.classification==='real-time'},{label:'Interactive / component timing',test:p=>/interactive|near/i.test(p.runtime?.classification||'')},{label:'Offline or timing unverified',test:()=>true}]);}
+  function groupPapers(s,c){
+    return s.paperIds?.length?s.paperIds.map(id=>c.paper(id)).filter(Boolean):topicPapers(c,s.topicId);
+  }
+  function chartGroups(s,c){
+    if(s.kind==='v3-direction-chart'&&s.topicId==='illumination'){
+      const all=directions(c),r=all.filter(b=>/^Real light/.test(b.label)),v=all.filter(b=>/^Virtual light/.test(b.label)),both=all.filter(b=>/^Both directions/.test(b.label));
+      const taken=new Set([...r,...v,...both].flatMap(b=>b.ids));
+      const other=all.flatMap(b=>b.ids).filter(id=>!taken.has(id));
+      return [{name:'Lighting direction',buckets:[{label:'Real light → virtual content',ids:[...new Set(r.flatMap(b=>b.ids))]},{label:'Virtual light → real imagery',ids:[...new Set(v.flatMap(b=>b.ids))]},{label:'Both directions / composition',ids:[...new Set(both.flatMap(b=>b.ids))]},{label:'Supporting / other records',ids:[...new Set(other)]}]}];
+    }
+    if(s.kind==='v3-drilldown'){
+      const source=readSummary().drilldowns?.find(d=>d.id==='virtual-to-captured');
+      if(source){
+        const combine=(name,key,definitions)=>({name,buckets:definitions.map(def=>({label:def.label,ids:source.charts[key].segments.filter(x=>def.keys.includes(x.id)).flatMap(x=>x.paperIds)}))});
+        return [
+          combine('Output','view',[{label:'Single image',keys:['image']},{label:'Video',keys:['video']},{label:'3D / XR evidence',keys:['3d','mr-ar','headset']},{label:'Other / unassessed',keys:['unknown','other','na']}]),
+          combine('Technique','method',[{label:'Diffusion + 3D / inverse',keys:['diffusion-3d','diffusion-inverse']},{label:'Image / video diffusion',keys:['video-diffusion','image-diffusion']},{label:'Geometry / light transport',keys:['neural3d','inverse','transport','depth-shading']},{label:'Other / unassessed',keys:['projection-optics','unknown']}]),
+          combine('Runtime evidence','runtime',[{label:'Measured live update',keys:['live']},{label:'After fitting / component',keys:['prepared','component']},{label:'Offline / slow updates',keys:['offline','slow']},{label:'Claimed / unverified',keys:['claim','estimate','unknown']}])
+        ];
+      }
+      const pool=chartGroups({kind:'v3-direction-chart',topicId:'illumination'},c)[0].buckets[1].ids.map(id=>c.paper(id)).filter(Boolean);
+      return [
+        {name:'Output',buckets:bins(pool,[{label:'Image',test:p=>/^image$/i.test(p.modality)},{label:'Video',test:p=>/video/i.test(p.modality)},{label:'3D / XR / other',test:()=>true}])},
+        {name:'Technique',buckets:bins(pool,[{label:'Diffusion / generative',test:p=>/diffusion|generative|gan/i.test(p.approach+' '+p.method)},{label:'Geometry / rendering',test:p=>/render|depth|mesh|tracing|geometry|3dgs|nerf/i.test(p.approach+' '+p.method)},{label:'Other / hybrid',test:()=>true}])},
+        {name:'Runtime evidence',buckets:runtimeBuckets(pool)}
+      ];
+    }
+    const papers=topicPapers(c,s.topicId);
+    return [{name:s.chart?.title||'Reviewed capabilities',buckets:bins(papers,s.topicId==='agents'?[
+      {label:'Motion / performance',test:p=>/motion|generat|style|synthesis/i.test(p.approach+' '+field(p,'decisionRole'))},
+      {label:'Physical execution / interaction',test:p=>/physics|physical|contact|interaction|rl/i.test(p.approach+' '+p.method)},
+      {label:'Planning / interfaces / other',test:()=>true}
+    ]:[
+      {label:'XR interaction / feedback',test:p=>/xr|mixed|augmented|proxy|haptic|visual/i.test(p.approach+' '+p.title)},
+      {label:'Robot control / planning',test:p=>/robot|control|plan|camera/i.test(p.title+' '+p.approach)},
+      {label:'Supporting work / other',test:()=>true}
+    ])}];
+  }
+  function figure(image,title){return image?`<img src="${E(image)}" alt="${E(title)}" loading="eager">`:'';}
+  function plates(items,type){return `<div class="v3-plates ${type}">${items.map((p,i)=>`<article><div class="v3-plate-image">${figure(p.image,p.title)}</div><span class="v3-index">0${i+1}</span><h2>${E(p.title)}</h2><p>${E(p.limit||p.goal||p.text||p.question)}</p></article>`).join('')}</div>`;}
+  function rows(items){return `<div class="v3-statements">${items.map((g,i)=>`<article><span>0${i+1}</span><div><h2>${E(g.title||g.label)}</h2><p>${E(g.text||g.question)}</p></div>${g.paperIds?.length?`<button class="v3-evidence-button" data-v3-papers="${E(g.paperIds.join(','))}">Sources ↗</button>`:''}</article>`).join('')}</div>`;}
+  window.PresentationV3={
+    render(s,c){
+      switch(s.kind){
+        case 'v3-opening':return plates(s.panels||[], 'v3-limits');
+        case 'v3-directions':return plates(s.cards||s.directions||[], 'v3-goals');
+        case 'v3-motivation':return `<div class="v3-motivation"><div>${(s.bullets||s.points||[]).map((x,i)=>`<p><span>0${i+1}</span>${E(typeof x==='string'?x:x.text||x.label)}</p>`).join('')}<div class="v3-goal"><span>Research goal</span><h2>${E(s.goal||s.aim)}</h2></div></div>${figure(s.image,s.title)}</div>`;
+        case 'v3-direction-chart':case 'v3-drilldown':{
+          const groups=chartGroups(s,c),n=groups[0]?.buckets.reduce((a,b)=>a+b.ids.length,0)||0;
+          return `<div class="v3-corpus-label"><span>${s.kind==='v3-drilldown'?'Virtual light → real imagery':'Reviewed corpus'}</span><b>${n} records</b><button data-v3-papers="${E([...new Set(groups.flatMap(g=>g.buckets.flatMap(b=>b.ids)))].join(','))}">Inspect sources ↗</button></div><div class="v3-chart-grid ${groups.length===1?'v3-single-chart':'v3-linked-charts'}">${groups.map(g=>`<section><h2>${E(g.name)}</h2>${chart(g.name,g.buckets)}</section>`).join('')}${groups.length===1?`<aside><span class="v3-index">The question this raises</span><h2>${E(s.takeaway||s.chart?.takeaway||'Which capabilities work together in our production setting?')}</h2><p>Counts describe this review, not the whole field.</p>${s.topicId==='illumination'?'<button class="v3-arrow-button" data-v3-next>Follow the relighting branch →</button>':''}</aside>`:''}</div><div class="v3-chart-note">${E(s.chart?.note||'Each record belongs to one group per chart. Mixed and unassessed work stays visible. Click a segment for its papers.')}</div><div class="v3-source-drawer" hidden></div>`;
+        }
+        case 'v3-gap-list':return rows(s.gaps||s.items||[]);
+        case 'v3-subtopics':return rows(s.items||s.subtopics||[]);
+        case 'v3-method-focus':return `<div class="v3-focus"><div>${figure(s.image,s.title)}<p class="v3-question">${E(s.question||s.lead)}</p></div><div>${[{title:'What exists',text:s.existing},{title:'What remains',text:s.gap},{title:'First test',text:s.firstTest}].map((x,i)=>`<article><span>0${i+1} / ${x.title}</span><p>${E(x.text)}</p></article>`).join('')}${s.paperIds?.length?`<button class="v3-evidence-button" data-v3-papers="${E(s.paperIds.join(','))}">Read the evidence ↗</button>`:''}</div></div><div class="v3-source-drawer" hidden></div>`;
+        case 'v3-evaluation':if(s.rows)return `<div class="v3-eval-bars">${s.rows.map(r=>`<article><div><h2>${E(r.title)}</h2><b>${r.total}<span> / 600</span></b></div><div class="v3-eval-track"><i style="width:${r.total/6}%"></i></div></article>`).join('')}<p>${E(s.caption)} Six criteria, unchanged.</p><button class="v3-arrow-button" data-evaluation-workspace>Inspect criteria and rationale →</button></div>`;return `<div class="v3-decision"><h2>${E(s.question||'Which direction deserves the next experiment?')}</h2>${rows(s.items||s.questions?.map(q=>({title:q,text:''}))||[])}<button class="v3-arrow-button" data-evaluation-workspace>Open the versioned evaluation →</button></div>`;
+        default:return rows(s.items||s.points||[]);
+      }
+    },
+    mount(host,s,c){
+      const show = (ids,title) => {
+        let drawer=host.querySelector('.v3-source-drawer');
+        if(!drawer){drawer=document.createElement('div');drawer.className='v3-source-drawer';host.append(drawer);}
+        const papers=[...new Set(ids)].map(id=>c.paper(id)).filter(Boolean);
+        drawer.innerHTML=`<header><h2>${E(title)} · ${papers.length}</h2><button data-v3-dismiss aria-label="Close source list">Close ×</button></header><div>${papers.map(p=>`<button data-v3-paper="${E(p.id)}"><b>${E(p.shortTitle||p.title)}</b><span>${E(p.publicationLabel||`${p.year||'Year unverified'} · ${p.venueLabel||p.venue||'Venue unverified'}`)}</span></button>`).join('')||'<p>No assessed sources in this group.</p>'}</div>`;drawer.hidden=false;
+      };
+      const act=event=>{
+        const el=event.target.closest('[data-v3-source],[data-v3-papers],[data-v3-dismiss],[data-v3-paper],[data-v3-next]');if(!el||!host.contains(el))return;
+        if(el.hasAttribute('data-v3-paper')){c.onPaper(el.dataset.v3Paper);return;}
+        if(el.hasAttribute('data-v3-dismiss')){host.querySelector('.v3-source-drawer').hidden=true;return;}
+        if(el.hasAttribute('data-v3-next')){document.querySelector('#research-talk [data-talk-next]').click();return;}
+        if(el.hasAttribute('data-v3-papers')){show(el.dataset.v3Papers.split(',').filter(Boolean),'Evidence');return;}
+        const parts=el.dataset.v3Source.split(':'),g=chartGroups(s,c).find(g=>g.name===parts[0]);
+        const active=g?.buckets.filter(b=>b.ids.length)||[],b=active[Number(parts[1])];if(b)show(b.ids,b.label);
+      };
+      const key=e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-v3-source]')){e.preventDefault();act(e);}if(e.key==='Escape'){const drawer=host.querySelector('.v3-source-drawer');if(drawer&&!drawer.hidden){e.preventDefault();e.stopPropagation();drawer.hidden=true;}}};
+      host.addEventListener('click',act);host.addEventListener('keydown',key);return()=>{host.removeEventListener('click',act);host.removeEventListener('keydown',key);};
+    }
+  };
+})();
