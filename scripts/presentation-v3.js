@@ -58,9 +58,9 @@
       if(source){
         const combine=(name,key,definitions)=>({name,buckets:definitions.map(def=>({label:def.label,ids:source.charts[key].segments.filter(x=>def.keys.includes(x.id)).flatMap(x=>x.paperIds)}))});
         return [
-          combine('What is relit?','view',[{label:'Single image',keys:['image']},{label:'Video',keys:['video']},{label:'3D / XR evidence',keys:['3d','mr-ar','headset']},{label:'Other / unassessed',keys:['unknown','other','na']}]),
-          combine('How is lighting changed?','method',[{label:'Diffusion + 3D / inverse',keys:['diffusion-3d','diffusion-inverse']},{label:'Image / video diffusion',keys:['video-diffusion','image-diffusion']},{label:'Geometry / light transport',keys:['neural3d','inverse','transport','depth-shading']},{label:'Other / unassessed',keys:['projection-optics','unknown']}]),
-          combine('Can lighting update live?','runtime',[{label:'Measured live update',keys:['live']},{label:'After fitting / component',keys:['prepared','component']},{label:'Offline / slow updates',keys:['offline','slow']},{label:'Claimed / unverified',keys:['claim','estimate','unknown']}])
+          combine('Output','view',[{label:'Single image',keys:['image']},{label:'Video',keys:['video']},{label:'3D / XR evidence',keys:['3d','mr-ar','headset']},{label:'Other / unassessed',keys:['unknown','other','na']}]),
+          combine('Technique','method',[{label:'Diffusion + 3D / inverse',keys:['diffusion-3d','diffusion-inverse']},{label:'Image / video diffusion',keys:['video-diffusion','image-diffusion']},{label:'Geometry / light transport',keys:['neural3d','inverse','transport','depth-shading']},{label:'Other / unassessed',keys:['projection-optics','unknown']}]),
+          combine('Runtime evidence','runtime',[{label:'Measured live update',keys:['live']},{label:'After fitting / component',keys:['prepared','component']},{label:'Offline / slow updates',keys:['offline','slow']},{label:'Claimed / unverified',keys:['claim','estimate','unknown']}])
         ];
       }
       const pool=chartGroups({kind:'v3-direction-chart',topicId:'illumination'},c)[0].buckets[1].ids.map(id=>c.paper(id)).filter(Boolean);
@@ -92,7 +92,7 @@
         case 'v3-motivation':return `<div class="v3-motivation"><div>${s.directionSummary?`<div class="v3-direction-summary">${s.directionSummary.map(x=>`<article><h3>${E(x.label)}</h3><p>${E(x.text)}</p></article>`).join('')}<p class="v3-shared-gap">${E(s.sharedGap||'')}</p></div>`:(s.bullets||s.points||[]).map((x,i)=>`<p><span>0${i+1}</span>${E(typeof x==='string'?x:x.text||x.label)}</p>`).join('')}<div class="v3-goal"><span>Research goal</span><h2>${E(s.goal||s.aim)}</h2></div></div>${figure(s.image,s.title)}</div>`;
         case 'v3-direction-chart':case 'v3-drilldown':{
           const groups=chartGroups(s,c),n=groups[0]?.buckets.reduce((a,b)=>a+b.ids.length,0)||0;
-          return `<div class="v3-corpus-label"><span>${s.kind==='v3-drilldown'?'Virtual light → real imagery':'Reviewed corpus'}</span><b>${n} records</b><button data-v3-papers="${E([...new Set(groups.flatMap(g=>g.buckets.flatMap(b=>b.ids)))].join(','))}">Inspect sources ↗</button></div><div class="v3-chart-grid ${groups.length===1?'v3-single-chart':'v3-linked-charts'}">${groups.map(g=>`<section><h2>${E(g.name)}</h2>${chart(g.name,g.buckets,undefined,s.kind==='v3-drilldown'?'callouts':s.id==='v3-light-directions')}</section>`).join('')}${s.id==='v3-light-directions'?`<aside class="v3-related-breakdown"><h2>Related work · 33</h2>${[
+          return `<div class="v3-corpus-label"><span>${s.kind==='v3-drilldown'?'Virtual light → real imagery':'Reviewed corpus'}</span><b>${n} records</b><button data-v3-papers="${E([...new Set(groups.flatMap(g=>g.buckets.flatMap(b=>b.ids)))].join(','))}">Inspect sources ↗</button></div><div class="v3-chart-grid ${groups.length===1?'v3-single-chart':'v3-linked-charts'}">${groups.map(g=>`<section><h2>${E(g.name)}</h2>${chart(g.name,g.buckets,undefined,s.id==='v3-light-directions')}</section>`).join('')}${s.id==='v3-light-directions'?`<aside class="v3-related-breakdown"><h2>Related work · 33</h2>${[
         {label:'Supporting methods / resources',key:'support'},
         {label:'Perception studies',key:'perception'},
         {label:'Physical light projection',key:'virtual-to-physical'},

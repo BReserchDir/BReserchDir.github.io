@@ -157,3 +157,16 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 @media(max-width:700px){#research-talk.talk-v3 .v3-linked-charts{height:auto}#research-talk.talk-v3 .v3-linked-charts .v3-callout-pie{height:380px;flex:none}}
 
 #research-talk.talk-v3 .v3-callout-pie .v3-pie-label{font-size:17px!important}
+
+/* Keep full category names outside the sectors: no leader lines or clipped labels. */
+#research-talk.talk-v3 .v3-linked-charts{gap:32px;padding-top:15px;align-items:start}
+#research-talk.talk-v3 .v3-linked-charts:before{display:none}
+#research-talk.talk-v3 .v3-linked-charts>section{display:grid;grid-template-rows:auto minmax(130px,23vh) auto;gap:8px;min-width:0}
+#research-talk.talk-v3 .v3-linked-charts>section>h2{font-size:22px;text-align:left;margin:0;padding-bottom:8px;border-bottom:1px solid #ccc}
+#research-talk.talk-v3 .v3-linked-charts .v3-pie{height:100%;max-height:none;width:100%}
+#research-talk.talk-v3 .v3-linked-charts .v3-chart-labels{gap:0}
+#research-talk.talk-v3 .v3-linked-charts .v3-chart-labels button{font-size:17px;line-height:1.25;min-height:41px;padding:8px 0;gap:9px;border-bottom:1px solid #e8e8e8;align-items:start}
+#research-talk.talk-v3 .v3-linked-charts .v3-chart-labels i{height:12px;width:12px;margin-top:4px;border:0}
+#research-talk.talk-v3 .v3-linked-charts .v3-chart-labels b{font-size:17px}
+@media(max-height:620px) and (min-width:701px){#research-talk.talk-v3 .v3-linked-charts>section{grid-template-rows:auto 125px auto;gap:3px}#research-talk.talk-v3 .v3-linked-charts .v3-chart-labels button{font-size:14px;min-height:30px;padding:5px 0}#research-talk.talk-v3 .v3-linked-charts>section>h2{font-size:18px}}
+@media(max-width:700px){#research-talk.talk-v3 .v3-linked-charts>section{grid-template-rows:auto 180px auto}}
