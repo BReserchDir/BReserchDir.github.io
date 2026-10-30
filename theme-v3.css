@@ -247,3 +247,4 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 #research-talk.talk-v3 .v3-paper-examples button:hover{outline:1px solid #2458c6}
 #research-talk.talk-v3 .talk-slide:has(.v3-local-research) .talk-title{font-size:clamp(28px,2.8vw,43px)}
 @media(max-width:700px){#research-talk.talk-v3 .v3-local-research{height:auto;display:block}#research-talk.talk-v3 .v3-local-argument{grid-template-columns:1fr}#research-talk.talk-v3 .v3-paper-examples>div{grid-template-columns:1fr 1fr}}
+#research-talk.talk-v3 .v3-candidate-resource{display:block;font-size:13px;line-height:1.35;margin-top:14px;color:#2458c6;max-width:36ch}
