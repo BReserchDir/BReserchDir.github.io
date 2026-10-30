@@ -9,7 +9,7 @@
   let summary = null;
   const topicLabel = id => ({illumination:'Illumination',agents:'Virtual agents',robotics:'XR robotics'}[id] || id);
   function readSummary() { return summary || window.RESEARCH_LITERATURE_V3 || {}; }
-  function chart(name, buckets, total) {
+  function chart(name, buckets, total, inlineLabels = false) {
     const active = buckets.filter(x => x.ids.length), n = total ?? active.reduce((a,b) => a+b.ids.length,0);
     if (!n) return '<p class="v3-empty">No assessed records in this group.</p>';
     let a = -Math.PI/2;
@@ -19,9 +19,11 @@
       const d = size >= Math.PI*2-0.001 ? 'M200 44 A143 143 0 1 1 199.99 44 Z' : `M200 187 L${x(a)} ${y(a)} A143 143 0 ${size>Math.PI?1:0} 1 ${x(end)} ${y(end)} Z`;
       const mid = a+size/2, tx=200+91*Math.cos(mid), ty=187+91*Math.sin(mid);
       a=end;
-      return `<g class="v3-pie-sector" role="button" tabindex="0" data-v3-source="${E(name)}:${i}" aria-label="${E(b.label)}, ${b.ids.length} ${b.ids.length===1?'record':'records'}"><path d="${d}" fill="${tones[i%tones.length]}" stroke="white" stroke-width="3"/><text x="${tx}" y="${ty}" text-anchor="middle" fill="${labelColor(tones[i%tones.length])}">${b.ids.length}</text></g>`;
+      const words = b.pieLines || [b.label];
+      const labels = inlineLabels ? words.map((line,j)=>`<text class="v3-pie-label" x="${tx}" y="${ty+7+j*22}" text-anchor="middle" fill="${labelColor(tones[i%tones.length])}">${E(line)}</text>`).join('') : '';
+      return `<g class="v3-pie-sector" role="button" tabindex="0" data-v3-source="${E(name)}:${i}" aria-label="${E(b.label)}, ${b.ids.length} ${b.ids.length===1?'record':'records'}"><path d="${d}" fill="${tones[i%tones.length]}" stroke="white" stroke-width="3"/><text class="${inlineLabels?'v3-pie-count':''}" x="${tx}" y="${ty-(inlineLabels?20:0)}" text-anchor="middle" fill="${labelColor(tones[i%tones.length])}">${b.ids.length}</text>${labels}</g>`;
     }).join('');
-    return `<svg class="v3-pie" viewBox="0 0 400 360" role="group" aria-label="${E(name)}: ${n} reviewed records">${arcs}</svg><div class="v3-chart-labels">${active.map((b,i)=>`<button data-v3-source="${E(name)}:${i}" style="--tone:${tones[i%tones.length]}"><i></i><span>${E(b.label)}</span><b>${b.ids.length}</b></button>`).join('')}</div>`;
+    return `<svg class="v3-pie${inlineLabels?' v3-inline-pie':''}" viewBox="0 0 400 360" role="group" aria-label="${E(name)}: ${n} reviewed records">${arcs}</svg>${inlineLabels?'':`<div class="v3-chart-labels">${active.map((b,i)=>`<button data-v3-source="${E(name)}:${i}" style="--tone:${tones[i%tones.length]}"><i></i><span>${E(b.label)}</span><b>${b.ids.length}</b></button>`).join('')}</div>`}`;
   }
   function topicPapers(c,id){return c.data.papers.filter(p=>p.topic===id);}
   function field(p, key){return p.reviewDimensions?.[key] || p.reviewRecord?.[key] || '';}
@@ -46,7 +48,7 @@
       const all=directions(c),r=all.filter(b=>/^Real light/.test(b.label)),v=all.filter(b=>/^Virtual light/.test(b.label)),both=all.filter(b=>/^Both directions/.test(b.label));
       const taken=new Set([...r,...v,...both].flatMap(b=>b.ids));
       const other=all.flatMap(b=>b.ids).filter(id=>!taken.has(id));
-      return [{name:'Lighting direction',buckets:[{label:'Real light → virtual content',ids:[...new Set(r.flatMap(b=>b.ids))]},{label:'Virtual light → real imagery',ids:[...new Set(v.flatMap(b=>b.ids))]},{label:'Both directions / composition',ids:[...new Set(both.flatMap(b=>b.ids))]},{label:'Supporting / other records',ids:[...new Set(other)]}]}];
+      return [{name:'Lighting direction',buckets:[{label:'Real light → virtual content',pieLines:['Real light','→ virtual'],ids:[...new Set(r.flatMap(b=>b.ids))]},{label:'Virtual light → real imagery',pieLines:['Virtual light','→ real view'],ids:[...new Set(v.flatMap(b=>b.ids))]},{label:'Both directions / composition',pieLines:['Both','directions'],ids:[...new Set(both.flatMap(b=>b.ids))]},{label:'Related studies and resources',pieLines:['Related','work'],ids:[...new Set(other)]}]}];
     }
     if(s.kind==='v3-drilldown'){
       const source=readSummary().drilldowns?.find(d=>d.id==='virtual-to-captured');
@@ -87,7 +89,13 @@
         case 'v3-motivation':return `<div class="v3-motivation"><div>${s.directionSummary?`<div class="v3-direction-summary">${s.directionSummary.map(x=>`<article><h3>${E(x.label)}</h3><p>${E(x.text)}</p></article>`).join('')}<p class="v3-shared-gap">${E(s.sharedGap||'')}</p></div>`:(s.bullets||s.points||[]).map((x,i)=>`<p><span>0${i+1}</span>${E(typeof x==='string'?x:x.text||x.label)}</p>`).join('')}<div class="v3-goal"><span>Research goal</span><h2>${E(s.goal||s.aim)}</h2></div></div>${figure(s.image,s.title)}</div>`;
         case 'v3-direction-chart':case 'v3-drilldown':{
           const groups=chartGroups(s,c),n=groups[0]?.buckets.reduce((a,b)=>a+b.ids.length,0)||0;
-          return `<div class="v3-corpus-label"><span>${s.kind==='v3-drilldown'?'Virtual light → real imagery':'Reviewed corpus'}</span><b>${n} records</b><button data-v3-papers="${E([...new Set(groups.flatMap(g=>g.buckets.flatMap(b=>b.ids)))].join(','))}">Inspect sources ↗</button></div><div class="v3-chart-grid ${groups.length===1?'v3-single-chart':'v3-linked-charts'}">${groups.map(g=>`<section><h2>${E(g.name)}</h2>${chart(g.name,g.buckets)}</section>`).join('')}${groups.length===1?`<aside><span class="v3-index">The question this raises</span><h2>${E(s.takeaway||s.chart?.takeaway||'Which capabilities work together in our production setting?')}</h2><p>Counts describe this review, not the whole field.</p>${s.topicId==='illumination'?'<button class="v3-arrow-button" data-v3-next>Follow the relighting branch →</button>':''}</aside>`:''}</div><div class="v3-chart-note">${E(s.chart?.note||'Each record belongs to one group per chart. Mixed and unassessed work stays visible. Click a segment for its papers.')}</div><div class="v3-source-drawer" hidden></div>`;
+          return `<div class="v3-corpus-label"><span>${s.kind==='v3-drilldown'?'Virtual light → real imagery':'Reviewed corpus'}</span><b>${n} records</b><button data-v3-papers="${E([...new Set(groups.flatMap(g=>g.buckets.flatMap(b=>b.ids)))].join(','))}">Inspect sources ↗</button></div><div class="v3-chart-grid ${groups.length===1?'v3-single-chart':'v3-linked-charts'}">${groups.map(g=>`<section><h2>${E(g.name)}</h2>${chart(g.name,g.buckets,undefined,s.id==='v3-light-directions')}</section>`).join('')}${s.id==='v3-light-directions'?`<aside class="v3-related-breakdown"><h2>Related work · 33</h2>${[
+        {label:'Supporting methods / resources',key:'support'},
+        {label:'Perception studies',key:'perception'},
+        {label:'Physical light projection',key:'virtual-to-physical'},
+        {label:'Mixed estimation + relighting',key:'mixed-estimation-relighting'},
+        {label:'Not yet classified',key:'unknown'}
+      ].map(item=>{const group=readSummary().directionChart?.segments.find(g=>g.id===item.key);return group?`<button data-v3-papers="${E(group.paperIds.join(','))}"><span>${E(item.label)}</span><b>${group.count}</b></button>`:'';}).join('')}<button class="v3-arrow-button" data-v3-next>Explore virtual → real relighting →</button></aside>`:''}</div><div class="v3-source-drawer" hidden></div>`;
         }
         case 'v3-gap-list':return rows(s.gaps||s.items||[]);
         case 'v3-subtopics':return rows(s.items||s.subtopics||[]);
