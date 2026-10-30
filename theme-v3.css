@@ -395,3 +395,9 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 @media(max-height:620px) and (min-width:701px){#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article p{font-size:12px!important}#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article{padding:3px 0!important}#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary+.v3-goal{margin-top:6px;padding-top:6px}}
 #research-talk.talk-v3 .v3-topic-literature .v3-paper-grid{grid-template-rows:repeat(var(--paper-rows,3),minmax(0,1fr))}
 #research-talk.talk-v3 .v3-topic-literature .v3-paper-grid img{max-height:16vh}
+#research-talk.talk-v3 .v3-full-figure{height:100%;width:100%;margin:0;display:flex;flex-direction:column;gap:10px;min-height:0}
+#research-talk.talk-v3 .v3-full-figure img{flex:1;min-height:0;width:100%;height:100%;object-fit:contain}
+#research-talk.talk-v3 .v3-full-figure figcaption{font-size:13px;color:#555;line-height:1.3}
+#research-talk.talk-v3 .talk-slide:has(.v3-full-figure){max-width:none;padding-inline:2.5vw}
+#research-talk.talk-v3 .talk-slide:has(.v3-full-figure) .talk-title{font-size:clamp(26px,2.6vw,46px)}
+#research-talk.talk-v3 .talk-slide:has(.v3-full-figure) .talk-body{padding-top:0}

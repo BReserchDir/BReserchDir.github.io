@@ -108,6 +108,7 @@
   window.PresentationV3={
     render(s,c){
       switch(s.kind){
+        case 'v3-figure':return `<figure class="v3-full-figure">${figure(s.image,s.title)}<figcaption>${E(s.caption||'')}</figcaption></figure>`;
         case 'v3-opening':return plates(s.panels||[], 'v3-limits');
         case 'v3-directions':return plates(s.cards||s.directions||[], 'v3-goals');
         case 'v3-motivation':return `<div class="v3-motivation ${s.topicId!=='illumination'?'v3-proposal-motivation':''}"><div>${s.directionSummary?`<div class="v3-direction-summary">${s.directionSummary.map(x=>`<article><h3>${E(x.label)}</h3><p>${E(x.text)}</p></article>`).join('')}<p class="v3-shared-gap">${E(s.sharedGap||'')}</p></div>`:(s.bullets||s.points||[]).map((x,i)=>`<p><span>0${i+1}</span>${E(typeof x==='string'?x:x.text||x.label)}</p>`).join('')}<div class="v3-goal"><span>Research goal</span><h2>${E(s.goal||s.aim)}</h2></div></div>${figure(s.image,s.title)}</div>`;
