@@ -1,7 +1,11 @@
 (() => {
   'use strict';
   const E = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const tones = ['#111111', '#777777', '#dddddd', '#444444', '#aaaaaa', '#eeeeee'];
+  const tones = ['#2458c6', '#e98932', '#8250b5', '#a8b2c1', '#40a7b8', '#b64755'];
+  const labelColor = hex => {
+    const rgb=hex.slice(1).match(/../g).map(x=>parseInt(x,16)/255).map(v=>v<=0.04045?v/12.92:((v+0.055)/1.055)**2.4);
+    return rgb[0]*0.2126+rgb[1]*0.7152+rgb[2]*0.0722>0.179?'#111111':'#ffffff';
+  };
   let summary = null;
   const topicLabel = id => ({illumination:'Illumination',agents:'Virtual agents',robotics:'XR robotics'}[id] || id);
   function readSummary() { return summary || window.RESEARCH_LITERATURE_V3 || {}; }
@@ -15,7 +19,7 @@
       const d = size >= Math.PI*2-0.001 ? 'M200 44 A143 143 0 1 1 199.99 44 Z' : `M200 187 L${x(a)} ${y(a)} A143 143 0 ${size>Math.PI?1:0} 1 ${x(end)} ${y(end)} Z`;
       const mid = a+size/2, tx=200+91*Math.cos(mid), ty=187+91*Math.sin(mid);
       a=end;
-      return `<g class="v3-pie-sector" role="button" tabindex="0" data-v3-source="${E(name)}:${i}" aria-label="${E(b.label)}, ${b.ids.length} ${b.ids.length===1?'record':'records'}"><path d="${d}" fill="${tones[i%tones.length]}" stroke="white" stroke-width="3"/><text x="${tx}" y="${ty}" text-anchor="middle" fill="${i%tones.length===0||i%tones.length===3?'white':'#111'}">${b.ids.length}</text></g>`;
+      return `<g class="v3-pie-sector" role="button" tabindex="0" data-v3-source="${E(name)}:${i}" aria-label="${E(b.label)}, ${b.ids.length} ${b.ids.length===1?'record':'records'}"><path d="${d}" fill="${tones[i%tones.length]}" stroke="white" stroke-width="3"/><text x="${tx}" y="${ty}" text-anchor="middle" fill="${labelColor(tones[i%tones.length])}">${b.ids.length}</text></g>`;
     }).join('');
     return `<svg class="v3-pie" viewBox="0 0 400 360" role="group" aria-label="${E(name)}: ${n} reviewed records">${arcs}</svg><div class="v3-chart-labels">${active.map((b,i)=>`<button data-v3-source="${E(name)}:${i}" style="--tone:${tones[i%tones.length]}"><i></i><span>${E(b.label)}</span><b>${b.ids.length}</b></button>`).join('')}</div>`;
   }
