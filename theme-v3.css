@@ -100,3 +100,8 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 .v3-plates article:nth-child(3) .v3-index{color:#8250b5}
 #research-talk.talk-v3 .v3-pie-sector:hover path,#research-talk.talk-v3 .v3-pie-sector:focus path{stroke:#2458c6}
 #research-talk.talk-v3 .v3-evidence-button:hover,#research-talk.talk-v3 .v3-arrow-button:hover{color:#2458c6;border-color:#2458c6}
+
+/* Opening source photos are evidence: preserve their framing and native color. */
+#research-talk.talk-v3 [data-slide-id="v3-opening"] .v3-plate-image{height:clamp(140px,25vh,250px);background:#fff}
+#research-talk.talk-v3 [data-slide-id="v3-opening"] .v3-plate-image img{object-fit:contain;object-position:center}
+@media(max-height:600px) and (min-width:701px){#research-talk.talk-v3 [data-slide-id="v3-opening"] .v3-plate-image{height:85px}}
