@@ -388,3 +388,8 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
  #research-talk.talk-v3 .v3-proposal-motivation .v3-shared-gap{font-size:12px!important}
  #research-talk.talk-v3 .v3-proposal-motivation .v3-goal h2{font-size:16px!important}
 }
+#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article p{font-size:clamp(17px,1.4vw,22px)!important}
+#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article{padding:8px 0!important}
+#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary+.v3-goal{margin-top:12px;padding-top:12px}
+#research-talk.talk-v3 .v3-topic-literature .v3-primary-pie .v3-chart-selected{opacity:1}
+@media(max-height:620px) and (min-width:701px){#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article p{font-size:12px!important}#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article{padding:3px 0!important}#research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary+.v3-goal{margin-top:6px;padding-top:6px}}
