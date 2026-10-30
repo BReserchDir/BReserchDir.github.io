@@ -14553,9 +14553,26 @@
       "decisionImplications": [],
       "assessmentSource": "Primary-source check for V3 revision",
       "authors": "Jose Luis Ponton, Alexander Winkler, Ladislav Kavan, Yuting Ye, Petr Kadlecek",
-      "reviewDimensions": {},
+      "reviewDimensions": {
+        "intent": "Paired neutral/stylized examples; intensity and body-region controls.",
+        "intervention": "Style modification; contact cleanup offline.",
+        "output": "Skeletal motion.",
+        "technique": "Posture/temporal decomposition with a stylizability gate.",
+        "geometry": "General scene-contact control not established.",
+        "contact": "Offline contact optimization.",
+        "coordination": "Individual human motion.",
+        "training": "Short paired motion examples.",
+        "runtime": "Fast core; full pipeline includes offline work.",
+        "validation": "Motion/style and perceptual evaluation; see primary paper.",
+        "sourceGroup": "Latest proposal addition",
+        "directingFamily": "Style / local revision"
+      },
       "reviewOrigin": "Proposal-directed source addition",
-      "reviewRecord": {},
+      "reviewRecord": {
+        "scope": "Contact optimization is offline; short examples limit generalization.",
+        "source": "https://arxiv.org/html/2609.04500v1",
+        "readingStatus": "Primary paper method, runtime and limitations sections checked 2026-10-30; not reproduced."
+      },
       "sourceFigure": {
         "image": "assets/agents-sources/stymo.png",
         "sourceUrl": "https://arxiv.org/html/2609.04500v1",
@@ -14606,9 +14623,26 @@
       "decisionImplications": [],
       "assessmentSource": "Primary-source check for V3 revision",
       "authors": "Joshua Aurand, Agon Serifi, Sammy Christen, Ruben Grandia, Espen Knoop, Marco Hutter, Moritz Bächer",
-      "reviewDimensions": {},
+      "reviewDimensions": {
+        "intent": "Motion exemplar and commanded velocity.",
+        "intervention": "Online locomotion control.",
+        "output": "Motion reference plus RL execution.",
+        "technique": "Autoregressive diffusion and RL tracking.",
+        "geometry": "Locomotion setting; general prop interaction not established.",
+        "contact": "Physical tracking; corrective steps can change the reference.",
+        "coordination": "Humanoid simulation and robot demonstration.",
+        "training": "Motion examples and policy training.",
+        "runtime": "Reported live component/command latency; XR display excluded.",
+        "validation": "Simulation and Unitree G1 demonstration.",
+        "sourceGroup": "Latest proposal addition",
+        "directingFamily": "Style / locomotion"
+      },
       "reviewOrigin": "Proposal-directed source addition",
-      "reviewRecord": {},
+      "reviewRecord": {
+        "scope": "Velocity/style conflicts can add corrective steps; directional styles require matching commands.",
+        "source": "https://arxiv.org/html/2610.18147v1",
+        "readingStatus": "Primary paper method, runtime and limitations sections checked 2026-10-30; not reproduced."
+      },
       "sourceFigure": {
         "image": "assets/agents-sources/walk-like-this.png",
         "sourceUrl": "https://arxiv.org/html/2610.18147v1",
