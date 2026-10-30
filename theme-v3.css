@@ -292,3 +292,21 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 #research-talk.talk-v3 .v3-primary-pie[data-direction="both-directions"] .v3-pie-sector:nth-child(3) path{stroke:#111;stroke-width:4px}
 #research-talk.talk-v3 .v3-primary-pie .v3-pie-sector:hover{opacity:1}
 @media(max-width:700px){#research-talk.talk-v3 .v3-literature-dashboard{grid-template-columns:1fr}#research-talk.talk-v3 .v3-recent-papers{grid-template-rows:auto 420px auto}}
+/* Expand research arguments and paper figures across the usable stage. */
+#research-talk.talk-v3 .talk-slide:has(.v3-local-research){max-width:none;padding-inline:3.4vw}
+#research-talk.talk-v3 .v3-local-research{grid-template-rows:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(12px,2vh,24px)}
+#research-talk.talk-v3 .v3-local-argument{grid-template-columns:.9fr 1.4fr;gap:clamp(25px,3vw,55px);align-items:center}
+#research-talk.talk-v3 .v3-local-argument h2{font-size:clamp(24px,1.9vw,35px);line-height:1.25}
+#research-talk.talk-v3 .v3-local-argument article{padding:clamp(6px,1vh,12px) 0}
+#research-talk.talk-v3 .v3-local-argument h3{font-size:clamp(12px,.85vw,16px)}
+#research-talk.talk-v3 .v3-local-argument p{font-size:clamp(16px,1.1vw,21px)}
+#research-talk.talk-v3 .v3-explicit-gaps{display:grid;grid-template-columns:1fr 1fr;gap:7px 25px;margin:6px 0 0;padding-left:18px;font-size:clamp(15px,1.05vw,20px);line-height:1.25}
+#research-talk.talk-v3 .v3-paper-examples{display:flex;flex-direction:column}
+#research-talk.talk-v3 .v3-paper-examples>h3{font-size:clamp(15px,1.1vw,20px)}
+#research-talk.talk-v3 .v3-paper-examples>div{flex:1;min-height:0;gap:clamp(16px,1.8vw,32px)}
+#research-talk.talk-v3 .v3-paper-examples button{display:grid;grid-template-rows:minmax(50px,1fr) auto auto auto;gap:5px;align-content:start}
+#research-talk.talk-v3 .v3-paper-examples img{height:100%;max-height:16vh;min-height:0;width:100%;object-fit:contain}
+#research-talk.talk-v3 .v3-paper-examples b{font-size:clamp(15px,1.1vw,21px)}
+#research-talk.talk-v3 .v3-paper-examples small{font-size:clamp(12px,.85vw,16px)}
+#research-talk.talk-v3 .v3-paper-examples span{font-size:clamp(13px,.95vw,18px);line-height:1.25}
+@media(max-width:700px){#research-talk.talk-v3 .v3-local-argument{grid-template-columns:1fr}#research-talk.talk-v3 .v3-local-research{display:block;height:auto}#research-talk.talk-v3 .v3-explicit-gaps{grid-template-columns:1fr}#research-talk.talk-v3 .v3-paper-examples img{height:100px}}
