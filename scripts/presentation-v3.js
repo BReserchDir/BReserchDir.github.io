@@ -12,18 +12,19 @@
   function chart(name, buckets, total, inlineLabels = false) {
     const active = buckets.filter(x => x.ids.length), n = total ?? active.reduce((a,b) => a+b.ids.length,0);
     if (!n) return '<p class="v3-empty">No assessed records in this group.</p>';
-    let a = -Math.PI/2;
+    let a = -Math.PI/2, smallLabel = 0;
     const callouts = inlineLabels === "callouts";
     const arcs = active.map((b,i) => {
       const size = b.ids.length/n*Math.PI*2, end = a+size;
       const x = angle => 200+143*Math.cos(angle), y = angle => 187+143*Math.sin(angle);
       const d = size >= Math.PI*2-0.001 ? 'M200 44 A143 143 0 1 1 199.99 44 Z' : `M200 187 L${x(a)} ${y(a)} A143 143 0 ${size>Math.PI?1:0} 1 ${x(end)} ${y(end)} Z`;
-      const mid = a+size/2, tx=200+91*Math.cos(mid), ty=187+91*Math.sin(mid);
+      const mid = a+size/2, tx=200+(callouts?78:91)*Math.cos(mid), ty=187+(callouts?78:91)*Math.sin(mid);
       a=end;
+      const calloutY=12+30*smallLabel; if(callouts&&b.ids.length<4)smallLabel++;
       const shortLabels={'Single image':['Single','image'],'Video':['Video'],'3D / XR evidence':['3D / XR'],'Diffusion + 3D / inverse':['Diffusion','+ 3D / inverse'],'Image / video diffusion':['Image / video','diffusion'],'Geometry / light transport':['Geometry /','light transport'],'Other / unassessed':['Other /','unassessed'],'Offline / slow updates':['Offline /','slow updates'],'Claimed / unverified':['Claimed /','unverified']};
       const words = b.pieLines || shortLabels[b.label] || [b.label];
       const labels = inlineLabels && (!callouts || b.ids.length>=4) ? words.map((line,j)=>`<text class="v3-pie-label" x="${tx}" y="${ty+7+j*22}" text-anchor="middle" fill="${labelColor(tones[i%tones.length])}">${E(line)}</text>`).join('') : '';
-      return `<g class="v3-pie-sector" role="button" tabindex="0" data-v3-source="${E(name)}:${i}" aria-label="${E(b.label)}, ${b.ids.length} ${b.ids.length===1?'record':'records'}"><path d="${d}" fill="${tones[i%tones.length]}" stroke="white" stroke-width="3"/><text class="${inlineLabels?'v3-pie-count':''}" x="${tx}" y="${ty-(inlineLabels&&(!callouts||b.ids.length>=4)?20:0)}" text-anchor="middle" fill="${labelColor(tones[i%tones.length])}">${b.ids.length}</text>${labels}${callouts&&b.ids.length<4?`<path d="M${200+147*Math.cos(mid)} ${187+147*Math.sin(mid)} L${Math.cos(mid)>0?390:10} ${i*32+12}" fill="none" stroke="${tones[i%tones.length]}" stroke-width="2"/><text class="v3-callout-label" x="200" y="${i*32+12}" text-anchor="middle" fill="#111">${E(b.label)}</text>`:''}</g>`;
+      return `<g class="v3-pie-sector" role="button" tabindex="0" data-v3-source="${E(name)}:${i}" aria-label="${E(b.label)}, ${b.ids.length} ${b.ids.length===1?'record':'records'}"><path d="${d}" fill="${tones[i%tones.length]}" stroke="white" stroke-width="3"/><text class="${inlineLabels?'v3-pie-count':''}" x="${tx}" y="${ty-(inlineLabels&&(!callouts||b.ids.length>=4)?20:0)}" text-anchor="middle" fill="${labelColor(tones[i%tones.length])}">${b.ids.length}</text>${labels}${callouts&&b.ids.length<4?`<path d="M${200+147*Math.cos(mid)} ${187+147*Math.sin(mid)} L${Math.cos(mid)>0?330:70} ${calloutY}" fill="none" stroke="${tones[i%tones.length]}" stroke-width="2"/><text class="v3-callout-label" x="200" y="${calloutY}" text-anchor="middle" fill="#111">${E(b.label)}</text>`:''}</g>`;
     }).join('');
     return `<svg class="v3-pie${inlineLabels?' v3-inline-pie':''}${callouts?' v3-callout-pie':''}" viewBox="0 0 400 ${callouts?370:360}" role="group" aria-label="${E(name)}: ${n} reviewed records">${arcs}</svg>${inlineLabels?'':`<div class="v3-chart-labels">${active.map((b,i)=>`<button data-v3-source="${E(name)}:${i}" style="--tone:${tones[i%tones.length]}"><i></i><span>${E(b.label)}</span><b>${b.ids.length}</b></button>`).join('')}</div>`}`;
   }
