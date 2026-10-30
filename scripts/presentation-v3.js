@@ -28,6 +28,22 @@
     }).join('');
     return `<svg class="v3-pie${inlineLabels?' v3-inline-pie':''}${callouts?' v3-callout-pie':''}" viewBox="0 0 400 ${callouts?370:360}" role="group" aria-label="${E(name)}: ${n} reviewed records">${arcs}</svg>${inlineLabels?'':`<div class="v3-chart-labels">${active.map((b,i)=>`<button data-v3-source="${E(name)}:${i}" style="--tone:${tones[i%tones.length]}"><i></i><span>${E(b.label)}</span><b>${b.ids.length}</b></button>`).join('')}</div>`}`;
   }
+  function branchGroups(id){
+    const d=readSummary().drilldowns.find(x=>x.id===id), records=readSummary().records.filter(r=>d.paperIds.includes(r.id));
+    const partition=(name,defs)=>({name,buckets:bins(records,defs.map(x=>({label:x.label,test:x.test}))) });
+    const from=(name,key,defs)=>({name,buckets:defs.map(x=>({label:x.label,ids:d.charts[key].segments.filter(b=>x.keys.includes(b.id)).flatMap(b=>b.paperIds)}))});
+    const locality=partition('Lighting locality',[{label:'Nearby + global',test:r=>r.sourceValues.locality.includes('local')&&r.sourceValues.locality.includes('environment')},{label:'Nearby lighting',test:r=>r.sourceValues.locality.includes('local')},{label:'Spatially varying',test:r=>r.sourceValues.locality.includes('spatial')},{label:'Global / environment',test:r=>r.sourceValues.locality.includes('environment')},{label:'Unassessed / other',test:()=>true}]);
+    const technique=partition('Relighting technique',[{label:'Geometry / light transport',test:r=>['neural3d','inverse','transport','depth-shading'].includes(r.primaryMethod)},{label:'Diffusion + 3D / inverse',test:r=>['diffusion-3d','diffusion-inverse'].includes(r.primaryMethod)},{label:'Image / video diffusion',test:r=>['video-diffusion','image-diffusion'].includes(r.primaryMethod)},{label:'Other / unassessed',test:()=>true}]);
+    const view=partition('Demonstrated output',[{label:'AR / MR / headset',test:r=>['ar','mr','headset'].some(x=>r.sourceValues.view.includes(x))},{label:'3D scene',test:r=>r.sourceValues.view.includes('scene3d')},{label:'Video',test:r=>r.sourceValues.view.includes('video')},{label:'Single image',test:r=>r.sourceValues.view.includes('image')},{label:'Other / unassessed',test:()=>true}]);
+    const runtime=from('Runtime evidence','runtime',[{label:'Measured live',keys:['live']},{label:'Prepared / component',keys:['prepared','component','baked']},{label:'Offline / slow',keys:['offline','slow']},{label:'Claimed / unverified',keys:['claim','estimate','unknown','na']},{label:'Mixed evidence',keys:['mixed']}]);
+    return [id==='real-to-virtual'?locality:technique,view,runtime];
+  }
+  function paperPanel(ids,c,title){
+    const preferred=['handlight','limo','lightlab','review-ref-85','genlit'];
+    const all=[...new Set(ids)].map(id=>c.paper(id)).filter(Boolean);
+    const ranked=all.sort((a,b)=>Number(Boolean(b.sourceFigure?.image||b.thumbnail))-Number(Boolean(a.sourceFigure?.image||a.thumbnail)) || (Number(b.year)||0)-(Number(a.year)||0) || (preferred.includes(a.id)?-1:0)-(preferred.includes(b.id)?-1:0));
+    return `<h2>${E(title)}</h2>${ranked.slice(0,4).map(p=>`<button data-v3-paper="${E(p.id)}">${p.sourceFigure?.image||p.thumbnail?`<img src="${E(p.sourceFigure?.image||p.thumbnail)}" alt="Figure from ${E(p.title)}">`:'<div class="v3-no-figure">Paper</div>'}<span><b>${E(({'handlight':'HandLight','limo':'LiMo','lightlab':'LightLab','review-ref-85':'HybRelighter','genlit':'GenLit'}[p.id])||p.shortTitle||p.title)}</b><small>${E(p.year||'Year unverified')} · ${E(p.venueLabel||p.venue||'Venue unverified')}</small></span></button>`).join('')||'<p>No source papers in this category.</p>'}<button class="v3-all-selected" data-v3-papers="${E(ids.join(','))}">All ${ids.length} sources ↗</button>`;
+  }
   function topicPapers(c,id){return c.data.papers.filter(p=>p.topic===id);}
   function field(p, key){return p.reviewDimensions?.[key] || p.reviewRecord?.[key] || '';}
   function bins(papers, definitions) {
@@ -52,13 +68,9 @@
       const taken=new Set([...r,...v,...both].flatMap(b=>b.ids));
       const other=all.flatMap(b=>b.ids).filter(id=>!taken.has(id));
       const main = [{name:'Lighting direction',buckets:[{label:'Real light → virtual content',pieLines:['Real light','→ virtual'],ids:[...new Set(r.flatMap(b=>b.ids))]},{label:'Virtual light → real imagery',pieLines:['Virtual light','→ real view'],ids:[...new Set(v.flatMap(b=>b.ids))]},{label:'Both directions / composition',pieLines:['Both','directions'],ids:[...new Set(both.flatMap(b=>b.ids))]},{label:'Related studies and resources',pieLines:['Related','work'],ids:[...new Set(other)]}]}];
-      const runtimeGroups=['real-to-virtual','virtual-to-captured'].map(id=>{
-        const d=readSummary().drilldowns.find(x=>x.id===id);
-        const defs=[{label:'Measured live',keys:['live']},{label:'Prepared / component',keys:['prepared','component']},{label:'Offline / slow',keys:['offline','slow']},{label:'Timing unverified',keys:['claim','estimate','unknown','na']},{label:'Mixed evidence',keys:['mixed']}];
-        return {name:id==='real-to-virtual'?'Real → virtual runtime':'Virtual → real runtime',buckets:defs.map(x=>({label:x.label,ids:d.charts.runtime.segments.filter(b=>x.keys.includes(b.id)).flatMap(b=>b.paperIds)}))};
-      });
-      return [...main,...runtimeGroups];
+      return [...main,...branchGroups('real-to-virtual')];
     }
+    if(s.kind==='v3-drilldown'&&s.branchId)return branchGroups(s.branchId);
     if(s.kind==='v3-drilldown'){
       const source=readSummary().drilldowns?.find(d=>d.id==='virtual-to-captured');
       if(source){
@@ -98,9 +110,11 @@
         case 'v3-motivation':return `<div class="v3-motivation"><div>${s.directionSummary?`<div class="v3-direction-summary">${s.directionSummary.map(x=>`<article><h3>${E(x.label)}</h3><p>${E(x.text)}</p></article>`).join('')}<p class="v3-shared-gap">${E(s.sharedGap||'')}</p></div>`:(s.bullets||s.points||[]).map((x,i)=>`<p><span>0${i+1}</span>${E(typeof x==='string'?x:x.text||x.label)}</p>`).join('')}<div class="v3-goal"><span>Research goal</span><h2>${E(s.goal||s.aim)}</h2></div></div>${figure(s.image,s.title)}</div>`;
         case 'v3-direction-chart':case 'v3-drilldown':{
           const groups=chartGroups(s,c),n=groups[0]?.buckets.reduce((a,b)=>a+b.ids.length,0)||0;
-          if(s.id==='v3-light-directions'){
-            const cards=[['handlight','Nearby light from hands'],['limo','Spatially varying illumination'],['lightlab','Image-based light control'],['review-ref-85','Real-time MR relighting']];
-            return `<div class="v3-corpus-label"><span>Reviewed corpus</span><b>101 records</b><button data-v3-papers="${E(readSummary().sourceIds.join(','))}">Inspect sources ↗</button></div><div class="v3-literature-dashboard"><div class="v3-pie-cluster"><section class="v3-primary-pie"><h2>Lighting direction · 101</h2>${chart(groups[0].name,groups[0].buckets,undefined,true)}</section><div class="v3-runtime-pies">${groups.slice(1).map(g=>`<section><h3>${E(g.name)} · ${g.buckets.reduce((n,b)=>n+b.ids.length,0)}</h3>${chart(g.name,g.buckets)}</section>`).join('')}</div></div><aside class="v3-recent-papers"><h2>Recent representative papers</h2>${cards.map(([id,caption])=>{const p=c.paper(id);if(!p)return '';return `<button data-v3-paper="${E(id)}"><img src="${E(p.sourceFigure?.image||p.thumbnail)}" alt="Source figure from ${E(p.title)}"><span><b>${E(id==='review-ref-85'?'HybRelighter':id==='handlight'?'HandLight':id==='limo'?'LiMo':'LightLab')}</b><small>${E(p.year)} · ${E(id==='handlight'?'IEEE VR / TVCG':id==='limo'?'CVPR':id==='lightlab'?'SIGGRAPH':'arXiv preprint')}</small><em>${E(caption)}</em></span></button>`;}).join('')}</aside></div><div class="v3-source-drawer" hidden></div>`;
+          if(s.id==='v3-light-directions'||s.branchId){
+            const overview=s.id==='v3-light-directions',branch=s.branchId||'real-to-virtual';
+            const pool=readSummary().drilldowns.find(d=>d.id===branch).paperIds;
+            const charts=overview?groups.slice(1):groups;
+            return `<div class="v3-corpus-label"><span>${overview?'Full review · real → virtual detail':s.branchLabel}</span><b>${overview?101:pool.length} records</b><button data-v3-papers="${E(pool.join(','))}">Inspect sources ↗</button></div><div class="v3-literature-dashboard"><div class="v3-pie-cluster ${overview?'':'v3-branch-cluster'}">${overview?`<section class="v3-primary-pie"><h2>Lighting direction · 101</h2>${chart(groups[0].name,groups[0].buckets,undefined,true)}</section>`:''}<div class="v3-runtime-pies">${charts.map(g=>`<section><h3>${E(g.name)} · ${g.buckets.reduce((n,b)=>n+b.ids.length,0)}</h3>${chart(g.name,g.buckets)}</section>`).join('')}</div></div><aside class="v3-recent-papers">${paperPanel(pool,c,(s.branchLabel||'Real → virtual')+' · recent papers')}</aside></div><div class="v3-source-drawer" hidden></div>`;
           }
           return `<div class="v3-corpus-label"><span>${s.kind==='v3-drilldown'?'Virtual light → real imagery':'Reviewed corpus'}</span><b>${n} records</b><button data-v3-papers="${E([...new Set(groups.flatMap(g=>g.buckets.flatMap(b=>b.ids)))].join(','))}">Inspect sources ↗</button></div><div class="v3-chart-grid ${groups.length===1?'v3-single-chart':'v3-linked-charts'}">${groups.map(g=>`<section><h2>${E(g.name)}</h2>${chart(g.name,g.buckets,undefined,s.id==='v3-light-directions')}</section>`).join('')}${s.id==='v3-light-directions'?`<aside class="v3-related-breakdown"><h2>Related work · 33</h2>${[
         {label:'Supporting methods / resources',key:'support'},
@@ -122,7 +136,7 @@
         let drawer=host.querySelector('.v3-source-drawer');
         if(!drawer){drawer=document.createElement('div');drawer.className='v3-source-drawer';host.append(drawer);}
         const papers=[...new Set(ids)].map(id=>c.paper(id)).filter(Boolean);
-        drawer.innerHTML=`<header><h2>${E(title)} · ${papers.length}</h2><button data-v3-dismiss aria-label="Close source list">Close ×</button></header><div>${papers.map(p=>`<button data-v3-paper="${E(p.id)}">${p.sourceFigure?.image||p.thumbnail?`<img src="${E(p.sourceFigure?.image||p.thumbnail)}" alt="Figure from ${E(p.title)}" loading="lazy">`:""}<b>${E(p.shortTitle||p.title)}</b><span>${E(p.publicationLabel||`${p.year||'Year unverified'} · ${p.venueLabel||p.venue||'Venue unverified'}`)}</span></button>`).join('')||'<p>No assessed sources in this group.</p>'}</div>`;drawer.hidden=false;
+        drawer.innerHTML=`<header><h2>${E(title)} · ${papers.length}</h2><button data-v3-dismiss aria-label="Close source list">Close ×</button></header><div>${papers.map(p=>`<button data-v3-paper="${E(p.id)}">${p.sourceFigure?.image||p.thumbnail?`<img src="${E(p.sourceFigure?.image||p.thumbnail)}" alt="Figure from ${E(p.title)}" loading="lazy">`:""}<b>${E(({'handlight':'HandLight','limo':'LiMo','lightlab':'LightLab','review-ref-85':'HybRelighter','genlit':'GenLit'}[p.id])||p.shortTitle||p.title)}</b><span>${E(p.publicationLabel||`${p.year||'Year unverified'} · ${p.venueLabel||p.venue||'Venue unverified'}`)}</span></button>`).join('')||'<p>No assessed sources in this group.</p>'}</div>`;drawer.hidden=false;
       };
       const act=event=>{
         const el=event.target.closest('[data-v3-source],[data-v3-papers],[data-v3-dismiss],[data-v3-paper],[data-v3-next]');if(!el||!host.contains(el))return;
@@ -131,7 +145,7 @@
         if(el.hasAttribute('data-v3-next')){document.querySelector('#research-talk [data-talk-next]').click();return;}
         if(el.hasAttribute('data-v3-papers')){show(el.dataset.v3Papers.split(',').filter(Boolean),'Evidence');return;}
         const parts=el.dataset.v3Source.split(':'),g=chartGroups(s,c).find(g=>g.name===parts[0]);
-        const active=g?.buckets.filter(b=>b.ids.length)||[],b=active[Number(parts[1])];if(b)show(b.ids,b.label);
+        const active=g?.buckets.filter(b=>b.ids.length)||[],b=active[Number(parts[1])];if(b){const panel=host.querySelector('.v3-recent-papers');if(panel){panel.innerHTML=paperPanel(b.ids,c,b.label);host.querySelectorAll('[data-v3-source]').forEach(x=>x.classList.toggle('v3-chart-selected',x.dataset.v3Source===el.dataset.v3Source));}else show(b.ids,b.label);}
       };
       const key=e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-v3-source]')){e.preventDefault();act(e);}if(e.key==='Escape'){const drawer=host.querySelector('.v3-source-drawer');if(drawer&&!drawer.hidden){e.preventDefault();e.stopPropagation();drawer.hidden=true;}}};
       host.addEventListener('click',act);host.addEventListener('keydown',key);return()=>{host.removeEventListener('click',act);host.removeEventListener('keydown',key);};
