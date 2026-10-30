@@ -310,3 +310,13 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 #research-talk.talk-v3 .v3-paper-examples small{font-size:clamp(12px,.85vw,16px)}
 #research-talk.talk-v3 .v3-paper-examples span{font-size:clamp(13px,.95vw,18px);line-height:1.25}
 @media(max-width:700px){#research-talk.talk-v3 .v3-local-argument{grid-template-columns:1fr}#research-talk.talk-v3 .v3-local-research{display:block;height:auto}#research-talk.talk-v3 .v3-explicit-gaps{grid-template-columns:1fr}#research-talk.talk-v3 .v3-paper-examples img{height:100px}}
+@media(max-height:780px) and (min-width:701px){
+ #research-talk.talk-v3 .v3-local-research{grid-template-rows:minmax(0,1.45fr) minmax(0,1fr);gap:14px}
+ #research-talk.talk-v3 .v3-local-argument article{padding:4px 0}
+ #research-talk.talk-v3 .v3-local-argument p{font-size:15px;line-height:1.25}
+ #research-talk.talk-v3 .v3-explicit-gaps{font-size:14px;line-height:1.2;gap:5px 22px;margin-top:4px}
+ #research-talk.talk-v3 .v3-local-argument h2{font-size:23px}
+ #research-talk.talk-v3 .v3-paper-examples span{font-size:12px}
+ #research-talk.talk-v3 .v3-paper-examples b{font-size:14px}
+ #research-talk.talk-v3 .v3-paper-examples button{gap:3px}
+}
