@@ -11541,7 +11541,7 @@ window.RESEARCH_DATA = {
         "preprocessing": "Large optical MoCap corpus",
         "classification": "batch"
       },
-      "thumbnail": "",
+      "thumbnail": "assets/agents-sources/kimodo.png",
       "thumbnailAttribution": null,
       "authors": "Authors pending verification",
       "publicationStatus": "Primary-source metadata; final publication status requires checking",
@@ -11642,7 +11642,14 @@ window.RESEARCH_DATA = {
       "assessmentSource": "content/agents-review.json",
       "citation": 124,
       "venueLabel": "arXiv preprint",
-      "publicationLabel": "2026 · arXiv preprint"
+      "publicationLabel": "2026 · arXiv preprint",
+      "sourceFigure": {
+        "image": "assets/agents-sources/kimodo.png",
+        "sourceUrl": "https://research.nvidia.com/labs/sil/projects/kimodo/",
+        "assetUrl": "https://research.nvidia.com/labs/sil/projects/kimodo/assets/arch.png",
+        "locator": "Method architecture · official project page",
+        "attribution": "Original authors · Method architecture · official project page"
+      }
     },
     {
       "id": "poros",
@@ -13157,7 +13164,7 @@ window.RESEARCH_DATA = {
         "preprocessing": null
       },
       "url": "https://purvigoel.github.io/imprecise-timing/",
-      "thumbnail": "",
+      "thumbnail": "assets/agents-sources/imprecise-keyframes.png",
       "thumbnailAttribution": null,
       "authors": "Authors pending verification",
       "publicationStatus": "Metadata checked selectively; publication/version details retained in record",
@@ -13235,7 +13242,14 @@ window.RESEARCH_DATA = {
       "assessmentSource": "content/agents-sp-*-verification.json",
       "citation": 139,
       "venueLabel": "Eurographics / CGF",
-      "publicationLabel": "2025 · Eurographics / CGF"
+      "publicationLabel": "2025 · Eurographics / CGF",
+      "sourceFigure": {
+        "image": "assets/agents-sources/imprecise-keyframes.png",
+        "sourceUrl": "https://purvigoel.github.io/imprecise-timing/",
+        "assetUrl": "https://purvigoel.github.io/imprecise-timing/assets/images/banner.png",
+        "locator": "Banner figure · official project page",
+        "attribution": "Original authors · Banner figure · official project page"
+      }
     },
     {
       "id": "body-part-phase",
@@ -14356,7 +14370,7 @@ window.RESEARCH_DATA = {
         "preprocessing": null
       },
       "url": "https://www.khoury.northeastern.edu/~marsella/publications/pdf/ThiebauxAAMAS09.pdf",
-      "thumbnail": "",
+      "thumbnail": "assets/agents-sources/gaze-source.jpg",
       "thumbnailAttribution": null,
       "authors": "Authors pending verification",
       "publicationStatus": "Metadata checked selectively; publication/version details retained in record",
@@ -14451,7 +14465,14 @@ window.RESEARCH_DATA = {
       "assessmentSource": "content/agents-sp-*-verification.json",
       "citation": 152,
       "venueLabel": "AAMAS",
-      "publicationLabel": "2009 · AAMAS"
+      "publicationLabel": "2009 · AAMAS",
+      "sourceFigure": {
+        "image": "assets/agents-sources/gaze-source.jpg",
+        "sourceUrl": "https://www.khoury.northeastern.edu/~marsella/publications/pdf/ThiebauxAAMAS09.pdf",
+        "assetUrl": "https://www.khoury.northeastern.edu/~marsella/publications/pdf/ThiebauxAAMAS09.pdf",
+        "locator": "Gaze joint model · paper p. 3",
+        "attribution": "Original authors · Gaze joint model · paper p. 3"
+      }
     },
     {
       "topic": "agents",
@@ -14492,6 +14513,112 @@ window.RESEARCH_DATA = {
       "citation": 153,
       "venueLabel": "arXiv preprint",
       "publicationLabel": "2025 · arXiv preprint"
+    },
+    {
+      "id": "stymo",
+      "title": "STyMo: Fast and Controllable Few-Shot Motion Style Transfer",
+      "year": 2026,
+      "venue": "ACM TOG",
+      "topic": "agents",
+      "branches": [
+        "A3"
+      ],
+      "approach": "Example-driven motion stylization",
+      "modality": "3D skeletal motion",
+      "runtime": {
+        "status": "Core inference and complete physical/display loop must be separated. Contact optimization is offline; short examples limit generalization.",
+        "classification": "mixed",
+        "fps": null,
+        "hardware": "See primary paper",
+        "preprocessing": "Style/reference preparation and training are separate from inference."
+      },
+      "url": "https://arxiv.org/html/2609.04500v1",
+      "thumbnail": "assets/agents-sources/stymo.png",
+      "problem": "Control performance style while retaining intended motion.",
+      "method": "Separate posture and temporal style components learned from short paired examples; runtime intensity and body-region controls.",
+      "contribution": "Example-driven style control with a scoped generation/execution pipeline.",
+      "authorLimitations": "Contact optimization is offline; short examples limit generalization.",
+      "inferredGap": "Preserving production marks, gaze targets and event cues during revision requires a separate test.",
+      "readStatus": "Primary paper method, runtime and limitations sections checked 2026-10-30; not reproduced.",
+      "evidence": [
+        {
+          "claim": "Method and scope limitations",
+          "locator": "Method and limitations sections",
+          "url": "https://arxiv.org/html/2609.04500v1"
+        }
+      ],
+      "thumbnailAttribution": "Original authors · Figure 1",
+      "citation": 154,
+      "publicationStatus": "Published",
+      "decisionImplications": [],
+      "assessmentSource": "Primary-source check for V3 revision",
+      "authors": "Jose Luis Ponton, Alexander Winkler, Ladislav Kavan, Yuting Ye, Petr Kadlecek",
+      "reviewDimensions": {},
+      "reviewOrigin": "Proposal-directed source addition",
+      "reviewRecord": {},
+      "sourceFigure": {
+        "image": "assets/agents-sources/stymo.png",
+        "sourceUrl": "https://arxiv.org/html/2609.04500v1",
+        "assetUrl": "https://arxiv.org/html/2609.04500v1/Figures/Teaser.png",
+        "locator": "Figure 1 · original paper HTML",
+        "attribution": "Original authors · Figure 1"
+      },
+      "venueLabel": "ACM TOG",
+      "publicationLabel": "2026 · ACM TOG",
+      "shortTitle": "STyMo"
+    },
+    {
+      "id": "walk-like-this",
+      "title": "Walk Like This: Stylized Locomotion for Physics-Based Characters through Example-Driven Diffusion",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "topic": "agents",
+      "branches": [
+        "A3"
+      ],
+      "approach": "Example-driven motion stylization",
+      "modality": "3D skeletal motion",
+      "runtime": {
+        "status": "Core inference and complete physical/display loop must be separated. Velocity/style conflicts can add corrective steps; directional styles require matching commands.",
+        "classification": "mixed",
+        "fps": null,
+        "hardware": "See primary paper",
+        "preprocessing": "Style/reference preparation and training are separate from inference."
+      },
+      "url": "https://arxiv.org/html/2610.18147v1",
+      "thumbnail": "assets/agents-sources/walk-like-this.png",
+      "problem": "Control performance style while retaining intended motion.",
+      "method": "Reference-style encoder conditions autoregressive diffusion; an RL tracker executes generated locomotion under velocity control.",
+      "contribution": "Example-driven style control with a scoped generation/execution pipeline.",
+      "authorLimitations": "Velocity/style conflicts can add corrective steps; directional styles require matching commands.",
+      "inferredGap": "Preserving production marks, gaze targets and event cues during revision requires a separate test.",
+      "readStatus": "Primary paper method, runtime and limitations sections checked 2026-10-30; not reproduced.",
+      "evidence": [
+        {
+          "claim": "Method and scope limitations",
+          "locator": "Method and limitations sections",
+          "url": "https://arxiv.org/html/2610.18147v1"
+        }
+      ],
+      "thumbnailAttribution": "Original authors · Figure 1",
+      "citation": 155,
+      "publicationStatus": "Preprint",
+      "decisionImplications": [],
+      "assessmentSource": "Primary-source check for V3 revision",
+      "authors": "Joshua Aurand, Agon Serifi, Sammy Christen, Ruben Grandia, Espen Knoop, Marco Hutter, Moritz Bächer",
+      "reviewDimensions": {},
+      "reviewOrigin": "Proposal-directed source addition",
+      "reviewRecord": {},
+      "sourceFigure": {
+        "image": "assets/agents-sources/walk-like-this.png",
+        "sourceUrl": "https://arxiv.org/html/2610.18147v1",
+        "assetUrl": "https://arxiv.org/html/2610.18147v1/teaser-clean_recolored-2_compressed.png",
+        "locator": "Figure 1 · original paper HTML",
+        "attribution": "Original authors · Figure 1"
+      },
+      "venueLabel": "arXiv preprint",
+      "publicationLabel": "2026 · arXiv preprint",
+      "shortTitle": "Walk Like This"
     }
   ],
   "relationships": [

@@ -320,3 +320,71 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
  #research-talk.talk-v3 .v3-paper-examples b{font-size:14px}
  #research-talk.talk-v3 .v3-paper-examples button{gap:3px}
 }
+@media(max-height:620px) and (min-width:701px){
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article p{font-size:13px!important;line-height:1.2!important}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article{padding:3px 0!important}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary h3{font-size:11px!important;margin-bottom:3px!important}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-shared-gap{font-size:13px!important;line-height:1.2!important;margin-top:5px!important}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-goal h2{font-size:17px!important;line-height:1.15!important}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-goal{margin-top:6px;padding-top:6px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument h2{font-size:17px;margin:5px 0}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument p{font-size:12px;line-height:1.2}
+ #research-talk.talk-v3 .v3-topic-focus .v3-explicit-gaps{font-size:11px;line-height:1.15;gap:3px 14px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument h3{font-size:10px;margin-bottom:2px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument article{padding:3px 0}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-research{gap:8px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples span{font-size:10px;line-height:1.1}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples b{font-size:11px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples small{font-size:10px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples>h3{font-size:11px;margin-bottom:4px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-candidate-resource{font-size:10px;margin-top:5px}
+}
+#research-talk.talk-v3 .v3-topic-literature .v3-primary-pie .v3-pie-label{font-size:15px!important}
+@media(max-height:620px) and (min-width:701px){
+ #research-talk.talk-v3 .talk-slide:has(.v3-topic-literature) .v3-corpus-label{font-size:10px;gap:8px;min-height:24px;padding-block:3px}
+ #research-talk.talk-v3 .talk-slide:has(.v3-topic-literature) .v3-corpus-label span{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:38%}
+ #research-talk.talk-v3 .v3-topic-literature{height:calc(100% - 28px);gap:10px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-primary-pie h2{font-size:12px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-runtime-pies{gap:5px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-runtime-pies section{grid-template-columns:45px minmax(0,1fr);gap:0 3px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-runtime-pies h3{font-size:10px;line-height:1.1}
+ #research-talk.talk-v3 .v3-topic-literature .v3-runtime-pies .v3-pie{width:45px;height:45px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-chart-labels button{font-size:9px;padding:1px 0;gap:3px;line-height:1.1}
+ #research-talk.talk-v3 .v3-topic-literature .v3-chart-labels b{font-size:9px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-chart-labels i{width:6px;height:6px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-recent-papers{padding-left:10px;gap:4px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-recent-papers h2{font-size:11px;line-height:1.1}
+ #research-talk.talk-v3 .v3-topic-literature .v3-paper-grid{gap:4px 8px}
+ #research-talk.talk-v3 .v3-topic-literature .v3-paper-grid>button{grid-template-rows:minmax(14px,1fr) auto;gap:1px;padding:1px 0}
+ #research-talk.talk-v3 .v3-topic-literature .v3-paper-grid b{font-size:10px;line-height:1.05}
+ #research-talk.talk-v3 .v3-topic-literature .v3-paper-grid small{font-size:8px;margin-top:1px;line-height:1.1}
+ #research-talk.talk-v3 .v3-topic-literature .v3-recent-papers>.v3-all-selected{font-size:10px;padding:1px 0}
+}
+@media(max-height:620px) and (min-width:701px){
+ #research-talk.talk-v3 .v3-topic-literature{height:calc(100% - 34px)}
+ #research-talk.talk-v3 .v3-topic-focus{grid-template-rows:minmax(0,1.3fr) minmax(0,1fr);gap:8px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:4px;align-items:start}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-kicker{font-size:9px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument h2{font-size:16px;line-height:1.1;margin:3px 0}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument>div:last-child{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:12px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument article{padding:3px 0}
+ #research-talk.talk-v3 .v3-topic-focus .v3-local-argument p{font-size:10px;line-height:1.15}
+ #research-talk.talk-v3 .v3-topic-focus .v3-explicit-gaps{display:block;font-size:10px;line-height:1.1;padding-left:12px;margin-top:3px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-explicit-gaps li{margin-bottom:3px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples button{grid-template-rows:minmax(20px,1fr) auto auto auto;gap:2px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples img{max-height:8vh}
+ #research-talk.talk-v3 .v3-topic-focus .v3-candidate-resource{display:none}
+}
+@media(max-height:620px) and (min-width:701px){
+ #research-talk.talk-v3 .v3-topic-focus{grid-template-rows:minmax(0,1.7fr) minmax(0,1fr);gap:10px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples span{font-size:9px;line-height:1.05}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples b{font-size:10px}
+ #research-talk.talk-v3 .v3-topic-focus .v3-paper-examples button{grid-template-rows:minmax(10px,1fr) auto auto auto;gap:1px}
+ #research-talk.talk-v3 .v3-proposal-motivation>img{max-height:38vh!important;min-height:0;object-fit:contain}
+}
+@media(max-height:620px) and (min-width:701px){
+ #research-talk.talk-v3 .v3-topic-focus{grid-template-rows:minmax(0,2.4fr) minmax(0,1fr);gap:10px}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-direction-summary article p{font-size:12px!important}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-shared-gap{font-size:12px!important}
+ #research-talk.talk-v3 .v3-proposal-motivation .v3-goal h2{font-size:16px!important}
+}
