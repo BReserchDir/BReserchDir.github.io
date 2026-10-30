@@ -51,7 +51,13 @@
       const all=directions(c),r=all.filter(b=>/^Real light/.test(b.label)),v=all.filter(b=>/^Virtual light/.test(b.label)),both=all.filter(b=>/^Both directions/.test(b.label));
       const taken=new Set([...r,...v,...both].flatMap(b=>b.ids));
       const other=all.flatMap(b=>b.ids).filter(id=>!taken.has(id));
-      return [{name:'Lighting direction',buckets:[{label:'Real light → virtual content',pieLines:['Real light','→ virtual'],ids:[...new Set(r.flatMap(b=>b.ids))]},{label:'Virtual light → real imagery',pieLines:['Virtual light','→ real view'],ids:[...new Set(v.flatMap(b=>b.ids))]},{label:'Both directions / composition',pieLines:['Both','directions'],ids:[...new Set(both.flatMap(b=>b.ids))]},{label:'Related studies and resources',pieLines:['Related','work'],ids:[...new Set(other)]}]}];
+      const main = [{name:'Lighting direction',buckets:[{label:'Real light → virtual content',pieLines:['Real light','→ virtual'],ids:[...new Set(r.flatMap(b=>b.ids))]},{label:'Virtual light → real imagery',pieLines:['Virtual light','→ real view'],ids:[...new Set(v.flatMap(b=>b.ids))]},{label:'Both directions / composition',pieLines:['Both','directions'],ids:[...new Set(both.flatMap(b=>b.ids))]},{label:'Related studies and resources',pieLines:['Related','work'],ids:[...new Set(other)]}]}];
+      const runtimeGroups=['real-to-virtual','virtual-to-captured'].map(id=>{
+        const d=readSummary().drilldowns.find(x=>x.id===id);
+        const defs=[{label:'Measured live',keys:['live']},{label:'Prepared / component',keys:['prepared','component']},{label:'Offline / slow',keys:['offline','slow']},{label:'Timing unverified',keys:['claim','estimate','unknown','na']},{label:'Mixed evidence',keys:['mixed']}];
+        return {name:id==='real-to-virtual'?'Real → virtual runtime':'Virtual → real runtime',buckets:defs.map(x=>({label:x.label,ids:d.charts.runtime.segments.filter(b=>x.keys.includes(b.id)).flatMap(b=>b.paperIds)}))};
+      });
+      return [...main,...runtimeGroups];
     }
     if(s.kind==='v3-drilldown'){
       const source=readSummary().drilldowns?.find(d=>d.id==='virtual-to-captured');
@@ -92,6 +98,10 @@
         case 'v3-motivation':return `<div class="v3-motivation"><div>${s.directionSummary?`<div class="v3-direction-summary">${s.directionSummary.map(x=>`<article><h3>${E(x.label)}</h3><p>${E(x.text)}</p></article>`).join('')}<p class="v3-shared-gap">${E(s.sharedGap||'')}</p></div>`:(s.bullets||s.points||[]).map((x,i)=>`<p><span>0${i+1}</span>${E(typeof x==='string'?x:x.text||x.label)}</p>`).join('')}<div class="v3-goal"><span>Research goal</span><h2>${E(s.goal||s.aim)}</h2></div></div>${figure(s.image,s.title)}</div>`;
         case 'v3-direction-chart':case 'v3-drilldown':{
           const groups=chartGroups(s,c),n=groups[0]?.buckets.reduce((a,b)=>a+b.ids.length,0)||0;
+          if(s.id==='v3-light-directions'){
+            const cards=[['handlight','Nearby light from hands'],['limo','Spatially varying illumination'],['lightlab','Image-based light control'],['review-ref-85','Real-time MR relighting']];
+            return `<div class="v3-corpus-label"><span>Reviewed corpus</span><b>101 records</b><button data-v3-papers="${E(readSummary().sourceIds.join(','))}">Inspect sources ↗</button></div><div class="v3-literature-dashboard"><div class="v3-pie-cluster"><section class="v3-primary-pie"><h2>Lighting direction · 101</h2>${chart(groups[0].name,groups[0].buckets,undefined,true)}</section><div class="v3-runtime-pies">${groups.slice(1).map(g=>`<section><h3>${E(g.name)} · ${g.buckets.reduce((n,b)=>n+b.ids.length,0)}</h3>${chart(g.name,g.buckets)}</section>`).join('')}</div></div><aside class="v3-recent-papers"><h2>Recent representative papers</h2>${cards.map(([id,caption])=>{const p=c.paper(id);if(!p)return '';return `<button data-v3-paper="${E(id)}"><img src="${E(p.sourceFigure?.image||p.thumbnail)}" alt="Source figure from ${E(p.title)}"><span><b>${E(id==='review-ref-85'?'HybRelighter':id==='handlight'?'HandLight':id==='limo'?'LiMo':'LightLab')}</b><small>${E(p.year)} · ${E(id==='handlight'?'IEEE VR / TVCG':id==='limo'?'CVPR':id==='lightlab'?'SIGGRAPH':'arXiv preprint')}</small><em>${E(caption)}</em></span></button>`;}).join('')}</aside></div><div class="v3-source-drawer" hidden></div>`;
+          }
           return `<div class="v3-corpus-label"><span>${s.kind==='v3-drilldown'?'Virtual light → real imagery':'Reviewed corpus'}</span><b>${n} records</b><button data-v3-papers="${E([...new Set(groups.flatMap(g=>g.buckets.flatMap(b=>b.ids)))].join(','))}">Inspect sources ↗</button></div><div class="v3-chart-grid ${groups.length===1?'v3-single-chart':'v3-linked-charts'}">${groups.map(g=>`<section><h2>${E(g.name)}</h2>${chart(g.name,g.buckets,undefined,s.id==='v3-light-directions')}</section>`).join('')}${s.id==='v3-light-directions'?`<aside class="v3-related-breakdown"><h2>Related work · 33</h2>${[
         {label:'Supporting methods / resources',key:'support'},
         {label:'Perception studies',key:'perception'},

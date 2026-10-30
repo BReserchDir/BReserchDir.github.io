@@ -186,3 +186,28 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 #research-talk.talk-v3 .v3-xr-gaps article{gap:18px;padding:7px 0;min-height:0}
 #research-talk.talk-v3 .v3-xr-gaps p{max-width:none;font-size:18px}
 #research-talk.talk-v3 .v3-xr-gaps h2{font-size:24px}
+/* Three complementary pies, with the overall direction map at left-center. */
+#research-talk.talk-v3 .v3-literature-dashboard{height:calc(100% - 44px);display:grid;grid-template-columns:1.65fr 1fr;gap:28px;min-height:0}
+#research-talk.talk-v3 .v3-pie-cluster{display:grid;grid-template-columns:1.25fr 1fr;gap:15px;min-height:0;align-items:center}
+#research-talk.talk-v3 .v3-primary-pie{min-width:0;text-align:center}
+#research-talk.talk-v3 .v3-primary-pie h2{font-size:19px;margin:0}
+#research-talk.talk-v3 .v3-primary-pie .v3-pie{height:300px;max-height:40vh;width:100%}
+#research-talk.talk-v3 .v3-primary-pie .v3-pie-label{font-size:16px!important}
+#research-talk.talk-v3 .v3-primary-pie .v3-pie-count{font-size:26px!important}
+#research-talk.talk-v3 .v3-runtime-pies{display:grid;grid-template-rows:1fr 1fr;gap:15px;height:100%;min-height:0}
+#research-talk.talk-v3 .v3-runtime-pies section{display:grid;grid-template-columns:90px 1fr;grid-template-rows:auto 1fr;gap:5px 7px;min-height:0;align-items:center}
+#research-talk.talk-v3 .v3-runtime-pies h3{grid-column:1/-1;font-size:16px;margin:0;line-height:1.25}
+#research-talk.talk-v3 .v3-runtime-pies .v3-pie{width:90px;height:100px;max-height:none}
+#research-talk.talk-v3 .v3-runtime-pies .v3-chart-labels button{font-size:12px;line-height:1.2;padding:4px 0;gap:5px;min-height:0}
+#research-talk.talk-v3 .v3-runtime-pies .v3-chart-labels{gap:0}
+#research-talk.talk-v3 .v3-runtime-pies .v3-chart-labels b{font-size:12px}
+#research-talk.talk-v3 .v3-runtime-pies .v3-chart-labels i{width:8px;height:8px}
+#research-talk.talk-v3 .v3-recent-papers{border-left:1px solid #ccc;padding-left:22px;display:grid;grid-template-rows:auto repeat(4,minmax(0,1fr));gap:8px;min-height:0}
+#research-talk.talk-v3 .v3-recent-papers h2{font-size:20px;margin:0 0 4px;line-height:1.2}
+#research-talk.talk-v3 .v3-recent-papers>button{display:grid;grid-template-columns:115px 1fr;gap:12px;align-items:center;text-align:left;border:0;border-bottom:1px solid #ddd;background:#fff;padding:4px 0;min-height:0}
+#research-talk.talk-v3 .v3-recent-papers img{width:115px;height:72px;object-fit:contain;background:#f8f8f8}
+#research-talk.talk-v3 .v3-recent-papers b{display:block;font-size:18px}
+#research-talk.talk-v3 .v3-recent-papers small{display:block;font-size:13px;margin:4px 0;color:#555}
+#research-talk.talk-v3 .v3-recent-papers em{font-size:14px;font-style:normal;line-height:1.2;display:block}
+#research-talk.talk-v3 .v3-recent-papers>button:hover{outline:1px solid #2458c6}
+@media(max-width:700px){#research-talk.talk-v3 .v3-literature-dashboard{height:auto;grid-template-columns:1fr}#research-talk.talk-v3 .v3-pie-cluster{min-height:360px}#research-talk.talk-v3 .v3-recent-papers{border-left:0;padding-left:0;grid-template-rows:auto repeat(4,95px)}}
