@@ -65,7 +65,7 @@
     return s.paperIds?.length?s.paperIds.map(id=>c.paper(id)).filter(Boolean):topicPapers(c,s.topicId);
   }
   function chartGroups(s,c){
-    if(s.kind==='v3-topic-chart'){const review=readSummary().topicReviews[s.topicId];return [review.main,...review.branches[s.reviewBranch].groups];}
+    if(s.kind==='v3-topic-chart'){const review=readSummary().topicReviews[s.reviewTopicId||s.topicId];return [review.main,...review.branches[s.reviewBranch].groups];}
     if(s.kind==='v3-direction-chart'&&s.topicId==='illumination'){
       const all=directions(c),r=all.filter(b=>/^Real light/.test(b.label)),v=all.filter(b=>/^Virtual light/.test(b.label)),both=all.filter(b=>/^Both directions/.test(b.label));
       const taken=new Set([...r,...v,...both].flatMap(b=>b.ids));
@@ -113,7 +113,7 @@
         case 'v3-directions':return plates(s.cards||s.directions||[], 'v3-goals');
         case 'v3-motivation':return `<div class="v3-motivation ${s.topicId!=='illumination'?'v3-proposal-motivation':''}"><div>${s.directionSummary?`<div class="v3-direction-summary">${s.directionSummary.map(x=>`<article><h3>${E(x.label)}</h3><p>${E(x.text)}</p></article>`).join('')}<p class="v3-shared-gap">${E(s.sharedGap||'')}</p></div>`:(s.bullets||s.points||[]).map((x,i)=>`<p><span>0${i+1}</span>${E(typeof x==='string'?x:x.text||x.label)}</p>`).join('')}<div class="v3-goal"><span>Research goal</span><h2>${E(s.goal||s.aim)}</h2></div></div>${figure(s.image,s.title)}</div>`;
         case 'v3-topic-chart':{
-          const review=readSummary().topicReviews[s.topicId],branch=review.branches[s.reviewBranch],groups=chartGroups(s,c),index=Object.keys(review.branches).indexOf(s.reviewBranch),direction=['real-to-virtual','virtual-to-captured','both-directions'][index];
+          const review=readSummary().topicReviews[s.reviewTopicId||s.topicId],branch=review.branches[s.reviewBranch],groups=chartGroups(s,c),index=Object.keys(review.branches).indexOf(s.reviewBranch),direction=['real-to-virtual','virtual-to-captured','both-directions'][index];
           return `<div class="v3-corpus-label"><span>${E(branch.label)}</span><b>${branch.paperIds.length} of ${review.corpusSize} reviewed records</b><button data-v3-papers="${E(branch.paperIds.join(','))}">Inspect sources ↗</button></div><div class="v3-literature-dashboard v3-topic-literature"><div class="v3-pie-cluster"><section class="v3-primary-pie" data-direction="${direction}"><h2>Research emphasis · ${review.corpusSize}</h2>${chart(groups[0].name,groups[0].buckets,undefined,true)}</section><div class="v3-runtime-pies">${groups.slice(1).map(g=>`<section><h3>${E(g.name)} · ${branch.paperIds.length}</h3>${chart(g.name,g.buckets)}</section>`).join('')}</div></div><aside class="v3-recent-papers">${paperPanel(branch.paperIds,c,branch.label+' · papers')}</aside></div><div class="v3-source-drawer" hidden></div>`;
         }
         case 'v3-direction-chart':case 'v3-drilldown':{
