@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 445" role="img" aria-labelledby="title desc">
+<title id="title">Two lighting paths in video passthrough</title>
+<desc id="desc">The headset displays camera video with virtual content. Physical lighting and occlusion shade a rendered object. A virtual emitter changes the displayed camera pixels of a physical prop and wall.</desc>
+<defs>
+  <marker id="amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#ad520e"/></marker>
+  <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#2458a7"/></marker>
+  <linearGradient id="wall"><stop stop-color="#bad6ff"/><stop offset="1" stop-color="#edf2f9"/></linearGradient>
+  <linearGradient id="prop"><stop stop-color="#5382be"/><stop offset="1" stop-color="#b7cbe0"/></linearGradient>
+  <style>text{font-family:Arial,sans-serif;fill:#182238;font-size:19px}.heading{font-size:27px;font-weight:700}.label{font-weight:700}.small{font-size:17px}.physical{fill:#843c0a}.virtual{fill:#174587}</style>
+</defs>
+<rect x="8" y="63" width="581" height="371" rx="16" fill="#fff7eb" stroke="#dfb780"/>
+<rect x="611" y="63" width="581" height="371" rx="16" fill="#f1f7ff" stroke="#a9c2e3"/>
+<path d="M56 15h38a12 12 0 0 1 12 12v12a10 10 0 0 1-10 10H83l-8-7-8 7H54a10 10 0 0 1-10-10V27a12 12 0 0 1 12-12Z" fill="none" stroke="#182238" stroke-width="3"/>
+<circle cx="57" cy="30" r="3"/><circle cx="93" cy="30" r="3"/>
+<text x="124" y="39" class="label">Headset view = live camera video of the physical set + rendered virtual content</text>
+<text x="30" y="104" class="heading physical">A · Real light → virtual object</text>
+<text x="633" y="104" class="heading virtual">B · Virtual light → real video</text>
+<path d="M29 333H568M632 333H1170" stroke="#9ba5b0" stroke-width="2"/>
+<circle cx="95" cy="167" r="20" fill="#ffd27b" stroke="#ad520e" stroke-width="2"/>
+<path d="M95 137v-10m-30 40H55m70 0h10" stroke="#ad520e" stroke-width="2"/>
+<text x="128" y="172" class="small physical">Distant environment light</text>
+<path d="M113 187L381 244" stroke="#ad520e" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#amber)"/>
+<path d="M62 251h32l17 12v25l-17 12H62z" fill="#ae5a20"/><path d="M78 300v33" stroke="#814317" stroke-width="5"/>
+<text x="40" y="232" class="small physical">Nearby real lamp</text>
+<path d="M113 270L215 265" stroke="#ad520e" stroke-width="3" marker-end="url(#amber)"/>
+<path d="M246 310l148-39v49l-148 12z" fill="#553c3b" opacity=".22"/>
+<rect x="218" y="249" width="48" height="84" rx="3" fill="#696067"/>
+<text x="179" y="358" class="small">Real blocker</text>
+<path d="M388 248l48-25 65 22-47 25z" fill="#f0af62"/>
+<path d="M388 248l66 22v64l-66-22z" fill="#995d46"/>
+<path d="M454 270l47-25v63l-47 26z" fill="#bf7a4b"/>
+<path d="M388 277l66 19v21l-66-17z" fill="#553c3b" opacity=".58"/>
+<text x="377" y="358" class="small">Virtual prop in shadow</text>
+<text x="30" y="405" class="label physical">Estimate light and blockage → shade the virtual prop</text>
+<rect x="817" y="143" width="344" height="190" rx="8" fill="url(#wall)" stroke="#a9c2e3"/>
+<text x="923" y="169" class="small virtual">Captured wall pixels</text>
+<path d="M728 206L1060 187L1082 333L734 231Z" fill="#77a9f1" opacity=".29"/>
+<path d="M675 199h40l17-13v58l-17-13h-40z" fill="#588fd6" stroke="#2458a7" stroke-width="3" stroke-dasharray="5 4"/>
+<text x="650" y="174" class="small virtual">Virtual emitter</text>
+<path d="M737 215L928 267M737 207L1089 214" stroke="#2458a7" stroke-width="3" marker-end="url(#blue)"/>
+<path d="M956 307L1106 333H956z" fill="#274265" opacity=".34"/>
+<path d="M933 258l43-24 61 21-43 24z" fill="#d4e7ff"/>
+<path d="M933 258l61 21v54l-61-21z" fill="url(#prop)"/>
+<path d="M994 279l43-24v55l-43 23z" fill="#526c8b"/>
+<text x="898" y="358" class="small">Real prop in camera video</text>
+<text x="633" y="405" class="label virtual">Change the displayed pixels of the prop and wall</text>
+</svg>

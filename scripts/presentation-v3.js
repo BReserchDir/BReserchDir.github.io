@@ -64,7 +64,43 @@
   function groupPapers(s,c){
     return s.paperIds?.length?s.paperIds.map(id=>c.paper(id)).filter(Boolean):topicPapers(c,s.topicId);
   }
+  function lightTaxonomy(s) {
+    const reviewed = readSummary();
+    const directions = reviewed.drilldowns.filter(d=>['real-to-virtual','virtual-to-captured'].includes(d.id));
+    const ids = directions.find(d=>d.id===s.branchId).paperIds;
+    const included = new Set(ids);
+    const records = reviewed.records.filter(r=>included.has(r.id));
+    const partition = (name, definitions)=>({name,buckets:bins(records,definitions)});
+    const near = r=>r.sourceValues.locality.some(tag=>['local','spatial'].includes(tag));
+    const environment = r=>r.sourceValues.locality.includes('environment');
+    const shadow = r=>r.sourceValues.transport.includes('shadow');
+    const groups = [
+      {name:'Lighting direction',buckets:directions.map(d=>({
+        label:d.id==='real-to-virtual'?'Real → virtual':'Virtual → real video',
+        ids:d.paperIds
+      }))},
+      partition('Lighting locality',[
+        {label:'Nearby / spatial only',test:r=>near(r)&&!environment(r)},
+        {label:'Environment only',test:r=>environment(r)&&!near(r)},
+        {label:'Both scales',test:r=>near(r)&&environment(r)},
+        {label:'Unspecified',test:r=>!near(r)&&!environment(r)}
+      ]),
+      partition('Shadow evidence',[
+        {label:'Shadows documented',test:shadow},
+        {label:'Other effects documented',test:r=>!shadow(r)&&r.sourceValues.transport.some(tag=>['direct','specular','indirect'].includes(tag))},
+        {label:'Unspecified',test:r=>!r.sourceValues.transport.some(tag=>['shadow','direct','specular','indirect'].includes(tag))}
+      ]),
+      partition('Primary approach',[
+        {label:'Lighting estimation',test:r=>r.primaryMethod==='light-estimation'},
+        {label:'Geometry / transport',test:r=>['depth-shading','inverse','neural3d','transport','projection-optics'].includes(r.primaryMethod)},
+        {label:'Diffusion',test:r=>['diffusion-3d','diffusion-inverse','image-diffusion','video-diffusion'].includes(r.primaryMethod)},
+        {label:'Unclassified',test:r=>r.primaryMethod==='unknown'}
+      ])
+    ];
+    return {groups,ids,total:directions.reduce((sum,d)=>sum+d.paperIds.length,0),inventory:reviewed.records.length};
+  }
   function chartGroups(s,c){
+    if(s.kind==='v4-light-taxonomy')return lightTaxonomy(s).groups;
     if(s.kind==='v3-topic-chart'){const review=readSummary().topicReviews[s.reviewTopicId||s.topicId];return [review.main,...review.branches[s.reviewBranch].groups];}
     if(s.kind==='v3-direction-chart'&&s.topicId==='illumination'){
       const all=directions(c),r=all.filter(b=>/^Real light/.test(b.label)),v=all.filter(b=>/^Virtual light/.test(b.label)),both=all.filter(b=>/^Both directions/.test(b.label));
@@ -108,6 +144,19 @@
   window.PresentationV3={
     render(s,c){
       switch(s.kind){
+        case 'v4-light-space':
+          return `<div class="v4-light-space"><div class="v4-light-controls"><button type="button" data-v4-stage-toggle aria-expanded="false">Explore the 3D stage</button><span data-v4-stage-status aria-live="polite"></span></div><div data-v4-static>${figure(s.image,'Two lighting paths in video passthrough')}</div><section class="v2m-hero" data-v4-stage hidden><div data-v2m-stage></div><label>Move the lights <input type="range" min="0" max="100" value="50" data-v2m-light-change></label><p>Drag to orbit. Scroll to zoom. This stage shows light placement and geometry.</p></section></div>`;
+        case 'v4-control-space':
+          return `<div class="v4-control-space"><div>${s.examples.map(x=>`<article><h2>${E(x.title)}</h2><p>${E(x.text)}</p></article>`).join('')}</div><figure>${figure(s.image,'Proposal figure showing direct, guided and automated control of agents and equipment')}<figcaption>Proposal figure · Character direction above, equipment control below</figcaption></figure></div>`;
+        case 'v4-evidence-gaps':
+          return `<div class="v4-gap-grid">${s.items.map(g=>`<article><h2>${E(g.title)}</h2><p>${E(g.text)}</p><div class="v4-gap-papers">${g.papers.map(example=>{
+            const p=c.paper(example.id),image=p.sourceFigure?.image||p.thumbnail;
+            return `<button type="button" data-v3-paper="${E(example.id)}">${figure(image,p.title)}<span><b>${E(example.label)}</b><small>${E(example.evidence)}</small></span></button>`;
+          }).join('')}</div></article>`).join('')}</div>`;
+        case 'v4-light-taxonomy':{
+          const {groups,ids,total,inventory}=lightTaxonomy(s);
+          return `<div class="v3-corpus-label v4-taxonomy-scope"><span>${ids.length} records in this direction · ${total} of ${inventory} reviewed records qualify for the two-direction comparison</span><button type="button" data-v3-papers="${E(ids.join(','))}">Inspect sources ↗</button></div><div class="v3-literature-dashboard v4-light-taxonomy"><div class="v3-pie-cluster"><section class="v3-primary-pie" data-direction="${E(s.branchId)}"><h2>Lighting direction</h2>${chart(groups[0].name,groups[0].buckets)}</section><div class="v3-runtime-pies">${groups.slice(1).map(g=>`<section><h3>${E(g.name)}</h3>${chart(g.name,g.buckets)}</section>`).join('')}</div></div><aside class="v3-recent-papers">${paperPanel(ids,c,'Representative papers')}</aside></div><div class="v3-source-drawer" hidden></div>`;
+        }
         case 'v3-figure':return `<figure class="v3-full-figure">${figure(s.image,s.title)}<figcaption>${E(s.caption||'')}</figcaption></figure>`;
         case 'v3-opening':return plates(s.panels||[], 'v3-limits');
         case 'v3-directions':return plates(s.cards||s.directions||[], 'v3-goals');
@@ -140,6 +189,41 @@
       }
     },
     mount(host,s,c){
+      if(s.kind==='v4-light-space'){
+        const button=host.querySelector('[data-v4-stage-toggle]');
+        const stage=host.querySelector('[data-v4-stage]');
+        const staticView=host.querySelector('[data-v4-static]');
+        const status=host.querySelector('[data-v4-stage-status]');
+        let disposeStage=()=>{},active=true;
+        button.onclick=async()=>{
+          if(!stage.hidden){
+            disposeStage();
+            stage.hidden=true;
+            staticView.hidden=false;
+            button.textContent='Explore the 3D stage';
+            button.setAttribute('aria-expanded','false');
+            return;
+          }
+          button.disabled=true;
+          status.textContent='Loading the 3D stage…';
+          stage.hidden=false;
+          staticView.hidden=true;
+          const dispose=await window.V2LightStage?.mount(host);
+          if(!active){dispose?.();return;}
+          disposeStage=dispose||(()=>{});
+          button.disabled=false;
+          if(stage.querySelector('[data-stage-state="ready"]')){
+            status.textContent='';
+            button.textContent='Show the annotated view';
+            button.setAttribute('aria-expanded','true');
+          }else{
+            stage.hidden=true;
+            staticView.hidden=false;
+            status.textContent='3D is unavailable in this browser.';
+          }
+        };
+        return()=>{active=false;disposeStage();button.onclick=null;};
+      }
       const show = (ids,title) => {
         let drawer=host.querySelector('.v3-source-drawer');
         if(!drawer){drawer=document.createElement('div');drawer.className='v3-source-drawer';host.append(drawer);}
