@@ -141,7 +141,11 @@
   function figure(image,title){return image?`<img src="${E(image)}" alt="${E(title)}" loading="eager">`:'';}
   function lightingScene(image) {
     return `<figure class="v4-light-figure">
-      ${figure(image,'Two headset views. Real HDR environment light and a nearby real spotlight illuminate the virtual cube. A physical flag shadows the cube, and the real desk bounces light onto it. A floating virtual spotlight relights the physical sphere and desk in the video. Both the sphere and the virtual cube cast shadows on the physical desk in the video, and the virtual cube bounces light onto the sphere.')}
+      ${figure(image,'One mixed set with a physical actor, a virtual actor, a red virtual cube, a green physical sphere and a physical desk. Distant HDR light and a nearby real spotlight light the cube. A physical flag shadows the cube and the desk bounces light onto it. A floating virtual spotlight lights the sphere and desk in the headset video. The sphere and cube cast separate shadows on the desk, and the cube bounces light onto the sphere.')}
+      <figcaption class="v4-light-key">
+        <div><b>Physical set → virtual cube</b><span>HDR background light · Nearby spotlight · Flag shadow · Desk bounce</span></div>
+        <div><b>Virtual spotlight → headset video</b><span>Light on sphere and desk · Sphere shadow · Cube shadow · Cube bounce onto sphere</span></div>
+      </figcaption>
     </figure>`;
   }
   function plates(items,type){return `<div class="v3-plates ${type}">${items.map((p,i)=>`<article><div class="v3-plate-image">${figure(p.image,p.title)}</div><span class="v3-index">0${i+1}</span><h2>${E(p.title)}</h2><p>${E(p.limit||p.goal||p.text||p.question)}</p></article>`).join('')}</div>`;}

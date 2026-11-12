@@ -433,4 +433,9 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
  #research-talk [data-v4-static] img,#research-talk .v4-control-space img { height:auto; }
 }
 #research-talk .v4-gap-papers small { display:block; margin-top:4px; font-size:12px; line-height:1.25; color:#34465f; }
-#research-talk .v4-light-figure { height:100%; margin:0; }
+#research-talk .v4-light-figure { height:100%; margin:0; display:flex; flex-direction:column; gap:8px; }
+#research-talk .v4-light-figure img { flex:1; min-height:0; }
+#research-talk .v4-light-key { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr)); gap:12px; font-size:clamp(13px,1.15vw,16px); line-height:1.35; }
+#research-talk .v4-light-key div { border-top:3px solid #8b460b; padding-top:5px; }
+#research-talk .v4-light-key div+div { border-color:#174587; }
+#research-talk .v4-light-key b, #research-talk .v4-light-key span { display:block; }
