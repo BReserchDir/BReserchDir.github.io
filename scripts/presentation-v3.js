@@ -139,39 +139,9 @@
     ])}];
   }
   function figure(image,title){return image?`<img src="${E(image)}" alt="${E(title)}" loading="eager">`:'';}
-  function annotatedLightingScene(image) {
-    return `<figure class="v4-scene-figure">
-      <div class="v4-scene-frame">
-        <div class="v4-scene">
-          ${figure(image,'An XR wearer looks toward a real performer and sphere beside a virtual performer and cube. Callouts distinguish a nearby real spotlight, distant environment lighting captured in an HDR image, and a blue virtual spotlight.')}
-          <svg viewBox="0 0 1672 941" class="v4-scene-overlay" aria-hidden="true">
-            <path class="virtual" d="M1256 551 L1357 540 L1515 552 L1515 735 L1375 756 L1256 730Z"/>
-            <ellipse class="physical" cx="719" cy="579" rx="115" ry="111"/>
-            <path class="effect" d="M816 692 Q947 695 1000 735 Q958 769 826 746 L733 716Z"/>
-            <g class="physical">
-              <path d="M452 69 L346 91"/><rect x="452" y="39" width="340" height="61" rx="12"/><text x="472" y="80">Nearby real spotlight</text>
-              <path d="M637 328 L721 320"/><rect x="348" y="298" width="289" height="61" rx="12"/><text x="368" y="339">Real performer</text><path d="M523 748 L615 640"/><rect x="274" y="748" width="294" height="61" rx="12"/><text x="294" y="789">Real sphere</text>
-              <path d="M319 282 L251 355"/><rect x="298" y="221" width="315" height="61" rx="12"/><text x="318" y="262">XR headset wearer</text>
-            </g>
-            <g class="environment">
-              <path d="M898 178 L898 215 M860 177 L843 211 M936 177 L953 211"/>
-              <rect x="605" y="111" width="586" height="66" rx="12"/><text x="898" y="154" text-anchor="middle">Background light · HDR image (IBL)</text>
-            </g>
-            <g class="virtual">
-              <path d="M1343 82 L1468 104"/><rect x="1024" y="42" width="320" height="61" rx="12"/><text x="1044" y="83">Virtual spotlight</text>
-              <path d="M1353 411 L1209 355"/><rect x="1268" y="412" width="333" height="61" rx="12"/><text x="1288" y="453">Virtual performer</text>
-              <path d="M1402 782 L1388 750"/><rect x="1301" y="783" width="270" height="61" rx="12"/><text x="1321" y="824">Virtual cube</text>
-            </g>
-            <g class="effect">
-              <path d="M879 798 L895 748"/><rect x="699" y="799" width="468" height="61" rx="12"/><text x="719" y="840">Shadow in the displayed video</text>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <figcaption>
-        <div><b>Real light → virtual content</b><span>Image-based lighting (IBL) uses an HDR view of the real surroundings to light the virtual cube, alongside nearby lamps and shadows from real objects.</span></div>
-        <div><b>Virtual light → real video</b><span>The headset changes the captured sphere and tabletop to show blue illumination and a cast shadow.</span></div>
-      </figcaption>
+  function lightingScene(image) {
+    return `<figure class="v4-light-figure">
+      ${figure(image,'Two headset views. Real HDR environment light and a nearby real spotlight illuminate the virtual cube. A physical flag shadows the cube, and the real desk bounces light onto it. A floating virtual spotlight relights the physical sphere and desk in the video. Both the sphere and the virtual cube cast shadows on the physical desk in the video, and the virtual cube bounces light onto the sphere.')}
     </figure>`;
   }
   function plates(items,type){return `<div class="v3-plates ${type}">${items.map((p,i)=>`<article><div class="v3-plate-image">${figure(p.image,p.title)}</div><span class="v3-index">0${i+1}</span><h2>${E(p.title)}</h2><p>${E(p.limit||p.goal||p.text||p.question)}</p></article>`).join('')}</div>`;}
@@ -180,7 +150,7 @@
     render(s,c){
       switch(s.kind){
         case 'v4-light-space':
-          return `<div class="v4-light-space"><div class="v4-light-controls"><button type="button" data-v4-stage-toggle aria-expanded="false">Explore the 3D stage</button><span data-v4-stage-status aria-live="polite"></span></div><div data-v4-static>${annotatedLightingScene(s.image)}</div><section class="v2m-hero" data-v4-stage hidden><div data-v2m-stage></div><label>Move the lights <input type="range" min="0" max="100" value="50" data-v2m-light-change></label><p>Drag to orbit. Scroll to zoom. This stage shows light placement and geometry.</p></section></div>`;
+          return `<div class="v4-light-space"><div class="v4-light-controls"><button type="button" data-v4-stage-toggle aria-expanded="false">Explore the 3D stage</button><span data-v4-stage-status aria-live="polite"></span></div><div data-v4-static>${lightingScene(s.image)}</div><section class="v2m-hero" data-v4-stage hidden><div data-v2m-stage></div><label>Move the lights <input type="range" min="0" max="100" value="50" data-v2m-light-change></label><p>Drag to orbit. Scroll to zoom. This stage shows light placement and geometry.</p></section></div>`;
         case 'v4-control-space':
           return `<div class="v4-control-space"><div>${s.examples.map(x=>`<article><h2>${E(x.title)}</h2><p>${E(x.text)}</p></article>`).join('')}</div><figure>${figure(s.image,'Proposal figure showing direct, guided and automated control of agents and equipment')}<figcaption>Proposal figure · Character direction above, equipment control below</figcaption></figure></div>`;
         case 'v4-evidence-gaps':
