@@ -141,10 +141,10 @@
   function figure(image,title){return image?`<img src="${E(image)}" alt="${E(title)}" loading="eager">`:'';}
   function lightingScene(image) {
     return `<figure class="v4-light-figure">
-      ${figure(image,'One mixed set with a physical actor, a virtual actor, a red virtual cube, a green physical sphere and a physical desk. Distant HDR light and a nearby real spotlight light the cube. A physical flag shadows the cube and the desk bounces light onto it. A floating virtual spotlight lights the sphere and desk in the headset video. The sphere, cube and virtual flag cast shadows on the desk, and the cube bounces light onto the sphere.')}
+      ${figure(image,'The real and virtual spotlights illuminate both actors and props. The hall windows reflect on the red virtual cube and green physical sphere. A physical flag shadows the cube and a virtual flag shadows the sphere. The cube and sphere cast paired shadows on the physical desk. Arrows show light bouncing from the desk to the cube and from the cube to the sphere.')}
       <figcaption class="v4-light-key">
-        <div><b>Physical set → virtual cube</b><span>HDR background light · Nearby spotlight · Flag shadow · Desk bounce</span></div>
-        <div><b>Virtual spotlight → headset video</b><span>Light on sphere and desk · Shadows from sphere, cube and flag · Cube bounce onto sphere</span></div>
+        <div><b>Physical light → virtual content</b><span>HDR reflections · Physical flag shadows the cube · Desk bounce</span></div>
+        <div><b>Virtual light → physical content in the headset view</b><span>Virtual flag shadows the sphere · Cube bounce · Paired shadows on the desk</span></div>
       </figcaption>
     </figure>`;
   }
