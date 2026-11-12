@@ -143,7 +143,7 @@
     return `<figure class="v4-scene-figure">
       <div class="v4-scene-frame">
         <div class="v4-scene">
-          ${figure(image,'An XR wearer looks toward a real performer and sphere beside a virtual performer and cube. A warm real spotlight and a blue virtual spotlight illuminate the shared set.')}
+          ${figure(image,'An XR wearer looks toward a real performer and sphere beside a virtual performer and cube. Callouts distinguish a nearby real spotlight, distant environment lighting captured in an HDR image, and a blue virtual spotlight.')}
           <svg viewBox="0 0 1672 941" class="v4-scene-overlay" aria-hidden="true">
             <path class="virtual" d="M1256 551 L1357 540 L1515 552 L1515 735 L1375 756 L1256 730Z"/>
             <ellipse class="physical" cx="719" cy="579" rx="115" ry="111"/>
@@ -152,6 +152,10 @@
               <path d="M452 69 L346 91"/><rect x="452" y="39" width="340" height="61" rx="12"/><text x="472" y="80">Nearby real spotlight</text>
               <path d="M637 328 L721 320"/><rect x="348" y="298" width="289" height="61" rx="12"/><text x="368" y="339">Real performer</text><path d="M523 748 L615 640"/><rect x="274" y="748" width="294" height="61" rx="12"/><text x="294" y="789">Real sphere</text>
               <path d="M319 282 L251 355"/><rect x="298" y="221" width="315" height="61" rx="12"/><text x="318" y="262">XR headset wearer</text>
+            </g>
+            <g class="environment">
+              <path d="M898 178 L898 215 M860 177 L843 211 M936 177 L953 211"/>
+              <rect x="605" y="111" width="586" height="66" rx="12"/><text x="898" y="154" text-anchor="middle">Background light · HDR image (IBL)</text>
             </g>
             <g class="virtual">
               <path d="M1343 82 L1468 104"/><rect x="1024" y="42" width="320" height="61" rx="12"/><text x="1044" y="83">Virtual spotlight</text>
@@ -165,7 +169,7 @@
         </div>
       </div>
       <figcaption>
-        <div><b>Real light → virtual content</b><span>Nearby lamps, distant ambient light and shadows from real objects shape the rendered cube.</span></div>
+        <div><b>Real light → virtual content</b><span>Image-based lighting (IBL) uses an HDR view of the real surroundings to light the virtual cube, alongside nearby lamps and shadows from real objects.</span></div>
         <div><b>Virtual light → real video</b><span>The headset changes the captured sphere and tabletop to show blue illumination and a cast shadow.</span></div>
       </figcaption>
     </figure>`;

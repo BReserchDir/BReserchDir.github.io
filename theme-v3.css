@@ -439,6 +439,8 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 #research-talk .v4-scene img, #research-talk .v4-scene-overlay { position:absolute; inset:0; width:100%; height:100%; }
 #research-talk .v4-scene-overlay { pointer-events:none; }
 #research-talk .v4-scene-overlay .physical { color:#8b460b; }
+#research-talk .v4-scene-overlay .environment { color:#456056; }
+#research-talk .v4-scene-overlay .environment path { stroke-dasharray:8 6; }
 #research-talk .v4-scene-overlay .virtual { color:#174587; }
 #research-talk .v4-scene-overlay .effect { color:#294d84; }
 #research-talk .v4-scene-overlay path, #research-talk .v4-scene-overlay ellipse { fill:none; stroke:currentColor; stroke-width:6; }
