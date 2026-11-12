@@ -433,3 +433,24 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
  #research-talk [data-v4-static] img,#research-talk .v4-control-space img { height:auto; }
 }
 #research-talk .v4-gap-papers small { display:block; margin-top:4px; font-size:12px; line-height:1.25; color:#34465f; }
+#research-talk .v4-scene-figure { display:flex; flex-direction:column; height:100%; margin:0; gap:10px; }
+#research-talk .v4-scene-frame { flex:1; min-height:0; container-type:size; display:grid; place-items:center; }
+#research-talk .v4-scene { position:relative; width:min(100cqw,177.68cqh); aspect-ratio:1672/941; }
+#research-talk .v4-scene img, #research-talk .v4-scene-overlay { position:absolute; inset:0; width:100%; height:100%; }
+#research-talk .v4-scene-overlay { pointer-events:none; }
+#research-talk .v4-scene-overlay .physical { color:#8b460b; }
+#research-talk .v4-scene-overlay .virtual { color:#174587; }
+#research-talk .v4-scene-overlay .effect { color:#294d84; }
+#research-talk .v4-scene-overlay path, #research-talk .v4-scene-overlay ellipse { fill:none; stroke:currentColor; stroke-width:6; }
+#research-talk .v4-scene-overlay > path, #research-talk .v4-scene-overlay > ellipse { stroke-dasharray:13 8; }
+#research-talk .v4-scene-overlay rect { fill:#fff; stroke:currentColor; stroke-width:3; }
+#research-talk .v4-scene-overlay text { fill:currentColor; font:700 30px Arial,sans-serif; }
+#research-talk .v4-scene-figure figcaption { display:grid; grid-template-columns:1fr 1fr; gap:14px; font-size:clamp(13px,1.25vw,17px); line-height:1.3; }
+#research-talk .v4-scene-figure figcaption div { border-top:3px solid #8b460b; padding:6px 8px 0; }
+#research-talk .v4-scene-figure figcaption div+div { border-color:#174587; }
+#research-talk .v4-scene-figure figcaption b, #research-talk .v4-scene-figure figcaption span { display:block; }
+@media(max-width:720px){
+ #research-talk .v4-scene-frame { container-type:normal; }
+ #research-talk .v4-scene { width:100%; }
+ #research-talk .v4-scene-figure figcaption { grid-template-columns:1fr; gap:6px; }
+}
