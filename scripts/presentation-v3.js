@@ -141,10 +141,23 @@
   function figure(image,title){return image?`<img src="${E(image)}" alt="${E(title)}" loading="eager">`:'';}
   function lightingScene(image) {
     return `<figure class="v4-light-figure">
-      ${figure(image,'The real and virtual spotlights illuminate both actors and props. The hall windows reflect on the red virtual cube and green physical sphere. A physical flag shadows the cube and a virtual flag shadows the sphere. The cube and sphere cast paired shadows on the physical desk. Both actors cast shadows on the floor. Solid rays point from the spotlights to the raised flags. Dashed guides connect each flag to its shadow. Curved arrows show bounced light.')}
+      <div class="v4-light-render">
+        ${figure(image,'A path-traced model of the shared set. Raised flags intercept the two spotlights. The red cube and green sphere receive shadows from the flags, and both actors cast shadows on the floor behind them.')}
+        <svg viewBox="0 0 1440 810" aria-hidden="true">
+          <path d="M208 225 L475 349 l-14 -1 m14 1 l-9 -11" stroke="#ffc478"/>
+          <path d="M1233 174 L963 332 l8 -13 m-8 13 l15 -3" stroke="#8ed4ff"/>
+          <g fill="#fff">
+            <text x="95" y="174">Physical spotlight</text><text x="1170" y="113">Virtual spotlight</text>
+            <text x="389" y="414">Physical flag</text><text x="964" y="405">Virtual flag</text>
+            <text x="554" y="154" text-anchor="middle">Physical actor</text><text x="887" y="154" text-anchor="middle">Virtual actor</text>
+            <text x="610" y="526" text-anchor="middle">Virtual cube</text><text x="836" y="505" text-anchor="middle">Physical sphere</text>
+            <text x="720" y="578" text-anchor="middle">Physical desk</text>
+          </g>
+        </svg>
+      </div>
       <figcaption class="v4-light-key">
-        <div><b>Physical light → virtual content</b><span>HDR reflections · Physical flag shadows the cube · Desk bounce</span></div>
-        <div><b>Virtual light → physical content in the headset view</b><span>Virtual flag shadows the sphere · Cube bounce · Paired shadows on the desk</span></div>
+        <div><b>Physical light → virtual content</b><span>Amber light is blocked by the physical flag, casting a shadow on the cube.</span></div>
+        <div><b>Virtual light → physical content in the headset view</b><span>The virtual flag shadows the sphere. Both spotlights also cast shadows from the actors and props.</span></div>
       </figcaption>
     </figure>`;
   }
