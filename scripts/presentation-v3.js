@@ -141,7 +141,7 @@
   function figure(image,title){return image?`<img src="${E(image)}" alt="${E(title)}" loading="eager">`:'';}
   function lightingScene(image) {
     return `<figure class="v4-light-figure">
-      ${figure(image,'The real and virtual spotlights illuminate both actors and props. The hall windows reflect on the red virtual cube and green physical sphere. A physical flag shadows the cube and a virtual flag shadows the sphere. The cube and sphere cast paired shadows on the physical desk. Arrows show light bouncing from the desk to the cube and from the cube to the sphere.')}
+      ${figure(image,'The real and virtual spotlights illuminate both actors and props. The hall windows reflect on the red virtual cube and green physical sphere. A physical flag shadows the cube and a virtual flag shadows the sphere. The cube and sphere cast paired shadows on the physical desk. Both actors cast shadows on the floor. Solid rays point from the spotlights to the raised flags. Dashed guides connect each flag to its shadow. Curved arrows show bounced light.')}
       <figcaption class="v4-light-key">
         <div><b>Physical light → virtual content</b><span>HDR reflections · Physical flag shadows the cube · Desk bounce</span></div>
         <div><b>Virtual light → physical content in the headset view</b><span>Virtual flag shadows the sphere · Cube bounce · Paired shadows on the desk</span></div>
