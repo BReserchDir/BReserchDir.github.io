@@ -160,6 +160,10 @@
       return `<button type="button" class="v4-research-paper" data-v3-paper="${E(id)}" title="${E(p.title)}">${figure(p.sourceFigure?.image||p.thumbnail,p.title)}<b>${E(name)}</b><span>${E(p.year||"")}</span></button>`;
     };
       switch(s.kind){
+        case 'v4-target-grid': {
+          const [instruction,evidence]=s.rows[0][1][4];
+          return `<div class="target-plot"><div class="target-matrix"><table><caption>Columns show where the target comes from. Rows show what sets the timing.</caption><thead><tr><th scope="col">Timing</th>${s.columns.map(x=>`<th scope="col">${E(x)}</th>`).join("")}</tr></thead><tbody>${s.rows.map(([name,cells],row)=>`<tr><th scope="row">${E(name)}</th>${cells.map(([command,study],col)=>`<td><button type="button" data-target-cell="${row},${col}" aria-label="${E(command)}" aria-pressed="${row===0&&col===4}">${row===0&&col===4?"Proposed test":study?"● Evidence":"◇ Example"}</button></td>`).join("")}</tr>`).join("")}</tbody></table></div><section class="target-detail" aria-live="polite"><h2 data-target-command>${E(instruction)}</h2><p data-target-evidence>${E(evidence)}</p></section><nav class="v4-taxonomy-links" aria-label="Full source plots">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav></div>`;
+        }
         case 'v4-survey': {
           const art=s.image?`<figure class="survey-figure">${figure(s.image,s.imageAlt||s.title)}${s.imageCaption?`<figcaption>${E(s.imageCaption)}</figcaption>`:""}</figure>`:"";
           const items=(s.items||[]).map(item=>`<section><h2>${E(item.title)}</h2>${item.text?`<p>${E(item.text)}</p>`:""}${item.ids?.length?`<div class="v4-paper-strip">${item.ids.map(researchPaper).join("")}</div>`:""}</section>`).join("");
@@ -218,6 +222,16 @@
       }
     },
     mount(host,s,c){
+      if(s.kind==='v4-target-grid'){
+        const buttons=[...host.querySelectorAll('[data-target-cell]')];
+        for(const button of buttons) button.onclick=()=>{
+          const [row,col]=button.dataset.targetCell.split(',').map(Number);
+          const [instruction,evidence]=s.rows[row][1][col];
+          host.querySelector('[data-target-command]').textContent=instruction;
+          host.querySelector('[data-target-evidence]').textContent=evidence||'The supplied plot shows a directing example at this coordinate.';
+          for(const cell of buttons) cell.setAttribute('aria-pressed',String(cell===button));
+        };
+      }
       if(s.kind==='v4-light-space'){
         const button=host.querySelector('[data-v4-stage-toggle]');
         const stage=host.querySelector('[data-v4-stage]');

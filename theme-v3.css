@@ -490,3 +490,14 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 @media(max-width:760px) {
   #research-talk .survey-with-art:has(.survey-items) { grid-template-columns:1fr; }
 }
+#research-talk .target-plot { display:grid; gap:14px; }
+#research-talk .target-matrix { overflow-x:auto; }
+#research-talk .target-matrix table { border-collapse:collapse; width:100%; min-width:660px; table-layout:fixed; font-size:clamp(14px,1.4vw,20px); }
+#research-talk .target-matrix caption { text-align:left; margin-bottom:8px; }
+#research-talk .target-matrix th, #research-talk .target-matrix td { padding:5px; border:1px solid #cbd5df; }
+#research-talk .target-matrix th { text-align:left; line-height:1.2; }
+#research-talk .target-matrix button { width:100%; min-height:35px; background:#f1f6fb; color:#184768; border:0; cursor:pointer; font:inherit; }
+#research-talk .target-matrix button[aria-pressed="true"] { background:#8a360f; color:white; }
+#research-talk .target-detail { border-left:4px solid #8a360f; padding:8px 14px; background:#f8f3ef; }
+#research-talk .target-detail h2 { font-size:clamp(20px,2vw,29px); margin:0 0 5px; }
+#research-talk .target-detail p { font-size:clamp(16px,1.5vw,22px); margin:0; }
