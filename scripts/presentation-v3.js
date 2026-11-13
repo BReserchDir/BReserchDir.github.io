@@ -160,6 +160,23 @@
     const cellAt=(row,column)=>s.cells.find(c=>c.row===row&&c.column===column);
     return `<div class="survey-matrix"><div class="target-matrix"><table><caption>Source of the spatial target →</caption><thead><tr><th scope="col">What sets timing?</th>${s.columns.map(column=>`<th scope="col">${E(column.label)}</th>`).join("")}</tr></thead><tbody>${s.rows.map(row=>`<tr><th scope="row">${E(row.label)}</th>${s.columns.map(column=>{const cell=cellAt(row.id,column.id),isFocus=cell.row===s.focus?.row&&cell.column===s.focus?.column;return `<td><button type="button" data-survey-cell="${s.cells.indexOf(cell)}" aria-pressed="${cell===selected}"><strong>${E(cell.summary||cell.examples[0])}</strong><span>${isFocus?"Proposed test":cell.demonstrations.length?`${cell.demonstrations.length} ${cell.demonstrations.length===1?"demonstration":"demonstrations"}`:"Directing example"}</span></button></td>`;}).join("")}</tr>`).join("")}</tbody></table></div><div data-survey-detail aria-live="polite">${matrixEvidence(selected)}</div>${s.documents?.length?`<nav class="v4-taxonomy-links" aria-label="Source plots">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav>`:""}</div>`;
   }
+  function renderTargetCoverage(s) {
+    const counts = s.columns.map(column => s.cells
+      .filter(cell => cell.column === column.id)
+      .reduce((sum, cell) => sum + cell.demonstrations.length, 0));
+    const total = counts.reduce((sum, count) => sum + count, 0);
+    let start = 0;
+    const segments = counts.map((count, i) => {
+      const end = start + count / total * 360;
+      const segment = `${tones[i]} ${start}deg ${end}deg`;
+      start = end;
+      return segment;
+    }).join(', ');
+    return `<div class="target-coverage">
+      <div class="target-coverage-pie" aria-hidden="true" style="background:conic-gradient(${segments})"><strong>${total}</strong><span>demonstrations</span></div>
+      <div><h2>Where the target comes from</h2><ul>${s.columns.map((column,i)=>`<li><i style="background:${tones[i]}"></i><span>${E(column.label)}</span><b>${counts[i]}</b></li>`).join('')}</ul><p>Counts are placements in the plot. A paper can appear more than once.</p></div>
+    </div>`;
+  }
   window.PresentationV3={
     render(s,c){
     const researchPaper = id => {
@@ -183,6 +200,7 @@
         }
         case 'v4-survey-plot':
           return `<figure class="v3-full-figure survey-original-plot"><a href="${E(s.document)}" target="_blank" rel="noopener" aria-label="Open original plot PDF at full size">${figure(s.image,s.title)}<span>Open full-size plot (PDF) ↗</span></a></figure>`;
+        case 'v4-target-coverage': return renderTargetCoverage(s);
         case 'v4-survey-matrix': return renderSurveyMatrix(s);
         case 'v4-target-grid': {
           const [instruction,evidence]=s.rows[0][1][4];
