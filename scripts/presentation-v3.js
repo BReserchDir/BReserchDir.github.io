@@ -159,6 +159,10 @@
           return `<div class="v4-light-space"><div class="v4-light-controls"><button type="button" data-v4-stage-toggle aria-expanded="false">Explore the 3D stage</button><span data-v4-stage-status aria-live="polite"></span></div><div data-v4-static>${lightingScene(s.image)}</div><section class="v2m-hero" data-v4-stage hidden><div data-v2m-stage></div><label>Move the lights <input type="range" min="0" max="100" value="50" data-v2m-light-change></label><p>Drag to orbit. Scroll to zoom. This stage shows light placement and geometry.</p></section></div>`;
         case 'v4-control-space':
           return `<div class="v4-control-space"><div>${s.examples.map(x=>`<article><h2>${E(x.title)}</h2><p>${E(x.text)}</p></article>`).join('')}</div><figure>${figure(s.image,'Proposal figure showing direct, guided and automated control of agents and equipment')}<figcaption>Proposal figure · Character direction above, equipment control below</figcaption></figure></div>`;
+        case 'v4-evidence-summary':
+          return `<div class="v4-talk-evidence">${rows(s.items)}${s.documents?.length?`<nav aria-label="Full evidence charts">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav>`:""}</div>`;
+        case 'v4-single-gap':
+          return `<div class="v4-single-gap"><figure>${figure(s.image,s.imageCaption)}<figcaption>${E(s.imageCaption)}</figcaption></figure><div><h2>What papers show</h2><ul>${s.papers.map(p=>`<li><button type="button" data-v3-paper="${E(p.id)}">${E(p.label)}</button> ${E(p.evidence)}</li>`).join("")}</ul><h2>Gap</h2><p>${E(s.gap)}</p></div></div>`;
         case 'v4-evidence-gaps':
           return `<div class="v4-gap-grid">${s.items.map(g=>`<article><h2>${E(g.title)}</h2><p>${E(g.text)}</p><div class="v4-gap-papers">${g.papers.map(example=>{
             const p=c.paper(example.id),image=p.sourceFigure?.image||p.thumbnail;
