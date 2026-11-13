@@ -582,3 +582,7 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 @media(max-width:760px) {
   #research-talk .survey-pies, #research-talk .survey-state-gap { grid-template-columns:1fr; }
 }
+#research-talk.talk-v3 .talk-slide[data-kind="v4-survey-exact-plot"] { padding:0; gap:0; max-width:none; }
+#research-talk.talk-v3 [data-kind="v4-survey-exact-plot"] :is(.talk-kicker,.talk-title,.talk-lead) { display:none; }
+#research-talk.talk-v3 [data-kind="v4-survey-exact-plot"] .talk-body { padding:0; }
+#research-talk.talk-v3 [data-kind="v4-survey-exact-plot"] img { display:block; width:100%; height:100%; object-fit:contain; }

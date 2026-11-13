@@ -198,6 +198,8 @@
           const evidence=ids.length?`<div class="v4-paper-strip">${ids.slice(0,count).map(researchPaper).join("")}</div>`:"";
           return `<div class="survey-bullets ${art?"has-art":""}">${art}<div><ul>${s.bullets.map(x=>`<li>${E(x)}</li>`).join("")}</ul>${evidence}</div></div>`;
         }
+        case 'v4-survey-exact-plot':
+          return figure(s.image,s.title);
         case 'v4-survey-plot':
           return `<figure class="v3-full-figure survey-original-plot"><a href="${E(s.document)}" target="_blank" rel="noopener" aria-label="Open original plot PDF at full size">${figure(s.image,s.title)}<span>Open full-size plot (PDF) ↗</span></a></figure>`;
         case 'v4-target-coverage': return renderTargetCoverage(s);
