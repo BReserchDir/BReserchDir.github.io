@@ -152,14 +152,32 @@
   }
   function plates(items,type){return `<div class="v3-plates ${type}">${items.map((p,i)=>`<article><div class="v3-plate-image">${figure(p.image,p.title)}</div><span class="v3-index">0${i+1}</span><h2>${E(p.title)}</h2><p>${E(p.limit||p.goal||p.text||p.question)}</p></article>`).join('')}</div>`;}
   function rows(items){return `<div class="v3-statements">${items.map((g,i)=>`<article><span>0${i+1}</span><div><h2>${E(g.title||g.label)}</h2><p>${E(g.text||g.question)}</p></div>${g.paperIds?.length?`<button class="v3-evidence-button" data-v3-papers="${E(g.paperIds.join(','))}">Sources ↗</button>`:''}</article>`).join('')}</div>`;}
+  function matrixEvidence(cell) {
+    return `<div class="survey-cell-detail"><div><h2>Director’s instruction</h2>${cell.examples.map(x=>`<p>${E(x)}</p>`).join("")}</div><div><h2>What the selected studies show</h2>${cell.demonstrations.length?`<ul>${cell.demonstrations.map(d=>`<li><a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.name)}</a> <span>${E([d.venue,d.year].filter(Boolean).join(" · "))}</span><p>${E(d.text)}</p><span class="survey-runtime">${d.kind==="related"?"Related tracking or automatic control · ":""}${d.runtime==="RT"?"Real-time result reported for this example":"Real-time result unreported for this example"}</span></li>`).join("")}</ul>`:"<p>The supplied plot records a directing example here. It lists no matching demonstration at this coordinate.</p>"}</div></div>`;
+  }
+  function renderSurveyMatrix(s) {
+    const selected=s.cells.find(c=>c.row===s.focus?.row&&c.column===s.focus?.column)||s.cells[0];
+    const cellAt=(row,column)=>s.cells.find(c=>c.row===row&&c.column===column);
+    return `<div class="survey-matrix"><div class="target-matrix"><table><caption>Source of the spatial target →</caption><thead><tr><th scope="col">What sets timing?</th>${s.columns.map(column=>`<th scope="col">${E(column.label)}</th>`).join("")}</tr></thead><tbody>${s.rows.map(row=>`<tr><th scope="row">${E(row.label)}</th>${s.columns.map(column=>{const cell=cellAt(row.id,column.id),isFocus=cell.row===s.focus?.row&&cell.column===s.focus?.column;return `<td><button type="button" data-survey-cell="${s.cells.indexOf(cell)}" aria-pressed="${cell===selected}"><strong>${E(cell.summary||cell.examples[0])}</strong><span>${isFocus?"Proposed test":cell.demonstrations.length?`${cell.demonstrations.length} ${cell.demonstrations.length===1?"demonstration":"demonstrations"}`:"Directing example"}</span></button></td>`;}).join("")}</tr>`).join("")}</tbody></table></div><div data-survey-detail aria-live="polite">${matrixEvidence(selected)}</div>${s.documents?.length?`<nav class="v4-taxonomy-links" aria-label="Source plots">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav>`:""}</div>`;
+  }
   window.PresentationV3={
     render(s,c){
     const researchPaper = id => {
       const p = c.paper(id);
-      const name = ({'review-ref-75':'Lighthouse','review-ref-65':'Interactive Near-Field Illumination','review-ref-85':'HybRelighter','gruber2015':'Gruber et al.','smartbody-gaze2009':'Expressive Gaze','imprecise-keyframes':'Imprecise Keyframes','hosl':'Handheld Robot Control','reality-proxy':'Reality Proxy','scheduled-inpainting':'Scheduled Inpainting'}[id]) || p.title.split(':')[0];
+      const name = ({'review-ref-75':'Lighthouse','review-ref-65':'Near-Field Illumination','review-ref-85':'HybRelighter','gruber2015':'Gruber et al.','smartbody-gaze2009':'Expressive Gaze','imprecise-keyframes':'Imprecise Keyframes','hosl':'Handheld Robot Control','reality-proxy':'Reality Proxy','scheduled-inpainting':'Scheduled Inpainting','aerial-jib':'Aerial Jib'}[id]) || p.shortTitle || p.title.split(':')[0];
       return `<button type="button" class="v4-research-paper" data-v3-paper="${E(id)}" title="${E(p.title)}">${figure(p.sourceFigure?.image||p.thumbnail,p.title)}<b>${E(name)}</b><span>${E(p.year||"")}</span></button>`;
     };
       switch(s.kind){
+        case 'v4-survey-bullets': {
+          const ids=[...new Set(s.featuredPaperIds||s.paperIds||[])].filter(id=>{const p=c.paper(id);return p.sourceFigure?.image||p.thumbnail;});
+          const count=s.image?2:3;
+          const art=s.image?`<figure>${figure(s.image,s.title)}</figure>`:"";
+          const evidence=ids.length?`<div class="v4-paper-strip">${ids.slice(0,count).map(researchPaper).join("")}</div>`:"";
+          return `<div class="survey-bullets ${art?"has-art":""}">${art}<div><ul>${s.bullets.map(x=>`<li>${E(x)}</li>`).join("")}</ul>${evidence}</div></div>`;
+        }
+        case 'v4-survey-plot':
+          return `<figure class="v3-full-figure survey-original-plot"><a href="${E(s.document)}" target="_blank" rel="noopener" aria-label="Open original plot PDF at full size">${figure(s.image,s.title)}<span>Open full-size plot (PDF) ↗</span></a></figure>`;
+        case 'v4-survey-matrix': return renderSurveyMatrix(s);
         case 'v4-target-grid': {
           const [instruction,evidence]=s.rows[0][1][4];
           return `<div class="target-plot"><div class="target-matrix"><table><caption>Columns show where the target comes from. Rows show what sets the timing.</caption><thead><tr><th scope="col">Timing</th>${s.columns.map(x=>`<th scope="col">${E(x)}</th>`).join("")}</tr></thead><tbody>${s.rows.map(([name,cells],row)=>`<tr><th scope="row">${E(name)}</th>${cells.map(([command,study],col)=>`<td><button type="button" data-target-cell="${row},${col}" aria-label="${E(command)}" aria-pressed="${row===0&&col===4}">${row===0&&col===4?"Proposed test":study?"● Evidence":"◇ Example"}</button></td>`).join("")}</tr>`).join("")}</tbody></table></div><section class="target-detail" aria-live="polite"><h2 data-target-command>${E(instruction)}</h2><p data-target-evidence>${E(evidence)}</p></section><nav class="v4-taxonomy-links" aria-label="Full source plots">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav></div>`;
@@ -222,6 +240,14 @@
       }
     },
     mount(host,s,c){
+      if(s.kind==='v4-survey-matrix'){
+        const buttons=[...host.querySelectorAll('[data-survey-cell]')];
+        const detail=host.querySelector('[data-survey-detail]');
+        for(const button of buttons) button.onclick=()=>{
+          detail.innerHTML=matrixEvidence(s.cells[Number(button.dataset.surveyCell)]);
+          for(const cell of buttons) cell.setAttribute('aria-pressed',String(cell===button));
+        };
+      }
       if(s.kind==='v4-target-grid'){
         const buttons=[...host.querySelectorAll('[data-target-cell]')];
         for(const button of buttons) button.onclick=()=>{
