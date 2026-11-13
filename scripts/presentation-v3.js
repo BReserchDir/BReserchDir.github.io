@@ -160,6 +160,11 @@
       return `<button type="button" class="v4-research-paper" data-v3-paper="${E(id)}" title="${E(p.title)}">${figure(p.sourceFigure?.image||p.thumbnail,p.title)}<b>${E(name)}</b><span>${E(p.year||"")}</span></button>`;
     };
       switch(s.kind){
+        case 'v4-survey': {
+          const art=s.image?`<figure class="survey-figure">${figure(s.image,s.imageAlt||s.title)}${s.imageCaption?`<figcaption>${E(s.imageCaption)}</figcaption>`:""}</figure>`:"";
+          const items=(s.items||[]).map(item=>`<section><h2>${E(item.title)}</h2>${item.text?`<p>${E(item.text)}</p>`:""}${item.ids?.length?`<div class="v4-paper-strip">${item.ids.map(researchPaper).join("")}</div>`:""}</section>`).join("");
+          return `<div class="survey-slide"><div class="survey-main ${art?"survey-with-art":""}">${art}${items?`<div class="survey-items">${items}</div>`:""}</div>${s.takeaway?`<p class="survey-takeaway">${E(s.takeaway)}</p>`:""}${s.documents?.length?`<nav class="v4-taxonomy-links" aria-label="Further evidence">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav>`:""}</div>`;
+        }
         case 'v4-research-taxonomy':
           return `<div class="v4-research-map">${s.categories.map(category=>`<article><h2>${E(category.title)}</h2><div class="v4-taxonomy-methods">${category.groups.map((group,index)=>`<section><h3>${E(group)}</h3>${researchPaper(category.ids[index])}</section>`).join("")}</div><p><b>Open question</b> ${E(category.gap)}</p></article>`).join("")}</div>${s.documents?.length?`<nav class="v4-taxonomy-links" aria-label="Full evidence charts">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav>`:""}`;
         case 'v4-grouped-gap':
