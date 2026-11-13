@@ -179,7 +179,7 @@
   }
   function renderPaperEvidencePlot(s) {
     const source = s.documents?.[0]?.url || 'assets/directions/xr-target-and-timing.pdf';
-    return `<div class="paper-evidence-plot"><object type="image/svg+xml" data="assets/directions/xr-target-and-timing.svg" aria-label="XR character direction: spatial target by timing, with examples and linked papers"><a href="${E(source)}" target="_blank" rel="noopener">Open the original plot PDF</a></object></div>`;
+    return `<div class="paper-evidence-plot"><object type="image/svg+xml" data="assets/directions/xr-target-and-timing.svg?v=full-width" aria-label="XR character direction: spatial target by timing, with examples and linked papers"><a href="${E(source)}" target="_blank" rel="noopener">Open the original plot PDF</a></object></div>`;
   }
   window.PresentationV3={
     render(s,c){
