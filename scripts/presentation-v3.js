@@ -154,7 +154,16 @@
   function rows(items){return `<div class="v3-statements">${items.map((g,i)=>`<article><span>0${i+1}</span><div><h2>${E(g.title||g.label)}</h2><p>${E(g.text||g.question)}</p></div>${g.paperIds?.length?`<button class="v3-evidence-button" data-v3-papers="${E(g.paperIds.join(','))}">Sources ↗</button>`:''}</article>`).join('')}</div>`;}
   window.PresentationV3={
     render(s,c){
+    const researchPaper = id => {
+      const p = c.paper(id);
+      const name = ({'review-ref-75':'Lighthouse','review-ref-65':'Interactive Near-Field Illumination','review-ref-85':'HybRelighter','gruber2015':'Gruber et al.','smartbody-gaze2009':'Expressive Gaze','imprecise-keyframes':'Imprecise Keyframes','hosl':'Handheld Robot Control','reality-proxy':'Reality Proxy','scheduled-inpainting':'Scheduled Inpainting'}[id]) || p.title.split(':')[0];
+      return `<button type="button" class="v4-research-paper" data-v3-paper="${E(id)}" title="${E(p.title)}">${figure(p.sourceFigure?.image||p.thumbnail,p.title)}<b>${E(name)}</b><span>${E(p.year||"")}</span></button>`;
+    };
       switch(s.kind){
+        case 'v4-research-taxonomy':
+          return `<div class="v4-research-map">${s.categories.map(category=>`<article><h2>${E(category.title)}</h2><div class="v4-taxonomy-methods">${category.groups.map((group,index)=>`<section><h3>${E(group)}</h3>${researchPaper(category.ids[index])}</section>`).join("")}</div><p><b>Open question</b> ${E(category.gap)}</p></article>`).join("")}</div>${s.documents?.length?`<nav class="v4-taxonomy-links" aria-label="Full evidence charts">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav>`:""}`;
+        case 'v4-grouped-gap':
+          return `<div class="v4-gap-synthesis"><div class="v4-gap-groups">${s.groups.map(group=>`<section><h2>${E(group.title)}</h2><p>${E(group.finding)}</p><div class="v4-paper-strip">${group.ids.map(researchPaper).join("")}</div></section>`).join("")}</div><p class="v4-gap-claim"><b>Research gap</b> ${E(s.gap)}</p></div>`;
         case 'v4-light-space':
           return `<div class="v4-light-space"><div class="v4-light-controls"><button type="button" data-v4-stage-toggle aria-expanded="false">Explore the 3D stage</button><span data-v4-stage-status aria-live="polite"></span></div><div data-v4-static>${lightingScene(s.image)}</div><section class="v2m-hero" data-v4-stage hidden><div data-v2m-stage></div><label>Move the lights <input type="range" min="0" max="100" value="50" data-v2m-light-change></label><p>Drag to orbit. Scroll to zoom. This stage shows light placement and geometry.</p></section></div>`;
         case 'v4-control-space':
