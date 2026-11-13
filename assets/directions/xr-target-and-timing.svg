@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 120 1500 1180" role="group" aria-labelledby="plot-title">
+<title id="plot-title">Source of the spatial target (X) by what sets the timing (Y)</title>
+<style>text{font-family:Arial,Helvetica,sans-serif}a:hover text,a:focus text{text-decoration:underline}</style>
+<rect width="1500" height="1360" fill="white"/>
+<polyline points="282.4,186 282.4,1229" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="282.4,1229 282.4,1234" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="545.2,186 545.2,1229" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="545.2,1229 545.2,1234" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="808,186 808,1229" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="808,1229 808,1234" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="1070.8,186 1070.8,1229" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="1070.8,1229 1070.8,1234" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="1333.6,186 1333.6,1229" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="1333.6,1229 1333.6,1234" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="151,1010 1465,1010" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="146,1010 151,1010" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="151,741 1465,741" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="146,741 151,741" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="151,472 1465,472" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="146,472 151,472" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="151,203 1465,203" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="146,203 151,203" fill="none" stroke="#475870" stroke-width="0.8"/>
+<polyline points="151,186 151,1229" fill="none" stroke="#475870" stroke-width="1"/>
+<polyline points="151,1229 1465,1229" fill="none" stroke="#475870" stroke-width="1"/>
+<polyline points="282.4,1010 282.4,1022" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="545.2,1010 545.2,1022" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="808,1010 808,1022" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1070.8,1010 1070.8,1022" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1333.6,1010 1333.6,1022" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="282.4,741 282.4,753" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="545.2,741 545.2,753" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="808,741 808,753" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1070.8,741 1070.8,753" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1333.6,741 1333.6,753" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="282.4,472 282.4,484" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="545.2,472 545.2,484" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="808,472 808,484" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1070.8,472 1070.8,484" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1333.6,472 1333.6,484" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="282.4,203 282.4,215" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="545.2,203 545.2,215" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="808,203 808,215" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1070.8,203 1070.8,215" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="1333.6,203 1333.6,215" fill="none" stroke="#9c4b19" stroke-width="0.75"/>
+<polyline points="38,1298 1460,1298" fill="none" stroke="#dae2ec" stroke-width="0.8"/>
+<polyline points="555.6,142.4 562.4,142.4 562.4,135.6 555.6,135.6 555.6,142.4" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="162,1207 402.8,1207 402.8,1023 162,1023 162,1207" fill="#ffffff" stroke="none" stroke-width="1"/>
+<polyline points="424.8,1161 665.6,1161 665.6,1023 424.8,1023 424.8,1161" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="687.6,1160 928.4,1160 928.4,1023 687.6,1023 687.6,1160" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="950.4,1174 1191.2,1174 1191.2,1023 950.4,1023 950.4,1174" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="1067.3,1013.5 1074.3,1013.5 1074.3,1006.5 1067.3,1006.5 1067.3,1013.5" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="1213.2,1040 1454,1040 1454,1023 1213.2,1023 1213.2,1040" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="162,973 402.8,973 402.8,754 162,754 162,973" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="424.8,771 665.6,771 665.6,754 424.8,754 424.8,771" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="687.6,972 928.4,972 928.4,754 687.6,754 687.6,972" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="950.4,785 1191.2,785 1191.2,754 950.4,754 950.4,785" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="1213.2,785 1454,785 1454,754 1213.2,754 1213.2,785" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="162,730 402.8,730 402.8,485 162,485 162,730" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="424.8,502 665.6,502 665.6,485 424.8,485 424.8,502" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="687.6,575 928.4,575 928.4,485 687.6,485 687.6,575" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="950.4,502 1191.2,502 1191.2,485 950.4,485 950.4,502" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="1213.2,516 1454,516 1454,485 1213.2,485 1213.2,516" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="162,233 402.8,233 402.8,216 162,216 162,233" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="424.8,247 665.6,247 665.6,216 424.8,216 424.8,247" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="687.6,413 928.4,413 928.4,216 687.6,216 687.6,413" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="804.5,206.5 811.5,206.5 811.5,199.5 804.5,199.5 804.5,206.5" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="950.4,233 1191.2,233 1191.2,216 950.4,216 950.4,233" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="1213.2,261 1454,261 1454,216 1213.2,216 1213.2,261" fill="#ffffff" stroke="none" stroke-width="1.7"/>
+<polyline points="168,139 162,133 156,139 162,145 168,139" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="355,139 347,131 339,139 347,147 355,139" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="350.6,139 347,135.4 343.4,139 347,142.6 350.6,139" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="567,139 559,131 551,139 559,147 567,139" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="290.4,1010 282.4,1002 274.4,1010 282.4,1018 290.4,1010" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="286.6,1010 282.4,1005.8 278.2,1010 282.4,1014.2 286.6,1010" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="553.2,1010 545.2,1002 537.2,1010 545.2,1018 553.2,1010" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="549.4,1010 545.2,1005.8 541,1010 545.2,1014.2 549.4,1010" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="816,1010 808,1002 800,1010 808,1018 816,1010" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="812.2,1010 808,1005.8 803.8,1010 808,1014.2 812.2,1010" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="1078.8,1010 1070.8,1002 1062.8,1010 1070.8,1018 1078.8,1010" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="1341.6,1010 1333.6,1002 1325.6,1010 1333.6,1018 1341.6,1010" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="290.4,741 282.4,733 274.4,741 282.4,749 290.4,741" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="286.6,741 282.4,736.8 278.2,741 282.4,745.2 286.6,741" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="553.2,741 545.2,733 537.2,741 545.2,749 553.2,741" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="816,741 808,733 800,741 808,749 816,741" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="812.2,741 808,736.8 803.8,741 808,745.2 812.2,741" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="1078.8,741 1070.8,733 1062.8,741 1070.8,749 1078.8,741" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="1341.6,741 1333.6,733 1325.6,741 1333.6,749 1341.6,741" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="290.4,472 282.4,464 274.4,472 282.4,480 290.4,472" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="286.6,472 282.4,467.8 278.2,472 282.4,476.2 286.6,472" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="553.2,472 545.2,464 537.2,472 545.2,480 553.2,472" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="816,472 808,464 800,472 808,480 816,472" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="812.2,472 808,467.8 803.8,472 808,476.2 812.2,472" fill="#176772" stroke="none" stroke-width="1.7"/>
+<polyline points="1078.8,472 1070.8,464 1062.8,472 1070.8,480 1078.8,472" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="1341.6,472 1333.6,464 1325.6,472 1333.6,480 1341.6,472" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="290.4,203 282.4,195 274.4,203 282.4,211 290.4,203" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="553.2,203 545.2,195 537.2,203 545.2,211 553.2,203" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="816,203 808,195 800,203 808,211 816,203" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="1078.8,203 1070.8,195 1062.8,203 1070.8,211 1078.8,203" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<polyline points="1341.6,203 1333.6,195 1325.6,203 1333.6,211 1341.6,203" fill="#ffffff" stroke="#9c4b19" stroke-width="1.7"/>
+<text x="175" y="143" font-size="11.5" font-weight="400" fill="#9c4b19" textLength="109.285" lengthAdjust="spacingAndGlyphs" xml:space="preserve">XR directing example</text>
+<text x="361" y="143" font-size="11.5" font-weight="400" fill="#176772" textLength="132.308" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Published direction or edit</text>
+<text x="573" y="143" font-size="11.5" font-weight="400" fill="#176772" textLength="187.266" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Related tracking or automatic control</text>
+<text x="852" y="143" font-size="11" font-weight="400" fill="#475870" textLength="240.306" lengthAdjust="spacingAndGlyphs" xml:space="preserve">A paper can appear at more than one coordinate.</text>
+<text x="152" y="169" font-size="10" font-weight="700" fill="#176244" textLength="13.33" lengthAdjust="spacingAndGlyphs" xml:space="preserve">RT</text>
+<text x="180" y="169" font-size="10.8" font-weight="400" fill="#475870" textLength="241.888" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Real-time demo or measured controller throughput</text>
+<text x="507" y="169" font-size="10" font-weight="700" fill="#56627d" textLength="15" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text>
+<text x="535" y="169" font-size="10.8" font-weight="400" fill="#475870" textLength="210.665" lengthAdjust="spacingAndGlyphs" xml:space="preserve">No real-time result reported for this example</text>
+<text x="254.279" y="1247" font-size="11" font-weight="400" fill="#475870" textLength="56.243" lengthAdjust="spacingAndGlyphs" xml:space="preserve">No external</text>
+<text x="250.912" y="1261" font-size="11" font-weight="400" fill="#475870" textLength="62.975" lengthAdjust="spacingAndGlyphs" xml:space="preserve">spatial target</text>
+<text x="503.933" y="1247" font-size="11" font-weight="400" fill="#475870" textLength="82.533" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Target described</text>
+<text x="516.765" y="1261" font-size="11" font-weight="400" fill="#475870" textLength="56.87" lengthAdjust="spacingAndGlyphs" xml:space="preserve">in language</text>
+<text x="770.094" y="1247" font-size="11" font-weight="400" fill="#475870" textLength="75.812" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Target supplied</text>
+<text x="762.46" y="1261" font-size="11" font-weight="400" fill="#475870" textLength="91.08" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(ID or coordinates)</text>
+<text x="1019.75" y="1247" font-size="11" font-weight="400" fill="#475870" textLength="102.091" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Target from XR input</text>
+<text x="1020.06" y="1261" font-size="11" font-weight="400" fill="#475870" textLength="101.486" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(point, trace or pose)</text>
+<text x="1293.25" y="1247" font-size="11" font-weight="400" fill="#475870" textLength="80.696" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Described target</text>
+<text x="1282.09" y="1261" font-size="11" font-weight="400" fill="#475870" textLength="103.026" lengthAdjust="spacingAndGlyphs" xml:space="preserve">+ embodied XR input</text>
+<text x="90.268" y="1007" font-size="11" font-weight="400" fill="#475870" textLength="50.732" lengthAdjust="spacingAndGlyphs" xml:space="preserve">No explicit</text>
+<text x="60.92" y="1021" font-size="11" font-weight="400" fill="#475870" textLength="80.08" lengthAdjust="spacingAndGlyphs" xml:space="preserve">timing constraint</text>
+<text x="74.362" y="738" font-size="11" font-weight="400" fill="#475870" textLength="66.638" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Duration, rate</text>
+<text x="82.931" y="752" font-size="11" font-weight="400" fill="#475870" textLength="58.069" lengthAdjust="spacingAndGlyphs" xml:space="preserve">or start time</text>
+<text x="68.862" y="469" font-size="11" font-weight="400" fill="#475870" textLength="72.138" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Action order or</text>
+<text x="71.92" y="483" font-size="11" font-weight="400" fill="#475870" textLength="69.08" lengthAdjust="spacingAndGlyphs" xml:space="preserve">recorded sync</text>
+<text x="52.967" y="200" font-size="11" font-weight="400" fill="#475870" textLength="88.033" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Runtime condition</text>
+<text x="56.63" y="214" font-size="11" font-weight="400" fill="#475870" textLength="84.37" lengthAdjust="spacingAndGlyphs" xml:space="preserve">triggers an action</text>
+<text x="721.642" y="1283" font-size="12" font-weight="700" fill="#172539" textLength="8.004" lengthAdjust="spacingAndGlyphs" xml:space="preserve">X</text>
+<text x="739.654" y="1283" font-size="12" font-weight="700" fill="#172539" textLength="154.704" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Source of the spatial target</text>
+<text x="36" y="778.846" transform="rotate(-90 36 778.846)" font-size="8.004" font-weight="700" fill="#172539" textLength="8.004" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Y</text>
+<text x="36" y="760.834" transform="rotate(-90 36 760.834)" font-size="11.328" font-weight="700" fill="#172539" textLength="124.68" lengthAdjust="spacingAndGlyphs" xml:space="preserve">What sets the timing?</text>
+<text x="165" y="1036" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="88.1935" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Keep walking.”</text>
+<a href="https://motionfix.is.tue.mpg.de/" target="_blank" rel="noopener noreferrer"><text x="165" y="1058" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://motionfix.is.tue.mpg.de/" target="_blank" rel="noopener noreferrer"><text x="190" y="1058" font-size="10.7" font-weight="700" fill="#176772" textLength="168.867" lengthAdjust="spacingAndGlyphs" xml:space="preserve">MotionFix · SIGGRAPH Asia 2024</text></a>
+<text x="165" y="1071" font-size="10.5" font-weight="400" fill="#172539" textLength="225.855" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Lower a raised hand in an existing clip using text</text>
+<text x="165" y="1084" font-size="10.5" font-weight="400" fill="#172539" textLength="36.1725" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(Fig. 1).</text>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/04203.pdf" target="_blank" rel="noopener noreferrer"><text x="165" y="1105" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/04203.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="1105" font-size="10.7" font-weight="700" fill="#176772" textLength="202.123" lengthAdjust="spacingAndGlyphs" xml:space="preserve">CoMo: Controllable Motion Generation ·</text></a>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/04203.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="1118" font-size="10.7" font-weight="700" fill="#176772" textLength="56.496" lengthAdjust="spacingAndGlyphs" xml:space="preserve">ECCV 2024</text></a>
+<text x="165" y="1131" font-size="10.5" font-weight="400" fill="#172539" textLength="211.879" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Edit the existing clip to deepen the knee bend</text>
+<text x="165" y="1144" font-size="10.5" font-weight="400" fill="#172539" textLength="36.1725" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(Fig. 6).</text>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="165" y="1165" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="190" y="1165" font-size="10.7" font-weight="700" fill="#176772" textLength="184.308" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Iterative Motion Editing · SIGGRAPH</text></a>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="190" y="1178" font-size="10.7" font-weight="700" fill="#176772" textLength="23.7968" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024</text></a>
+<text x="165" y="1191" font-size="10.5" font-weight="400" fill="#172539" textLength="202.503" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Edit 1. Raise the existing side kick. The edit</text>
+<text x="165" y="1204" font-size="10.5" font-weight="400" fill="#172539" textLength="217.675" lengthAdjust="spacingAndGlyphs" xml:space="preserve">supplies no external target or timing constraint.</text>
+<text x="427.8" y="1036" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="231.334" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Move near the table.” / “Look at the cup.”</text>
+<text x="427.8" y="1050" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="170.637" lengthAdjust="spacingAndGlyphs" xml:space="preserve">/ “Stand beside the blue chair.”</text>
+<a href="https://openaccess.thecvf.com/content/CVPR2024/html/Cen_Generating_Human_Motion_in_3D_Scenes_from_Text_Descriptions_CVPR_2024_paper.html" target="_blank" rel="noopener noreferrer"><text x="427.8" y="1072" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://openaccess.thecvf.com/content/CVPR2024/html/Cen_Generating_Human_Motion_in_3D_Scenes_from_Text_Descriptions_CVPR_2024_paper.html" target="_blank" rel="noopener noreferrer"><text x="452.8" y="1072" font-size="10.7" font-weight="700" fill="#176772" textLength="197.404" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Cen et al.: Motion in 3D Scenes · CVPR</text></a>
+<a href="https://openaccess.thecvf.com/content/CVPR2024/html/Cen_Generating_Human_Motion_in_3D_Scenes_from_Text_Descriptions_CVPR_2024_paper.html" target="_blank" rel="noopener noreferrer"><text x="452.8" y="1085" font-size="10.7" font-weight="700" fill="#176772" textLength="23.7968" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024</text></a>
+<text x="427.8" y="1098" font-size="10.5" font-weight="400" fill="#172539" textLength="223.524" lengthAdjust="spacingAndGlyphs" xml:space="preserve">From a 3D scan: walk to the table near the sofa;</text>
+<text x="427.8" y="1111" font-size="10.5" font-weight="400" fill="#172539" textLength="146.485" lengthAdjust="spacingAndGlyphs" xml:space="preserve">stand up from the table (Fig. 1).</text>
+<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wang_Move_as_You_Say_Interact_as_You_Can_Language-guided_Human_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer"><text x="427.8" y="1132" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wang_Move_as_You_Say_Interact_as_You_Can_Language-guided_Human_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer"><text x="452.8" y="1132" font-size="10.7" font-weight="700" fill="#176772" textLength="152.839" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Move as You Say · CVPR 2024</text></a>
+<text x="427.8" y="1145" font-size="10.5" font-weight="400" fill="#172539" textLength="214.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Use text and a 3D scene to generate a curved</text>
+<text x="427.8" y="1158" font-size="10.5" font-weight="400" fill="#172539" textLength="204.246" lengthAdjust="spacingAndGlyphs" xml:space="preserve">walk to a chair or a walk to the door (Fig. 1).</text>
+<text x="690.6" y="1036" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="147.614" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Walk to the pinned mark.”</text>
+<a href="https://d1qx31qr3h6wln.cloudfront.net/publications/Synthesizing%20Physical%20Character-Scene%20Interactions.pdf" target="_blank" rel="noopener noreferrer"><text x="690.6" y="1058" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://d1qx31qr3h6wln.cloudfront.net/publications/Synthesizing%20Physical%20Character-Scene%20Interactions.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="1058" font-size="10.7" font-weight="700" fill="#176772" textLength="201" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Physical Character-Scene Interactions ·</text></a>
+<a href="https://d1qx31qr3h6wln.cloudfront.net/publications/Synthesizing%20Physical%20Character-Scene%20Interactions.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="1071" font-size="10.7" font-weight="700" fill="#176772" textLength="83.8452" lengthAdjust="spacingAndGlyphs" xml:space="preserve">SIGGRAPH 2023</text></a>
+<text x="690.6" y="1084" font-size="10.5" font-weight="400" fill="#172539" textLength="215.964" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Supply a target object bounding box. Separate</text>
+<text x="690.6" y="1097" font-size="10.5" font-weight="400" fill="#172539" textLength="209.496" lengthAdjust="spacingAndGlyphs" xml:space="preserve">simulation tasks cover sitting, lying down and</text>
+<text x="690.6" y="1110" font-size="10.5" font-weight="400" fill="#172539" textLength="68.859" lengthAdjust="spacingAndGlyphs" xml:space="preserve">carrying a box.</text>
+<a href="https://arxiv.org/html/2410.03441v1" target="_blank" rel="noopener noreferrer"><text x="690.6" y="1131" font-size="8.5" font-weight="700" fill="#176244" textLength="11.3305" lengthAdjust="spacingAndGlyphs" xml:space="preserve">RT</text></a>
+<a href="https://arxiv.org/html/2410.03441v1" target="_blank" rel="noopener noreferrer"><text x="715.6" y="1131" font-size="10.7" font-weight="700" fill="#176772" textLength="96.3214" lengthAdjust="spacingAndGlyphs" xml:space="preserve">CLoSD · ICLR 2025</text></a>
+<text x="690.6" y="1144" font-size="10.5" font-weight="400" fill="#172539" textLength="211.869" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Strike a supplied target using the hand or foot</text>
+<text x="690.6" y="1157" font-size="10.5" font-weight="400" fill="#172539" textLength="158.739" lengthAdjust="spacingAndGlyphs" xml:space="preserve">specified in the text prompt (§5.2).</text>
+<text x="953.4" y="1036" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="196.822" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Point] “Move here.” / “Look here.” /</text>
+<text x="953.4" y="1050" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="136.758" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Trace] “Follow this arc.”</text>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07885.pdf" target="_blank" rel="noopener noreferrer"><text x="953.4" y="1072" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07885.pdf" target="_blank" rel="noopener noreferrer"><text x="978.4" y="1072" font-size="10.7" font-weight="700" fill="#176772" textLength="198.56" lengthAdjust="spacingAndGlyphs" xml:space="preserve">MHC: Directable Human Motion · ECCV</text></a>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/07885.pdf" target="_blank" rel="noopener noreferrer"><text x="978.4" y="1085" font-size="10.7" font-weight="700" fill="#176772" textLength="23.7968" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024</text></a>
+<text x="953.4" y="1098" font-size="10.5" font-weight="400" fill="#172539" textLength="214.169" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Pose tracking: reconstruct body motion from a</text>
+<text x="953.4" y="1111" font-size="10.5" font-weight="400" fill="#172539" textLength="232.271" lengthAdjust="spacingAndGlyphs" xml:space="preserve">headset and controllers. A separate joystick demo</text>
+<text x="953.4" y="1124" font-size="10.5" font-weight="400" fill="#172539" textLength="120.813" lengthAdjust="spacingAndGlyphs" xml:space="preserve">sets velocity and heading.</text>
+<a href="https://arxiv.org/abs/2306.05666" target="_blank" rel="noopener noreferrer"><text x="953.4" y="1145" font-size="8.5" font-weight="700" fill="#176244" textLength="11.3305" lengthAdjust="spacingAndGlyphs" xml:space="preserve">RT</text></a>
+<a href="https://arxiv.org/abs/2306.05666" target="_blank" rel="noopener noreferrer"><text x="978.4" y="1145" font-size="10.7" font-weight="700" fill="#176772" textLength="162.34" lengthAdjust="spacingAndGlyphs" xml:space="preserve">QuestEnvSim · SIGGRAPH 2023</text></a>
+<text x="953.4" y="1158" font-size="10.5" font-weight="400" fill="#172539" textLength="228.176" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Track headset and controller poses for live sitting</text>
+<text x="953.4" y="1171" font-size="10.5" font-weight="400" fill="#172539" textLength="99.813" lengthAdjust="spacingAndGlyphs" xml:space="preserve">and getting up (§4.7).</text>
+<text x="1216.2" y="1036" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="193.614" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Point] “Come here from the chair.”</text>
+<text x="165" y="767" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="223.02" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Hold still for four seconds.” / “Walk half</text>
+<text x="165" y="781" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="45.379" lengthAdjust="spacingAndGlyphs" xml:space="preserve">as fast.”</text>
+<a href="https://lzhyu.github.io/SimMotionEdit.github.io/" target="_blank" rel="noopener noreferrer"><text x="165" y="803" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://lzhyu.github.io/SimMotionEdit.github.io/" target="_blank" rel="noopener noreferrer"><text x="190" y="803" font-size="10.7" font-weight="700" fill="#176772" textLength="140.32" lengthAdjust="spacingAndGlyphs" xml:space="preserve">SimMotionEdit · CVPR 2025</text></a>
+<text x="165" y="816" font-size="10.5" font-weight="400" fill="#172539" textLength="205.432" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Speed up the action in a source clip (Fig. 1).</text>
+<a href="https://mathis.petrovich.fr/stmc/" target="_blank" rel="noopener noreferrer"><text x="165" y="837" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://mathis.petrovich.fr/stmc/" target="_blank" rel="noopener noreferrer"><text x="190" y="837" font-size="10.7" font-weight="700" fill="#176772" textLength="151.02" lengthAdjust="spacingAndGlyphs" xml:space="preserve">STMC · CVPR Workshop 2024</text></a>
+<text x="165" y="850" font-size="10.5" font-weight="400" fill="#172539" textLength="210.651" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Set overlapping time intervals for raised arms</text>
+<text x="165" y="863" font-size="10.5" font-weight="400" fill="#172539" textLength="216.478" lengthAdjust="spacingAndGlyphs" xml:space="preserve">across a walk-to-jump transition. Also combine</text>
+<text x="165" y="876" font-size="10.5" font-weight="400" fill="#172539" textLength="138.883" lengthAdjust="spacingAndGlyphs" xml:space="preserve">walking backward with eating.</text>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="165" y="897" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="190" y="897" font-size="10.7" font-weight="700" fill="#176772" textLength="184.308" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Iterative Motion Editing · SIGGRAPH</text></a>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="190" y="910" font-size="10.7" font-weight="700" fill="#176772" textLength="23.7968" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024</text></a>
+<text x="165" y="923" font-size="10.5" font-weight="400" fill="#172539" textLength="204.855" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Edit 2. Speed up the kick in the existing clip.</text>
+<a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Wu_FineMotion_A_Dataset_and_Benchmark_with_both_Spatial_and_Temporal_ICCV_2025_paper.pdf" target="_blank" rel="noopener noreferrer"><text x="165" y="944" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Wu_FineMotion_A_Dataset_and_Benchmark_with_both_Spatial_and_Temporal_ICCV_2025_paper.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="944" font-size="10.7" font-weight="700" fill="#176772" textLength="118.321" lengthAdjust="spacingAndGlyphs" xml:space="preserve">FineMotion · ICCV 2025</text></a>
+<text x="165" y="957" font-size="10.5" font-weight="400" fill="#172539" textLength="207.196" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Extend the stand after a jumping jack by one</text>
+<text x="165" y="970" font-size="10.5" font-weight="400" fill="#172539" textLength="145.887" lengthAdjust="spacingAndGlyphs" xml:space="preserve">second in a source clip (Fig. 8).</text>
+<text x="427.8" y="767" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="191.061" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Look at the cup for two seconds.”</text>
+<text x="690.6" y="767" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="231.967" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Reach the pinned target in two seconds.”</text>
+<a href="https://research.nvidia.com/labs/sil/projects/ardy/" target="_blank" rel="noopener noreferrer"><text x="690.6" y="789" font-size="8.5" font-weight="700" fill="#176244" textLength="11.3305" lengthAdjust="spacingAndGlyphs" xml:space="preserve">RT</text></a>
+<a href="https://research.nvidia.com/labs/sil/projects/ardy/" target="_blank" rel="noopener noreferrer"><text x="715.6" y="789" font-size="10.7" font-weight="700" fill="#176772" textLength="182.531" lengthAdjust="spacingAndGlyphs" xml:space="preserve">ARDY · ACM TOG / SIGGRAPH 2026</text></a>
+<text x="690.6" y="802" font-size="10.5" font-weight="400" fill="#172539" textLength="229.918" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Click a floor-plane root waypoint and set its frame</text>
+<text x="690.6" y="815" font-size="10.5" font-weight="400" fill="#172539" textLength="224.689" lengthAdjust="spacingAndGlyphs" xml:space="preserve">offset. Interpolate multiple clicks into a root path.</text>
+<a href="https://xbpeng.github.io/projects/MaskedMimic/MaskedMimic_2024.pdf" target="_blank" rel="noopener noreferrer"><text x="690.6" y="836" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://xbpeng.github.io/projects/MaskedMimic/MaskedMimic_2024.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="836" font-size="10.7" font-weight="700" fill="#176772" textLength="155.792" lengthAdjust="spacingAndGlyphs" xml:space="preserve">MaskedMimic · ACM TOG 2024</text></a>
+<text x="690.6" y="849" font-size="10.5" font-weight="400" fill="#172539" textLength="184.999" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Reach a 3D right-hand target within 2 s.</text>
+<text x="690.6" y="862" font-size="10.5" font-weight="400" fill="#172539" textLength="231.682" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Reconstruct a cartwheel from head/hand tracking.</text>
+<a href="https://proceedings.iclr.cc/paper_files/paper/2024/file/7827290f07f63485b849b66cfa3e5dd0-Paper-Conference.pdf" target="_blank" rel="noopener noreferrer"><text x="690.6" y="883" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://proceedings.iclr.cc/paper_files/paper/2024/file/7827290f07f63485b849b66cfa3e5dd0-Paper-Conference.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="883" font-size="10.7" font-weight="700" fill="#176772" textLength="126.046" lengthAdjust="spacingAndGlyphs" xml:space="preserve">OmniControl · ICLR 2024</text></a>
+<text x="690.6" y="896" font-size="10.5" font-weight="400" fill="#172539" textLength="234.003" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Constrain wrist positions at selected frames; guide</text>
+<text x="690.6" y="909" font-size="10.5" font-weight="400" fill="#172539" textLength="152.334" lengthAdjust="spacingAndGlyphs" xml:space="preserve">the pelvis along a specified path.</text>
+<a href="https://evansamaa.github.io/files/head-eyek-paper.pdf" target="_blank" rel="noopener noreferrer"><text x="690.6" y="930" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://evansamaa.github.io/files/head-eyek-paper.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="930" font-size="10.7" font-weight="700" fill="#176772" textLength="149.265" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Head-EyeK · IEEE TVCG 2025</text></a>
+<text x="690.6" y="943" font-size="10.5" font-weight="400" fill="#172539" textLength="218.274" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Coordinate eyes and head from fixation targets</text>
+<text x="690.6" y="956" font-size="10.5" font-weight="400" fill="#172539" textLength="223.524" lengthAdjust="spacingAndGlyphs" xml:space="preserve">and start times. §4.2 also evaluates a windowed</text>
+<text x="690.6" y="969" font-size="10.5" font-weight="400" fill="#172539" textLength="113.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">variant for real-time use.</text>
+<text x="953.4" y="767" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="208.966" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Point] “Reach here in two seconds.” /</text>
+<text x="953.4" y="781" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="172.546" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Trace] “Walk this path slowly.”</text>
+<text x="1216.2" y="767" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="228.137" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Point] “From the table, walk here in three</text>
+<text x="1216.2" y="781" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="55.6025" lengthAdjust="spacingAndGlyphs" xml:space="preserve">seconds.”</text>
+<text x="165" y="498" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="211.543" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Pause, then move faster.” / “Take two</text>
+<text x="165" y="512" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="129.076" lengthAdjust="spacingAndGlyphs" xml:space="preserve">short steps, then stop.”</text>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="165" y="534" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="190" y="534" font-size="10.7" font-weight="700" fill="#176772" textLength="184.308" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Iterative Motion Editing · SIGGRAPH</text></a>
+<a href="https://purvigoel.github.io/iterative-motion-editing/" target="_blank" rel="noopener noreferrer"><text x="190" y="547" font-size="10.7" font-weight="700" fill="#176772" textLength="23.7968" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024</text></a>
+<text x="165" y="560" font-size="10.5" font-weight="400" fill="#172539" textLength="214.21" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Edit 3. Guard the face with the hands after the</text>
+<text x="165" y="573" font-size="10.5" font-weight="400" fill="#172539" textLength="179.739" lengthAdjust="spacingAndGlyphs" xml:space="preserve">kick. The face is a body-relative target.</text>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/04203.pdf" target="_blank" rel="noopener noreferrer"><text x="165" y="594" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/04203.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="594" font-size="10.7" font-weight="700" fill="#176772" textLength="202.123" lengthAdjust="spacingAndGlyphs" xml:space="preserve">CoMo: Controllable Motion Generation ·</text></a>
+<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/04203.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="607" font-size="10.7" font-weight="700" fill="#176772" textLength="56.496" lengthAdjust="spacingAndGlyphs" xml:space="preserve">ECCV 2024</text></a>
+<text x="165" y="620" font-size="10.5" font-weight="400" fill="#172539" textLength="229.383" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Add a left-hand raise at the end of an existing run</text>
+<text x="165" y="633" font-size="10.5" font-weight="400" fill="#172539" textLength="36.1725" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(Fig. 6).</text>
+<a href="https://www.dgp.toronto.edu/projects/s3-conversational-gaze/S3_Gaze_Animation/paper_pdf.pdf" target="_blank" rel="noopener noreferrer"><text x="165" y="654" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://www.dgp.toronto.edu/projects/s3-conversational-gaze/S3_Gaze_Animation/paper_pdf.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="654" font-size="10.7" font-weight="700" fill="#176772" textLength="208.693" lengthAdjust="spacingAndGlyphs" xml:space="preserve">S³: Head and Eye Animation · SIGGRAPH</text></a>
+<a href="https://www.dgp.toronto.edu/projects/s3-conversational-gaze/S3_Gaze_Animation/paper_pdf.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="667" font-size="10.7" font-weight="700" fill="#176772" textLength="23.7968" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024</text></a>
+<text x="165" y="680" font-size="10.5" font-weight="400" fill="#172539" textLength="217.098" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Tag an upward glance in a recorded transcript.</text>
+<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wang_Move_as_You_Say_Interact_as_You_Can_Language-guided_Human_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer"><text x="165" y="701" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Wang_Move_as_You_Say_Interact_as_You_Can_Language-guided_Human_CVPR_2024_paper.pdf" target="_blank" rel="noopener noreferrer"><text x="190" y="701" font-size="10.7" font-weight="700" fill="#176772" textLength="152.839" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Move as You Say · CVPR 2024</text></a>
+<text x="165" y="714" font-size="10.5" font-weight="400" fill="#172539" textLength="227.587" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Generate a forward walk followed by a walk back</text>
+<text x="165" y="727" font-size="10.5" font-weight="400" fill="#172539" textLength="42.0105" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(Fig. 1a).</text>
+<text x="427.8" y="498" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="192.97" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Look at the cup, then at the door.”</text>
+<text x="690.6" y="498" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="205.137" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Go to marker one, then marker two.”</text>
+<a href="https://www.dgp.toronto.edu/projects/s3-conversational-gaze/S3_Gaze_Animation/paper_pdf.pdf" target="_blank" rel="noopener noreferrer"><text x="690.6" y="520" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://www.dgp.toronto.edu/projects/s3-conversational-gaze/S3_Gaze_Animation/paper_pdf.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="520" font-size="10.7" font-weight="700" fill="#176772" textLength="208.693" lengthAdjust="spacingAndGlyphs" xml:space="preserve">S³: Head and Eye Animation · SIGGRAPH</text></a>
+<a href="https://www.dgp.toronto.edu/projects/s3-conversational-gaze/S3_Gaze_Animation/paper_pdf.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="533" font-size="10.7" font-weight="700" fill="#176772" textLength="23.7968" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024</text></a>
+<text x="690.6" y="546" font-size="10.5" font-weight="400" fill="#172539" textLength="201.348" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Tag a windshield object in an audio-aligned</text>
+<text x="690.6" y="559" font-size="10.5" font-weight="400" fill="#172539" textLength="230.538" lengthAdjust="spacingAndGlyphs" xml:space="preserve">transcript to bias head and eye gaze. An aversion</text>
+<text x="690.6" y="572" font-size="10.5" font-weight="400" fill="#172539" textLength="136.573" lengthAdjust="spacingAndGlyphs" xml:space="preserve">tag biases an upward glance.</text>
+<text x="953.4" y="498" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="226.86" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Point twice] “Look here, then over here.”</text>
+<text x="1216.2" y="498" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="216.614" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Point] “Look here before looking at the</text>
+<text x="1216.2" y="512" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="225.584" lengthAdjust="spacingAndGlyphs" xml:space="preserve">cup.” / “Go to the table, then come here.”</text>
+<text x="165" y="229" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="109.273" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“When I clap, stop.”</text>
+<text x="427.8" y="229" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="218.523" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“When the door opens, turn toward it.” /</text>
+<text x="427.8" y="243" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="207.69" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Look at B when they start speaking.”</text>
+<text x="690.6" y="229" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="224.952" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“When I clap, look at the pinned marker.”</text>
+<a href="https://arxiv.org/html/2410.03441v1" target="_blank" rel="noopener noreferrer"><text x="690.6" y="251" font-size="8.5" font-weight="700" fill="#176244" textLength="11.3305" lengthAdjust="spacingAndGlyphs" xml:space="preserve">RT</text></a>
+<a href="https://arxiv.org/html/2410.03441v1" target="_blank" rel="noopener noreferrer"><text x="715.6" y="251" font-size="10.7" font-weight="700" fill="#176772" textLength="96.3214" lengthAdjust="spacingAndGlyphs" xml:space="preserve">CLoSD · ICLR 2025</text></a>
+<text x="690.6" y="264" font-size="10.5" font-weight="400" fill="#172539" textLength="215.355" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Automatic controller: detect sitting on the sofa,</text>
+<text x="690.6" y="277" font-size="10.5" font-weight="400" fill="#172539" textLength="193.756" lengthAdjust="spacingAndGlyphs" xml:space="preserve">then wait two seconds before switching to</text>
+<text x="690.6" y="290" font-size="10.5" font-weight="400" fill="#172539" textLength="42.609" lengthAdjust="spacingAndGlyphs" xml:space="preserve">standing.</text>
+<a href="https://zkf1997.github.io/DART/" target="_blank" rel="noopener noreferrer"><text x="690.6" y="311" font-size="8.5" font-weight="700" fill="#176244" textLength="11.3305" lengthAdjust="spacingAndGlyphs" xml:space="preserve">RT</text></a>
+<a href="https://zkf1997.github.io/DART/" target="_blank" rel="noopener noreferrer"><text x="715.6" y="311" font-size="10.7" font-weight="700" fill="#176772" textLength="120.097" lengthAdjust="spacingAndGlyphs" xml:space="preserve">DartControl · ICLR 2025</text></a>
+<text x="690.6" y="324" font-size="10.5" font-weight="400" fill="#172539" textLength="219.418" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Automatically advance on waypoint arrival. The</text>
+<text x="690.6" y="337" font-size="10.5" font-weight="400" fill="#172539" textLength="234.591" lengthAdjust="spacingAndGlyphs" xml:space="preserve">controller reports 240 frames/s for text-conditioned</text>
+<text x="690.6" y="350" font-size="10.5" font-weight="400" fill="#172539" textLength="53.6865" lengthAdjust="spacingAndGlyphs" xml:space="preserve">locomotion.</text>
+<a href="https://xbpeng.github.io/projects/MaskedMimic/MaskedMimic_2024.pdf" target="_blank" rel="noopener noreferrer"><text x="690.6" y="371" font-size="8.5" font-weight="700" fill="#56627d" textLength="12.75" lengthAdjust="spacingAndGlyphs" xml:space="preserve">NO</text></a>
+<a href="https://xbpeng.github.io/projects/MaskedMimic/MaskedMimic_2024.pdf" target="_blank" rel="noopener noreferrer"><text x="715.6" y="371" font-size="10.7" font-weight="700" fill="#176772" textLength="155.792" lengthAdjust="spacingAndGlyphs" xml:space="preserve">MaskedMimic · ACM TOG 2024</text></a>
+<text x="690.6" y="384" font-size="10.5" font-weight="400" fill="#172539" textLength="229.918" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Automatic controller: switch from approaching the</text>
+<text x="690.6" y="397" font-size="10.5" font-weight="400" fill="#172539" textLength="224.679" lengthAdjust="spacingAndGlyphs" xml:space="preserve">chair to sitting once the character is within range</text>
+<text x="690.6" y="410" font-size="10.5" font-weight="400" fill="#172539" textLength="30.345" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(§8.2).</text>
+<text x="953.4" y="229" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="175.731" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[Point] “When I clap, look here.”</text>
+<text x="1216.2" y="229" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="222.387" lengthAdjust="spacingAndGlyphs" xml:space="preserve">“Look at the cup. When B says ‘go,’ look</text>
+<text x="1216.2" y="243" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="208.943" lengthAdjust="spacingAndGlyphs" xml:space="preserve">here.” [Point] / “When the door opens,</text>
+<text x="1216.2" y="257" font-size="11.5" font-weight="700" fill="#9c4b19" textLength="172.569" lengthAdjust="spacingAndGlyphs" xml:space="preserve">leave the table and come here.”</text>
+</svg>

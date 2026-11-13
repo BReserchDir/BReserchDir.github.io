@@ -178,13 +178,8 @@
     </div>`;
   }
   function renderPaperEvidencePlot(s) {
-    const cellAt = (row, column) => s.cells.find(cell => cell.row === row && cell.column === column);
-    const renderCell = cell => {
-      const focus = cell.row === s.focus?.row && cell.column === s.focus?.column;
-      const papers = cell.demonstrations.map(p => `<li><a href="${E(p.url)}" target="_blank" rel="noopener" title="${E(p.text)}">${E(p.name)}</a> <span>${E(p.year)}${p.runtime==="RT"?' · RT':""}</span></li>`).join("");
-      return `<td class="${focus?"plot-focus":""}"><button type="button" data-plot-cell="${s.cells.indexOf(cell)}">${E(cell.summary||cell.examples[0])}</button>${papers?`<ul>${papers}</ul>`:""}${focus?`<span class="plot-test">Proposed XR test</span>`:""}</td>`;
-    };
-    return `<div class="paper-evidence-plot"><table><caption>Spatial target source →</caption><thead><tr><th scope="col">What sets timing?</th>${s.columns.map(c=>`<th scope="col">${E(c.label)}</th>`).join("")}</tr></thead><tbody>${s.rows.map(row=>`<tr><th scope="row">${E(row.label)}</th>${s.columns.map(c=>renderCell(cellAt(row.id,c.id))).join("")}</tr>`).join("")}</tbody></table><dialog class="paper-plot-detail"><form method="dialog"><button aria-label="Close cell evidence">Close</button></form><div data-plot-detail></div></dialog></div>`;
+    const source = s.documents?.[0]?.url || 'assets/directions/xr-target-and-timing.pdf';
+    return `<div class="paper-evidence-plot"><object type="image/svg+xml" data="assets/directions/xr-target-and-timing.svg" aria-label="XR character direction: spatial target by timing, with examples and linked papers"><a href="${E(source)}" target="_blank" rel="noopener">Open the original plot PDF</a></object></div>`;
   }
   window.PresentationV3={
     render(s,c){
@@ -276,13 +271,6 @@
       }
     },
     mount(host,s,c){
-      if(s.kind==='v4-paper-evidence-plot'){
-        const dialog=host.querySelector('.paper-plot-detail');
-        for(const button of host.querySelectorAll('[data-plot-cell]')) button.onclick=()=>{
-          dialog.querySelector('[data-plot-detail]').innerHTML=matrixEvidence(s.cells[Number(button.dataset.plotCell)]);
-          dialog.showModal();
-        };
-      }
       if(s.kind==='v4-survey-matrix'){
         const buttons=[...host.querySelectorAll('[data-survey-cell]')];
         const detail=host.querySelector('[data-survey-detail]');
