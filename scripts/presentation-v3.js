@@ -168,6 +168,12 @@
       return `<button type="button" class="v4-research-paper" data-v3-paper="${E(id)}" title="${E(p.title)}">${figure(p.sourceFigure?.image||p.thumbnail,p.title)}<b>${E(name)}</b><span>${E(p.year||"")}</span></button>`;
     };
       switch(s.kind){
+        case 'v4-survey-light-hero':
+          return `<div class="survey-light-hero">${figure(s.image,"Concept illustration of real and virtual lighting on a shared mixed reality set")}<ul>${s.bullets.map(b=>`<li>${E(b)}</li>`).join("")}</ul></div>`;
+        case 'v4-light-taxonomy-mece':
+          return `<div class="survey-pies">${s.axes.map(axis=>`<section><h2>${E(axis.label)}</h2>${chart(axis.label,axis.buckets)}</section>`).join("")}</div><p class="survey-pie-scope">${E(s.denominator)} papers in this direction · One category per paper in each chart</p>`;
+        case 'v4-state-gap':
+          return `<div class="survey-state-gap">${[["State of the art",s.state,s.statePaperIds],["Gap",s.gap,s.gapPaperIds]].map(([title,claim,ids])=>`<section><h2>${title}</h2><p>${E(claim)}</p><div class="v4-paper-strip">${ids.map(researchPaper).join("")}</div></section>`).join("")}</div>`;
         case 'v4-survey-bullets': {
           const ids=[...new Set(s.featuredPaperIds||s.paperIds||[])].filter(id=>{const p=c.paper(id);return p.sourceFigure?.image||p.thumbnail;});
           const count=s.image?2:3;
@@ -190,7 +196,7 @@
         case 'v4-research-taxonomy':
           return `<div class="v4-research-map">${s.categories.map(category=>`<article><h2>${E(category.title)}</h2><div class="v4-taxonomy-methods">${category.groups.map((group,index)=>`<section><h3>${E(group)}</h3>${researchPaper(category.ids[index])}</section>`).join("")}</div><p><b>Open question</b> ${E(category.gap)}</p></article>`).join("")}</div>${s.documents?.length?`<nav class="v4-taxonomy-links" aria-label="Full evidence charts">${s.documents.map(d=>`<a href="${E(d.url)}" target="_blank" rel="noopener">${E(d.label)} ↗</a>`).join("")}</nav>`:""}`;
         case 'v4-grouped-gap':
-          return `<div class="v4-gap-synthesis"><div class="v4-gap-groups">${s.groups.map(group=>`<section><h2>${E(group.title)}</h2><p>${E(group.finding)}</p><div class="v4-paper-strip">${group.ids.map(researchPaper).join("")}</div></section>`).join("")}</div><p class="v4-gap-claim"><b>Research gap</b> ${E(s.gap)}</p></div>`;
+          return `<div class="v4-gap-synthesis"><div class="v4-gap-groups">${s.groups.map(group=>`<section><h2>${E(group.title)}</h2><p>${E(group.finding)}</p><div class="v4-paper-strip">${group.ids.map(researchPaper).join("")}</div>${group.sources?.length?`<p class="survey-group-sources">${group.sources.map(source=>`<a href="${E(source.url)}" target="_blank" rel="noopener">${E(source.label)}</a>`).join(" · ")}</p>`:""}</section>`).join("")}</div><p class="v4-gap-claim"><b>Research gap</b> ${E(s.gap)}</p></div>`;
         case 'v4-light-space':
           return `<div class="v4-light-space"><div class="v4-light-controls"><button type="button" data-v4-stage-toggle aria-expanded="false">Explore the 3D stage</button><span data-v4-stage-status aria-live="polite"></span></div><div data-v4-static>${lightingScene(s.image)}</div><section class="v2m-hero" data-v4-stage hidden><div data-v2m-stage></div><label>Move the lights <input type="range" min="0" max="100" value="50" data-v2m-light-change></label><p>Drag to orbit. Scroll to zoom. This stage shows light placement and geometry.</p></section></div>`;
         case 'v4-control-space':
@@ -305,7 +311,9 @@
         if(el.hasAttribute('data-v3-dismiss')){host.querySelector('.v3-source-drawer').hidden=true;return;}
         if(el.hasAttribute('data-v3-next')){document.querySelector('#research-talk [data-talk-next]').click();return;}
         if(el.hasAttribute('data-v3-papers')){show(el.dataset.v3Papers.split(',').filter(Boolean),'Evidence');return;}
-        const parts=el.dataset.v3Source.split(':'),g=chartGroups(s,c).find(g=>g.name===parts[0]);
+        const parts=el.dataset.v3Source.split(':');
+        const groups=s.kind==='v4-light-taxonomy-mece'?s.axes.map(axis=>({name:axis.label,buckets:axis.buckets})):chartGroups(s,c);
+        const g=groups.find(group=>group.name===parts[0]);
         const active=g?.buckets.filter(b=>b.ids.length)||[],b=active[Number(parts[1])];if(b){const panel=host.querySelector('.v3-recent-papers');if(panel){panel.innerHTML=paperPanel(b.ids,c,b.label);host.querySelectorAll('[data-v3-source]').forEach(x=>x.classList.toggle('v3-chart-selected',x.dataset.v3Source===el.dataset.v3Source));}else show(b.ids,b.label);}
       };
       const key=e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-v3-source]')){e.preventDefault();act(e);}if(e.key==='Escape'){const drawer=host.querySelector('.v3-source-drawer');if(drawer&&!drawer.hidden){e.preventDefault();e.stopPropagation();drawer.hidden=true;}}};
