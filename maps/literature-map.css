@@ -1,0 +1,59 @@
+* { box-sizing: border-box; }
+:root { font-family: Arial, Helvetica, sans-serif; color: #171717; background: #fff; }
+body { margin: 0; height: 100dvh; display: grid; grid-template-rows: auto auto minmax(0,1fr) auto; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; background: white; border: 1px solid #ccc; padding: 8px 12px; border-radius: 5px; cursor: pointer; }
+button:hover { background: #eee; }
+a { color: #174779; }
+button:focus-visible, a:focus-visible { outline: 3px solid #2862e6; outline-offset: 3px; }
+header { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #ddd; }
+header nav { display: flex; gap: 5px; }
+header nav a { color: #555; text-decoration: none; padding: 9px 12px; border-radius: 5px; font-size: 14px; }
+header nav a[aria-current] { color: white; background: #181818; }
+h1 { font-size: 19px; margin: 0; font-weight: 600; flex: 1; }
+.tools { display: flex; gap: 6px; align-items: center; }
+output { width: 45px; text-align: center; font-size: 13px; }
+#group-nav { display: flex; gap: 6px; padding: 8px 20px; overflow-x: auto; background: #fff; }
+#group-nav button { font-size: 12px; white-space: nowrap; border-color: #e4e4e4; }
+#viewport { position: relative; overflow: hidden; touch-action: none; cursor: grab; background-color: #f4f4f3; background-image: radial-gradient(#d5d5d5 .7px,transparent .7px); background-size: 22px 22px; }
+#viewport.dragging { cursor: grabbing; }
+#world { position: absolute; transform-origin: 0 0; will-change: transform; }
+.cluster { position: absolute; width: 780px; background: white; border: 1px solid #d0d0ce; border-radius: 10px; padding: 24px; }
+.cluster h2 { font-size: 29px; margin: 0 0 8px; letter-spacing: -.6px; }
+.cluster-description { font-size: 17px; margin: 0 0 20px; color: #555; line-height: 1.4; }
+.cluster-count { float: right; font-size: 15px; font-weight: 400; margin-top: 8px; color: #666; }
+.paper-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; align-items: start; }
+.paper-card { display: block; width: 100%; text-align: left; padding: 0; overflow: hidden; border: 1px solid #dededb; border-radius: 5px; background: #fafafa; }
+.paper-card:hover { border-color: #333; background: #fff; }
+.paper-card img { width: 100%; height: 145px; object-fit: contain; background: #fff; display: block; border-bottom: 1px solid #eee; }
+.paper-card .paper-text { display: block; padding: 11px; }
+.paper-card strong { display: block; font-size: 16px; line-height: 1.25; font-weight: 600; overflow-wrap: anywhere; }
+.paper-card .citation { display: block; color: #555; font-size: 13px; line-height: 1.35; margin-top: 7px; }
+.paper-card .method { display: block; color: #333; font-size: 13px; line-height: 1.4; margin-top: 8px; }
+.paper-card .missing { display: block; font-size: 12px; color: #777; margin-top: 8px; }
+.gap-note { margin-top: 20px; border-left: 4px solid #a14725; background: #fff5ee; padding: 16px 18px; }
+.gap-note h3 { margin: 0 0 8px; color: #81381d; font-size: 21px; }
+.gap-note p { margin: 8px 0; line-height: 1.45; font-size: 16px; }
+.gap-note .question { font-size: 19px; font-weight: 600; }
+.gap-note .refs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.gap-note button { font-size: 13px; padding: 5px 8px; background: transparent; border-color: #d9bfb0; }
+footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding: 10px 20px; font-size: 12px; border-top: 1px solid #ddd; color: #555; background: white; }
+.gap-key { color: #81381d; }
+dialog { width: min(900px,95vw); max-height: 92dvh; padding: 24px; border: 1px solid #bbb; border-radius: 10px; }
+dialog::backdrop { background: #1119; }
+#close-detail { float: right; position: sticky; top: 0; z-index: 1; }
+#detail-body h2 { font-size: 26px; max-width: 700px; margin-top: 10px; }
+#detail-body img { max-width: 100%; max-height: 360px; object-fit: contain; display: block; margin: 18px auto; }
+#detail-body h3 { font-size: 16px; margin-bottom: 5px; }
+#detail-body p, #detail-body li { line-height: 1.5; font-size: 15px; }
+#detail-body a { overflow-wrap: anywhere; }
+#detail-body .reading { color: #666; }
+@media(max-width:800px) {
+  header { gap: 8px; padding: 10px; }
+  header h1 { font-size: 16px; flex-basis: 100%; order: 3; }
+  header nav a { padding: 8px; font-size: 12px; }
+  .tools { margin-left: auto; }
+  .tools button { font-size: 12px; padding: 7px; }
+  #group-nav { padding-inline: 10px; }
+  footer { font-size: 11px; padding: 8px 10px; }
+}

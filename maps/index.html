@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Visual literature maps</title>
+  <link rel="stylesheet" href="literature-map.css">
+  <script defer src="literature-data.js"></script>
+  <script defer src="literature-map.js"></script>
+</head>
+<body>
+  <header>
+    <nav aria-label="Research direction">
+      <a href="?topic=illumination" data-topic="illumination">Illumination</a>
+      <a href="?topic=creative-control" data-topic="creative-control">Agents & equipment</a>
+    </nav>
+    <h1></h1>
+    <div class="tools">
+      <button data-zoom="out" aria-label="Zoom out">−</button>
+      <output id="zoom-value" aria-label="Zoom level"></output>
+      <button data-zoom="in" aria-label="Zoom in">+</button>
+      <button id="fit">Fit all</button>
+      <button id="readable">Readable size</button>
+    </div>
+  </header>
+  <nav id="group-nav" aria-label="Jump to a literature group"></nav>
+  <main id="viewport" aria-label="Zoomable literature canvas. Drag to pan, scroll to zoom, and click a paper for evidence.">
+    <div id="world"></div>
+  </main>
+  <footer>
+    <span>Drag to pan · Scroll or pinch to zoom · Click a paper to inspect</span>
+    <span id="coverage"></span>
+    <span class="gap-key">Gap notes = research questions</span>
+  </footer>
+  <dialog id="paper-detail">
+    <button id="close-detail" aria-label="Close paper details">Close ×</button>
+    <div id="detail-body"></div>
+  </dialog>
+</body>
+</html>
