@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Visual literature maps</title>
-  <link rel="stylesheet" href="literature-map.css">
-  <script defer src="literature-data.js"></script>
-  <script defer src="literature-map.js"></script>
+  <link rel="stylesheet" href="literature-map.css?v=7a9f01fbdcf6">
+  <script defer src="literature-data.js?v=f0bf177e6a81"></script>
+  <script defer src="literature-map.js?v=f958279a8561"></script>
 </head>
 <body>
   <header>
@@ -15,6 +15,12 @@
       <a href="?topic=creative-control" data-topic="creative-control">Agents & equipment</a>
     </nav>
     <h1></h1>
+    <form id="find-paper" role="search">
+      <input id="paper-query" type="search" placeholder="Find a paper" aria-label="Find a paper by title" list="paper-titles">
+      <datalist id="paper-titles"></datalist>
+      <button type="submit">Find</button>
+      <output id="search-result" aria-live="polite"></output>
+    </form>
     <div class="tools">
       <button data-zoom="out" aria-label="Zoom out">−</button>
       <output id="zoom-value" aria-label="Zoom level"></output>

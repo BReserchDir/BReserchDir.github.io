@@ -10,6 +10,7 @@
   })[character]);
   const citation = paper => [paper.year, paper.venue].filter(Boolean).join(' · ');
   const shortTitle = paper => paper.title.split(':')[0];
+  const isRecent = paper => paper.year >= board.recentStart && paper.year <= board.recentEnd;
   const state = { x: 0, y: 0, scale: 1, width: 0, height: 0 };
   const positions = new Map();
   let suppressClick = false;
@@ -19,10 +20,11 @@
   document.querySelector('[data-topic="' + board.id + '"]').setAttribute('aria-current', 'page');
   const illustrated = board.papers.filter(paper => paper.image).length;
   document.getElementById('coverage').textContent =
-    board.papers.length + ' reviewed records · ' + illustrated + ' source figures';
+    board.papers.length + ' sources · ' + board.papers.filter(isRecent).length +
+    ' from 2022–2026 · ' + illustrated + ' source figures';
 
   function paperCard(paper) {
-    return '<button class="paper-card" data-paper="' + escape(paper.id) + '">' +
+    return '<button class="paper-card' + (isRecent(paper) ? ' recent-paper' : '') + '" data-paper="' + escape(paper.id) + '">' +
       (paper.image ? '<img src="' + escape(paper.image) + '" alt="Source figure from ' + escape(paper.title) + '" draggable="false">' : '') +
       '<span class="paper-text"><strong>' + escape(shortTitle(paper)) + '</strong>' +
       '<span class="citation">' + escape(citation({...paper, venue: paper.venue.split(/[;,]/)[0]})) + '</span>' +
@@ -32,12 +34,15 @@
 
   world.innerHTML = board.groups.map(group => {
     const members = board.papers.filter(paper => paper.group === group.id)
-      .sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image)) || (b.year || 0) - (a.year || 0));
+      .sort((a, b) => Number(isRecent(b)) - Number(isRecent(a)) || (b.year || 0) - (a.year || 0) || Number(Boolean(b.image)) - Number(Boolean(a.image)));
     const notes = board.notes.filter(note => note.group === group.id);
     return '<section class="cluster" id="group-' + group.id + '">' +
       '<h2>' + escape(group.title) + '<span class="cluster-count">' + members.length + ' papers</span></h2>' +
       '<p class="cluster-description">' + escape(group.description) + '</p>' +
-      '<div class="paper-grid">' + members.map(paperCard).join('') + '</div>' +
+      (members.some(isRecent) ? '<h3 class="period-heading">2022–2026</h3><div class="paper-grid">' +
+        members.filter(isRecent).map(paperCard).join('') + '</div>' : '') +
+      (members.some(paper => !isRecent(paper)) ? '<h3 class="period-heading">Earlier work and undated sources</h3><div class="paper-grid">' +
+        members.filter(paper => !isRecent(paper)).map(paperCard).join('') + '</div>' : '') +
       notes.map(note => '<aside class="gap-note"><h3>Gap · ' + escape(note.title) + '</h3>' +
         '<p>' + escape(note.text) + '</p><p class="question">' + escape(note.question) + '</p>' +
         '<div class="refs">' + note.ids.map(id => '<button data-paper="' + escape(id) + '">' +
@@ -105,6 +110,7 @@
         ['Remaining question in our review', paper.gap]].filter(item => item[1]).map(item =>
         '<h3>' + escape(item[0]) + '</h3><p>' + escape(item[1]) + '</p>').join('') +
       '<p class="reading">Reading status · ' + escape(paper.readStatus) + '</p>' +
+      '<p class="reading">Collected from · ' + escape(paper.origin) + '</p>' +
       '<p><a href="' + escape(paper.url) + '" target="_blank" rel="noopener noreferrer">Open paper / author project ↗</a></p>' +
       (evidence.length ? '<h3>Evidence in the review</h3><ul>' + evidence.map(item =>
         '<li><a href="' + escape(item.url) + '" target="_blank" rel="noopener noreferrer">' +
@@ -118,6 +124,35 @@
     const button = event.target.closest('[data-paper]');
     if (button) openPaper(button.dataset.paper);
   });
+  document.getElementById('paper-titles').innerHTML = board.papers.map(paper =>
+    '<option value="' + escape(paper.title) + '"></option>').join('');
+  let searchIndex = -1;
+  let previousQuery = '';
+  document.getElementById('find-paper').onsubmit = event => {
+    event.preventDefault();
+    const query = document.getElementById('paper-query').value.trim().toLowerCase();
+    const matches = query ? board.papers.filter(paper => paper.title.toLowerCase().includes(query))
+      .sort((a, b) => Number(b.title.toLowerCase().startsWith(query)) -
+        Number(a.title.toLowerCase().startsWith(query))) : [];
+    document.querySelectorAll('.search-match').forEach(card => card.classList.remove('search-match'));
+    if (!matches.length) {
+      document.getElementById('search-result').textContent = query ? 'No match' : '';
+      return;
+    }
+    searchIndex = query === previousQuery ? (searchIndex + 1) % matches.length : 0;
+    previousQuery = query;
+    for (const paper of matches) {
+      world.querySelector('[data-paper="' + paper.id + '"]').classList.add('search-match');
+    }
+    const paper = matches[searchIndex];
+    const card = world.querySelector('[data-paper="' + paper.id + '"]');
+    const position = positions.get(paper.group);
+    state.scale = Math.min(1.2, (viewport.clientWidth - 40) / card.offsetWidth, (viewport.clientHeight - 48) / card.offsetHeight);
+    state.x = viewport.clientWidth / 2 - (position.x + card.offsetLeft + card.offsetWidth / 2) * state.scale;
+    state.y = viewport.clientHeight / 2 - (position.y + card.offsetTop + card.offsetHeight / 2) * state.scale;
+    draw();
+    document.getElementById('search-result').textContent = (searchIndex + 1) + ' / ' + matches.length;
+  };
   document.getElementById('close-detail').onclick = () => dialog.close();
   dialog.addEventListener('click', event => {
     if (event.target === dialog && event.offsetX < 0) dialog.close();
@@ -196,4 +231,9 @@
   });
   layout();
   fit();
+  const requestedPaper = new URLSearchParams(location.search).get('paper');
+  if (requestedPaper) {
+    document.getElementById('paper-query').value = requestedPaper;
+    document.getElementById('find-paper').requestSubmit();
+  }
 })();
