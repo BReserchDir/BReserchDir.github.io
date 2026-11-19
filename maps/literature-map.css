@@ -67,3 +67,13 @@ dialog::backdrop { background: #1119; }
   #find-paper { order:4; flex-basis:100%; }
   #paper-query { width:100%; max-width:none; min-width:0; flex:1; }
 }
+
+.paper-images { display:grid; grid-template-rows:155px 125px; background:white; }
+.paper-images img { height:100%; object-fit:contain; padding:4px; }
+.paper-images:has(img:only-child) { grid-template-rows:155px; }
+.detail-gallery { display:grid; gap:24px; margin-top:18px; }
+.detail-gallery figure { margin:0; }
+#detail-body .detail-gallery img { width:100%; max-height:65vh; margin:0 0 10px; }
+.detail-gallery figcaption { font-size:13px; line-height:1.5; color:#555; }
+
+footer #coverage { font-size:12px; padding:0; border:0; background:transparent; color:#174779; text-decoration:underline; }

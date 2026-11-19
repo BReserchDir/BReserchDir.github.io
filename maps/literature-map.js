@@ -18,17 +18,23 @@
   document.title = board.title + ' — Visual literature map';
   document.querySelector('h1').textContent = board.title;
   document.querySelector('[data-topic="' + board.id + '"]').setAttribute('aria-current', 'page');
-  const illustrated = board.papers.filter(paper => paper.image).length;
+  const illustrated = board.papers.filter(paper => paper.images?.length >= 2).length;
+  const imageSet = paper => paper.images || (paper.image ? [{image:paper.image,sourceUrl:paper.figureSource,locator:'Source figure'}] : []);
   document.getElementById('coverage').textContent =
     board.papers.length + ' sources · ' + board.papers.filter(isRecent).length +
-    ' from 2022–2026 · ' + illustrated + ' source figures';
+    ' from 2022–2026 · ' + illustrated + ' with two figures';
 
   function paperCard(paper) {
+    const images = imageSet(paper).slice(0,2);
+    const preview = images.map((image,index) => '<img src="' + escape(image.image) +
+      '" alt="' + escape(image.kind || 'Source figure') + ' from ' + escape(paper.title) +
+      '" draggable="false" loading="lazy">').join('');
     return '<button class="paper-card' + (isRecent(paper) ? ' recent-paper' : '') + '" data-paper="' + escape(paper.id) + '">' +
-      (paper.image ? '<img src="' + escape(paper.image) + '" alt="Source figure from ' + escape(paper.title) + '" draggable="false">' : '') +
+      (images.length ? '<span class="paper-images">' + preview + '</span>' : '') +
       '<span class="paper-text"><strong>' + escape(shortTitle(paper)) + '</strong>' +
       '<span class="citation">' + escape(citation({...paper, venue: paper.venue.split(/[;,]/)[0]})) + '</span>' +
-      (paper.image ? '' : '<span class="method">' + escape(paper.method) + '</span><span class="missing">Source figure unavailable in current review</span>') +
+      (images.length ? '' : '<span class="method">' + escape(paper.method) + '</span>') +
+      (images.length < 2 ? '<span class="missing">' + (images.length ? 'Second source figure not yet available' : 'Source figures not yet available') + '</span>' : '') +
       '</span></button>';
   }
 
@@ -104,14 +110,19 @@
     const evidence = (paper.evidence || []).filter(item => item.url);
     document.getElementById('detail-body').innerHTML =
       '<h2>' + escape(paper.title) + '</h2><p>' + escape(citation(paper)) + '</p>' +
-      (paper.image ? '<img src="' + escape(paper.image) + '" alt="Source figure from ' + escape(paper.title) + '">' +
-        '<p class="reading">' + escape(paper.figureCredit || 'Figure credited to the paper authors') + '</p>' : '') +
+      '<div class="detail-gallery">' + imageSet(paper).map(image =>
+        '<figure><a href="' + escape(image.image) + '" target="_blank" rel="noopener">' +
+        '<img src="' + escape(image.image) + '" alt="' + escape(image.kind || 'Source figure') + ' from ' + escape(paper.title) + '"></a>' +
+        '<figcaption>' + escape(image.kind || 'Source figure') + ' · ' + escape(image.locator || '') +
+        ' · <a href="' + escape(image.sourceUrl || paper.url) + '" target="_blank" rel="noopener">Original source ↗</a></figcaption></figure>').join('') +
+      '</div>' +
       [['Problem', paper.problem], ['Method', paper.method], ['Contribution', paper.contribution],
         ['Remaining question in our review', paper.gap]].filter(item => item[1]).map(item =>
         '<h3>' + escape(item[0]) + '</h3><p>' + escape(item[1]) + '</p>').join('') +
       '<p class="reading">Reading status · ' + escape(paper.readStatus) + '</p>' +
       '<p class="reading">Collected from · ' + escape(paper.origin) + '</p>' +
-      '<p><a href="' + escape(paper.url) + '" target="_blank" rel="noopener noreferrer">Open paper / author project ↗</a></p>' +
+      (paper.url ? '<p><a href="' + escape(paper.url) + '" target="_blank" rel="noopener noreferrer">Open paper / author project ↗</a></p>' :
+        '<p class="reading">Source link not recorded.</p>') +
       (evidence.length ? '<h3>Evidence in the review</h3><ul>' + evidence.map(item =>
         '<li><a href="' + escape(item.url) + '" target="_blank" rel="noopener noreferrer">' +
         escape(item.locator || item.claim || 'Source') + '</a></li>').join('') + '</ul>' : '');
@@ -154,6 +165,18 @@
     document.getElementById('search-result').textContent = (searchIndex + 1) + ' / ' + matches.length;
   };
   document.getElementById('close-detail').onclick = () => dialog.close();
+  document.getElementById('coverage').onclick = () => {
+    const missing = board.papers.filter(paper => imageSet(paper).length < 2);
+    document.getElementById('detail-body').innerHTML =
+      '<h2>Figure coverage</h2><p>' + illustrated + ' of ' + board.papers.length +
+      ' sources have two retrieved figures.</p>' +
+      (missing.length ? '<h3>Still awaiting source figures</h3><ul>' +
+      missing.map(paper => '<li>' + (paper.url ? '<a href="' + escape(paper.url) + '" target="_blank" rel="noopener">' +
+        escape(paper.title) + '</a>' : escape(paper.title)) + ' · ' + imageSet(paper).length + '/2</li>').join('') + '</ul>' :
+      '<p>Two figures are available for every source.</p>');
+    dialog.showModal();
+    dialog.scrollTop = 0;
+  };
   dialog.addEventListener('click', event => {
     if (event.target === dialog && event.offsetX < 0) dialog.close();
   });
@@ -162,7 +185,11 @@
     if (button) focusGroup(button.dataset.group);
   };
   document.getElementById('fit').onclick = fit;
-  document.getElementById('readable').onclick = () => focusGroup(board.groups[0].id);
+  document.getElementById('readable').onclick = () => {
+    focusGroup(board.groups[0].id);
+    state.x = 24 - positions.get(board.groups[0].id).x * state.scale;
+    draw();
+  };
   document.querySelectorAll('[data-zoom]').forEach(button => {
     button.onclick = () => zoomAt(button.dataset.zoom === 'in' ? 1.25 : .8,
       viewport.clientWidth / 2, viewport.clientHeight / 2);
@@ -230,7 +257,7 @@
     }
   });
   layout();
-  fit();
+  document.getElementById('readable').click();
   const requestedPaper = new URLSearchParams(location.search).get('paper');
   if (requestedPaper) {
     document.getElementById('paper-query').value = requestedPaper;
