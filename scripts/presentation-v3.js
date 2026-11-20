@@ -181,6 +181,40 @@
     const source = s.documents?.[0]?.url || 'assets/directions/xr-target-and-timing.pdf';
     return `<div class="paper-evidence-plot"><object type="image/svg+xml" data="assets/directions/xr-target-and-timing.svg?v=full-width" aria-label="XR character direction: spatial target by timing, with examples and linked papers"><a href="${E(source)}" target="_blank" rel="noopener">Open the original plot PDF</a></object></div>`;
   }
+  function renderEvaluationScores(s) {
+    const totals = s.topics.map(topic => {
+      const comparison = s.comparisons[topic.id];
+      const delta = topic.total - comparison.total;
+      return `<section class="evaluation-total" data-eval-topic="${E(topic.id)}">
+        <div><h2>${E(topic.label)}</h2>${topic.id === 'creative-control' ? '<p>Merged directions 2 + 3</p>' : ''}</div>
+        <strong>${topic.total}<span> / 600</span></strong>
+        <p class="evaluation-delta">${delta > 0 ? '+' : ''}${delta} ${E(comparison.label)}</p>
+      </section>`;
+    }).join('');
+    const rows = s.criteria.map((criterion,index) => `<tr>
+      <th scope="row">${E(criterion.label)}</th>
+      ${s.topics.map((topic,topicIndex) => `<td><button type="button" class="evaluation-score-cell"
+        data-evaluation-reason="${topicIndex}:${index}" style="--score:${topic.scores[index]}%;--score-tone:${topic.id === 'illumination' ? '#2458c6' : '#8250b5'}"
+        aria-label="${E(topic.label)}, ${E(criterion.label)}, ${topic.scores[index]} out of 100. Show reason.">
+        <span class="evaluation-bar" aria-hidden="true"><i></i></span><b>${topic.scores[index]}</b>
+      </button></td>`).join('')}
+    </tr>`).join('');
+    return `<div class="evaluation-scores"><div class="evaluation-totals">${totals}</div>
+      <table><thead><tr><th scope="col">Criterion</th>${s.topics.map(topic => `<th scope="col">${E(topic.label)}</th>`).join('')}</tr></thead>
+      <tbody>${rows}</tbody></table></div>
+      <dialog class="evaluation-reason"><form method="dialog"><button>Close ×</button></form><div data-evaluation-reason-body></div></dialog>`;
+  }
+  function renderEvaluationEvolution(s) {
+    return `<div class="evaluation-evolution">
+      <img src="${E(s.image)}" alt="Score evolution. Illumination: 460, 400, 505, 450. Original agents: 465, 440, 475. Original HRI/XR: 450, 450, 445. Calculated merged baselines: 457.5, 445, 460. Directly assessed merged score on 20 November: 485.">
+      <div class="evaluation-chart-notes">
+        <p>Dashed merged line = mean of the earlier agents and HRI/XR scores.</p>
+        <a href="assets/evaluation/score-evolution.svg" download>Download plot ↗</a>
+      </div>
+      <div class="evaluation-initial"><strong>Initial V1 · /35</strong><span>Illumination 26</span><span>Agents 25</span><span>Digital twins 27</span>
+      <p>V1 used different criteria and a different third topic.</p></div>
+    </div>`;
+  }
   window.PresentationV3={
     render(s,c){
     const researchPaper = id => {
@@ -189,6 +223,8 @@
       return `<button type="button" class="v4-research-paper" data-v3-paper="${E(id)}" title="${E(p.title)}">${figure(p.sourceFigure?.image||p.thumbnail,p.title)}<b>${E(name)}</b><span>${E(p.year||"")}</span></button>`;
     };
       switch(s.kind){
+        case 'v4-evaluation-scores': return renderEvaluationScores(s);
+        case 'v4-evaluation-evolution': return renderEvaluationEvolution(s);
         case 'v4-paper-evidence-plot': return renderPaperEvidencePlot(s);
         case 'v4-survey-light-hero':
           return `<div class="survey-light-hero">${figure(s.image,"Concept illustration of real and virtual lighting on a shared mixed reality set")}<ul>${s.bullets.map(b=>`<li>${E(b)}</li>`).join("")}</ul></div>`;
@@ -271,6 +307,20 @@
       }
     },
     mount(host,s,c){
+      if (s.kind === 'v4-evaluation-scores') {
+        const dialog = host.querySelector('.evaluation-reason');
+        host.querySelectorAll('[data-evaluation-reason]').forEach(button => {
+          button.onclick = () => {
+            const [topicIndex,criterionIndex] = button.dataset.evaluationReason.split(':').map(Number);
+            const topic = s.topics[topicIndex];
+            const criterion = s.criteria[criterionIndex];
+            dialog.querySelector('[data-evaluation-reason-body]').innerHTML =
+              `<h2>${E(topic.label)} · ${E(criterion.label)}</h2><strong>${topic.scores[criterionIndex]} / 100</strong>
+              <p>${E(topic.reasons[criterion.id])}</p>`;
+            dialog.showModal();
+          };
+        });
+      }
       if(s.kind==='v4-survey-matrix'){
         const buttons=[...host.querySelectorAll('[data-survey-cell]')];
         const detail=host.querySelector('[data-survey-detail]');

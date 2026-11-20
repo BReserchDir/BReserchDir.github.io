@@ -592,3 +592,47 @@ body{background:#fff;color:#111}a{color:#111}::selection{background:#111;color:#
 #research-talk .paper-evidence-plot,
 #research-talk .paper-evidence-plot object { display:block; width:100%; height:100%; }
 #research-talk.talk-v3 .talk-stage:has([data-kind="v4-paper-evidence-plot"]) { overflow:hidden; }
+
+/* Final personal evaluation and comparable score history. */
+#research-talk.talk-v3 .talk-slide[data-kind^="v4-evaluation-"] { padding:18px 4vw 14px; }
+#research-talk.talk-v3 [data-kind^="v4-evaluation-"] .talk-title { font-size:clamp(30px,3.4vw,52px); }
+#research-talk.talk-v3 [data-kind^="v4-evaluation-"] .talk-body { padding-top:6px; }
+#research-talk .evaluation-scores { height:100%; display:grid; grid-template-rows:auto minmax(0,1fr); gap:16px; }
+#research-talk .evaluation-totals { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+#research-talk .evaluation-total { border-top:3px solid #2458c6; padding:12px 0 0; display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 12px; }
+#research-talk .evaluation-total[data-eval-topic="creative-control"] { border-top-color:#8250b5; }
+#research-talk .evaluation-total h2 { font-size:clamp(22px,2.2vw,34px); line-height:1.1; margin:0; }
+#research-talk .evaluation-total p { font-size:18px; color:#555; margin:5px 0 0; }
+#research-talk .evaluation-total > strong { font-size:clamp(38px,4.2vw,64px); line-height:1; letter-spacing:-2px; }
+#research-talk .evaluation-total > strong span { font-size:20px; letter-spacing:0; color:#555; font-weight:400; }
+#research-talk .evaluation-total .evaluation-delta { grid-column:1 / -1; font-size:17px; margin:5px 0 0; }
+#research-talk .evaluation-scores table { width:100%; height:100%; border-collapse:collapse; table-layout:fixed; }
+#research-talk .evaluation-scores th { text-align:left; font-size:clamp(18px,1.7vw,26px); font-weight:500; padding:6px 14px; }
+#research-talk .evaluation-scores th:first-child { width:27%; padding-left:0; }
+#research-talk .evaluation-scores td { padding:2px 14px; }
+#research-talk .evaluation-scores thead th { border-bottom:1px solid #aaa; padding-bottom:10px; font-weight:600; }
+#research-talk .evaluation-scores tbody tr { border-bottom:1px solid #e4e4e4; }
+#research-talk .evaluation-scores .evaluation-score-cell { display:grid; width:100%; grid-template-columns:minmax(0,1fr) 45px; align-items:center; gap:14px; border:0; border-radius:0; background:transparent; padding:7px 0; color:#111; font-size:24px; }
+#research-talk .evaluation-score-cell:hover { background:#f6f6f6; }
+#research-talk .evaluation-bar { display:block; background:#eee; height:10px; }
+#research-talk .evaluation-bar i { display:block; height:100%; width:var(--score); background:var(--score-tone); }
+#research-talk .evaluation-score-cell b { font-weight:600; text-align:right; }
+#research-talk .evaluation-reason { width:min(800px,90vw); border:1px solid #bbb; padding:24px; }
+#research-talk .evaluation-reason form { text-align:right; }
+#research-talk .evaluation-reason strong { font-size:32px; }
+#research-talk .evaluation-reason p { font-size:22px; line-height:1.5; white-space:pre-line; }
+#research-talk .evaluation-evolution { height:100%; display:flex; flex-direction:column; gap:8px; }
+#research-talk .evaluation-evolution > img { width:100%; flex:1; min-height:0; object-fit:contain; }
+#research-talk .evaluation-chart-notes { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px 20px; }
+#research-talk .evaluation-chart-notes p, #research-talk .evaluation-chart-notes a { margin:0; font-size:18px; line-height:1.3; }
+#research-talk .evaluation-initial { display:flex; flex-wrap:wrap; align-items:center; gap:4px 22px; padding-top:9px; border-top:1px solid #ccc; font-size:17px; }
+#research-talk .evaluation-initial p { margin:0; color:#555; }
+@media(max-height:760px) {
+  #research-talk .evaluation-total p { font-size:16px; }
+  #research-talk .evaluation-total .evaluation-delta { font-size:15px; }
+  #research-talk .evaluation-totals { gap:18px; }
+  #research-talk .evaluation-scores { gap:10px; }
+  #research-talk .evaluation-scores .evaluation-score-cell { padding:4px 0; font-size:21px; }
+  #research-talk .evaluation-chart-notes p, #research-talk .evaluation-chart-notes a { font-size:16px; }
+  #research-talk .evaluation-initial { font-size:15px; gap:4px 16px; }
+}
