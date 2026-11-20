@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Visual literature maps</title>
-  <link rel="stylesheet" href="literature-map.css?v=c9b86695a9bc">
-  <script defer src="literature-data.js?v=48456b075581"></script>
-  <script defer src="literature-map.js?v=5599349b54d2"></script>
+  <link rel="stylesheet" href="literature-map.css?v=ca6e50a6633f">
+  <script defer src="literature-data.js?v=cadcd05dc643"></script>
+  <script defer src="literature-map.js?v=27f95e88fe40"></script>
 </head>
 <body>
   <header>
@@ -28,7 +28,11 @@
       <button data-zoom="in" aria-label="Zoom in">+</button>
       <button id="fit">Fit all</button>
       <button id="readable">Readable size</button>
-      <button id="edit-mode" aria-pressed="false">Edit layout</button>
+      <button id="edit-mode" aria-pressed="true">Lock cards</button>
+      <label class="connection-toggle"><input id="show-connections" type="checkbox" checked> Connections</label>
+      <select id="timeline-group" aria-label="Group for year arrangement"></select>
+      <button id="arrange-years">Arrange by year</button>
+      <button id="clear-selection">Clear selection</button>
       <button id="add-card">Add card</button>
       <button id="undo">Undo</button>
       <button id="export-board">Download edits</button>
@@ -41,9 +45,10 @@
   <nav id="group-nav" aria-label="Jump to a literature group"></nav>
   <main id="viewport" aria-label="Zoomable literature canvas. Drag to pan, scroll to zoom, and click a paper for evidence.">
     <div id="world"></div>
+    <aside id="relationship-panel" hidden aria-label="Paper relationships"></aside>
   </main>
   <footer>
-    <span id="save-status" aria-live="polite">Drag background to pan · Scroll to zoom · Click a card to inspect</span>
+    <span id="save-status" aria-live="polite">Drag cards to move · Drag background to pan · Select a card for connections</span>
     <button id="coverage" aria-label="Inspect figure coverage"></button>
     <span class="gap-key">Gap notes = research questions</span>
   </footer>
