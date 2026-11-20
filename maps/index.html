@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Visual literature maps</title>
-  <link rel="stylesheet" href="literature-map.css?v=ddb6bee3107b">
-  <script defer src="literature-data.js?v=73c1e914d6e9"></script>
-  <script defer src="literature-map.js?v=fe74fd975315"></script>
+  <link rel="stylesheet" href="literature-map.css?v=c9b86695a9bc">
+  <script defer src="literature-data.js?v=48456b075581"></script>
+  <script defer src="literature-map.js?v=5599349b54d2"></script>
 </head>
 <body>
   <header>
@@ -28,6 +28,14 @@
       <button data-zoom="in" aria-label="Zoom in">+</button>
       <button id="fit">Fit all</button>
       <button id="readable">Readable size</button>
+      <button id="edit-mode" aria-pressed="false">Edit layout</button>
+      <button id="add-card">Add card</button>
+      <button id="undo">Undo</button>
+      <button id="export-board">Download edits</button>
+      <button id="import-board">Load edits</button>
+      <input id="import-file" type="file" accept="application/json" hidden>
+      <button id="original-plots">Original plots</button>
+      <button id="paper-index">All papers</button>
     </div>
   </header>
   <nav id="group-nav" aria-label="Jump to a literature group"></nav>
@@ -35,7 +43,7 @@
     <div id="world"></div>
   </main>
   <footer>
-    <span>Drag to pan · Scroll or pinch to zoom · Click a paper to inspect</span>
+    <span id="save-status" aria-live="polite">Drag background to pan · Scroll to zoom · Click a card to inspect</span>
     <button id="coverage" aria-label="Inspect figure coverage"></button>
     <span class="gap-key">Gap notes = research questions</span>
   </footer>
@@ -43,5 +51,19 @@
     <button id="close-detail" aria-label="Close paper details">Close ×</button>
     <div id="detail-body"></div>
   </dialog>
+<dialog id="card-editor"><form id="edit-form">
+  <h2>Edit card</h2><input name="nodeId" type="hidden">
+  <label>Title<input name="title" required></label>
+  <label>Problem-space group<select name="group"></select></label>
+  <label id="problem-label">Problem being solved / group evidence<textarea name="problem" rows="4"></textarea></label>
+  <label id="limit-label">Limitations / broader gap<textarea name="limitation" rows="4"></textarea></label>
+  <label>Datasets / evaluation data<textarea name="datasets" rows="3"></textarea></label>
+  <label>Concrete example<textarea name="example" rows="3"></textarea></label>
+  <label>Related papers<select name="refs" multiple size="6"></select></label>
+  <label>Card width<select name="width"><option value="380">Standard</option><option value="560">Wide</option><option value="1000">Heading / overview</option></select></label>
+  <p>Edits save in this browser. Download edits to back up or move them to another computer.</p>
+  <div class="editor-actions"><button type="button" id="cancel-edit">Cancel</button><button type="submit">Save card</button></div>
+</form></dialog>
+<dialog id="new-card"><h2>Add to the problem space</h2><div class="editor-actions"><button data-new="heading">Heading</button><button data-new="gap">Big gap</button><button data-new="example">Example</button><button id="cancel-new">Cancel</button></div></dialog>
 </body>
 </html>

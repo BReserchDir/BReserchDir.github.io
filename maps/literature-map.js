@@ -1,266 +1,79 @@
 (() => {
-  const requestedTopic = new URLSearchParams(location.search).get('topic');
-  const board = window.LITERATURE_BOARDS.find(item => item.id === requestedTopic) || window.LITERATURE_BOARDS[0];
-  const viewport = document.getElementById('viewport');
-  const world = document.getElementById('world');
-  const dialog = document.getElementById('paper-detail');
-  const papers = new Map(board.papers.map(paper => [paper.id, paper]));
-  const escape = value => String(value ?? '').replace(/[&<>"']/g, character => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  })[character]);
-  const citation = paper => [paper.year, paper.venue].filter(Boolean).join(' · ');
-  const shortTitle = paper => paper.title.split(':')[0];
-  const isRecent = paper => paper.year >= board.recentStart && paper.year <= board.recentEnd;
-  const state = { x: 0, y: 0, scale: 1, width: 0, height: 0 };
-  const positions = new Map();
-  let suppressClick = false;
-
-  document.title = board.title + ' — Visual literature map';
-  document.querySelector('h1').textContent = board.title;
-  document.querySelector('[data-topic="' + board.id + '"]').setAttribute('aria-current', 'page');
-  const illustrated = board.papers.filter(paper => paper.images?.length >= 2).length;
-  const imageSet = paper => paper.images || (paper.image ? [{image:paper.image,sourceUrl:paper.figureSource,locator:'Source figure'}] : []);
-  document.getElementById('coverage').textContent =
-    board.papers.length + ' sources · ' + board.papers.filter(isRecent).length +
-    ' from 2022–2026 · ' + illustrated + ' with two figures';
-
-  function paperCard(paper) {
-    const images = imageSet(paper).slice(0,2);
-    const preview = images.map((image,index) => '<img src="' + escape(image.image) +
-      '" alt="' + escape(image.kind || 'Source figure') + ' from ' + escape(paper.title) +
-      '" draggable="false" loading="lazy">').join('');
-    return '<button class="paper-card' + (isRecent(paper) ? ' recent-paper' : '') + '" data-paper="' + escape(paper.id) + '">' +
-      (images.length ? '<span class="paper-images">' + preview + '</span>' : '') +
-      '<span class="paper-text"><strong>' + escape(shortTitle(paper)) + '</strong>' +
-      '<span class="citation">' + escape(citation({...paper, venue: paper.venue.split(/[;,]/)[0]})) + '</span>' +
-      (images.length ? '' : '<span class="method">' + escape(paper.method) + '</span>') +
-      (images.length < 2 ? '<span class="missing">' + (images.length ? 'Second source figure not yet available' : 'Source figures not yet available') + '</span>' : '') +
-      '</span></button>';
-  }
-
-  world.innerHTML = board.groups.map(group => {
-    const members = board.papers.filter(paper => paper.group === group.id)
-      .sort((a, b) => Number(isRecent(b)) - Number(isRecent(a)) || (b.year || 0) - (a.year || 0) || Number(Boolean(b.image)) - Number(Boolean(a.image)));
-    const notes = board.notes.filter(note => note.group === group.id);
-    return '<section class="cluster" id="group-' + group.id + '">' +
-      '<h2>' + escape(group.title) + '<span class="cluster-count">' + members.length + ' papers</span></h2>' +
-      '<p class="cluster-description">' + escape(group.description) + '</p>' +
-      (members.some(isRecent) ? '<h3 class="period-heading">2022–2026</h3><div class="paper-grid">' +
-        members.filter(isRecent).map(paperCard).join('') + '</div>' : '') +
-      (members.some(paper => !isRecent(paper)) ? '<h3 class="period-heading">Earlier work and undated sources</h3><div class="paper-grid">' +
-        members.filter(paper => !isRecent(paper)).map(paperCard).join('') + '</div>' : '') +
-      notes.map(note => '<aside class="gap-note"><h3>Gap · ' + escape(note.title) + '</h3>' +
-        '<p>' + escape(note.text) + '</p><p class="question">' + escape(note.question) + '</p>' +
-        '<div class="refs">' + note.ids.map(id => '<button data-paper="' + escape(id) + '">' +
-          escape(shortTitle(papers.get(id))) + ' · ' + escape(papers.get(id).year) + '</button>').join('') +
-        '</div></aside>').join('') + '</section>';
-  }).join('');
-
-  document.getElementById('group-nav').innerHTML = board.groups.map(group =>
-    '<button data-group="' + group.id + '">' + escape(group.title) + '</button>').join('');
-
-  function draw() {
-    world.style.transform = 'translate(' + state.x + 'px,' + state.y + 'px) scale(' + state.scale + ')';
-    document.getElementById('zoom-value').textContent = Math.round(state.scale * 100) + '%';
-  }
-
-  function layout() {
-    const heights = [24, 24, 24, 24];
-    board.groups.forEach((group, index) => {
-      const element = document.getElementById('group-' + group.id);
-      const column = index % 4;
-      const position = { x: 24 + column * 820, y: heights[column], height: element.offsetHeight };
-      positions.set(group.id, position);
-      element.style.left = position.x + 'px';
-      element.style.top = position.y + 'px';
-      heights[column] += element.offsetHeight + 40;
-    });
-    state.width = 4 * 820 + 8;
-    state.height = Math.max(...heights);
-    world.style.width = state.width + 'px';
-    world.style.height = state.height + 'px';
-  }
-
-  function fit() {
-    state.scale = Math.min(viewport.clientWidth / state.width, viewport.clientHeight / state.height) * .96;
-    state.x = (viewport.clientWidth - state.width * state.scale) / 2;
-    state.y = (viewport.clientHeight - state.height * state.scale) / 2;
-    draw();
-  }
-
-  function zoomAt(factor, x, y) {
-    const next = Math.max(.08, Math.min(2.5, state.scale * factor));
-    const ratio = next / state.scale;
-    state.x = x - (x - state.x) * ratio;
-    state.y = y - (y - state.y) * ratio;
-    state.scale = next;
-    draw();
-  }
-
-  function focusGroup(id) {
-    const position = positions.get(id);
-    state.scale = Math.min(1, (viewport.clientWidth - 48) / 780);
-    state.x = (viewport.clientWidth - 780 * state.scale) / 2 - position.x * state.scale;
-    state.y = 24 - position.y * state.scale;
-    draw();
-  }
-
-  function openPaper(id) {
-    const paper = papers.get(id);
-    const evidence = (paper.evidence || []).filter(item => item.url);
-    document.getElementById('detail-body').innerHTML =
-      '<h2>' + escape(paper.title) + '</h2><p>' + escape(citation(paper)) + '</p>' +
-      '<div class="detail-gallery">' + imageSet(paper).map(image =>
-        '<figure><a href="' + escape(image.image) + '" target="_blank" rel="noopener">' +
-        '<img src="' + escape(image.image) + '" alt="' + escape(image.kind || 'Source figure') + ' from ' + escape(paper.title) + '"></a>' +
-        '<figcaption>' + escape(image.kind || 'Source figure') + ' · ' + escape(image.locator || '') +
-        ' · <a href="' + escape(image.sourceUrl || paper.url) + '" target="_blank" rel="noopener">Original source ↗</a></figcaption></figure>').join('') +
-      '</div>' +
-      [['Problem', paper.problem], ['Method', paper.method], ['Contribution', paper.contribution],
-        ['Remaining question in our review', paper.gap]].filter(item => item[1]).map(item =>
-        '<h3>' + escape(item[0]) + '</h3><p>' + escape(item[1]) + '</p>').join('') +
-      '<p class="reading">Reading status · ' + escape(paper.readStatus) + '</p>' +
-      '<p class="reading">Collected from · ' + escape(paper.origin) + '</p>' +
-      (paper.url ? '<p><a href="' + escape(paper.url) + '" target="_blank" rel="noopener noreferrer">Open paper / author project ↗</a></p>' :
-        '<p class="reading">Source link not recorded.</p>') +
-      (evidence.length ? '<h3>Evidence in the review</h3><ul>' + evidence.map(item =>
-        '<li><a href="' + escape(item.url) + '" target="_blank" rel="noopener noreferrer">' +
-        escape(item.locator || item.claim || 'Source') + '</a></li>').join('') + '</ul>' : '');
-    dialog.showModal();
-    dialog.scrollTop = 0;
-  }
-
-  world.addEventListener('click', event => {
-    if (suppressClick) return;
-    const button = event.target.closest('[data-paper]');
-    if (button) openPaper(button.dataset.paper);
-  });
-  document.getElementById('paper-titles').innerHTML = board.papers.map(paper =>
-    '<option value="' + escape(paper.title) + '"></option>').join('');
-  let searchIndex = -1;
-  let previousQuery = '';
-  document.getElementById('find-paper').onsubmit = event => {
-    event.preventDefault();
-    const query = document.getElementById('paper-query').value.trim().toLowerCase();
-    const matches = query ? board.papers.filter(paper => paper.title.toLowerCase().includes(query))
-      .sort((a, b) => Number(b.title.toLowerCase().startsWith(query)) -
-        Number(a.title.toLowerCase().startsWith(query))) : [];
-    document.querySelectorAll('.search-match').forEach(card => card.classList.remove('search-match'));
-    if (!matches.length) {
-      document.getElementById('search-result').textContent = query ? 'No match' : '';
-      return;
-    }
-    searchIndex = query === previousQuery ? (searchIndex + 1) % matches.length : 0;
-    previousQuery = query;
-    for (const paper of matches) {
-      world.querySelector('[data-paper="' + paper.id + '"]').classList.add('search-match');
-    }
-    const paper = matches[searchIndex];
-    const card = world.querySelector('[data-paper="' + paper.id + '"]');
-    const position = positions.get(paper.group);
-    state.scale = Math.min(1.2, (viewport.clientWidth - 40) / card.offsetWidth, (viewport.clientHeight - 48) / card.offsetHeight);
-    state.x = viewport.clientWidth / 2 - (position.x + card.offsetLeft + card.offsetWidth / 2) * state.scale;
-    state.y = viewport.clientHeight / 2 - (position.y + card.offsetTop + card.offsetHeight / 2) * state.scale;
-    draw();
-    document.getElementById('search-result').textContent = (searchIndex + 1) + ' / ' + matches.length;
-  };
-  document.getElementById('close-detail').onclick = () => dialog.close();
-  document.getElementById('coverage').onclick = () => {
-    const missing = board.papers.filter(paper => imageSet(paper).length < 2);
-    document.getElementById('detail-body').innerHTML =
-      '<h2>Figure coverage</h2><p>' + illustrated + ' of ' + board.papers.length +
-      ' sources have two retrieved figures.</p>' +
-      (missing.length ? '<h3>Still awaiting source figures</h3><ul>' +
-      missing.map(paper => '<li>' + (paper.url ? '<a href="' + escape(paper.url) + '" target="_blank" rel="noopener">' +
-        escape(paper.title) + '</a>' : escape(paper.title)) + ' · ' + imageSet(paper).length + '/2</li>').join('') + '</ul>' :
-      '<p>Two figures are available for every source.</p>');
-    dialog.showModal();
-    dialog.scrollTop = 0;
-  };
-  dialog.addEventListener('click', event => {
-    if (event.target === dialog && event.offsetX < 0) dialog.close();
-  });
-  document.getElementById('group-nav').onclick = event => {
-    const button = event.target.closest('[data-group]');
-    if (button) focusGroup(button.dataset.group);
-  };
-  document.getElementById('fit').onclick = fit;
-  document.getElementById('readable').onclick = () => {
-    focusGroup(board.groups[0].id);
-    state.x = 24 - positions.get(board.groups[0].id).x * state.scale;
-    draw();
-  };
-  document.querySelectorAll('[data-zoom]').forEach(button => {
-    button.onclick = () => zoomAt(button.dataset.zoom === 'in' ? 1.25 : .8,
-      viewport.clientWidth / 2, viewport.clientHeight / 2);
-  });
-
-  viewport.addEventListener('wheel', event => {
-    event.preventDefault();
-    const rectangle = viewport.getBoundingClientRect();
-    zoomAt(Math.exp(-event.deltaY * .0015), event.clientX - rectangle.left, event.clientY - rectangle.top);
-  }, { passive: false });
-
-  const pointers = new Map();
-  let gesture = null;
-  function pointerDistance() {
-    const points = [...pointers.values()];
-    return Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-  }
-  viewport.addEventListener('pointerdown', event => {
-    if (event.button !== 0) return;
-    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    gesture = { x: event.clientX, y: event.clientY, startX: state.x, startY: state.y,
-      distance: pointers.size === 2 ? pointerDistance() : 0 };
-    suppressClick = false;
-    viewport.classList.add('dragging');
-  });
-  viewport.addEventListener('pointermove', event => {
-    if (!pointers.has(event.pointerId) || !gesture) return;
-    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    if (pointers.size === 2) {
-      const points = [...pointers.values()];
-      const distance = pointerDistance();
-      const rectangle = viewport.getBoundingClientRect();
-      zoomAt(distance / gesture.distance, (points[0].x + points[1].x) / 2 - rectangle.left,
-        (points[0].y + points[1].y) / 2 - rectangle.top);
-      gesture.distance = distance;
-      suppressClick = true;
-    } else {
-      const dx = event.clientX - gesture.x;
-      const dy = event.clientY - gesture.y;
-      if (Math.hypot(dx, dy) > 5) {
-        suppressClick = true;
-        viewport.setPointerCapture(event.pointerId);
-        state.x = gesture.startX + dx;
-        state.y = gesture.startY + dy;
-        draw();
-      }
-    }
-  });
-  function endPointer(event) {
-    pointers.delete(event.pointerId);
-    gesture = null;
-    viewport.classList.remove('dragging');
-  }
-  viewport.addEventListener('pointerup', endPointer);
-  viewport.addEventListener('pointercancel', endPointer);
-  viewport.addEventListener('pointerleave', event => {
-    if (!viewport.hasPointerCapture(event.pointerId)) endPointer(event);
-  });
-
-  let resized = false;
-  window.addEventListener('resize', () => {
-    if (!resized) {
-      resized = true;
-      requestAnimationFrame(() => { fit(); resized = false; });
-    }
-  });
-  layout();
-  document.getElementById('readable').click();
-  const requestedPaper = new URLSearchParams(location.search).get('paper');
-  if (requestedPaper) {
-    document.getElementById('paper-query').value = requestedPaper;
-    document.getElementById('find-paper').requestSubmit();
-  }
+'use strict';
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const board=window.LITERATURE_BOARDS.find(b=>b.id===new URLSearchParams(location.search).get('topic'))||window.LITERATURE_BOARDS[0];
+const viewport=$('#viewport'),world=$('#world'),dialog=$('#paper-detail'),editor=$('#card-editor'),form=$('#edit-form');
+const papers=new Map(board.papers.map(p=>[p.id,p])), nodes=new Map(),elements=new Map(),key='research-collage-v2:'+board.id;
+const view={x:20,y:20,scale:.8},history=[];let edits={},editing=false,drag=null,moved=false,filter=null;
+try{edits=JSON.parse(localStorage.getItem(key)||'{}')}catch{}
+const images=p=>p.images||[], short=p=>p.title.split(':')[0];
+const refs=ids=>(ids||[]).filter(id=>papers.has(id)).map(id=>'<button data-paper="'+esc(id)+'">'+esc(short(papers.get(id)))+'</button>').join('');
+const status=t=>$('#save-status').textContent=t;
+function remember(){history.push(JSON.stringify(edits));if(history.length>30)history.shift();}
+function save(){try{localStorage.setItem(key,JSON.stringify(edits));status('Saved in this browser · Download edits for a backup')}catch{status('Browser storage unavailable · Download edits to keep changes')}}
+function overlay(n){return {...n,...edits[n.id]}}
+function add(n){nodes.set(n.id,overlay(n));}
+function label(n){return '<div class="card-handle"><span>'+esc(n.type==='paper'?'Paper':n.type==='gap'?'Big gap · review synthesis':n.type==='example'?'Example · proposed XR instruction':n.type==='overview'?'Corpus overview':'Problem space')+'</span><button class="edit-card" data-edit="'+esc(n.id)+'" aria-label="Edit '+esc(n.title)+'">Edit</button></div>';}
+function figureHTML(p){return '<div class="figure-grid">'+images(p).slice(0,4).map(i=>'<img loading="lazy" draggable="false" src="'+esc(i.image)+'" alt="'+esc(i.kind||'Source figure')+' — '+esc(p.title)+'">').join('')+'</div>';}
+const scopeNote='Primary review buckets; each included paper counted once. Counts describe this collection, not the whole field.';
+function bucket(p){p={...p,group:nodes.get('paper-'+p.id)?.group||p.group};if(board.id==='illumination')return ['local','global'].includes(p.group)?0:['geometry','generative','representation'].includes(p.group)?1:p.group==='transport'?2:3;return ['direction','objects','ensemble','style','revision'].includes(p.group)?0:['camera','interface','orchestration','lighting'].includes(p.group)?1:2;}
+function pieChart(title,labels,kind){const sets=labels.map((_,i)=>board.papers.filter(p=>kind==='bucket'?bucket(p)===i:kind==='year'?(p.year>=2022&&p.year<=2026?0:p.year?1:2)===i:(images(p).length>=3?0:images(p).length===2?1:2)===i));let start=0;const colors=['#2862c7','#eb8b32','#8250b5','#94a0b2'];
+ const segments=sets.map((ps,i)=>{const end=start+ps.length/board.papers.length*100,part=colors[i]+' '+start+'% '+end+'%';start=end;return part}).join(',');
+ return '<section class="pie-panel"><h3>'+title+'</h3><div class="pie-visual" data-pie="'+kind+'" style="background:conic-gradient('+segments+')" role="img" aria-label="'+esc(labels.map((l,i)=>l+': '+sets[i].length).join(', '))+'"></div><div class="pie-legend">'+labels.map((l,i)=>'<button data-filter="'+kind+':'+i+'" aria-pressed="false"><i style="background:'+colors[i]+'"></i>'+l+' <b>'+sets[i].length+'</b></button>').join('')+'</div></section>';}
+function content(n){if(n.type==='overview')return '<h2>Where the papers sit</h2><div class="pies">'+pieChart('Problem-space coverage',board.id==='illumination'?['Real → virtual','Virtual → real','Both / shared transport','Perception / foundations']:['Actors & creatures','Equipment & XR control','Datasets / foundations'],'bucket')+pieChart('Publication period',['2022–2026','Before 2022','Undated'],'year')+pieChart('Source figures',['3–4 figures','Two figures','Fewer than two'],'images')+'</div><p class="scope">'+scopeNote+'</p><button id="clear-filter">Clear highlighting</button>';
+ if(n.type==='paper'){const p=papers.get(n.paperId);return figureHTML(p)+'<h3>'+esc(n.title)+'</h3><p class="citation">'+esc([p.year,p.venue].filter(Boolean).join(' · '))+' · '+images(p).length+' figures</p><h4>Problem being solved</h4><p>'+esc(n.problem||'Problem not yet recorded in this review.')+'</p><h4>Limitations / evidence boundary</h4><p>'+esc(n.limitation||'Not assessed yet; inspect the source before drawing a limitation claim.')+'</p><h4>Datasets / evaluation data</h4><p>'+esc(n.datasets||'Not yet verified in this review.')+'</p><button data-paper="'+esc(p.id)+'">Figures & evidence ↗</button>';}
+ if(n.type==='heading')return '<h2>'+esc(n.title)+'</h2><p>'+esc(n.problem)+'</p>';
+ return '<h3>'+esc(n.title)+'</h3>'+(n.problem?'<h4>'+(n.type==='gap'?'What the paper group establishes':'Coordinates / context')+'</h4><p>'+esc(n.problem)+'</p>':'')+(n.limitation?'<h4>'+(n.type==='gap'?'Gap to test':'Evidence boundary')+'</h4><p>'+esc(n.limitation)+'</p>':'')+(n.example?'<blockquote>'+esc(n.example)+'</blockquote>':'')+'<div class="refs">'+refs(n.refs)+'</div>'+(n.demonstrations||[]).map(d=>'<details><summary>'+esc(d.name)+' · '+esc(d.year)+' · '+esc(d.runtime)+'</summary><p>'+esc(d.text)+'</p><a href="'+esc(d.url)+'" target="_blank" rel="noopener">Demonstrated example ↗</a></details>').join('');}
+function renderNode(n){let e=elements.get(n.id);if(!e){e=document.createElement('article');e.dataset.node=n.id;e.className='canvas-card '+n.type+'-card';world.append(e);elements.set(n.id,e)}e.style.left=n.x+'px';e.style.top=n.y+'px';e.style.width=n.width+'px';e.innerHTML=label(n)+content(n);e.querySelector('.card-handle').tabIndex=0;if(n.type==='paper')e.dataset.paperCard=n.paperId;}
+function render(){for(const n of nodes.values())renderNode(n);bounds();highlight();}
+function bounds(){let w=1600,h=800;for(const [id,n]of nodes){const e=elements.get(id);w=Math.max(w,n.x+n.width+70);h=Math.max(h,n.y+e.offsetHeight+70)}world.style.width=w+'px';world.style.height=h+'px';view.width=w;view.height=h;}
+function draw(){viewport.scrollTop=0;viewport.scrollLeft=0;world.style.transform=`translate(${view.x}px,${view.y}px) scale(${view.scale})`;$('#zoom-value').textContent=Math.round(view.scale*100)+'%'}
+function focus(id){const n=nodes.get(id),e=elements.get(id);if(!n)return;view.scale=Math.min(1,(viewport.clientWidth-60)/n.width,(n.type==='paper'||n.type==='overview')?(viewport.clientHeight-50)/e.offsetHeight:1);view.x=(viewport.clientWidth-n.width*view.scale)/2-n.x*view.scale;view.y=25-n.y*view.scale;draw();e.classList.add('focused');setTimeout(()=>e.classList.remove('focused'),1400)}
+function fit(){bounds();view.scale=Math.min(viewport.clientWidth/view.width,viewport.clientHeight/view.height)*.95;view.x=20;view.y=20;draw()}
+function zoom(f,x,y){let next=Math.max(.04,Math.min(2,view.scale*f)),r=next/view.scale;view.x=x-(x-view.x)*r;view.y=y-(y-view.y)*r;view.scale=next;draw()}
+function highlight(){for(const [id,n]of nodes){let yes=true;if(filter&&n.type==='paper'){const p=papers.get(n.paperId),[kind,v]=filter.split(':');yes=kind==='bucket'?bucket(p)===+v:kind==='year'?(p.year>=2022&&p.year<=2026?0:p.year?1:2)===+v:(images(p).length>=3?0:images(p).length===2?1:2)===+v}elements.get(id).classList.toggle('dimmed',!yes)}document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===filter)))}
+add({id:'overview',type:'overview',title:'Where the papers sit',x:30,y:30,width:1260});
+// Each group has a heading, a paper collage and a separate synthesis column.
+const groupEnds=[];
+board.groups.forEach((g,gi)=>{let x=30+(gi%3)*1740,y=650+Math.floor(gi/3)*7200;add({id:'group-'+g.id,type:'heading',group:g.id,title:g.title,problem:g.description,x,y,width:1630});
+ const members=board.papers.filter(p=>p.group===g.id).sort((a,b)=>(b.year||0)-(a.year||0));
+ members.forEach((p,i)=>add({id:'paper-'+p.id,type:'paper',paperId:p.id,group:g.id,title:p.title,problem:p.problem,limitation:[p.limitations,p.gap].filter(Boolean).join('\n\nReview question: '),datasets:p.datasets?.summary||(p.datasets?.entries||[]).map(d=>d.name).join(', ')+(p.datasets?.entries?.length?' — source mentions; see evidence for exact use.':''),x:x+(i%3)*405,y:y+160+Math.floor(i/3)*970,width:380}));
+ board.notes.filter(n=>n.group===g.id).forEach((n,i)=>add({id:'gap-'+g.id+'-'+i,type:'gap',group:g.id,title:n.title,problem:n.text,limitation:n.question,example:n.question.startsWith('“')?n.question:'',refs:n.ids,x:x+1230,y:y+160+i*650,width:400}));
+ groupEnds.push(y+160+Math.ceil(members.length/3)*970);
+});
+// Pack rows using actual measured card heights so longer evidence text never overlaps.
+render();let groupY=650;
+for(let row=0;row<Math.ceil(board.groups.length/3);row++){let bottom=groupY;board.groups.slice(row*3,row*3+3).forEach(g=>{const h=nodes.get('group-'+g.id);if(!edits[h.id])h.y=groupY;let y=groupY+elements.get(h.id).offsetHeight+30;const ps=[...nodes.values()].filter(n=>n.type==='paper'&&n.group===g.id);for(let i=0;i<ps.length;i+=3){let height=0;for(const n of ps.slice(i,i+3)){if(!edits[n.id])n.y=y;height=Math.max(height,elements.get(n.id).offsetHeight)}y+=height+28}for(const n of nodes.values())if(n.type==='gap'&&n.group===g.id&&!edits[n.id])n.y=groupY+elements.get(h.id).offsetHeight+30;bottom=Math.max(bottom,y)});groupY=bottom+120;}
+const exampleY=groupY+80;
+add({id:'examples-title',type:'heading',title:board.plot?'Target × timing: concrete instructions':'Cross-world lighting cases',problem:board.plot?'X: source of the spatial target. Y: what sets timing. Instructions are proposed XR examples; linked demonstrations retain their original evidence boundaries. A paper may occupy several coordinates.':'Proposed production cases to test against the papers above.',x:30,y:exampleY,width:1600});
+if(board.plot){board.plot.columns.forEach((c,i)=>add({id:'x-'+c.id,type:'heading',title:'X · '+c.label,problem:'Source of the spatial target',x:330+i*610,y:exampleY+210,width:580}));board.plot.rows.forEach((r,i)=>add({id:'y-'+r.id,type:'heading',title:'Y · '+r.label,problem:'What sets timing',x:30,y:exampleY+410+i*1450,width:270}));board.plot.cells.forEach(c=>{const col=board.plot.columns.findIndex(x=>x.id===c.column),row=board.plot.rows.findIndex(x=>x.id===c.row);add({id:'example-'+c.row+'-'+c.column,type:'example',title:c.summary,problem:board.plot.columns[col].label+' × '+board.plot.rows[row].label,example:c.examples.map(t=>'“'+t+'”').join(' / '),limitation:c.demonstrations.length?'Demonstrated controls below are related evidence, not proof of the whole XR instruction. RT refers to the reported demo/controller, not full headset latency.':'No matching demonstration in this selected plot. This is a candidate gap, not a field-wide absence claim.',refs:c.demonstrations.map(d=>d.paperId).filter(Boolean),demonstrations:c.demonstrations,x:330+col*610,y:exampleY+410+row*1450,width:580})})}
+else{[['Background → virtual','HDR environment illumination lights a virtual prop.','global'],['Nearby real light → virtual','A moving physical lamp changes illumination on the virtual cube.','local'],['Real occluder → virtual shadow','A physical flag or actor shadows a virtual object.','local'],['Virtual light → real video','A virtual spotlight relights the real sphere and desk in passthrough.','geometry'],['Virtual object → real shadow','A virtual cube or actor casts a shadow onto the real desk in the rendered view.','transport'],['Bounce across worlds','The desk bounces light onto virtual content; virtual content changes the apparent illumination on a real object.','transport'],['Live stereo consistency','Both eyes see coherent highlights and shadows as the viewer and actors move.','generative'],['Beam, softness and colour','Compare point, spot and area illumination, hard/soft shadows and colour temperature.','perception']].forEach(([title,example,group],i)=>add({id:'lighting-example-'+i,type:'example',title,example,group,limitation:'Proposed evaluation case; supported capabilities must be checked against individual papers.',x:30+(i%4)*440,y:exampleY+210+Math.floor(i/4)*550,width:410}))}
+for(const [id,n]of Object.entries(edits))if(!nodes.has(id)&&n.custom)add({...n,id});
+render();
+$('#group-nav').innerHTML='<button data-focus="overview">Pie charts</button>'+board.groups.map(g=>'<button data-focus="group-'+g.id+'">'+esc(g.title)+'</button>').join('')+'<button data-focus="examples-title">Examples & coordinates</button>';
+$('#group-nav').onclick=e=>{const b=e.target.closest('[data-focus]');if(b)focus(b.dataset.focus)};
+$('#paper-titles').innerHTML=board.papers.map(p=>'<option value="'+esc(p.title)+'"></option>').join('');
+let searchIndex=-1,lastQuery='';$('#find-paper').onsubmit=e=>{e.preventDefault();const q=$('#paper-query').value.trim().toLowerCase(),found=[...nodes.values()].filter(n=>n.type==='paper'&&n.title.toLowerCase().includes(q));if(!q||!found.length){$('#search-result').textContent='No match';return}searchIndex=q===lastQuery?(searchIndex+1)%found.length:0;lastQuery=q;focus(found[searchIndex].id);$('#search-result').textContent=(searchIndex+1)+' / '+found.length};
+function showPaper(id){const p=papers.get(id),n=nodes.get('paper-'+id);$('#detail-body').innerHTML='<h2>'+esc(n.title)+'</h2><button data-locate="'+esc(n.id)+'">Locate on canvas</button><button data-edit="'+esc(n.id)+'">Edit card</button><p>'+esc([p.year,p.venue].filter(Boolean).join(' · '))+'</p><h3>Problem being solved</h3><p>'+esc(n.problem)+'</p><h3>Method / contribution</h3><p>'+esc(p.method)+' '+esc(p.contribution)+'</p><h3>Limitations / evidence boundary (review)</h3><p>'+esc(n.limitation||'Not assessed yet.')+'</p><h3>Datasets / evaluation data</h3><p>'+esc(n.datasets||'Not yet verified in this review.')+'</p>'+((p.datasets?.entries||[]).map(d=>'<details><summary>'+esc(d.name)+' · PDF page '+d.page+'</summary><p>'+esc(d.role)+'</p><blockquote>'+esc(d.excerpt)+'</blockquote><a href="'+esc(d.sourceUrl)+'" target="_blank" rel="noopener">Source ↗</a></details>').join(''))+(p.sourceExcerpts?.limitationsExcerpt?'<h3>Authors’ limitations — source excerpt</h3><blockquote>'+esc(p.sourceExcerpts.limitationsExcerpt)+'</blockquote><a href="'+esc(p.sourceExcerpts.limitationsSource)+'" target="_blank" rel="noopener">'+esc(p.sourceExcerpts.limitationsLocator)+' ↗</a>':'')+'<p>'+esc(p.readStatus)+'</p><a target="_blank" rel="noopener" href="'+esc(p.url)+'">Paper / author project ↗</a><div class="detail-gallery">'+images(p).map(i=>'<figure><a href="'+esc(i.image)+'" target="_blank" rel="noopener"><img src="'+esc(i.image)+'" alt="'+esc(i.kind)+'"></a><figcaption>'+esc(i.kind)+' · '+esc(i.locator)+' · <a href="'+esc(i.sourceUrl||p.url)+'" target="_blank" rel="noopener">Original source ↗</a></figcaption></figure>').join('')+'</div>'+(p.evidence||[]).map(e=>'<p><a href="'+esc(e.url)+'" target="_blank" rel="noopener">'+esc(e.locator||e.claim||'Evidence')+'</a></p>').join('');if(!dialog.open)dialog.showModal()}
+function edit(id){const n=nodes.get(id);if(!n||n.type==='overview')return;form.elements.nodeId.value=id;for(const f of ['title','problem','limitation','example','datasets'])form.elements[f].value=n[f]||'';form.elements.group.innerHTML='<option value="">Free placement</option>'+board.groups.map(g=>'<option value="'+g.id+'">'+esc(g.title)+'</option>').join('');form.elements.group.value=n.group||'';if(![...form.elements.width.options].some(o=>+o.value===n.width)){const option=new Option('Current width ('+n.width+')',n.width);form.elements.width.add(option)}form.elements.width.value=String(n.width);form.elements.refs.innerHTML=board.papers.map(p=>'<option value="'+esc(p.id)+'"'+((n.refs||[]).includes(p.id)?' selected':'')+'>'+esc(short(p))+'</option>').join('');editor.showModal()}
+form.onsubmit=e=>{e.preventDefault();remember();const n=nodes.get(form.elements.nodeId.value),old=n.group;for(const f of ['title','problem','limitation','example','datasets','group'])n[f]=form.elements[f].value.trim();n.refs=[...form.elements.refs.selectedOptions].map(o=>o.value);n.width=+form.elements.width.value;if(n.group&&n.group!==old){const h=nodes.get('group-'+n.group);n.x=h.x;n.y=Math.max(h.y+150,...[...nodes.values()].filter(v=>v.id!==n.id&&v.group===n.group).map(v=>v.y+elements.get(v.id).offsetHeight))+40}edits[n.id]={...n};save();renderNode(n);renderNode(nodes.get('overview'));highlight();bounds();editor.close()};$('#cancel-edit').onclick=()=>editor.close();
+function action(e){if(moved){moved=false;return}const p=e.target.closest('[data-paper]'),ed=e.target.closest('[data-edit]'),loc=e.target.closest('[data-locate]'),slice=e.target.closest('[data-filter]');const pie=e.target.closest('[data-pie]');if(pie){const rect=pie.getBoundingClientRect(),angle=(Math.atan2(e.clientX-rect.left-rect.width/2,-(e.clientY-rect.top-rect.height/2))+Math.PI*2)%(Math.PI*2),kind=pie.dataset.pie,counts=[...pie.parentElement.querySelectorAll('[data-filter] b')].map(b=>+b.textContent);let sum=0,index=counts.length-1;for(let i=0;i<counts.length;i++){sum+=counts[i]/board.papers.length*Math.PI*2;if(angle<sum){index=i;break}}const next=kind+':'+index;filter=filter===next?null:next;highlight();return}if(ed)edit(ed.dataset.edit);else if(loc){dialog.close();focus(loc.dataset.locate)}else if(p)showPaper(p.dataset.paper);else if(slice){filter=filter===slice.dataset.filter?null:slice.dataset.filter;highlight()}else if(e.target.id==='clear-filter'){filter=null;highlight()}else if(!editing&&!e.target.closest('button,a,.card-handle')&&e.target.closest('[data-paper-card]'))showPaper(e.target.closest('[data-paper-card]').dataset.paperCard)}
+world.onclick=action;dialog.onclick=action;$('#close-detail').onclick=()=>dialog.close();
+$('#edit-mode').onclick=()=>{editing=!editing;document.body.classList.toggle('editing',editing);$('#edit-mode').setAttribute('aria-pressed',editing);$('#edit-mode').textContent=editing?'Done editing':'Edit layout';status(editing?'Drag each card by its top bar · Use Edit to change text or group':'Drag background to pan · Scroll to zoom · Click a card to inspect')};
+$('#add-card').onclick=()=>$('#new-card').showModal();$('#cancel-new').onclick=()=>$('#new-card').close();document.querySelectorAll('[data-new]').forEach(b=>b.onclick=()=>{remember();const n={id:'custom-'+Date.now(),custom:true,type:b.dataset.new,title:'New '+b.dataset.new,problem:'',limitation:'',example:'',refs:[],width:560,x:Math.max(0,(70-view.x)/view.scale),y:Math.max(0,(70-view.y)/view.scale)};add(n);edits[n.id]=n;render();save();$('#new-card').close();edit(n.id)});
+$('#undo').onclick=()=>{if(!history.length){status('No changes to undo');return}edits=JSON.parse(history.pop());save();location.reload()};
+$('#export-board').onclick=()=>{const blob=new Blob([JSON.stringify({schema:'research-collage-v2',topic:board.id,edits},null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=board.id+'-collage-edits.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
+$('#import-board').onclick=()=>$('#import-file').click();$('#import-file').onchange=async e=>{try{const obj=JSON.parse(await e.target.files[0].text());if(obj.schema!=='research-collage-v2'||obj.topic!==board.id||!obj.edits||typeof obj.edits!=='object')throw Error('Choose an edits file for this topic.');for(const n of Object.values(obj.edits))if(!n||!Number.isFinite(n.x)||!Number.isFinite(n.y)||!Number.isFinite(n.width)||n.width<200||n.width>2000||n.x<0||n.y<0||n.x>1e6||n.y>1e6||!['heading','paper','gap','example','overview'].includes(n.type))throw Error('Invalid card data');edits=obj.edits;save();location.reload()}catch(error){status('Could not load edits: '+error.message)}};
+$('#paper-index').onclick=()=>{$('#detail-body').innerHTML='<h2>All papers · '+board.papers.length+'</h2><p>Every source in this topic is listed here, including earlier work and papers with missing figures.</p><ul>'+board.papers.map(p=>'<li><button data-locate="paper-'+esc(p.id)+'">Locate</button> <button data-paper="'+esc(p.id)+'">'+esc(p.title)+'</button> · '+esc(p.year||'Undated')+' · '+images(p).length+' figures</li>').join('')+'</ul>';dialog.showModal()};
+$('#original-plots').hidden=!board.plots?.length;$('#original-plots').onclick=()=>{$('#detail-body').innerHTML='<h2>Original problem-space plots</h2><p>These retain the original axes, examples and paper placements.</p>'+board.plots.map(p=>'<h3>'+esc(p.title)+'</h3><a href="'+esc(p.pdf)+'" target="_blank" rel="noopener">Open full PDF ↗</a><a href="'+esc(p.image)+'" target="_blank" rel="noopener"><img class="original-plot" src="'+esc(p.image)+'" alt="'+esc(p.title)+'"></a>').join('');dialog.showModal()};
+$('#coverage').textContent=board.papers.length+' papers · '+board.papers.reduce((s,p)=>s+images(p).length,0)+' source figures';$('#coverage').onclick=()=>{$('#detail-body').innerHTML='<h2>Figure coverage</h2><p>Figures come from the paper or author project. Missing figures are not filled with synthetic illustrations.</p><ul>'+board.papers.filter(p=>images(p).length<2).map(p=>'<li>'+esc(p.title)+' · '+images(p).length+' figure(s)</li>').join('')+'</ul>';dialog.showModal()};
+$('#fit').onclick=fit;$('#readable').onclick=()=>focus('overview');document.querySelectorAll('[data-zoom]').forEach(b=>b.onclick=()=>zoom(b.dataset.zoom==='in'?1.25:.8,viewport.clientWidth/2,viewport.clientHeight/2));
+viewport.addEventListener('wheel',e=>{e.preventDefault();const r=viewport.getBoundingClientRect();zoom(Math.exp(-e.deltaY*.0015),e.clientX-r.left,e.clientY-r.top)},{passive:false});
+viewport.addEventListener('pointerdown',e=>{moved=false;if(e.button!==0||e.target.closest('button,a,input,textarea,select,summary'))return;const handle=e.target.closest('.card-handle'),node=handle&&editing?nodes.get(handle.closest('[data-node]').dataset.node):null;drag={id:e.pointerId,x:e.clientX,y:e.clientY,sx:node?node.x:view.x,sy:node?node.y:view.y,node};moved=false;if(node)remember()});
+viewport.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)<4)return;if(!viewport.hasPointerCapture(e.pointerId))viewport.setPointerCapture(e.pointerId);moved=true;if(drag.node){drag.node.x=Math.max(0,drag.sx+dx/view.scale);drag.node.y=Math.max(0,drag.sy+dy/view.scale);const el=elements.get(drag.node.id);el.style.left=drag.node.x+'px';el.style.top=drag.node.y+'px'}else{view.x=drag.sx+dx;view.y=drag.sy+dy;draw()}});
+function end(e){if(!drag||drag.id!==e.pointerId)return;if(drag.node&&moved){edits[drag.node.id]={...drag.node};save();bounds()}drag=null;if(viewport.hasPointerCapture(e.pointerId))viewport.releasePointerCapture(e.pointerId)}viewport.addEventListener('pointerup',end);viewport.addEventListener('pointercancel',end);
+world.addEventListener('keydown',e=>{if(!editing||!e.target.classList.contains('card-handle')||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();remember();const n=nodes.get(e.target.closest('[data-node]').dataset.node),d=e.shiftKey?40:10;n.x=Math.max(0,n.x+(e.key==='ArrowRight'?d:e.key==='ArrowLeft'?-d:0));n.y=Math.max(0,n.y+(e.key==='ArrowDown'?d:e.key==='ArrowUp'?-d:0));edits[n.id]={...n};save();renderNode(n)});
+for(const el of document.querySelectorAll('.card-handle')){el.tabIndex=0;el.setAttribute('aria-label','Move card in edit mode using arrow keys')}
+window.addEventListener('resize',draw);document.title=board.title+' · Editable paper collage';$('h1').textContent=board.title;document.querySelector('[data-topic="'+board.id+'"]').setAttribute('aria-current','page');focus('overview');
+const requested=new URLSearchParams(location.search).get('paper');if(requested){const p=board.papers.find(p=>p.id===requested||p.title.toLowerCase().includes(requested.toLowerCase()));if(p)focus('paper-'+p.id)}
 })();
